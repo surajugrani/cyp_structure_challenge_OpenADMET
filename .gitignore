@@ -36,3 +36,6 @@ __pycache__/
 .DS_Store
 *.swp
 *~
+
+# ── Per-analysis working structures (PDB downloads, prepped complexes, grids) ──
+analyses/*/structures/

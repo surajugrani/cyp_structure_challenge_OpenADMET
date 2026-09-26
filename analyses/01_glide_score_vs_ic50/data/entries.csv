@@ -1,0 +1,285 @@
+pdb_id,resolution,method,comp_id,name,formula,formula_weight,n_instances,instances
+5VCC,1.7,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+5VCC,1.7,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,8,A:602;A:604;A:605;A:607;A:608;A:609;A:606;A:603
+5VCC,1.7,X-ray,EDO,"1,2-ETHANEDIOL",C2 H6 O2,62.068,12,A:610;A:611;A:612;A:613;A:615;A:616;A:617;A:620;A:621;A:619;A:618;A:614
+9YK4,1.78,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+9YK4,1.78,X-ray,IMD,IMIDAZOLE,C3 H5 N2,69.085,1,A:602
+9YK4,1.78,X-ray,PG4,TETRAETHYLENE GLYCOL,C8 H18 O5,194.226,2,A:604;A:603
+9YK4,1.78,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,4,A:608;A:607;A:606;A:605
+9YK4,1.78,X-ray,EDO,"1,2-ETHANEDIOL",C2 H6 O2,62.068,14,A:622;A:621;A:620;A:619;A:618;A:617;A:616;A:615;A:614;A:613;A:612;A:611;A:610;A:609
+6MA8,1.83,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6MA8,1.83,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,2,A:603;A:602
+6MA8,1.83,X-ray,PMF,phenylmethylsulfonyl fluoride,C7 H7 F O2 S,174.193,1,A:604
+6MA8,1.83,X-ray,EDO,"1,2-ETHANEDIOL",C2 H6 O2,62.068,7,A:606;A:608;A:609;A:610;A:611;A:607;A:605
+6MA8,1.83,X-ray,DMS,DIMETHYL SULFOXIDE,C2 H6 O S,78.133,1,A:612
+4D6Z,1.93,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:1500
+4D6Z,1.93,X-ray,PK9,tert-butyl {6-oxo-6-[(pyridin-3-ylmethyl)amino]hexyl}carbamate,C17 H27 N3 O3,321.415,1,A:1600
+4D6Z,1.93,X-ray,IMD,IMIDAZOLE,C3 H5 N2,69.085,1,A:1601
+4D6Z,1.93,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,4,A:1602;A:1604;A:1605;A:1603
+5VCD,1.95,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+5VCD,1.95,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,12,A:613;A:612;A:611;A:610;A:609;A:608;A:607;A:606;A:605;A:604;A:603;A:602
+3NXU,2.0,X-ray,DMS,DIMETHYL SULFOXIDE,C2 H6 O S,78.133,6,A:700;A:702;A:703;B:705;B:704;A:701
+3NXU,2.0,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,2,A:508;B:508
+3NXU,2.0,X-ray,RIT,RITONAVIR,C37 H48 N6 O5 S2,720.944,2,A:600;B:600
+1TQN,2.05,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:508
+8EXB,2.05,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+8EXB,2.05,X-ray,X4E,"{N-[([2,2'-bipyridin]-5-yl-kappa~2~N~1~,N~1'~)methyl]-3-(pyridin-3-yl)propanamide}bis[2-(quinolin-2-yl-kappaN)-1-benzothiophen-3-yl-kappaC~3~]iridium(1+)",C53 H38 Ir N6 O S2,1031.255,1,A:602
+8SO1,2.05,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+8SO1,2.05,X-ray,CFF,CAFFEINE,C8 H10 N4 O2,194.191,3,A:604;A:603;A:602
+6MA7,2.09,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6MA7,2.09,X-ray,TPF,"2-(2,4-DIFLUOROPHENYL)-1,3-DI(1H-1,2,4-TRIAZOL-1-YL)PROPAN-2-OL",C13 H12 F2 N6 O,306.271,1,A:602
+6MA7,2.09,X-ray,DMS,DIMETHYL SULFOXIDE,C2 H6 O S,78.133,1,A:603
+6MA7,2.09,X-ray,EDO,"1,2-ETHANEDIOL",C2 H6 O2,62.068,1,A:604
+8EWN,2.1,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+8EWN,2.1,X-ray,X1O,"{N-[([2,2'-bipyridin]-5-yl-kappa~2~N~1~,N~1'~)methyl]-3-(pyridin-4-yl)propanamide}bis[3,5-difluoro-2-(pyridin-2-yl-kappaN)phenyl-kappaC~1~]iridium(1+)",C41 H30 F4 Ir N6 O,890.927,1,A:602
+3UA1,2.15,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:508
+3UA1,2.15,X-ray,08Y,bromoergocryptine,C32 H40 Br N5 O5,654.594,1,A:600
+6DAA,2.15,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6DAA,2.15,X-ray,G0M,tert-butyl [(2S)-1-{[(2R)-1-oxo-3-phenyl-1-{[(pyridin-3-yl)methyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C29 H35 N3 O3 S,505.672,1,A:602
+8EWS,2.15,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+8EWS,2.15,X-ray,X2Q,"{N-[([2,2'-bipyridin]-5-yl-kappa~2~N~1~,N~1'~)methyl]-3-(pyridin-4-yl)propanamide}bis[2-(quinolin-2-yl-kappaN)-1-benzothiophen-3-yl-kappaC~3~]iridium(1+)",C53 H38 Ir N6 O S2,1031.255,1,A:602
+8SO2,2.15,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+8SO2,2.15,X-ray,CFF,CAFFEINE,C8 H10 N4 O2,194.191,6,A:607;A:606;A:605;A:604;A:603;A:602
+6MA6,2.182,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6MA6,2.182,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,1,A:602
+6MA6,2.182,X-ray,MYT,METYRAPONE,C14 H14 N2 O,226.274,1,A:603
+6MA6,2.182,X-ray,EDO,"1,2-ETHANEDIOL",C2 H6 O2,62.068,1,A:604
+5VCG,2.2,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+5VCG,2.2,X-ray,08Y,bromoergocryptine,C32 H40 Br N5 O5,654.594,1,A:602
+5VCG,2.2,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,4,A:606;A:605;A:604;A:603
+8EWD,2.2,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+8EWD,2.2,X-ray,WZN,"{tert-butyl [1-{[([2,2'-bipyridin]-5-yl-kappa~2~N~1~,N~1'~)methyl]amino}-1-oxo-3-(pyridin-4-yl)propan-2-yl]carbamate}bis[2-(quinolin-2-yl-kappaN)phenyl-kappaC~1~]iridium(1+)",C54 H47 Ir N7 O3,1034.213,1,A:602
+8EWR,2.2,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+8EWR,2.2,X-ray,WZN,"{tert-butyl [1-{[([2,2'-bipyridin]-5-yl-kappa~2~N~1~,N~1'~)methyl]amino}-1-oxo-3-(pyridin-4-yl)propan-2-yl]carbamate}bis[2-(quinolin-2-yl-kappaN)phenyl-kappaC~1~]iridium(1+)",C54 H47 Ir N7 O3,1034.213,1,A:602
+6OOB,2.202,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6OOB,2.202,X-ray,MWS,"4-{[(2Z,6S)-6,7-dihydroxy-3,7-dimethyloct-2-en-1-yl]oxy}-7H-furo[3,2-g][1]benzopyran-7-one",C21 H24 O6,372.412,1,A:602
+6BCZ,2.23,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6BCZ,2.23,X-ray,D7Y,tert-butyl (2-{[(2R)-3-oxo-2-[(propan-2-yl)amino]-3-{[(pyridin-3-yl)methyl]amino}propyl]sulfanyl}ethyl)carbamate,C19 H32 N4 O3 S,396.547,1,A:602
+3TJS,2.25,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:508
+3TJS,2.25,X-ray,D0R,"N-[(2S,4S,5S)-5-amino-4-hydroxy-1,6-diphenylhexan-2-yl]-N~2~-(methyl{[2-(propan-2-yl)-1,3-thiazol-4-yl]methyl}carbamoyl)-L-valinamide",C32 H45 N5 O3 S,579.796,1,A:600
+4D75,2.25,X-ray,PK9,tert-butyl {6-oxo-6-[(pyridin-3-ylmethyl)amino]hexyl}carbamate,C17 H27 N3 O3,321.415,1,A:600
+4D75,2.25,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6BDH,2.25,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6BDH,2.25,X-ray,DEV,tert-butyl [(2S)-1-{[(2S)-3-oxo-2-(phenylamino)-3-{[(pyridin-3-yl)methyl]amino}propyl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C29 H36 N4 O3 S,520.686,1,A:602
+6DA5,2.25,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6DA5,2.25,X-ray,G1J,tert-butyl [(2R)-1-{[(2S)-1-oxo-3-phenyl-1-{[(pyridin-3-yl)methyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C29 H35 N3 O3 S,505.672,1,A:602
+6OO9,2.25,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6OO9,2.25,X-ray,MWV,"(1S,2S)-2-(2-{[3-(1H-benzimidazol-2-yl)propyl](methyl)amino}ethyl)-6-fluoro-1-(propan-2-yl)-1,2,3,4-tetrahydronaphthalen-2-yl methoxyacetate",C29 H38 F N3 O3,495.629,1,A:602
+6OO9,2.25,X-ray,EDO,"1,2-ETHANEDIOL",C2 H6 O2,62.068,2,A:603;A:604
+6OO9,2.25,X-ray,DMS,DIMETHYL SULFOXIDE,C2 H6 O S,78.133,1,A:605
+7UFB,2.25,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+7UFB,2.25,X-ray,NJ0,(2R)-3-phenyl-2-({(2S)-3-phenyl-2-[2-(pyridin-3-yl)acetamido]propyl}sulfanyl)-N-[(pyridin-3-yl)methyl]propanamide,C31 H32 N4 O2 S,524.676,1,A:602
+8EWQ,2.25,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+8EWQ,2.25,X-ray,X2B,"{N-[1-{[([2,2'-bipyridin]-5-yl-kappa~2~N~1~,N~1'~)methyl]amino}-1-oxo-3-(pyridin-4-yl)propan-2-yl]benzamide}bis[2-(quinolin-2-yl-kappaN)phenyl-kappaC~1~]iridium(1+)",C56 H43 Ir N7 O2,1038.203,1,A:602
+9PLK,2.25,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+9PLK,2.25,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,1,A:602
+9PLK,2.25,X-ray,A1CIW,darifenacin,C28 H30 N2 O2,426.55,1,A:603
+6UNG,2.3,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6UNG,2.3,X-ray,QEP,tert-butyl [(2S)-1-(naphthalen-1-yl)-3-{[(2R)-3-oxo-2-(phenylamino)-3-{[(pyridin-3-yl)methyl]amino}propyl]sulfanyl}propan-2-yl]carbamate,C33 H38 N4 O3 S,570.745,1,A:602
+8EWE,2.3,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+8EWE,2.3,X-ray,X0E,"{tert-butyl [1-{[([2,2'-bipyridin]-5-yl-kappa~2~N~1~,N~1'~)methyl]amino}-1-oxo-3-(pyridin-4-yl)propan-2-yl]carbamate}bis[2-(quinolin-2-yl-kappaN)phenyl-kappaC~1~]iridium",C54 H47 Ir N7 O3,1034.213,1,A:602
+8EWM,2.3,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+8EWM,2.3,X-ray,X1I,"{tert-butyl [1-{[([2,2'-bipyridin]-5-yl-kappa~2~N~1~,N~1'~)methylidene]amino}-1-oxo-3-(pyridin-4-yl)propan-2-yl]carbamate}bis[3,5-difluoro-2-(pyridin-2-yl-kappaN)phenyl-kappaC~1~]iridium(1+)",C46 H37 F4 Ir N7 O3,1004.042,1,A:602
+9COW,2.3,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+9COW,2.3,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,1,A:602
+9COW,2.3,X-ray,A1A4V,N-[(2S)-1-(naphthalen-1-yl)-3-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}propan-2-yl]pyridine-3-carboxamide,C36 H36 N4 O2 S,588.762,1,A:603
+6DAB,2.35,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6DAB,2.35,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,1,A:602
+6DAB,2.35,X-ray,G0V,tert-butyl [(2R)-1-{[(2R)-1-oxo-3-phenyl-1-{[2-(pyridin-3-yl)ethyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C30 H37 N3 O3 S,519.698,1,A:603
+7UFC,2.35,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+7UFC,2.35,X-ray,NJO,(2R)-3-phenyl-2-({(2S)-3-phenyl-2-[3-(pyridin-3-yl)propanamido]propyl}sulfanyl)-N-[2-(pyridin-3-yl)ethyl]propanamide,C33 H36 N4 O2 S,552.73,1,A:602
+8EWL,2.35,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+8EWL,2.35,X-ray,X1C,"{N-[([2,2'-bipyridin]-5-yl-kappa~2~N~1~,N~1'~)methyl]-3-(pyridin-4-yl)propanamide}bis[2-(quinolin-2-yl-kappaN)phenyl-kappaC~1~]iridium(1+)",C49 H38 Ir N6 O,919.083,1,A:602
+6DA3,2.37,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6DA3,2.37,X-ray,G0D,tert-butyl [(2R)-1-{[(2R)-1-oxo-3-phenyl-1-{[(pyridin-3-yl)methyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C29 H35 N3 O3 S,505.672,1,A:602
+6BD8,2.38,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6BD8,2.38,X-ray,D81,S-{(2S)-2-[(1-tert-butoxyethenyl)amino]-3-phenylpropyl}-N~2~-cyclopentyl-N-[(pyridin-3-yl)methyl]-L-cysteinamide,C29 H42 N4 O2 S,510.734,1,A:602
+4K9W,2.399,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,4,A:601;B:601;C:601;D:601
+4K9W,2.399,X-ray,7AW,"N~2~-(methyl{[2-(propan-2-yl)-1,3-thiazol-4-yl]methyl}carbamoyl)-N-[(2R,5S)-1-phenyl-5-{[(1,3-thiazol-5-ylmethoxy)carbonyl]amino}octan-2-yl]-L-valinamide",C33 H48 N6 O4 S2,656.902,4,D:602;C:602;B:602;A:602
+7UFE,2.4,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,2,B:601;A:601
+7UFE,2.4,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,3,B:602;A:603;A:602
+7UFE,2.4,X-ray,NXR,N-[(2S)-1-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]pyridine-3-carboxamide,C32 H34 N4 O2 S,538.703,2,B:603;A:604
+8DYC,2.4,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+8DYC,2.4,X-ray,UC7,"2-butyl-6-(butylamino)-1H-benzo[de]isoquinoline-1,3(2H)-dione",C20 H24 N2 O2,324.417,1,A:602
+8DYC,2.4,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,1,A:603
+8EWP,2.4,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+8EWP,2.4,X-ray,X2Q,"{N-[([2,2'-bipyridin]-5-yl-kappa~2~N~1~,N~1'~)methyl]-3-(pyridin-4-yl)propanamide}bis[2-(quinolin-2-yl-kappaN)-1-benzothiophen-3-yl-kappaC~3~]iridium(1+)",C53 H38 Ir N6 O S2,1031.255,1,A:602
+6BD7,2.42,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6BD7,2.42,X-ray,D7J,tert-butyl [(2S)-1-{[(2R)-3-oxo-2-[(propan-2-yl)amino]-3-{[(pyridin-3-yl)methyl]amino}propyl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C26 H38 N4 O3 S,486.67,1,A:602
+5A1R,2.45,X-ray,STR,PROGESTERONE,C21 H30 O2,314.462,1,A:600
+5A1R,2.45,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:1500
+6DAJ,2.45,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6DAJ,2.45,X-ray,FZV,tert-butyl [(2S)-1-{[(2R)-1-oxo-3-phenyl-1-{[2-(pyridin-3-yl)ethyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C30 H37 N3 O3 S,519.698,1,A:602
+6DAJ,2.45,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,1,A:603
+6DAJ,2.45,X-ray,GLN,GLUTAMINE,C5 H10 N2 O3,146.144,1,A:604
+7UF9,2.45,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+7UF9,2.45,X-ray,NH0,tert-butyl [(2S)-1-{[(2R)-1-oxo-3-phenyl-1-{[2-(pyridin-4-yl)ethyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C30 H37 N3 O3 S,519.698,1,A:602
+4K9T,2.5,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+4K9T,2.5,X-ray,1RD,"N~2~-(methyl{[2-(propan-2-yl)-1,3-thiazol-4-yl]methyl}carbamoyl)-N-(4-{[(1,3-thiazol-5-ylmethoxy)carbonyl]amino}butyl)-L-valinamide",C23 H36 N6 O4 S2,524.7,2,A:603;A:602
+5A1P,2.5,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:1500
+5A1P,2.5,X-ray,STR,PROGESTERONE,C21 H30 O2,314.462,1,A:1600
+5A1P,2.5,X-ray,CIT,CITRIC ACID,C6 H8 O7,192.124,1,A:1700
+6BD5,2.5,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6BD5,2.5,X-ray,D7M,tert-butyl (2-{[(2R)-2-(cyclopentylamino)-3-oxo-3-{[(pyridin-3-yl)methyl]amino}propyl]sulfanyl}ethyl)carbamate,C21 H34 N4 O3 S,422.585,1,A:602
+5VCE,2.2,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+5VCE,2.2,X-ray,RIT,RITONAVIR,C37 H48 N6 O5 S2,720.944,1,A:602
+6BD6,2.5,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6BD6,2.5,X-ray,80K,tert-butyl (2-{[(2S)-3-oxo-2-(phenylamino)-3-{[(pyridin-3-yl)methyl]amino}propyl]sulfanyl}ethyl)carbamate,C22 H30 N4 O3 S,430.564,1,A:602
+7KS8,2.5,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+7KS8,2.5,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,1,A:602
+7KS8,2.5,X-ray,X8S,"(tert-butyl {1-[(3-oxo-3-{[(pyridin-3-yl-kappaN)methyl]amino}propyl)sulfanyl]-3-phenylpropan-2-yl}carbamate)(6,6'-dimethyl-2,2'-bipyridine-kappa~2~N~1~,N~1'~)(1~2~,2~2~:2~6~,3~2~-terpyridine-kappa~3~N~1^{1~},N~2^{1~},N~3^{1~})ruthenium",C50 H54 N8 O3 Ru S,948.151,1,A:603
+7UFA,2.5,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+7UFA,2.5,X-ray,NI6,tert-butyl [(2S)-1-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-4-yl)propyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C31 H39 N3 O3 S,533.725,1,A:602
+6UNE,2.55,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6UNE,2.55,X-ray,QES,tert-butyl [(2R)-1-(1H-indol-3-yl)-3-{[(2S)-3-oxo-2-(phenylamino)-3-{[(pyridin-3-yl)methyl]amino}propyl]sulfanyl}propan-2-yl]carbamate,C31 H37 N5 O3 S,559.722,1,A:602
+7KVK,2.55,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,2,A:601;B:601
+7KVK,2.55,X-ray,X7J,tert-butyl [(2R)-1-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C31 H39 N3 O3 S,533.725,2,A:602;B:603
+7KVK,2.55,X-ray,SO4,SULFATE ION,O4 S,96.063,2,A:603;B:602
+7KVK,2.55,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,2,A:605;A:604
+7KVK,2.55,X-ray,EDO,"1,2-ETHANEDIOL",C2 H6 O2,62.068,1,A:606
+9COR,2.55,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+9COR,2.55,X-ray,A1A07,(2R)-3-phenyl-2-{[(2S)-3-phenyl-2-{[N-(trifluoroacetyl)glycyl]amino}propyl]sulfanyl}-N-[2-(pyridin-3-yl)ethyl]propanamide,C29 H31 F3 N4 O3 S,572.642,1,A:602
+6BDI,2.57,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6BDI,2.57,X-ray,DEJ,tert-butyl [(2S)-1-(1H-indol-3-yl)-3-{[(2R)-3-oxo-2-[(propan-2-yl)amino]-3-{[(pyridin-3-yl)methyl]amino}propyl]sulfanyl}propan-2-yl]carbamate,C28 H39 N5 O3 S,525.706,1,A:602
+4K9V,2.6,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+4K9V,2.6,X-ray,6AW,"1,3-thiazol-5-ylmethyl [(3S,6S)-6-{[N-(methyl{[2-(propan-2-yl)-1,3-thiazol-4-yl]methyl}carbamoyl)-L-seryl]amino}octan-3-yl]carbamate",C25 H40 N6 O5 S2,568.752,1,A:602
+5G5J,2.6,X-ray,MF8,Metformin,C4 H11 N5,129.164,1,A:600
+5G5J,2.6,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:700
+6BDM,2.6,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6BDM,2.6,X-ray,Y83,tert-butyl [(2S)-1-(1H-indol-3-yl)-3-{[(2S)-3-oxo-2-(phenylamino)-3-{[(pyridin-3-yl)methyl]amino}propyl]sulfanyl}propan-2-yl]carbamate,C31 H37 N5 O3 S,559.722,1,A:602
+6UNJ,2.6,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,2,A:601;B:601
+6UNJ,2.6,X-ray,QDY,tert-butyl [(2R)-1-(naphthalen-1-yl)-3-{[(2S)-1-oxo-3-phenyl-1-{[2-(pyridin-3-yl)ethyl]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C34 H39 N3 O3 S,569.757,2,A:602;B:602
+4I3Q,2.602,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6UNI,2.602,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6UNI,2.602,X-ray,QDV,tert-butyl [(2S)-1-(1H-indol-3-yl)-3-{[(2R)-1-oxo-3-phenyl-1-{[2-(pyridin-3-yl)ethyl]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C32 H38 N4 O3 S,558.734,1,A:602
+1W0F,2.65,X-ray,STR,PROGESTERONE,C21 H30 O2,314.462,1,A:1499
+1W0F,2.65,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:1501
+6DAL,2.65,X-ray,G1D,Nalpha-{(2S)-2-[(tert-butoxycarbonyl)amino]-3-phenylpropyl}-N-[2-(pyridin-3-yl)ethyl]-D-phenylalaninamide,C30 H38 N4 O3,502.648,1,A:603
+6DAL,2.65,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,1,A:602
+6DAL,2.65,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+7KVO,2.65,X-ray,X6S,tert-butyl [(2S)-1-(naphthalen-1-yl)-3-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C35 H41 N3 O3 S,583.783,2,B:602;A:603
+7KVO,2.65,X-ray,SO4,SULFATE ION,O4 S,96.063,1,A:602
+7KVO,2.65,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,2,B:601;A:601
+7UAZ,2.65,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+7UAZ,2.65,X-ray,O3L,"(N-[([2,2'-bipyridin]-5-yl-kappa~2~N~1~,N~1'~)methyl]-3-{[(pyridin-3-yl)methyl]sulfanyl}propanamide)bis[2-(pyridin-2-yl-kappaN)phenyl-kappaC~1~]iridium",C42 H36 Ir N6 O S,865.057,1,A:602
+9COY,2.65,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+9COY,2.65,X-ray,A1A4T,"N-[(2S)-1-([1,1'-biphenyl]-4-yl)-3-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}propan-2-yl]-2,2-dimethylpropanamide",C37 H43 N3 O2 S,593.821,1,A:602
+6BDK,2.67,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6BDK,2.67,X-ray,DJ1,tert-butyl [(2S)-1-{[(2R)-2-(cyclopentylamino)-3-oxo-3-{[(pyridin-3-yl)methyl]amino}propyl]sulfanyl}-3-(1H-indol-3-yl)propan-2-yl]carbamate,C30 H41 N5 O3 S,551.743,1,A:602
+5TE8,2.7,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,3,A:601;B:601;C:601
+5TE8,2.7,X-ray,08J,"8-chloro-6-(2-fluorophenyl)-1-methyl-4H-imidazo[1,5-a][1,4]benzodiazepine",C18 H13 Cl F N3,325.767,3,C:602;B:602;A:602
+7KVN,2.7,X-ray,X6V,tert-butyl [(2S)-1-(1H-indol-3-yl)-3-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C33 H40 N4 O3 S,572.761,2,B:602;A:602
+7KVN,2.7,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,2,B:601;A:601
+7UFF,2.7,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,2,B:601;A:601
+7UFF,2.7,X-ray,PO4,PHOSPHATE ION,O4 P,94.971,1,A:602
+7UFF,2.7,X-ray,NYF,N-(2-oxo-2-{[(2S)-1-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]amino}ethyl)pyridine-3-carboxamide,C34 H37 N5 O3 S,595.754,2,B:602;A:603
+9BV5,2.71,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+9BV5,2.71,X-ray,A1ASV,"N-[(2P)-2-(1H-imidazol-1-yl)-5-(trifluoromethyl)phenyl]-2,2-dimethylpropanamide",C15 H16 F3 N3 O,311.302,1,A:602
+9BV5,2.71,X-ray,EDO,"1,2-ETHANEDIOL",C2 H6 O2,62.068,2,A:603;A:604
+4I4G,2.718,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+4I4G,2.718,X-ray,Z8Z,"N~2~-(methyl{[2-(propan-2-yl)-1,3-thiazol-4-yl]methyl}carbamoyl)-N-[(2R,5R)-5-{[(1,3-oxazol-5-ylmethoxy)carbonyl]amino}-1,6-diphenylhexan-2-yl]-L-valinamide",C37 H48 N6 O5 S,688.879,1,A:602
+9COX,2.72,X-ray,A1A4K,N-[(2S)-1-(naphthalen-1-yl)-3-{[(2S)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}propan-2-yl]pyridine-3-carboxamide,C36 H36 N4 O2 S,588.762,1,A:602
+9COX,2.72,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+1W0G,2.73,X-ray,MYT,METYRAPONE,C14 H14 N2 O,226.274,1,A:1499
+1W0G,2.73,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:1501
+2J0D,2.75,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,2,B:1497;A:1497
+2J0D,2.75,X-ray,ERY,ERYTHROMYCIN A,C37 H67 N O13,733.927,1,A:1498
+6UNK,2.75,X-ray,QE4,tert-butyl [(2S)-1-(naphthalen-1-yl)-3-{[(2R)-1-oxo-3-phenyl-1-{[2-(pyridin-3-yl)ethyl]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C34 H39 N3 O3 S,569.757,1,A:602
+6UNK,2.75,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+7KVP,2.75,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+7KVP,2.75,X-ray,X6J,tert-butyl [(2R)-1-(naphthalen-1-yl)-3-{[(2S)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C35 H41 N3 O3 S,583.783,1,A:602
+7KVQ,2.75,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,2,A:601;B:601
+7KVQ,2.75,X-ray,SO4,SULFATE ION,O4 S,96.063,1,A:602
+7KVQ,2.75,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,1,A:603
+7KVQ,2.75,X-ray,EDO,"1,2-ETHANEDIOL",C2 H6 O2,62.068,3,A:604;A:605;A:606
+7KVQ,2.75,X-ray,X7D,tert-butyl [(2S)-1-(naphthalen-1-yl)-3-{[(2S)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C35 H41 N3 O3 S,583.783,2,A:607;B:602
+7LXL,2.75,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+7LXL,2.75,X-ray,YNV,"17alpha-hydroxy-7alpha-[(2Z)-4-(17beta-hydroxy-3-oxo-8alpha-androst-4-en-7beta-yl)but-2-en-1-yl]-8alpha,10alpha,13alpha,14beta-androst-4-en-3-one",C42 H60 O4,628.923,1,A:602
+9COS,2.75,X-ray,A1A06,(2R)-3-phenyl-2-{[(2S)-3-phenyl-2-{[N-(trifluoroacetyl)glycyl]amino}propyl]sulfanyl}-N-[3-(pyridin-3-yl)propyl]propanamide,C30 H33 F3 N4 O3 S,586.668,1,A:602
+9COS,2.75,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+4D7D,2.76,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:1500
+4D7D,2.76,X-ray,PKT,tert-butyl [(2S)-1-(1H-indol-3-yl)-3-({3-oxo-3-[(pyridin-3-ylmethyl)amino]propyl}sulfanyl)propan-2-yl]carbamate,C25 H32 N4 O3 S,468.612,1,A:1600
+4K9X,2.76,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+4K9X,2.76,X-ray,8AW,"1,3-thiazol-5-ylmethyl [(2R,5R)-5-{[(2S)-2-methylbutanoyl]amino}-1,6-diphenylhexan-2-yl]carbamate",C28 H35 N3 O3 S,493.661,1,A:602
+7UAY,2.78,X-ray,O39,"(N-[([2,2'-bipyridin]-5-yl-kappa~2~N~1~,N~1'~)methyl]-3-{[(pyridin-3-yl)methyl]sulfanyl}propanamide)bis[2-(quinolin-2-yl-kappaN)phenyl-kappaC~1~]iridium",C50 H40 Ir N6 O S,965.174,1,A:602
+7UAY,2.78,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+9PLJ,2.72,X-ray,TCI,"(6aR,10aR)-6,6,9-trimethyl-3-pentyl-6a,7,8,10a-tetrahydro-6H-benzo[c]chromen-1-ol",C21 H30 O2,314.462,1,A:602
+9PLJ,2.72,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+9COV,2.6,X-ray,A1A4S,N-[(2S)-1-(1H-indol-3-yl)-3-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}propan-2-yl]pyridine-3-carboxamide,C34 H35 N5 O2 S,577.739,1,A:602
+9COV,2.6,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+9BBB,2.5,X-ray,A1APA,cobicistat,C40 H53 N7 O5 S2,776.023,1,A:602
+9BBB,2.5,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+7KVS,2.5,X-ray,EDO,"1,2-ETHANEDIOL",C2 H6 O2,62.068,2,A:604;A:606
+7KVS,2.5,X-ray,X74,tert-butyl [(2R)-1-(naphthalen-1-yl)-3-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C35 H41 N3 O3 S,583.783,2,B:603;A:605
+7KVS,2.5,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,2,B:601;A:603
+7KVS,2.5,X-ray,SO4,SULFATE ION,O4 S,96.063,1,A:602
+7KVS,2.5,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,2,B:602;A:601
+7KVM,2.75,X-ray,X71,tert-butyl [(2S)-1-{[(2R)-2-benzyl-3-oxo-3-{[3-(pyridin-3-yl)propyl]amino}propyl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C32 H41 N3 O3 S,547.751,1,A:602
+7KVM,2.75,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+7KVJ,2.65,X-ray,X7M,tert-butyl [(2S)-1-{[(2S)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C31 H39 N3 O3 S,533.725,1,A:602
+7KVJ,2.65,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+7KVI,2.55,X-ray,X7P,tert-butyl [(2R)-1-{[(2S)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C31 H39 N3 O3 S,533.725,1,A:603
+7KVI,2.55,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,1,A:602
+7KVI,2.55,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+7KVH,2.791,X-ray,X5Y,tert-butyl [(2S)-1-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C31 H39 N3 O3 S,533.725,2,B:602;A:602
+7KVH,2.791,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,2,B:601;A:601
+7KSA,2.5,X-ray,X8P,"(tert-butyl {1-[(1-oxo-3-phenyl-1-{[3-(pyridin-3-yl-kappaN)prop-1-en-1-yl]amino}propan-2-yl)sulfanyl]-3-phenylpropan-2-yl}carbamate)(6,6'-dimethyl-2,2'-bipyridine-kappa~2~N~1~,N~1'~)(1~2~,2~2~:2~6~,3~2~-terpyridine-kappa~3~N~1^{1~},N~2^{1~},N~3^{1~})ruthenium",C58 H62 N8 O3 Ru S,1052.3,1,A:602
+7KSA,2.5,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6UNL,2.55,X-ray,QDJ,tert-butyl [(2R)-1-(naphthalen-1-yl)-3-{[(2S)-3-(naphthalen-1-yl)-1-oxo-1-{[(pyridin-3-yl)methyl]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C37 H39 N3 O3 S,605.789,1,A:602
+6UNL,2.55,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6UNH,2.72,X-ray,QEA,tert-butyl [(2R)-1-(1H-indol-3-yl)-3-{[(2S)-1-oxo-3-phenyl-1-{[2-(pyridin-3-yl)ethyl]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C32 H38 N4 O3 S,558.734,1,A:602
+6UNH,2.72,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6OOA,2.52,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6OOA,2.52,X-ray,MWY,"(3aS,4R,5S,6R,8R,9R,9aR,10R)-6-ethyl-5-hydroxy-4,6,9,10-tetramethyl-1-oxodecahydro-3a,9-propanocyclopenta[8]annulen-8-yl [(5-amino-1H-1,2,4-triazol-3-yl)sulfanyl]acetate",C24 H38 N4 O4 S,478.648,1,A:603
+6OOA,2.52,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,1,A:602
+6DAC,2.55,X-ray,FZV,tert-butyl [(2S)-1-{[(2R)-1-oxo-3-phenyl-1-{[2-(pyridin-3-yl)ethyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C30 H37 N3 O3 S,519.698,1,A:602
+6DAC,2.55,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6DA2,2.65,X-ray,G0D,tert-butyl [(2R)-1-{[(2R)-1-oxo-3-phenyl-1-{[(pyridin-3-yl)methyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C29 H35 N3 O3 S,505.672,1,A:603
+6DA2,2.65,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,1,A:602
+6DA2,2.65,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+5VC0,2.7,X-ray,RIT,RITONAVIR,C37 H48 N6 O5 S2,720.944,1,A:602
+5VC0,2.7,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+1W0E,2.8,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:1501
+2V0M,2.8,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,4,A:1499;B:1497;C:1497;D:1497
+2V0M,2.8,X-ray,KLN,"1-ACETYL-4-(4-{[(2S,4R)-2-(2,4-DICHLOROPHENYL)-2-(1H-IMIDAZOL-1-YLMETHYL)-1,3-DIOXOLAN-4-YL]METHOXY}PHENYL)PIPERAZINE",C26 H28 Cl2 N4 O4,531.431,8,A:1500;A:1501;B:1498;B:1499;C:1498;C:1499;D:1498;D:1499
+4D78,2.8,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:1500
+4D78,2.8,X-ray,J9K,tert-butyl [(2S)-1-({3-oxo-3-[(pyridin-3-ylmethyl)amino]propyl}sulfanyl)-3-phenylpropan-2-yl]carbamate,C23 H31 N3 O3 S,429.576,1,A:1600
+4D78,2.8,X-ray,GOL,GLYCEROL,C3 H8 O3,92.094,2,A:1601;A:1602
+6DAG,2.8,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6DAG,2.8,X-ray,G0Y,tert-butyl [(2R)-1-{[(2S)-1-oxo-3-phenyl-1-{[2-(pyridin-3-yl)ethyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C30 H37 N3 O3 S,519.698,1,A:602
+9BVC,2.8,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+9BVC,2.8,X-ray,A1ASO,N-(2-chlorophenyl)-N-[(3-hydroxyphenyl)methyl]-N'-[(2P)-2-(1H-imidazol-1-yl)-5-(trifluoromethyl)phenyl]urea,C24 H18 Cl F3 N4 O2,486.874,1,A:602
+6DA8,2.802,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+6DA8,2.802,X-ray,G0J,Nalpha-{(2S)-2-[(tert-butoxycarbonyl)amino]-3-phenylpropyl}-N-[(pyridin-3-yl)methyl]-D-phenylalaninamide,C29 H36 N4 O3,488.621,1,A:602
+9COT,2.81,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+9COT,2.81,X-ray,A1A08,"(2R)-3-phenyl-2-{[(2S)-3-phenyl-2-(2,2,2-trifluoroacetamido)propyl]sulfanyl}-N-[3-(pyridin-3-yl)propyl]propanamide",C28 H30 F3 N3 O2 S,529.617,1,A:602
+9COU,2.81,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+9COU,2.81,X-ray,A1A4U,(2R)-2-{[(2S)-2-(benzenesulfonamido)-3-phenylpropyl]sulfanyl}-3-phenyl-N-[3-(pyridin-3-yl)propyl]propanamide,C32 H35 N3 O3 S2,573.769,1,A:602
+6UNM,2.83,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,2,A:601;B:601
+6UNM,2.83,X-ray,QDP,tert-butyl [(2S)-1-(naphthalen-1-yl)-3-{[(2S)-3-(naphthalen-1-yl)-1-oxo-1-{(E)-[2-(pyridin-3-yl)ethylidene]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C38 H39 N3 O3 S,617.8,1,A:602
+4K9U,2.85,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+4K9U,2.85,X-ray,5AW,"N~2~-(methyl{[2-(propan-2-yl)-1,3-thiazol-4-yl]methyl}carbamoyl)-N-[(2S,5S)-5-{[(1,3-thiazol-5-ylmethoxy)carbonyl]amino}hexan-2-yl]-D-valinamide",C25 H40 N6 O4 S2,552.753,2,A:603;A:602
+4I4H,2.9,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+4I4H,2.9,X-ray,Z9Z,"pyridin-3-ylmethyl [(2R,5S)-5-{[N-(methyl{[2-(propan-2-yl)-1,3-thiazol-4-yl]methyl}carbamoyl)-D-valyl]amino}-1,6-diphenylhexan-2-yl]carbamate",C39 H50 N6 O4 S,698.917,1,A:602
+7UFD,2.9,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+7UFD,2.9,X-ray,T0K,(2S)-3-phenyl-2-({(2S)-3-phenyl-2-[3-(pyridin-3-yl)propanamido]propyl}sulfanyl)-N-[2-(pyridin-3-yl)ethyl]propanamide,C33 H36 N4 O2 S,552.73,1,A:602
+8SPD,2.9,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+8SPD,2.9,X-ray,CL6,1-[(2-CHLOROPHENYL)(DIPHENYL)METHYL]-1H-IMIDAZOLE,C22 H17 Cl N2,344.837,1,A:602
+4NY4,2.95,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+4NY4,2.95,X-ray,2QH,"(8R)-3,3-difluoro-8-[4-fluoro-3-(pyridin-3-yl)phenyl]-8-(4-methoxy-3-methylphenyl)-2,3,4,8-tetrahydroimidazo[1,5-a]pyrimidin-6-amine",C25 H22 F3 N5 O,465.47,1,A:602
+9BV9,2.95,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+9BV9,2.95,X-ray,A1ASR,N-(2-chlorophenyl)-N'-[(2P)-2-(1H-imidazol-1-yl)-5-(trifluoromethyl)phenyl]urea,C17 H12 Cl F3 N4 O,380.752,1,A:602
+9GK1,2.95,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+9BVB,3.0,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+9BVB,3.0,X-ray,A1ASP,2-(2-chlorophenyl)-N-[(2P)-2-(1H-imidazol-1-yl)-5-(trifluoromethyl)phenyl]acetamide,C18 H13 Cl F3 N3 O,379.764,1,A:602
+9BVA,3.02,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+9BVA,3.02,X-ray,A1ASQ,N-[2-(2-chloroethyl)phenyl]-N'-[(2P)-2-(1H-imidazol-1-yl)-5-(trifluoromethyl)phenyl]urea,C19 H16 Cl F3 N4 O,408.805,1,A:602
+9BV6,3.1,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+9BV6,3.1,X-ray,A1ASU,"5-(4-methoxyphenyl)-1-[4-(2-methyl-1,3-thiazol-4-yl)phenyl]-1H-1,2,3-triazole",C19 H16 N4 O S,348.422,1,A:602
+9BV6,3.1,X-ray,PG0,2-(2-METHOXYETHOXY)ETHANOL,C5 H12 O3,120.147,1,A:603
+9BV7,3.21,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+9BV7,3.21,X-ray,A1AST,"3-(2-chlorophenyl)-N-{[(2S,7M)-7-(pyridin-3-yl)-2,3-dihydro-1-benzofuran-2-yl]methyl}propanamide",C23 H21 Cl N2 O2,392.878,1,A:602
+9MS1,3.4,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+9MS1,3.4,X-ray,A1BNX,N'-(2-chlorophenyl)-N-[(3-hydroxyphenyl)methyl]-N-[(2P)-2-(1H-imidazol-1-yl)-5-(trifluoromethyl)phenyl]urea,C24 H18 Cl F3 N4 O2,486.874,1,A:602
+9BV8,3.0,X-ray,HEM,PROTOPORPHYRIN IX CONTAINING FE,C34 H32 Fe N4 O4,616.487,1,A:601
+9BV8,3.0,X-ray,A1ASS,N-[(2P)-2-(1H-imidazol-1-yl)-5-(trifluoromethyl)phenyl]cyclobutanecarboxamide,C15 H14 F3 N3 O,309.286,1,A:602

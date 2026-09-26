@@ -10,6 +10,15 @@ Submissions for the structure prediction track of the OpenADMET CYP3A4 challenge
 |---|---|
 | `input/CYP3A4_protein_sequence.fasta` | Full-length CYP3A4 sequence (503 aa) |
 | `input/cyp-challenge-TEST-BLINDED_structures.csv` | Blinded test ligands (`Molecule_Name`, `SMILES`) |
+| `input/rcsb_pdb_custom_report_20260926222041.csv` | RCSB custom report: 122 CYP3A4 PDB entries with ligands and affinities |
+
+## Analyses
+
+Each analysis is self-contained in `analyses/`, with its own README (question, decisions, how to rerun, results). A chronological record is kept in [`PROJECT_LOG.md`](PROJECT_LOG.md).
+
+| # | Analysis | Status |
+|---|---|---|
+| 01 | [Glide score of crystal poses vs IC50](analyses/01_glide_score_vs_ic50/) | Data curated; Glide scoring pending |
 
 ## Tools
 
