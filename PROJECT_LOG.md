@@ -49,3 +49,17 @@ writes a results CSV, not a `.rept` file.
 reflect how the minimizer treats the Fe coordination.
 
 **Next:** submit the full 22-structure run, then write step 5 (correlation).
+
+---
+
+## Planned work
+
+**CYP inhibition dataset (`input/cyp-challenge_cyp-inhibition-data.csv`).** 4,905 compounds
+with pIC50 for CYP1A2/2C9/2D6/3A4 plus confidence bounds and std. This belongs to a
+different track of the same challenge and will be used later.
+
+Roughly **15 of the 20 blinded structure-track compounds also appear in this dataset**.
+There are no experimental structures for them, so unlike analysis 01 (which scores
+crystal poses in place) that work will require **docking and then scoring** — pose
+generation first, affinity correlation second. Analysis 01 sets the baseline for how far
+a Glide score can be trusted before adding pose-prediction error on top.
