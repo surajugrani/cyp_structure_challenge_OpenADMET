@@ -1,0 +1,38 @@
+# ── Large model outputs (keep final submission PDBs + summary tables only) ──
+**/raw_outputs/
+*.cif.gz
+*_embeddings.npz
+*_confidences.json
+*.npz
+*.pkl
+
+# ── Schrödinger / ICM intermediates ──
+*.maegz
+*.mae
+*.sdfgz
+*.zip
+*.map
+*.ob
+*.dtb
+*.icb
+*_LOG.htm
+*.log
+
+# ── MSAs and templates can be large; commit only small curated ones explicitly ──
+*.a3m
+*.mtz
+
+# ── SLURM job logs ──
+slurm-*.out
+*.err
+
+# ── Python / environment ──
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.env
+
+# ── Editor / OS ──
+.DS_Store
+*.swp
+*~
