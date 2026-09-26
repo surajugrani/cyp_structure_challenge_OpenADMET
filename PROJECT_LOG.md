@@ -26,3 +26,26 @@ Chronological record of what was done, why, and what came out of it. Newest entr
 - 3 stereoisomers share one 310 nM value; only one is kept.
 
 **Next:** Glide steps 3–5 (PrepWizard → grid → `inplace` and `mininplace` scoring → correlation), submitted as an sbatch job.
+
+## 2026-09-26: Analysis 01, Glide pipeline implemented (steps 3-4)
+
+**Done:** Wrote structure prep (download, chain/ligand selection, PrepWizard) and Glide
+grid + scoring (`inplace` and `mininplace`). Smoke-tested end-to-end on 8SPD via sbatch
+(job 47770421, COMPLETED): docking score `inplace` -7.91, `mininplace` -6.86.
+
+**Decisions:**
+- Option A for multi-copy structures (2V0M, 4K9T): score the copy closest to the heme Fe,
+  keep the other copy as part of the receptor.
+- Deprotonate heme propionates after PrepWizard (heme charge +1 -> -1).
+
+**Three schrodinger/2025-3 incompatibilities found vs the PXR scripts** (see analysis
+README): `-f OPLS_2005` not `-f 2005`; grids are written as `<job>-gridgen.zip`; Glide
+writes a results CSV, not a `.rept` file.
+
+**Note:** steps 3-4 must be submitted with sbatch, never run on the login node.
+
+**Observation to watch in the full run:** for 8SPD, `mininplace` scored *worse* than
+`inplace` (-6.86 vs -7.91) with a much larger evdw term. If this is systematic it may
+reflect how the minimizer treats the Fe coordination.
+
+**Next:** submit the full 22-structure run, then write step 5 (correlation).
