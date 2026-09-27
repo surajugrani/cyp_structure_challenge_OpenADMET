@@ -50,6 +50,34 @@ reflect how the minimizer treats the Fe coordination.
 
 **Next:** submit the full 22-structure run, then write step 5 (correlation).
 
+## 2026-09-26: Analysis 01 complete (first term pair) — negative result
+
+**Full run:** job 47770497, COMPLETED in 1h16m, all 22 structures prepped and scored.
+
+**Heme inconsistency found and fixed.** PrepWizard was not deterministic: 21 structures
+came out as the porphyrin dianion with deprotonated propionates (heme charge −2), but
+8SPD kept an extra pyrrole N−H (charge −1). Since the heme sits directly under the
+ligand, that makes scores non-comparable. `normalize_heme()` now *enforces* the −2 state
+rather than trusting PrepWizard; re-normalized and re-scored in job 47772332, all 22
+verified at −2.
+
+**Bug fixed:** step 4 with `--only` overwrote the whole results CSV with just the re-run
+subset; it now merges.
+
+**Result (job 47772502):** no usable correlation between Glide score and pIC50.
+`inplace` rho = −0.265 (p = 0.26, 95 % CI [−0.72, +0.28]); `mininplace` rho = −0.093.
+All four sensitivity checks agree. The score largely tracks molecular size
+(MW vs score rho = −0.47) while size does not track potency (MW vs pIC50 rho = 0.12).
+
+**Implications for the challenge:**
+- Glide score is not a usable affinity proxy for CYP3A4 even with a perfect pose — an
+  upper bound, since docking a predicted pose only adds error.
+- `mininplace` degrades poses relative to `inplace`, echoing the PXR result that Glide
+  post-processing worsened good AF3 poses.
+
+**Next:** stage 2 of the term analysis — `metal` and `ecoul`
+(`sbatch scripts/run_correlate.sh --terms metal,ecoul`).
+
 ---
 
 ## Planned work

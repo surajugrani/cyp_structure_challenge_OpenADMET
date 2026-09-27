@@ -186,7 +186,14 @@ def main():
         rows.append(out)
 
     df = pd.DataFrame(rows)
-    df.to_csv(os.path.join(RESULTS_DIR, "glide_scores.csv"), index=False)
+    # When --only is used, merge into any existing table rather than clobbering it
+    # with just the subset that was re-run.
+    out_csv = os.path.join(RESULTS_DIR, "glide_scores.csv")
+    if args.only and os.path.exists(out_csv):
+        old = pd.read_csv(out_csv)
+        old = old[~old["pdb_id"].isin(df["pdb_id"])]
+        df = pd.concat([old, df], ignore_index=True)
+    df.to_csv(out_csv, index=False)
     ok = df.get("inplace_docking_score", pd.Series(dtype=float)).notna().sum()
     print(f"\n{ok}/{len(df)} scored. Wrote results/glide_scores.csv")
 

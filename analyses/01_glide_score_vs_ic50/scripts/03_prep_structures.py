@@ -107,32 +107,53 @@ def run_prepwizard(in_mae, out_mae, work_dir):
     raise RuntimeError("PrepWizard failed")
 
 
-def deprotonate_heme_propionates(prepped_mae):
-    """PrepWizard leaves the two heme propionates as neutral COOH. At pH 7.4 they are
-    carboxylates, so remove the acidic H and set the oxygen to -1.
+def normalize_heme(prepped_mae):
+    """Force every heme into the same protonation/charge state.
 
-    Returns the number of propionates deprotonated (expected: 2 per heme).
+    PrepWizard is not deterministic here: across the 22 structures it produced two
+    different heme states (protonated vs deprotonated propionates; mono- vs dianionic
+    porphyrin). Since the heme sits directly under the ligand, an inconsistent cofactor
+    charge makes Glide scores non-comparable between structures, so we enforce:
+
+      - propionates deprotonated  -> both carboxylate O at -1  (pH 7.4)
+      - porphyrin dianion         -> the two pyrrole N-H deprotonated, N at -1
+      - Fe left as PrepWizard assigned it (+2)
+
+    giving a heme formal charge of -2 in every structure.
+
+    Returns {"propionates": n, "pyrrole_N": n} counting what this call had to change.
     """
     st = structure.StructureReader.read(prepped_mae)
-    to_delete, n_fixed = [], 0
+    to_delete = []
+    fixed = {"propionates": 0, "pyrrole_N": 0}
+
     for atom in st.atom:
-        if atom.pdbres.strip() != "HEM" or atom.element != "O":
+        if atom.pdbres.strip() != "HEM":
             continue
         hydrogens = [b for b in atom.bonded_atoms if b.element == "H"]
-        carbons = [b for b in atom.bonded_atoms if b.element == "C"]
-        if len(hydrogens) != 1 or len(carbons) != 1:
+        if not hydrogens:
             continue
-        # Confirm it is a carboxyl carbon (bonded to a second oxygen)
-        if sum(1 for b in carbons[0].bonded_atoms if b.element == "O") != 2:
-            continue
-        to_delete.append(hydrogens[0].index)
-        atom.formal_charge = -1
-        n_fixed += 1
+
+        # Carboxylic acid O-H -> carboxylate
+        if atom.element == "O":
+            carbons = [b for b in atom.bonded_atoms if b.element == "C"]
+            if len(hydrogens) == 1 and len(carbons) == 1 and \
+                    sum(1 for b in carbons[0].bonded_atoms if b.element == "O") == 2:
+                to_delete.append(hydrogens[0].index)
+                atom.formal_charge = -1
+                fixed["propionates"] += 1
+
+        # Pyrrole N-H (only the four N coordinating Fe) -> N(-)
+        elif atom.element == "N" and any(b.element == "Fe" for b in atom.bonded_atoms):
+            if len(hydrogens) == 1:
+                to_delete.append(hydrogens[0].index)
+                atom.formal_charge = -1
+                fixed["pyrrole_N"] += 1
 
     if to_delete:
         st.deleteAtoms(to_delete)
         st.write(prepped_mae)
-    return n_fixed
+    return fixed
 
 
 def check_prepped(prepped_mae, info):
@@ -187,8 +208,9 @@ def main():
                 prepped_mae = os.path.join(wdir, f"{pdb}_prepped.mae")
                 if not os.path.exists(prepped_mae):
                     info["prep_mode"] = run_prepwizard(clean_mae, prepped_mae, wdir)
-                    info["heme_propionates_deprotonated"] = \
-                        deprotonate_heme_propionates(prepped_mae)
+                # Idempotent: safe to re-run on an already-normalized structure.
+                info.update({f"heme_fixed_{k}": v
+                             for k, v in normalize_heme(prepped_mae).items()})
                 checks = check_prepped(prepped_mae, info)
                 info.update(checks)
                 out.update(info)

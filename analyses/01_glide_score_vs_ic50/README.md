@@ -2,7 +2,11 @@
 
 **Question:** For CYP3A4 crystal structures with a measured IC50 for the bound ligand, how well does the Glide score of the *experimental* pose track binding affinity? This sets a baseline for how much to trust Glide scores when ranking poses for the challenge.
 
-**Status:** Steps 1–4 implemented and smoke-tested on one structure (8SPD). Full run and step 5 pending.
+**Status:** Complete for the first term pair (`docking_score`, `evdw`). Next stage: `metal`, `ecoul`.
+
+**Answer: no usable correlation.** Even with the experimentally correct pose, the Glide
+score does not rank these 20 CYP3A4 ligands by potency (Spearman rho = −0.27, 95 % CI
+[−0.72, +0.28], p = 0.26).
 
 ## Pipeline
 
@@ -97,3 +101,58 @@ Three things differ from the older scripts used in the PXR challenge:
 ## Result of curation
 
 22 unique ligands; **20 in the main set**, pIC50 range 4.1–7.4. See `data/curated_set.csv`.
+
+
+## Results
+
+Main set, n = 20 (`results/correlations.csv`, `results/correlation_plot.png`):
+
+| Score | Spearman rho | p | 95 % CI |
+|---|---|---|---|
+| `inplace` docking score | **−0.265** | 0.259 | [−0.72, +0.28] |
+| `inplace` evdw | −0.134 | 0.574 | [−0.63, +0.37] |
+| `mininplace` docking score | −0.093 | 0.696 | [−0.59, +0.46] |
+| `mininplace` evdw | −0.077 | 0.748 | [−0.61, +0.53] |
+
+A more negative Glide score means better predicted binding, so a *negative* rho is the
+expected direction. The sign is right but the interval spans zero.
+
+**Sensitivity checks** (on `inplace_docking_score`) all agree — nothing rescues the
+correlation, and nothing was inflating it:
+
+| Subset | n | rho | 95 % CI |
+|---|---|---|---|
+| all (main set) | 20 | −0.265 | [−0.70, +0.25] |
+| drop pIC50-spread-flagged | 18 | −0.166 | [−0.63, +0.39] |
+| drop multi-copy (2V0M, 4K9T) | 18 | −0.298 | [−0.71, +0.25] |
+| Fe-coordinating only (< 3 Å) | 16 | −0.256 | [−0.74, +0.35] |
+
+### Why it fails: the score tracks molecular size
+
+| Relationship | Spearman rho |
+|---|---|
+| MW vs Glide score | **−0.47** (bigger ligands score better) |
+| MW vs pIC50 | 0.12 (size barely relates to potency here) |
+
+Glide rewards size; size does not predict potency in this set. Two cases make it concrete:
+
+- **08Y** (bromoergocryptine, MW 655) has the *best* score (−11.5) but only mid potency (pIC50 5.52).
+- **CL6** (clotrimazole, MW 345) is the second most potent (pIC50 7.24) but scores −4.78.
+
+### Other observations
+
+- **`mininplace` is worse than `inplace`** (−0.09 vs −0.27). Minimization moves poses off
+  their crystal geometry and loses information — consistent with the PXR finding that
+  Glide post-processing degraded good AF3 poses.
+- **Two crystal poses score as unfavourable** (positive docking score): 6AW (+0.64) and
+  PK9 (+0.62, the 6.1 Å non-coordinating ligand). An experimentally observed pose scoring
+  positive is a scoring-function failure, not a pose problem.
+
+### Caveats
+
+n = 20, with IC50s pooled from heterogeneous BindingDB assays (different substrates and
+labs). This cannot distinguish "weak correlation" from "no correlation" — the CI is too
+wide for that. What it does support is the practical conclusion: **Glide score is not a
+usable affinity proxy for CYP3A4 here, even given a perfect pose.** Since docking a
+predicted pose can only add error, this is an upper bound for score-based ranking in the
+challenge.
