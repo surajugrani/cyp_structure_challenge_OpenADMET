@@ -20,7 +20,8 @@ Each analysis is self-contained in `analyses/`, with its own README (question, d
 |---|---|---|
 | 01 | [Glide score of crystal poses vs IC50](analyses/01_glide_score_vs_ic50/) | Complete — no usable correlation (rho = −0.27) |
 | 02 | [Redocking pose recovery](analyses/02_redocking_pose_recovery/) | Complete — 18 % top-1 success at 2 Å |
-| 03 | [Heme representation & Glide's metal term](analyses/03_heme_representation/) | Gate test done; `metal_cons` pending |
+| 03 | [Heme representation & Glide's metal term](analyses/03_heme_representation/) | Complete — activation follows no chemical logic |
+| 04 | [Does the wrong chemistry dock better?](analyses/04_wrong_chemistry_replication/) | Complete — no, the metal reward is unreachable |
 
 ## Tools
 

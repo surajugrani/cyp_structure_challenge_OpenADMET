@@ -3,8 +3,14 @@ Analysis 04: repeat analyses 01 and 02 under the heme representation that ACTIVA
 Glide's metal term, even though that representation is chemically wrong.
 
 Analysis 03 found the metal term is 0.00 for every chemically defensible heme state,
-including the correct ferric Fe(III) + porphyrin dianion. Only `fe3_monoanion`
-(Fe +3, one pyrrole N neutralised) activates it, giving a fixed -2.30.
+including the correct ferric Fe(III) + porphyrin dianion. Two chemically WRONG states
+activate it at -2.30: `fe2_nh` (Fe +2, one pyrrole N neutralised and protonated) and
+`fe3_monoanion` (Fe +3, one pyrrole N neutralised, no H).
+
+This analysis uses **fe2_nh**. It perturbs electrostatics about three times less than
+fe3_monoanion (mean ecoul shift -1.7 vs -4.9 over the three gate-test structures; for 4K9X
+exactly zero) and leaves Fe at +2 as in the baseline, so it differs from analyses 01/02 by
+a single hydrogen and one formal charge - a far cleaner single-variable comparison.
 
 The question here is purely empirical: **does the wrong chemistry dock and score better?**
 If it does, the result is right for the wrong reasons — that is understood going in and is
@@ -17,9 +23,9 @@ PrepWizard is non-deterministic about the heme (it gave 21 structures the dianio
 the monoanion), so simply accepting its raw output would activate the metal term for an
 arbitrary subset and confound the comparison.
 
-Known confound, tracked not ignored: `fe3_monoanion` also shifts electrostatics hard
-(8SPD ecoul -1.00 -> -7.12, ~1.2 GlideScore units at weight 0.19). All 13 Glide terms are
-recorded for every pose so the metal and electrostatic contributions can be separated.
+Known confound, tracked not ignored: `fe2_nh` still shifts electrostatics somewhat
+(8SPD ecoul -1.00 -> -4.22, ~0.6 GlideScore units at weight 0.19). All 13 Glide terms are
+recorded for every pose so metal and electrostatic contributions can be separated.
 
 Usage (via scripts/run_all.sh):
     $SCHRODINGER/run python3 scripts/01_build_score_redock.py [--only 8SPD] [--poses 10]
@@ -41,6 +47,7 @@ import subprocess
 import numpy as np
 import pandas as pd
 from schrodinger import structure
+from schrodinger.structutils import build
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ANALYSES = os.path.dirname(HERE)
@@ -53,7 +60,7 @@ SCHRODINGER = os.environ["SCHRODINGER"]
 GEN_GRIDS = os.path.join(SCHRODINGER, "utilities", "generate_glide_grids")
 GLIDE = os.path.join(SCHRODINGER, "glide")
 
-VARIANT = "fe3_monoanion"
+VARIANT = "fe2_nh"
 
 GLIDE_IN = """GRIDFILE   {grid}
 LIGANDFILE   {lig}
@@ -83,7 +90,12 @@ def require_compute_node(what):
 
 
 def apply_variant(src_mae, dst_mae):
-    """Fe -> +3 and neutralise one anionic pyrrole N (the metal-term-activating state)."""
+    """fe2_nh: leave Fe at +2, neutralise one anionic pyrrole N and add an explicit H.
+
+    This reproduces "state B" from analysis 01, the chemically wrong but metal-term-
+    activating representation. The H is the trigger: the same structure without it
+    (fe2_monoanion) gives metal = 0.00.
+    """
     st = structure.StructureReader.read(src_mae)
     fe = [a for a in st.atom if a.element == "Fe" and a.pdbres.strip() == "HEM"]
     if len(fe) != 1:
@@ -92,14 +104,25 @@ def apply_variant(src_mae, dst_mae):
     pyrrole_n = [b for b in fe.bonded_atoms if b.element == "N" and b.pdbres.strip() == "HEM"]
     if len(pyrrole_n) != 4:
         raise RuntimeError(f"expected 4 pyrrole N, found {len(pyrrole_n)}")
-    fe.formal_charge = 3
+    if fe.formal_charge != 2:
+        raise RuntimeError(f"expected baseline Fe +2, found {fe.formal_charge}")
     anionic = sorted([n for n in pyrrole_n if n.formal_charge == -1], key=lambda a: a.pdbname)
     if not anionic:
         raise RuntimeError("no anionic pyrrole N to neutralise")
-    anionic[0].formal_charge = 0
+    target = anionic[0]
+    target.formal_charge = 0
+    before = st.atom_total
+    build.add_hydrogens(st, atom_list=[target.index])
+    if st.atom_total - before != 1:
+        raise RuntimeError(f"expected to add 1 H, added {st.atom_total - before}")
     st.write(dst_mae)
     heme = [a for a in st.atom if a.pdbres.strip() == "HEM"]
-    return {"fe_formal_charge": 3, "heme_formal_charge": sum(a.formal_charge for a in heme)}
+    fe = [a for a in st.atom if a.element == "Fe" and a.pdbres.strip() == "HEM"][0]
+    pn = [b for b in fe.bonded_atoms if b.element == "N" and b.pdbres.strip() == "HEM"]
+    return {"fe_formal_charge": fe.formal_charge,
+            "heme_formal_charge": sum(a.formal_charge for a in heme),
+            "pyrrole_NH_count": sum(1 for n in pn
+                                    if any(b.element == "H" for b in n.bonded_atoms))}
 
 
 def split(complex_mae, pdb, wdir, tag):

@@ -186,6 +186,36 @@ set of numbers.
 without breaking the chemistry. Prediction recorded in advance: improves pose RMSD while
 leaving the metal term at 0.00 (a geometric fix, not a scoring fix).
 
+## 2026-09-27: Analysis 04 — repeat 01/02 under the metal-activating (wrong) heme
+
+**Folder:** `analyses/04_wrong_chemistry_replication/` — jobs 47778516 (smoke), 47778530 (full).
+
+Used `fe2_nh` (= state B), holding everything else identical to 01/02. Chosen over
+`fe3_monoanion` for smaller electrostatic perturbation; vindicated — mean score change
+-1.13 decomposes as metal -1.40, ecoul -0.11, evdw +0.01.
+
+**Result: no improvement.** Top-1 pose recovery 18% -> 14%; best-of-10 27% -> 27%;
+affinity rho -0.265 [-0.72,+0.28] -> -0.293 [-0.74,+0.24]. Both unchanged within noise.
+
+**Why:** the metal term only fires below ~2.6 A (mean -0.289 in the 2.2-2.6 A bin, ~-0.01
+beyond 3 A), and only 13 of 214 docked poses get any reward; no docked pose reaches below
+2.2 A, while crystal ligands sit at 1.94-2.82 A. The reward would pull a ligand onto the
+iron but only activates once it is already there - Glide's sampling never enters its basin.
+
+**Two of my own claims settled against me:**
+- The term IS distance-graded (in-place values span 0.00 to -2.30, and the 4
+  non-coordinating ligands correctly get 0.00). Analysis 03's "fixed -2.30" came from three
+  gate structures that all sat at saturation. Corrected in 03.
+- My hypothesis that the term *favours displaced poses* is refuted: near-native -0.043 vs
+  displaced -0.033, Mann-Whitney p = 0.71. The 8SPD hint was coincidence.
+
+**Decision:** keep the chemically correct heme. 01/02 stand as the baseline.
+
+**Overall for rigid Glide docking on CYP3A4:** score does not track affinity even with a
+perfect pose; 18% top-1 pose recovery; scores highly sensitive to heme representation; and
+the one term that should anchor type-II inhibitors is unreachable. Supports co-folding
+first, consistent with the PXR result.
+
 ---
 
 ## Planned work
