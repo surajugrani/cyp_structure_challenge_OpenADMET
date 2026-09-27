@@ -40,3 +40,4 @@ __pycache__/
 # ── Per-analysis working structures (PDB downloads, prepped complexes, grids) ──
 analyses/*/structures/
 analyses/*/slurm-*.out
+analyses/*/structures/

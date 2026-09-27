@@ -144,6 +144,45 @@ come from the `rewards` term, not vdW.
 **Next:** analysis 03 — try to reactivate the metal term without breaking the chemistry.
 Primary lever: set Fe to the physiological ferric Fe(III) state (PrepWizard leaves it +2).
 
+## 2026-09-27: Analysis 03 — heme representation and the metal term
+
+**Folder:** `analyses/03_heme_representation/`
+
+**Goal:** Can Glide's metal term be reactivated without misrepresenting the chemistry?
+Gate test on 3 structures (8SPD, 4K9X, 2V0M), 4 heme variants, grids rebuilt per variant,
+all 13 Glide terms recorded. Jobs 47778194 and 47778201 failed on my own path bugs
+(SDF carries no chain/resnum; Glide resolves LIGANDFILE relative to cwd); 47778301 ran.
+
+**Results — identical across all three structures:**
+
+| Variant | Fe | Porphyrin | Heme | Metal |
+|---|---|---|---|---|
+| fe2_dianion (01/02 baseline) | +2 | dianion | -2 | 0.00 |
+| fe3_dianion (chemically correct) | +3 | dianion | -1 | **0.00** |
+| fe2_monoanion | +2 | monoanion | -1 | 0.00 |
+| fe3_monoanion | +3 | monoanion | 0 | **-2.30** |
+
+1. **Fe(III) alone does not work.** The physiological ferric resting state with the correct
+   dianionic porphyrin still gives metal = 0.00.
+2. **Not a net-charge effect.** fe3_dianion and fe2_monoanion are both net -1 and give 0.00,
+   while 8SPD "state B" (also -1, but with a pyrrole N-H) gave -2.30. Glide's perception
+   depends on something more specific; left unresolved rather than guessed at.
+3. **The metal term is a fixed reward, not distance-graded** — exactly -2.30 in all five
+   activated cases seen so far, across Fe distances 1.94-2.10 A and different ligands.
+   So even an active metal term would NOT rescue analysis 01: a constant applied to every
+   coordinating ligand adds no discrimination. It should still help pose recovery.
+4. **Heme representation shifts scores more than the metal term does.** 8SPD ecoul swings
+   -1.00 -> +7.02 -> -7.12 across variants (14 raw units ~ 2.7 GlideScore units at weight
+   0.19). fe3_monoanion's better total comes from metal AND electrostatics.
+
+**Decision:** keep the chemically correct heme; do not adopt the monoanion. Leave analyses
+01/02 intact as the Fe(II) baseline — the sensitivity is a more useful result than any one
+set of numbers.
+
+**Next:** Glide `metal_cons` at grid generation — imposes coordination geometrically
+without breaking the chemistry. Prediction recorded in advance: improves pose RMSD while
+leaving the metal term at 0.00 (a geometric fix, not a scoring fix).
+
 ---
 
 ## Planned work
