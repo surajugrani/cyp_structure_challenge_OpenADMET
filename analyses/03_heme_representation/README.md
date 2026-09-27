@@ -60,16 +60,23 @@ charge, different outcome. Glide's metal-site perception depends on something mo
 specific, which we could not determine from outside the program. **Left unresolved rather
 than guessed at.**
 
-### 3. The metal term looks like a fixed reward, not a distance-graded one
+### 3. The metal term is saturated at crystal geometries — not fixed
 
-Every activated case gives **exactly −2.30**: 8SPD states A and B from analysis 01, and
-all three `fe3_monoanion` structures here — across Fe distances of 1.94, 1.97 and 2.10 Å
-and three different ligands.
+Every activated case here gives **exactly −2.30**: 8SPD states A and B from analysis 01,
+and all three `fe3_monoanion` structures — across Fe distances of 1.94, 1.97 and 2.10 Å.
 
-**Consequence:** even a working metal term would *not* rescue analysis 01. A constant
-−2.30 applied to every coordinating ligand shifts all scores equally and adds no
-discrimination between them. It would likely help **pose recovery** (analysis 02) by
-anchoring the coordinating atom, but not **affinity ranking**.
+> **Correction (from analysis 04).** This was first written up as the term being a *fixed*
+> reward rather than distance-graded. That was an overgeneralisation from a badly chosen
+> sample: all the crystal poses sit at 1.94–2.10 Å, i.e. essentially identical geometry, so
+> identical values say nothing about distance dependence. Redocked poses show intermediate
+> values (e.g. 8SPD: −0.79, −0.53, 0.00 at various geometries), so −2.30 is a **saturation
+> ceiling**, not a constant.
+>
+> More strikingly, the ordering can be inverted: for 8SPD the *near-native* pose
+> (RMSD 1.73 Å) gets metal = **0.00** while a displaced pose at RMSD 3.96 Å gets **−0.79**.
+> Glide's metal-term geometry window may sit at longer distances than a genuine dative
+> bond, in which case it would actively mis-rank type-II poses rather than merely miss
+> them. Being quantified across all 22 structures in analysis 04.
 
 ### 4. Heme representation shifts scores by more than the metal term itself
 

@@ -1,0 +1,2 @@
+pdb_id,comp_id,n_poses,rmsd_top1,rmsd_best,rank_of_best,redock_metal_top1
+8SPD,CL6,10,3.956,1.722,8,-0.790

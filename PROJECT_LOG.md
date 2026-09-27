@@ -167,10 +167,13 @@ all 13 Glide terms recorded. Jobs 47778194 and 47778201 failed on my own path bu
 2. **Not a net-charge effect.** fe3_dianion and fe2_monoanion are both net -1 and give 0.00,
    while 8SPD "state B" (also -1, but with a pyrrole N-H) gave -2.30. Glide's perception
    depends on something more specific; left unresolved rather than guessed at.
-3. **The metal term is a fixed reward, not distance-graded** — exactly -2.30 in all five
-   activated cases seen so far, across Fe distances 1.94-2.10 A and different ligands.
-   So even an active metal term would NOT rescue analysis 01: a constant applied to every
-   coordinating ligand adds no discrimination. It should still help pose recovery.
+3. **The metal term saturates at -2.30 at crystal geometries.** First written up as a
+   *fixed* reward; CORRECTED in analysis 04 — all the crystal poses sit at 1.94-2.10 A, so
+   identical values said nothing about distance dependence. Redocked poses give
+   intermediate values (8SPD: -0.79, -0.53, 0.00), so -2.30 is a ceiling. Worse, the
+   ordering can invert: 8SPD's near-native pose (1.73 A) gets metal = 0.00 while a 3.96 A
+   pose gets -0.79. Glide's metal window may sit at longer distances than a real dative
+   bond.
 4. **Heme representation shifts scores more than the metal term does.** 8SPD ecoul swings
    -1.00 -> +7.02 -> -7.12 across variants (14 raw units ~ 2.7 GlideScore units at weight
    0.19). fe3_monoanion's better total comes from metal AND electrostatics.
