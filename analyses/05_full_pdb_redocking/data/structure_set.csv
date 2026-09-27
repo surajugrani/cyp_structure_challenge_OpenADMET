@@ -1,0 +1,103 @@
+pdb_id,comp_id,chain,resolution,method,name,formula,formula_weight,n_instances,instances,has_affinity
+4D6Z,PK9,A,1.93,X-ray,tert-butyl {6-oxo-6-[(pyridin-3-ylmethyl)amino]hexyl}carbamate,C17 H27 N3 O3,321.415,1,A:1600,True
+6MA7,TPF,A,2.09,X-ray,"2-(2,4-DIFLUOROPHENYL)-1,3-DI(1H-1,2,4-TRIAZOL-1-YL)PROPAN-2-OL",C13 H12 F2 N6 O,306.271,1,A:602,True
+3UA1,08Y,A,2.15,X-ray,bromoergocryptine,C32 H40 Br N5 O5,654.594,1,A:600,True
+6MA6,MYT,A,2.182,X-ray,METYRAPONE,C14 H14 N2 O,226.274,1,A:603,True
+6OO9,MWV,A,2.25,X-ray,"(1S,2S)-2-(2-{[3-(1H-benzimidazol-2-yl)propyl](methyl)amino}ethyl)-6-fluoro-1-(propan-2-yl)-1,2,3,4-tetrahydronaphthalen-2-yl methoxyacetate",C29 H38 F N3 O3,495.629,1,A:602,True
+6DAB,G0V,A,2.35,X-ray,tert-butyl [(2R)-1-{[(2R)-1-oxo-3-phenyl-1-{[2-(pyridin-3-yl)ethyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C30 H37 N3 O3 S,519.698,1,A:603,True
+4K9W,7AW,A,2.399,X-ray,"N~2~-(methyl{[2-(propan-2-yl)-1,3-thiazol-4-yl]methyl}carbamoyl)-N-[(2R,5S)-1-phenyl-5-{[(1,3-thiazol-5-ylmethoxy)carbonyl]amino}octan-2-yl]-L-valinamide",C33 H48 N6 O4 S2,656.902,4,D:602;C:602;B:602;A:602,True
+6DAJ,FZV,A,2.45,X-ray,tert-butyl [(2S)-1-{[(2R)-1-oxo-3-phenyl-1-{[2-(pyridin-3-yl)ethyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C30 H37 N3 O3 S,519.698,1,A:602,True
+4K9T,1RD,A,2.5,X-ray,"N~2~-(methyl{[2-(propan-2-yl)-1,3-thiazol-4-yl]methyl}carbamoyl)-N-(4-{[(1,3-thiazol-5-ylmethoxy)carbonyl]amino}butyl)-L-valinamide",C23 H36 N6 O4 S2,524.7,2,A:603;A:602,True
+4K9V,6AW,A,2.6,X-ray,"1,3-thiazol-5-ylmethyl [(3S,6S)-6-{[N-(methyl{[2-(propan-2-yl)-1,3-thiazol-4-yl]methyl}carbamoyl)-L-seryl]amino}octan-3-yl]carbamate",C25 H40 N6 O5 S2,568.752,1,A:602,True
+6UNJ,QDY,A,2.6,X-ray,tert-butyl [(2R)-1-(naphthalen-1-yl)-3-{[(2S)-1-oxo-3-phenyl-1-{[2-(pyridin-3-yl)ethyl]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C34 H39 N3 O3 S,569.757,2,A:602;B:602,True
+6UNI,QDV,A,2.602,X-ray,tert-butyl [(2S)-1-(1H-indol-3-yl)-3-{[(2R)-1-oxo-3-phenyl-1-{[2-(pyridin-3-yl)ethyl]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C32 H38 N4 O3 S,558.734,1,A:602,True
+4I4G,Z8Z,A,2.718,X-ray,"N~2~-(methyl{[2-(propan-2-yl)-1,3-thiazol-4-yl]methyl}carbamoyl)-N-[(2R,5R)-5-{[(1,3-oxazol-5-ylmethoxy)carbonyl]amino}-1,6-diphenylhexan-2-yl]-L-valinamide",C37 H48 N6 O5 S,688.879,1,A:602,True
+6UNH,QEA,A,2.72,X-ray,tert-butyl [(2R)-1-(1H-indol-3-yl)-3-{[(2S)-1-oxo-3-phenyl-1-{[2-(pyridin-3-yl)ethyl]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C32 H38 N4 O3 S,558.734,1,A:602,True
+6UNK,QE4,A,2.75,X-ray,tert-butyl [(2S)-1-(naphthalen-1-yl)-3-{[(2R)-1-oxo-3-phenyl-1-{[2-(pyridin-3-yl)ethyl]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C34 H39 N3 O3 S,569.757,1,A:602,True
+7LXL,YNV,A,2.75,X-ray,"17alpha-hydroxy-7alpha-[(2Z)-4-(17beta-hydroxy-3-oxo-8alpha-androst-4-en-7beta-yl)but-2-en-1-yl]-8alpha,10alpha,13alpha,14beta-androst-4-en-3-one",C42 H60 O4,628.923,1,A:602,True
+4D7D,PKT,A,2.76,X-ray,tert-butyl [(2S)-1-(1H-indol-3-yl)-3-({3-oxo-3-[(pyridin-3-ylmethyl)amino]propyl}sulfanyl)propan-2-yl]carbamate,C25 H32 N4 O3 S,468.612,1,A:1600,True
+4K9X,8AW,A,2.76,X-ray,"1,3-thiazol-5-ylmethyl [(2R,5R)-5-{[(2S)-2-methylbutanoyl]amino}-1,6-diphenylhexan-2-yl]carbamate",C28 H35 N3 O3 S,493.661,1,A:602,True
+2V0M,KLN,A,2.8,X-ray,"1-ACETYL-4-(4-{[(2S,4R)-2-(2,4-DICHLOROPHENYL)-2-(1H-IMIDAZOL-1-YLMETHYL)-1,3-DIOXOLAN-4-YL]METHOXY}PHENYL)PIPERAZINE",C26 H28 Cl2 N4 O4,531.431,8,A:1500;A:1501;B:1498;B:1499;C:1498;C:1499;D:1498;D:1499,True
+4D78,J9K,A,2.8,X-ray,tert-butyl [(2S)-1-({3-oxo-3-[(pyridin-3-ylmethyl)amino]propyl}sulfanyl)-3-phenylpropan-2-yl]carbamate,C23 H31 N3 O3 S,429.576,1,A:1600,True
+6DAG,G0Y,A,2.8,X-ray,tert-butyl [(2R)-1-{[(2S)-1-oxo-3-phenyl-1-{[2-(pyridin-3-yl)ethyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C30 H37 N3 O3 S,519.698,1,A:602,True
+8SPD,CL6,A,2.9,X-ray,1-[(2-CHLOROPHENYL)(DIPHENYL)METHYL]-1H-IMIDAZOLE,C22 H17 Cl N2,344.837,1,A:602,True
+6MA8,PMF,A,1.83,X-ray,phenylmethylsulfonyl fluoride,C7 H7 F O2 S,174.193,1,A:604,False
+3NXU,RIT,A,2.0,X-ray,RITONAVIR,C37 H48 N6 O5 S2,720.944,2,A:600;B:600,False
+8SO1,CFF,A,2.05,X-ray,CAFFEINE,C8 H10 N4 O2,194.191,3,A:604;A:603;A:602,False
+6DAA,G0M,A,2.15,X-ray,tert-butyl [(2S)-1-{[(2R)-1-oxo-3-phenyl-1-{[(pyridin-3-yl)methyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C29 H35 N3 O3 S,505.672,1,A:602,False
+8SO2,CFF,A,2.15,X-ray,CAFFEINE,C8 H10 N4 O2,194.191,6,A:607;A:606;A:605;A:604;A:603;A:602,False
+5VCG,08Y,A,2.2,X-ray,bromoergocryptine,C32 H40 Br N5 O5,654.594,1,A:602,False
+5VCE,RIT,A,2.2,X-ray,RITONAVIR,C37 H48 N6 O5 S2,720.944,1,A:602,False
+6OOB,MWS,A,2.202,X-ray,"4-{[(2Z,6S)-6,7-dihydroxy-3,7-dimethyloct-2-en-1-yl]oxy}-7H-furo[3,2-g][1]benzopyran-7-one",C21 H24 O6,372.412,1,A:602,False
+6BCZ,D7Y,A,2.23,X-ray,tert-butyl (2-{[(2R)-3-oxo-2-[(propan-2-yl)amino]-3-{[(pyridin-3-yl)methyl]amino}propyl]sulfanyl}ethyl)carbamate,C19 H32 N4 O3 S,396.547,1,A:602,False
+3TJS,D0R,A,2.25,X-ray,"N-[(2S,4S,5S)-5-amino-4-hydroxy-1,6-diphenylhexan-2-yl]-N~2~-(methyl{[2-(propan-2-yl)-1,3-thiazol-4-yl]methyl}carbamoyl)-L-valinamide",C32 H45 N5 O3 S,579.796,1,A:600,False
+4D75,PK9,A,2.25,X-ray,tert-butyl {6-oxo-6-[(pyridin-3-ylmethyl)amino]hexyl}carbamate,C17 H27 N3 O3,321.415,1,A:600,False
+6BDH,DEV,A,2.25,X-ray,tert-butyl [(2S)-1-{[(2S)-3-oxo-2-(phenylamino)-3-{[(pyridin-3-yl)methyl]amino}propyl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C29 H36 N4 O3 S,520.686,1,A:602,False
+6DA5,G1J,A,2.25,X-ray,tert-butyl [(2R)-1-{[(2S)-1-oxo-3-phenyl-1-{[(pyridin-3-yl)methyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C29 H35 N3 O3 S,505.672,1,A:602,False
+7UFB,NJ0,A,2.25,X-ray,(2R)-3-phenyl-2-({(2S)-3-phenyl-2-[2-(pyridin-3-yl)acetamido]propyl}sulfanyl)-N-[(pyridin-3-yl)methyl]propanamide,C31 H32 N4 O2 S,524.676,1,A:602,False
+9PLK,A1CIW,A,2.25,X-ray,darifenacin,C28 H30 N2 O2,426.55,1,A:603,False
+6UNG,QEP,A,2.3,X-ray,tert-butyl [(2S)-1-(naphthalen-1-yl)-3-{[(2R)-3-oxo-2-(phenylamino)-3-{[(pyridin-3-yl)methyl]amino}propyl]sulfanyl}propan-2-yl]carbamate,C33 H38 N4 O3 S,570.745,1,A:602,False
+9COW,A1A4V,A,2.3,X-ray,N-[(2S)-1-(naphthalen-1-yl)-3-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}propan-2-yl]pyridine-3-carboxamide,C36 H36 N4 O2 S,588.762,1,A:603,False
+7UFC,NJO,A,2.35,X-ray,(2R)-3-phenyl-2-({(2S)-3-phenyl-2-[3-(pyridin-3-yl)propanamido]propyl}sulfanyl)-N-[2-(pyridin-3-yl)ethyl]propanamide,C33 H36 N4 O2 S,552.73,1,A:602,False
+6DA3,G0D,A,2.37,X-ray,tert-butyl [(2R)-1-{[(2R)-1-oxo-3-phenyl-1-{[(pyridin-3-yl)methyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C29 H35 N3 O3 S,505.672,1,A:602,False
+6BD8,D81,A,2.38,X-ray,S-{(2S)-2-[(1-tert-butoxyethenyl)amino]-3-phenylpropyl}-N~2~-cyclopentyl-N-[(pyridin-3-yl)methyl]-L-cysteinamide,C29 H42 N4 O2 S,510.734,1,A:602,False
+7UFE,NXR,A,2.4,X-ray,N-[(2S)-1-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]pyridine-3-carboxamide,C32 H34 N4 O2 S,538.703,2,B:603;A:604,False
+8DYC,UC7,A,2.4,X-ray,"2-butyl-6-(butylamino)-1H-benzo[de]isoquinoline-1,3(2H)-dione",C20 H24 N2 O2,324.417,1,A:602,False
+6BD7,D7J,A,2.42,X-ray,tert-butyl [(2S)-1-{[(2R)-3-oxo-2-[(propan-2-yl)amino]-3-{[(pyridin-3-yl)methyl]amino}propyl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C26 H38 N4 O3 S,486.67,1,A:602,False
+5A1R,STR,A,2.45,X-ray,PROGESTERONE,C21 H30 O2,314.462,1,A:600,False
+7UF9,NH0,A,2.45,X-ray,tert-butyl [(2S)-1-{[(2R)-1-oxo-3-phenyl-1-{[2-(pyridin-4-yl)ethyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C30 H37 N3 O3 S,519.698,1,A:602,False
+5A1P,STR,A,2.5,X-ray,PROGESTERONE,C21 H30 O2,314.462,1,A:1600,False
+6BD5,D7M,A,2.5,X-ray,tert-butyl (2-{[(2R)-2-(cyclopentylamino)-3-oxo-3-{[(pyridin-3-yl)methyl]amino}propyl]sulfanyl}ethyl)carbamate,C21 H34 N4 O3 S,422.585,1,A:602,False
+6BD6,80K,A,2.5,X-ray,tert-butyl (2-{[(2S)-3-oxo-2-(phenylamino)-3-{[(pyridin-3-yl)methyl]amino}propyl]sulfanyl}ethyl)carbamate,C22 H30 N4 O3 S,430.564,1,A:602,False
+7KS8,X8S,A,2.5,X-ray,"(tert-butyl {1-[(3-oxo-3-{[(pyridin-3-yl-kappaN)methyl]amino}propyl)sulfanyl]-3-phenylpropan-2-yl}carbamate)(6,6'-dimethyl-2,2'-bipyridine-kappa~2~N~1~,N~1'~)(1~2~,2~2~:2~6~,3~2~-terpyridine-kappa~3~N~1^{1~},N~2^{1~},N~3^{1~})ruthenium",C50 H54 N8 O3 Ru S,948.151,1,A:603,False
+7UFA,NI6,A,2.5,X-ray,tert-butyl [(2S)-1-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-4-yl)propyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C31 H39 N3 O3 S,533.725,1,A:602,False
+9BBB,A1APA,A,2.5,X-ray,cobicistat,C40 H53 N7 O5 S2,776.023,1,A:602,False
+7KVS,X74,A,2.5,X-ray,tert-butyl [(2R)-1-(naphthalen-1-yl)-3-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C35 H41 N3 O3 S,583.783,2,B:603;A:605,False
+7KSA,X8P,A,2.5,X-ray,"(tert-butyl {1-[(1-oxo-3-phenyl-1-{[3-(pyridin-3-yl-kappaN)prop-1-en-1-yl]amino}propan-2-yl)sulfanyl]-3-phenylpropan-2-yl}carbamate)(6,6'-dimethyl-2,2'-bipyridine-kappa~2~N~1~,N~1'~)(1~2~,2~2~:2~6~,3~2~-terpyridine-kappa~3~N~1^{1~},N~2^{1~},N~3^{1~})ruthenium",C58 H62 N8 O3 Ru S,1052.3,1,A:602,False
+6OOA,MWY,A,2.52,X-ray,"(3aS,4R,5S,6R,8R,9R,9aR,10R)-6-ethyl-5-hydroxy-4,6,9,10-tetramethyl-1-oxodecahydro-3a,9-propanocyclopenta[8]annulen-8-yl [(5-amino-1H-1,2,4-triazol-3-yl)sulfanyl]acetate",C24 H38 N4 O4 S,478.648,1,A:603,False
+6UNE,QES,A,2.55,X-ray,tert-butyl [(2R)-1-(1H-indol-3-yl)-3-{[(2S)-3-oxo-2-(phenylamino)-3-{[(pyridin-3-yl)methyl]amino}propyl]sulfanyl}propan-2-yl]carbamate,C31 H37 N5 O3 S,559.722,1,A:602,False
+7KVK,X7J,A,2.55,X-ray,tert-butyl [(2R)-1-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C31 H39 N3 O3 S,533.725,2,A:602;B:603,False
+9COR,A1A07,A,2.55,X-ray,(2R)-3-phenyl-2-{[(2S)-3-phenyl-2-{[N-(trifluoroacetyl)glycyl]amino}propyl]sulfanyl}-N-[2-(pyridin-3-yl)ethyl]propanamide,C29 H31 F3 N4 O3 S,572.642,1,A:602,False
+7KVI,X7P,A,2.55,X-ray,tert-butyl [(2R)-1-{[(2S)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C31 H39 N3 O3 S,533.725,1,A:603,False
+6UNL,QDJ,A,2.55,X-ray,tert-butyl [(2R)-1-(naphthalen-1-yl)-3-{[(2S)-3-(naphthalen-1-yl)-1-oxo-1-{[(pyridin-3-yl)methyl]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C37 H39 N3 O3 S,605.789,1,A:602,False
+6DAC,FZV,A,2.55,X-ray,tert-butyl [(2S)-1-{[(2R)-1-oxo-3-phenyl-1-{[2-(pyridin-3-yl)ethyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C30 H37 N3 O3 S,519.698,1,A:602,False
+6BDI,DEJ,A,2.57,X-ray,tert-butyl [(2S)-1-(1H-indol-3-yl)-3-{[(2R)-3-oxo-2-[(propan-2-yl)amino]-3-{[(pyridin-3-yl)methyl]amino}propyl]sulfanyl}propan-2-yl]carbamate,C28 H39 N5 O3 S,525.706,1,A:602,False
+6BDM,Y83,A,2.6,X-ray,tert-butyl [(2S)-1-(1H-indol-3-yl)-3-{[(2S)-3-oxo-2-(phenylamino)-3-{[(pyridin-3-yl)methyl]amino}propyl]sulfanyl}propan-2-yl]carbamate,C31 H37 N5 O3 S,559.722,1,A:602,False
+9COV,A1A4S,A,2.6,X-ray,N-[(2S)-1-(1H-indol-3-yl)-3-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}propan-2-yl]pyridine-3-carboxamide,C34 H35 N5 O2 S,577.739,1,A:602,False
+1W0F,STR,A,2.65,X-ray,PROGESTERONE,C21 H30 O2,314.462,1,A:1499,False
+6DAL,G1D,A,2.65,X-ray,Nalpha-{(2S)-2-[(tert-butoxycarbonyl)amino]-3-phenylpropyl}-N-[2-(pyridin-3-yl)ethyl]-D-phenylalaninamide,C30 H38 N4 O3,502.648,1,A:603,False
+7KVO,X6S,A,2.65,X-ray,tert-butyl [(2S)-1-(naphthalen-1-yl)-3-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C35 H41 N3 O3 S,583.783,2,B:602;A:603,False
+9COY,A1A4T,A,2.65,X-ray,"N-[(2S)-1-([1,1'-biphenyl]-4-yl)-3-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}propan-2-yl]-2,2-dimethylpropanamide",C37 H43 N3 O2 S,593.821,1,A:602,False
+7KVJ,X7M,A,2.65,X-ray,tert-butyl [(2S)-1-{[(2S)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C31 H39 N3 O3 S,533.725,1,A:602,False
+6DA2,G0D,A,2.65,X-ray,tert-butyl [(2R)-1-{[(2R)-1-oxo-3-phenyl-1-{[(pyridin-3-yl)methyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C29 H35 N3 O3 S,505.672,1,A:603,False
+6BDK,DJ1,A,2.67,X-ray,tert-butyl [(2S)-1-{[(2R)-2-(cyclopentylamino)-3-oxo-3-{[(pyridin-3-yl)methyl]amino}propyl]sulfanyl}-3-(1H-indol-3-yl)propan-2-yl]carbamate,C30 H41 N5 O3 S,551.743,1,A:602,False
+5TE8,08J,A,2.7,X-ray,"8-chloro-6-(2-fluorophenyl)-1-methyl-4H-imidazo[1,5-a][1,4]benzodiazepine",C18 H13 Cl F N3,325.767,3,C:602;B:602;A:602,False
+7KVN,X6V,A,2.7,X-ray,tert-butyl [(2S)-1-(1H-indol-3-yl)-3-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C33 H40 N4 O3 S,572.761,2,B:602;A:602,False
+7UFF,NYF,A,2.7,X-ray,N-(2-oxo-2-{[(2S)-1-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]amino}ethyl)pyridine-3-carboxamide,C34 H37 N5 O3 S,595.754,2,B:602;A:603,False
+5VC0,RIT,A,2.7,X-ray,RITONAVIR,C37 H48 N6 O5 S2,720.944,1,A:602,False
+9BV5,A1ASV,A,2.71,X-ray,"N-[(2P)-2-(1H-imidazol-1-yl)-5-(trifluoromethyl)phenyl]-2,2-dimethylpropanamide",C15 H16 F3 N3 O,311.302,1,A:602,False
+9COX,A1A4K,A,2.72,X-ray,N-[(2S)-1-(naphthalen-1-yl)-3-{[(2S)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}propan-2-yl]pyridine-3-carboxamide,C36 H36 N4 O2 S,588.762,1,A:602,False
+9PLJ,TCI,A,2.72,X-ray,"(6aR,10aR)-6,6,9-trimethyl-3-pentyl-6a,7,8,10a-tetrahydro-6H-benzo[c]chromen-1-ol",C21 H30 O2,314.462,1,A:602,False
+1W0G,MYT,A,2.73,X-ray,METYRAPONE,C14 H14 N2 O,226.274,1,A:1499,False
+2J0D,ERY,A,2.75,X-ray,ERYTHROMYCIN A,C37 H67 N O13,733.927,1,A:1498,False
+7KVP,X6J,A,2.75,X-ray,tert-butyl [(2R)-1-(naphthalen-1-yl)-3-{[(2S)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C35 H41 N3 O3 S,583.783,1,A:602,False
+7KVQ,X7D,A,2.75,X-ray,tert-butyl [(2S)-1-(naphthalen-1-yl)-3-{[(2S)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C35 H41 N3 O3 S,583.783,2,A:607;B:602,False
+9COS,A1A06,A,2.75,X-ray,(2R)-3-phenyl-2-{[(2S)-3-phenyl-2-{[N-(trifluoroacetyl)glycyl]amino}propyl]sulfanyl}-N-[3-(pyridin-3-yl)propyl]propanamide,C30 H33 F3 N4 O3 S,586.668,1,A:602,False
+7KVM,X71,A,2.75,X-ray,tert-butyl [(2S)-1-{[(2R)-2-benzyl-3-oxo-3-{[3-(pyridin-3-yl)propyl]amino}propyl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C32 H41 N3 O3 S,547.751,1,A:602,False
+7KVH,X5Y,A,2.791,X-ray,tert-butyl [(2S)-1-{[(2R)-1-oxo-3-phenyl-1-{[3-(pyridin-3-yl)propyl]amino}propan-2-yl]sulfanyl}-3-phenylpropan-2-yl]carbamate,C31 H39 N3 O3 S,533.725,2,B:602;A:602,False
+9BVC,A1ASO,A,2.8,X-ray,N-(2-chlorophenyl)-N-[(3-hydroxyphenyl)methyl]-N'-[(2P)-2-(1H-imidazol-1-yl)-5-(trifluoromethyl)phenyl]urea,C24 H18 Cl F3 N4 O2,486.874,1,A:602,False
+6DA8,G0J,A,2.802,X-ray,Nalpha-{(2S)-2-[(tert-butoxycarbonyl)amino]-3-phenylpropyl}-N-[(pyridin-3-yl)methyl]-D-phenylalaninamide,C29 H36 N4 O3,488.621,1,A:602,False
+9COT,A1A08,A,2.81,X-ray,"(2R)-3-phenyl-2-{[(2S)-3-phenyl-2-(2,2,2-trifluoroacetamido)propyl]sulfanyl}-N-[3-(pyridin-3-yl)propyl]propanamide",C28 H30 F3 N3 O2 S,529.617,1,A:602,False
+9COU,A1A4U,A,2.81,X-ray,(2R)-2-{[(2S)-2-(benzenesulfonamido)-3-phenylpropyl]sulfanyl}-3-phenyl-N-[3-(pyridin-3-yl)propyl]propanamide,C32 H35 N3 O3 S2,573.769,1,A:602,False
+6UNM,QDP,A,2.83,X-ray,tert-butyl [(2S)-1-(naphthalen-1-yl)-3-{[(2S)-3-(naphthalen-1-yl)-1-oxo-1-{(E)-[2-(pyridin-3-yl)ethylidene]amino}propan-2-yl]sulfanyl}propan-2-yl]carbamate,C38 H39 N3 O3 S,617.8,1,A:602,False
+4K9U,5AW,A,2.85,X-ray,"N~2~-(methyl{[2-(propan-2-yl)-1,3-thiazol-4-yl]methyl}carbamoyl)-N-[(2S,5S)-5-{[(1,3-thiazol-5-ylmethoxy)carbonyl]amino}hexan-2-yl]-D-valinamide",C25 H40 N6 O4 S2,552.753,2,A:603;A:602,False
+4I4H,Z9Z,A,2.9,X-ray,"pyridin-3-ylmethyl [(2R,5S)-5-{[N-(methyl{[2-(propan-2-yl)-1,3-thiazol-4-yl]methyl}carbamoyl)-D-valyl]amino}-1,6-diphenylhexan-2-yl]carbamate",C39 H50 N6 O4 S,698.917,1,A:602,False
+7UFD,T0K,A,2.9,X-ray,(2S)-3-phenyl-2-({(2S)-3-phenyl-2-[3-(pyridin-3-yl)propanamido]propyl}sulfanyl)-N-[2-(pyridin-3-yl)ethyl]propanamide,C33 H36 N4 O2 S,552.73,1,A:602,False
+4NY4,2QH,A,2.95,X-ray,"(8R)-3,3-difluoro-8-[4-fluoro-3-(pyridin-3-yl)phenyl]-8-(4-methoxy-3-methylphenyl)-2,3,4,8-tetrahydroimidazo[1,5-a]pyrimidin-6-amine",C25 H22 F3 N5 O,465.47,1,A:602,False
+9BV9,A1ASR,A,2.95,X-ray,N-(2-chlorophenyl)-N'-[(2P)-2-(1H-imidazol-1-yl)-5-(trifluoromethyl)phenyl]urea,C17 H12 Cl F3 N4 O,380.752,1,A:602,False
+9BVB,A1ASP,A,3.0,X-ray,2-(2-chlorophenyl)-N-[(2P)-2-(1H-imidazol-1-yl)-5-(trifluoromethyl)phenyl]acetamide,C18 H13 Cl F3 N3 O,379.764,1,A:602,False
+9BV8,A1ASS,A,3.0,X-ray,N-[(2P)-2-(1H-imidazol-1-yl)-5-(trifluoromethyl)phenyl]cyclobutanecarboxamide,C15 H14 F3 N3 O,309.286,1,A:602,False
+9BVA,A1ASQ,A,3.02,X-ray,N-[2-(2-chloroethyl)phenyl]-N'-[(2P)-2-(1H-imidazol-1-yl)-5-(trifluoromethyl)phenyl]urea,C19 H16 Cl F3 N4 O,408.805,1,A:602,False
+9BV6,A1ASU,A,3.1,X-ray,"5-(4-methoxyphenyl)-1-[4-(2-methyl-1,3-thiazol-4-yl)phenyl]-1H-1,2,3-triazole",C19 H16 N4 O S,348.422,1,A:602,False
+9BV7,A1AST,A,3.21,X-ray,"3-(2-chlorophenyl)-N-{[(2S,7M)-7-(pyridin-3-yl)-2,3-dihydro-1-benzofuran-2-yl]methyl}propanamide",C23 H21 Cl N2 O2,392.878,1,A:602,False
+9MS1,A1BNX,A,3.4,X-ray,N'-(2-chlorophenyl)-N-[(3-hydroxyphenyl)methyl]-N-[(2P)-2-(1H-imidazol-1-yl)-5-(trifluoromethyl)phenyl]urea,C24 H18 Cl F3 N4 O2,486.874,1,A:602,False

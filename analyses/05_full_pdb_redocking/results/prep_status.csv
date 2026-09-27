@@ -1,0 +1,3 @@
+pdb_id,comp_id,has_affinity,resolution,smiles,chain,score_resnum,score_min_dist_to_fe,n_atoms_clean,prep_mode,heme_fixed_propionates,heme_fixed_pyrrole_N,lig_atoms_prepped,lig_formal_charge,heme_formal_charge,fe_bonded_to,n_crystal_lig_atoms,n_ligprep_states,status
+4D6Z,PK9,True,1.9300,CC(C)(C)OC(=O)NCCCCCC(=O)NCc1cccnc1,A,1600,6.0900,3772,with -fillsidechains,0,0,50,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,50,1,ok
+6MA7,TPF,True,2.0900,c1cc(c(cc1F)F)C(Cn2cncn2)(Cn3cncn3)O,A,602,2.2000,3785,with -fillsidechains,0,0,34,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;TPF:N,34,1,ok
