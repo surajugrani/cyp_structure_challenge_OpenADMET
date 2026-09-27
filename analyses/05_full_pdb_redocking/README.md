@@ -24,16 +24,29 @@ the confidence interval on the recovery rate considerably.
 
 ## Set selection
 
-102 of the 122 entries in the RCSB report. Dropped:
+100 of the 122 entries in the RCSB report. Dropped:
 
 - **6 apo structures** (heme only, or heme + cryoprotectants)
-- **12 iridium complexes** — most docking programs have no Ir parameters
+- **14 organometallic ligands** — 12 iridium and 2 ruthenium complexes. Docking force
+  fields have no parameters for these metals. The Ru pair (X8S in 7KS8, X8P in 7KSA) was
+  found only when LigPrep silently produced no output for them, so the filter is now a
+  metal list rather than `Ir` alone.
 - **4 ligands under 150 Da** (imidazole in 9YK4 and 4D6Z, metformin in 5G5J, PG0 in 9BV6).
   Both imidazole and metformin are genuine ligands, but with so few heavy atoms a 2 Å RMSD
   cutoff is nearly free and would inflate the success rate.
 
-92 unique ligands across the 102 structures; all have stereo-defined SMILES from the RCSB
+90 unique ligands across the 100 structures; all have stereo-defined SMILES from the RCSB
 chemical component dictionary, so no stereoisomer enumeration is needed (`ligprep -g`).
+
+## Ligand preparation is a separate first step
+
+`scripts/00_ligprep_all.py` prepares every ligand up front. It is a shared input to this
+analysis **and** to the ICM run (analysis 06, which reuses these exact states so that
+ligand preparation is held constant between the two docking programs). Running it
+separately lets the two docking jobs proceed independently instead of ICM having to trail
+Glide structure by structure.
+
+LigPrep states per ligand: 52 ligands give 1 state, 44 give 2, and 4 give 3.
 
 ## RMSD
 
@@ -60,8 +73,9 @@ $SCHRODINGER/run python3 -m pip install --no-deps --target=$PWD/.pylibs spyrmsd
 ## Running
 
 ```bash
+sbatch scripts/run_ligprep.sh         # step 0: prepare all ligands from SMILES
 sbatch scripts/run_all.sh --limit 2   # smoke test
-sbatch scripts/run_all.sh             # all 102
+sbatch scripts/run_all.sh             # all 100
 ```
 
 **Serial by design** — only one Schrödinger licence token is available, so parallel array

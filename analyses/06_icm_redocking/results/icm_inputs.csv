@@ -6,8 +6,8 @@ pdb_id,comp_id,chain,score_resnum,fe_dist,n_lig_atoms,n_ligprep_states,n_rec_ato
 6OO9,MWV,A,602.0,3.76,36.0,3.0,3743.0,ok
 6DAB,G0V,A,603.0,2.21,37.0,1.0,3540.0,ok
 4K9W,7AW,A,602.0,2.24,45.0,1.0,3730.0,ok
-6DAJ,FZV,,,,,,,error: LigPrep output missing - analysis 05 not done here yet
-4K9T,1RD,,,,,,,error: raw PDB missing - run analysis 05 first
+6DAJ,FZV,A,602.0,2.31,37.0,1.0,3666.0,ok
+4K9T,1RD,A,602.0,2.17,35.0,1.0,3738.0,ok
 4K9V,6AW,,,,,,,error: raw PDB missing - run analysis 05 first
 6UNJ,QDY,,,,,,,error: raw PDB missing - run analysis 05 first
 6UNI,QDV,,,,,,,error: raw PDB missing - run analysis 05 first

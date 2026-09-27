@@ -9,7 +9,10 @@ RCSB report, which tightens the confidence interval on the recovery rate.
 Selection, from `analyses/01_glide_score_vs_ic50/data/entries.csv` (122 entries):
 
   drop  cofactor / cryoprotectant / buffer / ion-only het groups (JUNK below)
-  drop  iridium complexes - most docking programs have no Ir parameters
+  drop  organometallic ligands - docking force fields have no parameters for transition
+        metals. Originally this excluded Ir only; Ru was added after LigPrep silently
+        dropped X8S (7KS8) and X8P (7KSA), two Ru complexes, producing no output. The
+        filter is now a metal list rather than a single element.
   drop  ligands with MW < 150 (metformin in 5G5J, imidazole in 9YK4): both are genuine
         ligands, but with so few heavy atoms a 2 A RMSD cutoff is nearly free and would
         inflate the success rate
@@ -31,6 +34,13 @@ DATA = os.path.join(HERE, "data")
 
 MIN_MW = 150.0
 
+# Transition/heavy metals that docking force fields cannot parameterise. Checked against
+# the ligand formula. (Fe is deliberately NOT here - it is the heme cofactor in the
+# receptor, never the ligand of interest.)
+METALS = ["Ir", "Ru", "Rh", "Pd", "Pt", "Os", "Re", "Mn", "Co", "Ni", "Cu",
+          "Mo", "W", "V", "Cr", "Ti", "Au", "Ag", "Cd", "Hg"]
+METAL_RE = r"\b(" + "|".join(METALS) + r")\d*\b"
+
 # Cofactor, cryoprotectant, buffer, precipitant and ion het codes - never the ligand of
 # interest for this target.
 JUNK = {
@@ -48,11 +58,15 @@ def main():
 
     n0 = e["pdb_id"].nunique()
     c = e[~e["comp_id"].isin(JUNK)]
-    c = c[~c["formula"].str.contains(r"\bIr\b", na=False)]
+    metal_hits = c[c["formula"].str.contains(METAL_RE, na=False, regex=True)]
+    c = c[~c["formula"].str.contains(METAL_RE, na=False, regex=True)]
     dropped_small = c[c["formula_weight"] < MIN_MW]
     c = c[c["formula_weight"] >= MIN_MW]
 
     print(f"{n0} entries in the RCSB report")
+    if len(metal_hits):
+        print(f"  dropped organometallic ligands: "
+              f"{', '.join(f'{r.comp_id} in {r.pdb_id} ({r.formula})' for r in metal_hits.itertuples())}")
     print(f"  dropped small ligands (MW < {MIN_MW:g}): "
           f"{', '.join(f'{r.comp_id} in {r.pdb_id} ({r.formula_weight:.0f} Da)' for r in dropped_small.itertuples())}")
     print(f"  {c['pdb_id'].nunique()} entries retain a drug-like ligand")

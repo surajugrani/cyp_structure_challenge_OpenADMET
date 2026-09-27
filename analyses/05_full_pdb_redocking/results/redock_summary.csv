@@ -6,3 +6,4 @@ pdb_id,comp_id,has_affinity,resolution,n_crystal_lig_atoms,n_ligprep_states,n_po
 6OO9,MWV,True,2.2500,75,3,23,2.9663,2.4437,18,-7.1690,ok
 6DAB,G0V,True,2.3500,74,1,10,6.5795,4.1714,6,-6.3690,ok
 4K9W,7AW,True,2.3990,93,1,10,9.4747,2.2992,6,-9.2400,ok
+6DAJ,FZV,True,2.4500,74,1,10,6.9762,4.3257,5,-8.0160,ok
