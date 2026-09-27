@@ -155,18 +155,33 @@ This matters: **16 of the 20 ligands coordinate the heme iron at 1.9–2.4 Å**,
 coordination is the defining interaction of a type-II CYP inhibitor. The total Glide score
 gives it no credit at all.
 
-The term is sensitive to the porphyrin protonation state. For 8SPD, scored under both
-states during development:
+The term is sensitive to the **iron's first coordination shell**, and to nothing else we
+changed. 8SPD was scored under three heme states during development:
 
-| 8SPD heme state | Heme charge | Metal term |
-|---|---|---|
-| one pyrrole N–H (PrepWizard's own output) | −1 | −2.30 |
-| both pyrrole N⁻ — chemically correct | −2 | **0.00** |
+| 8SPD heme state | Propionates | Pyrrole N | Heme charge | Metal term |
+|---|---|---|---|---|
+| **A** — PrepWizard raw | COOH (neutral) | one N⁻, one N–H | +1 | −2.30 |
+| **B** — after propionate fix | both −1 | one N⁻, one N–H | −1 | −2.30 |
+| **C** — after `normalize_heme` | both −1 | both N⁻ | −2 | **0.00** |
+
+- **A → B** changes only the propionates, 10 Å from the iron. Net heme charge moves by
+  2 units and the metal term does not budge. Remote carboxylates are irrelevant to it,
+  as expected for a ligand–metal interaction term.
+- **B → C** changes only the pyrrole N–H. Net charge moves by 1 unit and the term goes
+  to zero.
+
+So this is not a net-charge effect (a 2-unit change did nothing, a 1-unit change zeroed
+it) — it is specifically the iron's first coordination shell. The Fe bond count is
+identical in all three states (4 × HEM:N + CYS:S), so it is the perceived valence or
+charge state of the metal, not its connectivity.
 
 A metalated porphyrin has all four nitrogens coordinating the iron and none protonated,
-so the −2 state is the right chemistry and is what this analysis uses. The consequence is
-that Glide, as set up here, scores these complexes without any metal-coordination reward.
-We did not chase the mechanism inside Glide; the practical point stands either way.
+so **C is the correct chemistry** and is what this analysis uses. A plausible reading is
+that the chemically wrong N–H makes Glide perceive the iron as coordinatively
+unsatisfied, leaving a site to reward; completing the dianion makes it look satisfied.
+That is an inference from three measurements on one structure, not something verified
+inside Glide — but the practical consequence is solid either way: **as correctly
+prepared, Glide scores these complexes with no metal-coordination reward at all.**
 
 ### Other observations
 

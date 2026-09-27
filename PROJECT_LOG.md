@@ -80,9 +80,12 @@ rho = +0.15, wrong sign; mininplace rho = −0.08). Pearson added alongside Spea
 all terms.
 
 **Glide's metal term is identically 0.00 for all 20 structures** under the chemically
-correct dianionic porphyrin, so it was dropped from the correlation table. It was −2.30
-for 8SPD under PrepWizard's original (chemically wrong) mono-protonated porphyrin, so the
-term is sensitive to that choice. Decision: keep the correct chemistry and accept that the
+correct dianionic porphyrin, so it was dropped from the correlation table. Three 8SPD
+heme states pin down the cause: propionates COOH + one pyrrole N−H (heme +1) -> metal
+−2.30; propionates deprotonated + one pyrrole N−H (heme −1) -> metal −2.30 (unchanged, so
+the carboxylates are irrelevant); both pyrrole N⁻ (heme −2) -> metal 0.00. Not a net-charge
+effect — a 2-unit charge change did nothing while a 1-unit change zeroed it. It is the
+iron's first coordination shell specifically. Decision: keep the correct chemistry and accept that the
 metal term is inactive. This is the most likely explanation for the failed correlation —
 16/20 ligands coordinate the Fe at 1.9–2.4 Å and the score gives that no credit.
 
