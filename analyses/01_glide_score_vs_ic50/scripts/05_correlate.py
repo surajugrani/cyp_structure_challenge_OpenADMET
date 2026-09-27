@@ -45,8 +45,10 @@ FE_COORD_CUTOFF = 3.0  # A; beyond this the ligand is not coordinating the iron
 
 # Glide terms to analyse, examined in stages rather than all at once: looking at every
 # component term over ~20 points invites reading noise as signal. Start with the total
-# score and the van der Waals term (shape complementarity); metal and ecoul come next.
-DEFAULT_TERMS = ["docking_score", "evdw"]
+# score and the van der Waals term (shape complementarity), then metal and ecoul.
+# "metal" is deliberately excluded: with the chemically correct (dianionic) porphyrin it
+# is identically 0.00 for every structure, so there is nothing to correlate. See README.
+DEFAULT_TERMS = ["docking_score", "evdw", "ecoul"]
 MODES = ["inplace", "mininplace"]
 
 

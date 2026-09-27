@@ -75,8 +75,20 @@ All four sensitivity checks agree. The score largely tracks molecular size
 - `mininplace` degrades poses relative to `inplace`, echoing the PXR result that Glide
   post-processing worsened good AF3 poses.
 
-**Next:** stage 2 of the term analysis — `metal` and `ecoul`
-(`sbatch scripts/run_correlate.sh --terms metal,ecoul`).
+**Stage 2 (jobs 47772548, 47772583):** `ecoul` shows no signal either (inplace
+rho = +0.15, wrong sign; mininplace rho = −0.08). Pearson added alongside Spearman for
+all terms.
+
+**Glide's metal term is identically 0.00 for all 20 structures** under the chemically
+correct dianionic porphyrin, so it was dropped from the correlation table. It was −2.30
+for 8SPD under PrepWizard's original (chemically wrong) mono-protonated porphyrin, so the
+term is sensitive to that choice. Decision: keep the correct chemistry and accept that the
+metal term is inactive. This is the most likely explanation for the failed correlation —
+16/20 ligands coordinate the Fe at 1.9–2.4 Å and the score gives that no credit.
+
+**Next:** analysis 01 is complete. Possible follow-ups (not yet run): ligand efficiency
+(score / heavy atoms) and MW-controlled partial correlation, to test whether removing the
+size bias recovers any signal.
 
 ---
 

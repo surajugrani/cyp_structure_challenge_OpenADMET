@@ -2,7 +2,7 @@
 
 **Question:** For CYP3A4 crystal structures with a measured IC50 for the bound ligand, how well does the Glide score of the *experimental* pose track binding affinity? This sets a baseline for how much to trust Glide scores when ranking poses for the challenge.
 
-**Status:** Complete for the first term pair (`docking_score`, `evdw`). Next stage: `metal`, `ecoul`.
+**Status:** Complete.
 
 **Answer: no usable correlation.** Even with the experimentally correct pose, the Glide
 score does not rank these 20 CYP3A4 ligands by potency (Spearman rho = −0.27, 95 % CI
@@ -107,12 +107,18 @@ Three things differ from the older scripts used in the PXR challenge:
 
 Main set, n = 20 (`results/correlations.csv`, `results/correlation_plot.png`):
 
-| Score | Spearman rho | p | 95 % CI |
-|---|---|---|---|
-| `inplace` docking score | **−0.265** | 0.259 | [−0.72, +0.28] |
-| `inplace` evdw | −0.134 | 0.574 | [−0.63, +0.37] |
-| `mininplace` docking score | −0.093 | 0.696 | [−0.59, +0.46] |
-| `mininplace` evdw | −0.077 | 0.748 | [−0.61, +0.53] |
+| Score | Spearman rho [95 % CI] | p | Pearson r [95 % CI] | p |
+|---|---|---|---|---|
+| `inplace` docking score | **−0.265** [−0.72, +0.28] | 0.26 | **−0.363** [−0.74, +0.19] | 0.12 |
+| `inplace` evdw | −0.134 [−0.63, +0.37] | 0.57 | −0.102 [−0.56, +0.35] | 0.67 |
+| `inplace` ecoul | +0.153 [−0.32, +0.53] | 0.52 | +0.107 [−0.23, +0.47] | 0.65 |
+| `mininplace` docking score | −0.093 [−0.59, +0.46] | 0.70 | −0.159 [−0.65, +0.37] | 0.50 |
+| `mininplace` ecoul | −0.081 [−0.54, +0.42] | 0.73 | −0.129 [−0.47, +0.33] | 0.59 |
+| `mininplace` evdw | −0.077 [−0.61, +0.53] | 0.75 | −0.113 [−0.61, +0.47] | 0.64 |
+
+Bootstrap: 1000 resamples. Terms were examined in stages (`docking_score` + `evdw`, then
+`ecoul`) rather than scanning all 13 at once — over 20 points, testing every term would
+almost guarantee something crossed p < 0.05 by chance.
 
 A more negative Glide score means better predicted binding, so a *negative* rho is the
 expected direction. The sign is right but the interval spans zero.
@@ -139,8 +145,33 @@ Glide rewards size; size does not predict potency in this set. Two cases make it
 - **08Y** (bromoergocryptine, MW 655) has the *best* score (−11.5) but only mid potency (pIC50 5.52).
 - **CL6** (clotrimazole, MW 345) is the second most potent (pIC50 7.24) but scores −4.78.
 
+### Glide's metal term is inactive, and that likely explains the failure
+
+With the chemically correct heme (dianionic porphyrin, see *Structure preparation*), the
+Glide **metal term is identically 0.00 for all 20 structures** — so it is excluded from
+the table above; there is nothing to correlate.
+
+This matters: **16 of the 20 ligands coordinate the heme iron at 1.9–2.4 Å**, and that
+coordination is the defining interaction of a type-II CYP inhibitor. The total Glide score
+gives it no credit at all.
+
+The term is sensitive to the porphyrin protonation state. For 8SPD, scored under both
+states during development:
+
+| 8SPD heme state | Heme charge | Metal term |
+|---|---|---|
+| one pyrrole N–H (PrepWizard's own output) | −1 | −2.30 |
+| both pyrrole N⁻ — chemically correct | −2 | **0.00** |
+
+A metalated porphyrin has all four nitrogens coordinating the iron and none protonated,
+so the −2 state is the right chemistry and is what this analysis uses. The consequence is
+that Glide, as set up here, scores these complexes without any metal-coordination reward.
+We did not chase the mechanism inside Glide; the practical point stands either way.
+
 ### Other observations
 
+- **Electrostatics carry no signal either**, and `inplace_ecoul` even has the wrong sign
+  (rho = +0.15).
 - **`mininplace` is worse than `inplace`** (−0.09 vs −0.27). Minimization moves poses off
   their crystal geometry and loses information — consistent with the PXR finding that
   Glide post-processing degraded good AF3 poses.
