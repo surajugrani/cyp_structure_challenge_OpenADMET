@@ -125,8 +125,24 @@ Headline numbers were never affected since Glide's value was always primary.
 **Safeguard added:** `require_compute_node()` in the prep/grid/dock scripts now refuses to
 launch PrepWizard or Glide outside SLURM, after two accidental login-node runs.
 
-**Next:** re-dock with a Glide metal constraint to the heme Fe. If success jumps, the
-mechanism is confirmed and the fix is directly useful for the challenge.
+**Follow-up measurement:** Glide displaces ligands off the Fe — median crystal distance
+2.33 A vs 3.24 A for top-1 poses; 20/22 move outward, median +0.73 A, Wilcoxon p = 0.0003.
+The two exceptions are the two non-coordinating ligands.
+
+**CORRECTION (2026-09-27).** I first explained this as Glide penalising the crystal geometry
+as a steric clash. That was wrong. (a) A dative N->Fe bond at 2.0-2.4 A is normal
+coordination chemistry, not an error in 22 crystal structures. (b) inplace_evdw is
+favourable for all 22 (-14 to -65). There IS localised strain at short Fe contacts (vdW gain
+on minimization vs Fe distance: rho = -0.86, p < 0.0001; 21-31 kcal at 1.94-2.01 A vs 1-4
+kcal for non-coordinating), but GlideScore weights evdw at only ~0.046 (fitted by least
+squares over 212 poses; lipo 1.19, rewards 1.05, ecoul 0.19, esite 2.51). So that strain is
+worth ~1 GlideScore unit while a -2.30 metal term enters at weight ~1.0. The correct
+mechanism is the *absence of a reward*, not the presence of a penalty — and the metal term
+is decisive at this scale, not marginal. The positive-scoring crystal poses (4K9V, 4D6Z)
+come from the `rewards` term, not vdW.
+
+**Next:** analysis 03 — try to reactivate the metal term without breaking the chemistry.
+Primary lever: set Fe to the physiological ferric Fe(III) state (PrepWizard leaves it +2).
 
 ---
 

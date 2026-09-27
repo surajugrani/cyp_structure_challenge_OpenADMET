@@ -64,7 +64,46 @@ Spearman rho = +0.16 (p = 0.02, n = 212 poses); within-ligand median rho = +0.19
 sign is correct (better score ↔ lower RMSD). It is just far too weak to matter: the
 top-ranked pose is the best available one in only **6/22** cases.
 
-### Likely mechanism: the metal term is inactive
+### Mechanism: the metal term is inactive, and it is decisive at the relevant scale
+
+**Glide systematically displaces ligands off the iron.** Median Fe–ligand distance is
+2.33 Å in the crystal structures but **3.24 Å** in the top-1 docked poses; 20/22 poses move
+outward, median shift +0.73 Å (Wilcoxon p = 0.0003). The only two that move *closer*
+(7LXL, 4D6Z) are the two ligands that do not coordinate the iron to begin with.
+
+Why: with no metal reward, there is no energetic reason to hold the ~2.3 Å coordination
+distance, and relaxing outward gains a little van der Waals.
+
+**Quantitatively** (GlideScore term weights fitted by least squares across all 212 poses;
+the metal weight is unestimable here because the term has zero variance):
+
+| Term | Fitted weight |
+|---|---|
+| esite | +2.51 |
+| lipo | +1.19 |
+| rewards | +1.05 |
+| hbond | +0.41 |
+| ecoul | +0.19 |
+| **evdw** | **+0.046** |
+
+vdW enters at ~1/25th the weight of lipo or rewards. For 8SPD, relaxing off the iron gains
+~21 kcal of raw vdW = ~1.0 GlideScore unit, whereas a −2.30 metal term enters at weight
+~1.0. **With the metal term active, staying coordinated would win; without it, drifting
+outward wins.** The term is decisive, not marginal.
+
+> **Correction.** An earlier version of this README claimed Glide *penalises* the crystal
+> geometry as a steric clash, reasoning that a 1.94 Å N···Fe contact sits inside the
+> Lennard-Jones repulsive wall. That was wrong on two counts. (1) A dative N→Fe bond at
+> 2.0–2.4 Å is normal coordination chemistry, not a clash — 22 crystal structures agreeing
+> on it is the point, not an anomaly. (2) `inplace_evdw` is *favourable* for all 22 crystal
+> poses (−14 to −65), so Glide is not penalising them sterically. There is genuine
+> *localised* strain at the shortest contacts — vdW gain on minimization correlates with Fe
+> distance at rho = −0.86 (p < 0.0001), 21–31 kcal for the 1.94–2.01 Å cases versus 1–4 kcal
+> for non-coordinating ligands — but weighted at 0.046 it is small, and the overall term
+> stays favourable. The two positive-scoring crystal poses (4K9V +0.64, 4D6Z +0.62) come
+> from the `rewards` term (+8.30, +4.27), not from vdW.
+
+### Why the metal term is inactive
 
 Analysis 01 found that Glide's metal term is identically 0.00 under the chemically
 correct (dianionic) heme. **16 of 20 ligands coordinate the heme iron at 1.9–2.4 Å**, yet
@@ -107,6 +146,6 @@ Combined with analysis 01 (the score does not track affinity even for perfect po
 this supports a **co-folding-first strategy** — matching the PXR challenge result, where
 AlphaFold3 co-folding beat docking and Glide post-processing degraded good poses.
 
-**Next test:** re-dock with a Glide metal constraint requiring coordination to the heme
-iron. If success rates jump, the mechanism above is confirmed and the fix is directly
-useful.
+**Next:** analysis 03 tests whether the metal term can be reactivated without breaking the
+chemistry — primarily by setting Fe to its physiological ferric Fe(III) state rather than
+the Fe(II) PrepWizard assigns.
