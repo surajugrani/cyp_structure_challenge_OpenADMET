@@ -1,3 +1,8 @@
 pdb_id,comp_id,has_affinity,resolution,n_crystal_lig_atoms,n_ligprep_states,n_poses,rmsd_top1,rmsd_best,rank_of_best,score_top1,status
 4D6Z,PK9,True,1.9300,50,1,10,5.8366,4.9955,4,-4.8580,ok
 6MA7,TPF,True,2.0900,34,1,9,4.6830,3.4026,2,-5.0020,ok
+3UA1,08Y,True,2.1500,83,2,13,0.5636,0.5306,2,-11.0000,ok
+6MA6,MYT,True,2.1820,31,1,10,3.4826,0.2701,2,-6.2790,ok
+6OO9,MWV,True,2.2500,75,3,23,2.9663,2.4437,18,-7.1690,ok
+6DAB,G0V,True,2.3500,74,1,10,6.5795,4.1714,6,-6.3690,ok
+4K9W,7AW,True,2.3990,93,1,10,9.4747,2.2992,6,-9.2400,ok

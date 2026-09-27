@@ -1,3 +1,8 @@
 pdb_id,comp_id,has_affinity,resolution,smiles,chain,score_resnum,score_min_dist_to_fe,n_atoms_clean,prep_mode,heme_fixed_propionates,heme_fixed_pyrrole_N,lig_atoms_prepped,lig_formal_charge,heme_formal_charge,fe_bonded_to,n_crystal_lig_atoms,n_ligprep_states,status
 4D6Z,PK9,True,1.9300,CC(C)(C)OC(=O)NCCCCCC(=O)NCc1cccnc1,A,1600,6.0900,3772,with -fillsidechains,0,0,50,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,50,1,ok
 6MA7,TPF,True,2.0900,c1cc(c(cc1F)F)C(Cn2cncn2)(Cn3cncn3)O,A,602,2.2000,3785,with -fillsidechains,0,0,34,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;TPF:N,34,1,ok
+3UA1,08Y,True,2.1500,CC(C)C[C@H]1C(=O)N2CCC[C@H]2[C@]3(N1C(=O)[C@](O3)(C(C)C)NC(=O)[C@H]4CN([C@@H]5Cc6c7c(cccc7[nH]c6Br)C5=C4)C)O,A,600,3.6500,3758,with -fillsidechains,0,0,83,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,83,2,ok
+6MA6,MYT,True,2.1820,CC(C)(c1cccnc1)C(=O)c2cccnc2,A,603,2.3100,3811,with -fillsidechains,0,0,31,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;MYT:N,31,1,ok
+6OO9,MWV,True,2.2500,CC(C)[C@H]1c2ccc(cc2CC[C@@]1(CCN(C)CCCc3[nH]c4ccccc4n3)OC(=O)COC)F,A,602,3.7600,3779,with -fillsidechains,0,0,75,1,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,75,3,ok
+6DAB,G0V,True,2.3500,CC(C)(C)OC(=O)N[C@H](Cc1ccccc1)CS[C@H](Cc2ccccc2)C(=O)NCCc3cccnc3,A,603,2.2100,3577,with -fillsidechains,0,0,74,0,-2,CYS:S;G0V:N;HEM:N;HEM:N;HEM:N;HEM:N,74,1,ok
+4K9W,7AW,True,2.3990,CCC[C@@H](CC[C@H](Cc1ccccc1)NC(=O)[C@H](C(C)C)NC(=O)N(C)Cc2csc(n2)C(C)C)NC(=O)OCc3cncs3,A,602,2.2400,3775,with -fillsidechains,0,0,93,0,-2,7AW:N;CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,93,1,ok

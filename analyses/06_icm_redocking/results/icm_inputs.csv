@@ -1,0 +1,103 @@
+pdb_id,comp_id,chain,score_resnum,fe_dist,n_lig_atoms,n_ligprep_states,n_rec_atoms,status
+4D6Z,PK9,A,1600.0,6.09,23.0,1.0,3749.0,ok
+6MA7,TPF,A,602.0,2.2,22.0,1.0,3763.0,ok
+3UA1,08Y,A,600.0,3.65,43.0,2.0,3715.0,ok
+6MA6,MYT,A,603.0,2.31,17.0,1.0,3794.0,ok
+6OO9,MWV,A,602.0,3.76,36.0,3.0,3743.0,ok
+6DAB,G0V,A,603.0,2.21,37.0,1.0,3540.0,ok
+4K9W,7AW,A,602.0,2.24,45.0,1.0,3730.0,ok
+6DAJ,FZV,,,,,,,error: LigPrep output missing - analysis 05 not done here yet
+4K9T,1RD,,,,,,,error: raw PDB missing - run analysis 05 first
+4K9V,6AW,,,,,,,error: raw PDB missing - run analysis 05 first
+6UNJ,QDY,,,,,,,error: raw PDB missing - run analysis 05 first
+6UNI,QDV,,,,,,,error: raw PDB missing - run analysis 05 first
+4I4G,Z8Z,,,,,,,error: raw PDB missing - run analysis 05 first
+6UNH,QEA,,,,,,,error: raw PDB missing - run analysis 05 first
+6UNK,QE4,,,,,,,error: raw PDB missing - run analysis 05 first
+7LXL,YNV,,,,,,,error: raw PDB missing - run analysis 05 first
+4D7D,PKT,,,,,,,error: raw PDB missing - run analysis 05 first
+4K9X,8AW,,,,,,,error: raw PDB missing - run analysis 05 first
+2V0M,KLN,,,,,,,error: raw PDB missing - run analysis 05 first
+4D78,J9K,,,,,,,error: raw PDB missing - run analysis 05 first
+6DAG,G0Y,,,,,,,error: raw PDB missing - run analysis 05 first
+8SPD,CL6,,,,,,,error: raw PDB missing - run analysis 05 first
+6MA8,PMF,,,,,,,error: raw PDB missing - run analysis 05 first
+3NXU,RIT,,,,,,,error: raw PDB missing - run analysis 05 first
+8SO1,CFF,,,,,,,error: raw PDB missing - run analysis 05 first
+6DAA,G0M,,,,,,,error: raw PDB missing - run analysis 05 first
+8SO2,CFF,,,,,,,error: raw PDB missing - run analysis 05 first
+5VCG,08Y,,,,,,,error: raw PDB missing - run analysis 05 first
+5VCE,RIT,,,,,,,error: raw PDB missing - run analysis 05 first
+6OOB,MWS,,,,,,,error: raw PDB missing - run analysis 05 first
+6BCZ,D7Y,,,,,,,error: raw PDB missing - run analysis 05 first
+3TJS,D0R,,,,,,,error: raw PDB missing - run analysis 05 first
+4D75,PK9,,,,,,,error: raw PDB missing - run analysis 05 first
+6BDH,DEV,,,,,,,error: raw PDB missing - run analysis 05 first
+6DA5,G1J,,,,,,,error: raw PDB missing - run analysis 05 first
+7UFB,NJ0,,,,,,,error: raw PDB missing - run analysis 05 first
+9PLK,A1CIW,,,,,,,error: raw PDB missing - run analysis 05 first
+6UNG,QEP,,,,,,,error: raw PDB missing - run analysis 05 first
+9COW,A1A4V,,,,,,,error: raw PDB missing - run analysis 05 first
+7UFC,NJO,,,,,,,error: raw PDB missing - run analysis 05 first
+6DA3,G0D,,,,,,,error: raw PDB missing - run analysis 05 first
+6BD8,D81,,,,,,,error: raw PDB missing - run analysis 05 first
+7UFE,NXR,,,,,,,error: raw PDB missing - run analysis 05 first
+8DYC,UC7,,,,,,,error: raw PDB missing - run analysis 05 first
+6BD7,D7J,,,,,,,error: raw PDB missing - run analysis 05 first
+5A1R,STR,,,,,,,error: raw PDB missing - run analysis 05 first
+7UF9,NH0,,,,,,,error: raw PDB missing - run analysis 05 first
+5A1P,STR,,,,,,,error: raw PDB missing - run analysis 05 first
+6BD5,D7M,,,,,,,error: raw PDB missing - run analysis 05 first
+6BD6,80K,,,,,,,error: raw PDB missing - run analysis 05 first
+7KS8,X8S,,,,,,,error: raw PDB missing - run analysis 05 first
+7UFA,NI6,,,,,,,error: raw PDB missing - run analysis 05 first
+9BBB,A1APA,,,,,,,error: raw PDB missing - run analysis 05 first
+7KVS,X74,,,,,,,error: raw PDB missing - run analysis 05 first
+7KSA,X8P,,,,,,,error: raw PDB missing - run analysis 05 first
+6OOA,MWY,,,,,,,error: raw PDB missing - run analysis 05 first
+6UNE,QES,,,,,,,error: raw PDB missing - run analysis 05 first
+7KVK,X7J,,,,,,,error: raw PDB missing - run analysis 05 first
+9COR,A1A07,,,,,,,error: raw PDB missing - run analysis 05 first
+7KVI,X7P,,,,,,,error: raw PDB missing - run analysis 05 first
+6UNL,QDJ,,,,,,,error: raw PDB missing - run analysis 05 first
+6DAC,FZV,,,,,,,error: raw PDB missing - run analysis 05 first
+6BDI,DEJ,,,,,,,error: raw PDB missing - run analysis 05 first
+6BDM,Y83,,,,,,,error: raw PDB missing - run analysis 05 first
+9COV,A1A4S,,,,,,,error: raw PDB missing - run analysis 05 first
+1W0F,STR,,,,,,,error: raw PDB missing - run analysis 05 first
+6DAL,G1D,,,,,,,error: raw PDB missing - run analysis 05 first
+7KVO,X6S,,,,,,,error: raw PDB missing - run analysis 05 first
+9COY,A1A4T,,,,,,,error: raw PDB missing - run analysis 05 first
+7KVJ,X7M,,,,,,,error: raw PDB missing - run analysis 05 first
+6DA2,G0D,,,,,,,error: raw PDB missing - run analysis 05 first
+6BDK,DJ1,,,,,,,error: raw PDB missing - run analysis 05 first
+5TE8,08J,,,,,,,error: raw PDB missing - run analysis 05 first
+7KVN,X6V,,,,,,,error: raw PDB missing - run analysis 05 first
+7UFF,NYF,,,,,,,error: raw PDB missing - run analysis 05 first
+5VC0,RIT,,,,,,,error: raw PDB missing - run analysis 05 first
+9BV5,A1ASV,,,,,,,error: raw PDB missing - run analysis 05 first
+9COX,A1A4K,,,,,,,error: raw PDB missing - run analysis 05 first
+9PLJ,TCI,,,,,,,error: raw PDB missing - run analysis 05 first
+1W0G,MYT,,,,,,,error: raw PDB missing - run analysis 05 first
+2J0D,ERY,,,,,,,error: raw PDB missing - run analysis 05 first
+7KVP,X6J,,,,,,,error: raw PDB missing - run analysis 05 first
+7KVQ,X7D,,,,,,,error: raw PDB missing - run analysis 05 first
+9COS,A1A06,,,,,,,error: raw PDB missing - run analysis 05 first
+7KVM,X71,,,,,,,error: raw PDB missing - run analysis 05 first
+7KVH,X5Y,,,,,,,error: raw PDB missing - run analysis 05 first
+9BVC,A1ASO,,,,,,,error: raw PDB missing - run analysis 05 first
+6DA8,G0J,,,,,,,error: raw PDB missing - run analysis 05 first
+9COT,A1A08,,,,,,,error: raw PDB missing - run analysis 05 first
+9COU,A1A4U,,,,,,,error: raw PDB missing - run analysis 05 first
+6UNM,QDP,,,,,,,error: raw PDB missing - run analysis 05 first
+4K9U,5AW,,,,,,,error: raw PDB missing - run analysis 05 first
+4I4H,Z9Z,,,,,,,error: raw PDB missing - run analysis 05 first
+7UFD,T0K,,,,,,,error: raw PDB missing - run analysis 05 first
+4NY4,2QH,,,,,,,error: raw PDB missing - run analysis 05 first
+9BV9,A1ASR,,,,,,,error: raw PDB missing - run analysis 05 first
+9BVB,A1ASP,,,,,,,error: raw PDB missing - run analysis 05 first
+9BV8,A1ASS,,,,,,,error: raw PDB missing - run analysis 05 first
+9BVA,A1ASQ,,,,,,,error: raw PDB missing - run analysis 05 first
+9BV6,A1ASU,,,,,,,error: raw PDB missing - run analysis 05 first
+9BV7,A1AST,,,,,,,error: raw PDB missing - run analysis 05 first
+9MS1,A1BNX,,,,,,,error: raw PDB missing - run analysis 05 first
