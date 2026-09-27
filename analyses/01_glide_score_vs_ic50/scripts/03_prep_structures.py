@@ -95,8 +95,23 @@ def clean_structure(pdb_path, chain, comp_id):
     return clean, info
 
 
+def require_compute_node(what):
+    """Refuse to launch CPU-heavy Schrodinger tools outside a SLURM allocation.
+
+    PrepWizard, grid generation and Glide must not run on the shared login node.
+    Set ALLOW_LOGIN_NODE=1 to override (don't).
+    """
+    if os.environ.get("SLURM_JOB_ID") or os.environ.get("ALLOW_LOGIN_NODE") == "1":
+        return
+    raise SystemExit(
+        f"REFUSING to run {what} outside SLURM - this would load the login node.\n"
+        f"Submit it instead, e.g.:  sbatch scripts/run_*.sh"
+    )
+
+
 def run_prepwizard(in_mae, out_mae, work_dir):
     """Run PrepWizard with side-chain filling; fall back without it on failure."""
+    require_compute_node("PrepWizard")
     for extra, label in ((["-fillsidechains"], "with -fillsidechains"), ([], "without -fillsidechains")):
         cmd = [PREPWIZARD] + PREP_OPTS + extra + [os.path.basename(in_mae), os.path.basename(out_mae)]
         print("    $", " ".join(cmd))

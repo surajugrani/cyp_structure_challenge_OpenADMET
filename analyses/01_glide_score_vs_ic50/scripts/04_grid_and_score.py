@@ -86,6 +86,20 @@ def split_receptor_ligand(prepped_mae, info, wdir, pdb):
     return rec_mae, lig_sdf, len(lig_idx)
 
 
+def require_compute_node(what):
+    """Refuse to launch CPU-heavy Schrodinger tools outside a SLURM allocation.
+
+    PrepWizard, grid generation and Glide must not run on the shared login node.
+    Set ALLOW_LOGIN_NODE=1 to override (don't).
+    """
+    if os.environ.get("SLURM_JOB_ID") or os.environ.get("ALLOW_LOGIN_NODE") == "1":
+        return
+    raise SystemExit(
+        f"REFUSING to run {what} outside SLURM - this would load the login node.\n"
+        f"Submit it instead, e.g.:  sbatch scripts/run_*.sh"
+    )
+
+
 def make_grid(rec_mae, lig_sdf, wdir, pdb):
     """Grid centred on the crystal ligand, which is merged in then removed by -lig_asl."""
     # generate_glide_grids appends "-gridgen" to the job name, so the output is
@@ -105,6 +119,7 @@ def make_grid(rec_mae, lig_sdf, wdir, pdb):
     merged_mae = os.path.join(wdir, f"{pdb}_reclig.mae")
     merged.write(merged_mae)
 
+    require_compute_node("Glide grid generation")
     cmd = [GEN_GRIDS, "-NOJOBID", "-WAIT",
            "-rec_file", os.path.basename(merged_mae),
            "-lig_asl", "res. LIG",
@@ -125,6 +140,7 @@ def run_glide(grid_zip, lig_sdf, method, wdir, pdb):
     with open(in_file, "w") as f:
         f.write(GLIDE_IN.format(grid=os.path.basename(grid_zip),
                                 lig=os.path.basename(lig_sdf), method=method))
+    require_compute_node("Glide")
     cmd = [GLIDE, "-NOJOBID", "-WAIT", os.path.basename(in_file)]
     print("    $", " ".join(cmd))
     subprocess.run(cmd, cwd=wdir, check=False)

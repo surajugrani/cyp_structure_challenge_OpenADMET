@@ -90,6 +90,41 @@ metal term is inactive. This is the most likely explanation for the failed corre
 (score / heavy atoms) and MW-controlled partial correlation, to test whether removing the
 size bias recovers any signal.
 
+## 2026-09-26: Analysis 02 — redocking pose recovery
+
+**Folder:** `analyses/02_redocking_pose_recovery/`
+
+**Goal:** Given the correct receptor and a grid on the true site, can Glide regenerate the
+crystal pose? (01 tested scoring given a perfect pose; this tests pose generation.)
+
+**Run:** jobs 47772605 (smoke test, 8SPD), 47772655 (full, 22 x 10 poses), 47772828
+(RMSD recompute). Reused analysis 01's receptors and grids, so the full run took minutes.
+
+**Result:** top-1 RMSD <= 2 A in **4/22 (18 %)**; best-of-10 **6/22 (27 %)**; median top-1
+4.85 A. Typical benchmarks reach 50-80 %, so this is poor.
+
+**Key point — this is a sampling failure, not only scoring.** Best-of-10 (27 %) is barely
+above top-1 (18 %), so a near-native pose is usually absent from the pose list entirely.
+The score does rank poses within a ligand slightly better than chance (pooled rho = +0.16,
+p = 0.02, n = 212; correct sign) but the top pose is the best available in only 6/22 cases.
+This revised an earlier expectation based on 8SPD alone, where sampling had succeeded
+(best 1.71 A at rank 9) and only ranking failed — 8SPD was not representative.
+
+**Mechanism linking 01 and 02:** the Glide metal term is identically 0.00 under the correct
+heme, yet 16/20 ligands coordinate the Fe at 1.9-2.4 A. With no reward for that
+interaction and a large hydrophobic cavity, poses drift. Explains both results.
+
+**Method note:** the `ConformerRmsd` cross-check was dropped — its SMARTS renumbering
+inflated RMSD for some ligands (4K9T pose 1: 5.85 A vs the correct 1.708 A). Replaced with
+a naive index-wise RMSD plus the invariant `glide <= naive`; 0 violations across 212 poses.
+Headline numbers were never affected since Glide's value was always primary.
+
+**Safeguard added:** `require_compute_node()` in the prep/grid/dock scripts now refuses to
+launch PrepWizard or Glide outside SLURM, after two accidental login-node runs.
+
+**Next:** re-dock with a Glide metal constraint to the heme Fe. If success jumps, the
+mechanism is confirmed and the fix is directly useful for the challenge.
+
 ---
 
 ## Planned work
