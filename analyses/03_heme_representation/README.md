@@ -39,12 +39,16 @@ sbatch scripts/run_variants.sh --pdbs 8SPD,4K9X,2V0M
 
 Identical across all three structures:
 
-| Variant | Fe | Porphyrin | Heme charge | **Metal** | 8SPD score | 8SPD ecoul |
-|---|---|---|---|---|---|---|
-| `fe2_dianion` — analyses 01/02 baseline | +2 | dianion | −2 | 0.00 | −4.78 | −1.00 |
-| `fe3_dianion` — **chemically correct** | +3 | dianion | −1 | **0.00** | −3.37 | **+7.02** |
-| `fe2_monoanion` | +2 | monoanion | −1 | 0.00 | −4.52 | −1.83 |
-| `fe3_monoanion` | +3 | monoanion | 0 | **−2.30** | −7.62 | **−7.12** |
+| Variant | Fe | Pyrrole N | N–H | Heme charge | **Metal** | 8SPD score | 8SPD ecoul |
+|---|---|---|---|---|---|---|---|
+| `fe2_dianion` — analyses 01/02 baseline | +2 | 2 × N⁻ | 0 | −2 | 0.00 | −4.78 | −1.00 |
+| `fe2_monoanion` | +2 | 1 × N⁻ | 0 | −1 | 0.00 | −4.52 | −1.83 |
+| **`fe2_nh`** — reproduces "state B" | +2 | 1 × N⁻ | **1** | −1 | **−2.30** | −7.07 | −4.22 |
+| `fe3_dianion` — **chemically correct** | +3 | 2 × N⁻ | 0 | −1 | 0.00 | −3.37 | +7.02 |
+| `fe3_monoanion` | +3 | 1 × N⁻ | 0 | 0 | **−2.30** | −7.62 | −7.12 |
+| `fe3_nh` | +3 | 1 × N⁻ | **1** | 0 | 0.00 | −5.00 | −9.51 |
+
+Identical metal values across all three structures tested.
 
 ### 1. The chemically correct heme does not activate the metal term
 
@@ -52,13 +56,26 @@ CYP3A4's resting state is ferric: Fe(III) + porphyrin dianion + 2 deprotonated p
 = net −1. That is `fe3_dianion`, and it gives **metal = 0.00**. Setting the physiological
 oxidation state does not help.
 
-### 2. Activation is not explained by net formal charge
+### 2. Activation follows no chemically sensible rule
 
-`fe3_dianion` (−1) and `fe2_monoanion` (−1) both give 0.00, yet 8SPD "state B" from
-analysis 01 — also net −1, but with a pyrrole **N–H** present — gave −2.30. Same net
-charge, different outcome. Glide's metal-site perception depends on something more
-specific, which we could not determine from outside the program. **Left unresolved rather
-than guessed at.**
+Two of six representations activate the term, and they share no identifiable feature:
+
+- **Net heme charge does not predict it.** `fe2_monoanion` and `fe2_nh` are both −1, giving
+  0.00 and −2.30. `fe3_monoanion` and `fe3_nh` are both 0, giving −2.30 and 0.00.
+- **Fe–porphyrin core charge does not predict it.** `fe2_monoanion` and `fe2_nh` are both
+  +1; `fe3_monoanion` and `fe3_nh` are both +2. Same split.
+- **The N–H does not predict it either** — it *activates* the term at Fe²⁺ and
+  *deactivates* it at Fe³⁺.
+
+> An earlier version of this README claimed only `fe3_monoanion` activates the term. That
+> was **wrong**: `fe2_nh` also does, at the same −2.30, and it reproduces the "state B"
+> already observed in analysis 01. The error came from testing `fe2_monoanion` (charge
+> neutralised, no H added) as a stand-in for state B and not noticing the proxy differed in
+> exactly the respect that mattered.
+
+**Practical caution:** Glide's metal-site perception flips on single-atom changes in a way
+that is not derivable from formal charge or protonation state. For metalloprotein docking,
+the metal term should be checked empirically per receptor preparation, never assumed.
 
 ### 3. The metal term is saturated at crystal geometries — not fixed
 
@@ -92,9 +109,16 @@ representation they used.
 
 ## Decision
 
-Keep the **chemically correct** heme. The only activation route found so far
-(`fe3_monoanion`) requires a monoanionic porphyrin, which is wrong for a metalated
-porphyrin — and per point 3 it would not improve affinity ranking anyway.
+Keep the **chemically correct** heme for the baseline. Both activation routes
+(`fe2_nh`, `fe3_monoanion`) require a chemically wrong porphyrin — a metalated porphyrin
+has no pyrrole N–H and is a dianion.
+
+Analysis 04 nonetheless repeats analyses 01 and 02 under **`fe2_nh`**, to test empirically
+whether the wrong chemistry docks and scores better — understood going in that any
+improvement would be right for the wrong reasons. `fe2_nh` is chosen over `fe3_monoanion`
+because it perturbs electrostatics roughly three times less (mean `ecoul` shift −1.7 vs
+−4.9; for 4K9X, exactly zero) and leaves Fe at +2 as in the baseline, making it a far
+cleaner single-variable comparison.
 
 Analyses 01 and 02 are deliberately **left intact** as the Fe(II) dianion baseline rather
 than being re-run under a different representation; the sensitivity shown here is a more

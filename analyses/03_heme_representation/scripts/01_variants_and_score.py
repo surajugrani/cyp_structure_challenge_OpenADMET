@@ -14,9 +14,14 @@ Variants (applied to the already-prepped complex from analysis 01; no PrepWizard
   fe2_dianion   baseline, = analyses 01/02. Fe +2, porphyrin dianion (2 N at -1, no N-H).
   fe3_dianion   Fe +3. CYP3A4's resting state is ferric Fe(III); PrepWizard leaves +2.
                 The chemically motivated lever — does a ferric iron activate the term?
-  fe2_monoanion Fe +2, one pyrrole N set to neutral (no H added). Isolates whether the
-                pyrrole *charge* matters, separately from the N-H itself.
-  fe3_monoanion both changes together.
+  fe2_monoanion Fe +2, one pyrrole N set to neutral, NO H added. Isolates the pyrrole
+                *charge* from the N-H itself.
+  fe3_monoanion Fe +3 plus the same charge change.
+  fe2_nh        Fe +2, one pyrrole N neutral WITH an explicit H added. This reproduces
+                "state B" from analysis 01, which gave metal = -2.30. Distinguishing this
+                from fe2_monoanion is the whole point: same net charge, differing only by
+                the hydrogen.
+  fe3_nh        Fe +3 plus the N-H.
 
 Note that changing Fe's formal charge also shifts grid electrostatics, so the metal term is
 recorded explicitly rather than inferred from the total score. Formal charge on a metal in
@@ -39,6 +44,7 @@ import subprocess
 
 import pandas as pd
 from schrodinger import structure
+from schrodinger.structutils import build
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ANALYSES = os.path.dirname(HERE)
@@ -51,7 +57,8 @@ SCHRODINGER = os.environ["SCHRODINGER"]
 GEN_GRIDS = os.path.join(SCHRODINGER, "utilities", "generate_glide_grids")
 GLIDE = os.path.join(SCHRODINGER, "glide")
 
-VARIANTS = ["fe2_dianion", "fe3_dianion", "fe2_monoanion", "fe3_monoanion"]
+VARIANTS = ["fe2_dianion", "fe3_dianion", "fe2_monoanion", "fe3_monoanion",
+            "fe2_nh", "fe3_nh"]
 
 GLIDE_IN = """GRIDFILE   {grid}
 LIGANDFILE   {lig}
@@ -93,20 +100,34 @@ def apply_variant(src_mae, dst_mae, variant):
 
     fe.formal_charge = 3 if variant.startswith("fe3") else 2
 
-    if variant.endswith("monoanion"):
-        # Neutralise one of the two anionic pyrrole N (no H added - this isolates the
-        # charge effect from the N-H itself).
+    n_added = 0
+    if variant.endswith(("monoanion", "nh")):
+        # Neutralise one of the two anionic pyrrole N.
         anionic = sorted([n for n in pyrrole_n if n.formal_charge == -1],
                          key=lambda a: a.pdbname)
         if not anionic:
             raise RuntimeError("no anionic pyrrole N to neutralise")
-        anionic[0].formal_charge = 0
+        target = anionic[0]
+        target.formal_charge = 0
+        if variant.endswith("nh"):
+            # Reproduce analysis 01's "state B": an explicit pyrrole N-H. Same net charge
+            # as *_monoanion, differing only by the hydrogen - which is the comparison.
+            before = st.atom_total
+            build.add_hydrogens(st, atom_list=[target.index])
+            n_added = st.atom_total - before
+            if n_added != 1:
+                raise RuntimeError(f"expected to add 1 H to pyrrole N, added {n_added}")
 
     st.write(dst_mae)
     heme = [a for a in st.atom if a.pdbres.strip() == "HEM"]
+    fe = [a for a in st.atom if a.element == "Fe" and a.pdbres.strip() == "HEM"][0]
+    pyrrole_n = [b for b in fe.bonded_atoms if b.element == "N" and b.pdbres.strip() == "HEM"]
     return {"fe_formal_charge": fe.formal_charge,
             "heme_formal_charge": sum(a.formal_charge for a in heme),
-            "pyrrole_N_charges": ",".join(str(n.formal_charge) for n in pyrrole_n)}
+            "pyrrole_N_charges": ",".join(str(n.formal_charge) for n in pyrrole_n),
+            "pyrrole_NH_count": sum(1 for n in pyrrole_n
+                                    if any(b.element == "H" for b in n.bonded_atoms)),
+            "h_added": n_added}
 
 
 def build_grid(rec_mae, lig_sdf, wdir, tag):
