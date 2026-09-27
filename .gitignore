@@ -41,3 +41,6 @@ __pycache__/
 analyses/*/structures/
 analyses/*/slurm-*.out
 analyses/*/structures/
+
+# ── Locally vendored Python deps (see analyses/05_*/README.md for install cmd) ──
+.pylibs/
