@@ -22,9 +22,10 @@ Each analysis is self-contained in `analyses/`, with its own README (question, d
 | 02 | [Redocking pose recovery](analyses/02_redocking_pose_recovery/) | Complete — 18 % top-1 success at 2 Å |
 | 03 | [Heme representation & Glide's metal term](analyses/03_heme_representation/) | Complete — activation follows no chemical logic |
 | 04 | [Does the wrong chemistry dock better?](analyses/04_wrong_chemistry_replication/) | Complete — no, the metal reward is unreachable |
-| 05 | [Full-set redocking from SMILES (Glide)](analyses/05_full_pdb_redocking/) | 97/100 docked |
-| 06 | [Redocking with ICM-Pro](analyses/06_icm_redocking/) | Running |
+| 05 | [Full-set redocking from SMILES (Glide)](analyses/05_full_pdb_redocking/) | Complete — 97/100 docked |
+| 06 | [Redocking with ICM-Pro](analyses/06_icm_redocking/) | Complete — 100/100 docked |
 | 07 | [Blinded ligands vs PDB chemistry](analyses/07_test_vs_pdb_chemistry/) | Complete — sets barely overlap; benchmark likely pessimistic |
+| 08 | [ICM scoring of crystal poses vs IC50](analyses/08_icm_score_only/) | Complete — no correlation; RTCNN subset hit is spurious |
 
 ## Tools
 
