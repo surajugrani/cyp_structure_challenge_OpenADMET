@@ -26,6 +26,7 @@ import argparse
 import json
 import os
 import subprocess
+import time
 
 import numpy as np
 import pandas as pd
@@ -44,13 +45,40 @@ PREP_OPTS = ["-NOJOBID", "-rehtreat", "-captermini", "-propka_pH", "7.4",
              "-epik_pH", "7.4", "-f", "OPLS_2005", "-rmsd", "0.3"]
 
 
-def download_pdb(pdb_id, out_path):
-    if os.path.exists(out_path):
-        return
-    r = requests.get(f"https://files.rcsb.org/download/{pdb_id}.pdb", timeout=120, verify=True)
-    r.raise_for_status()
-    with open(out_path, "w") as f:
-        f.write(r.text)
+def download_pdb(pdb_id, out_path, retries=3):
+    """Download a structure, returning the path actually written.
+
+    Falls back from .pdb to .cif: RCSB no longer distributes legacy PDB-format files for
+    newer or large depositions, so entries like 9PLK/9COW/9BBB/9COR 404 on .pdb while the
+    mmCIF exists. Also retries on 5xx, which RCSB returns transiently (seen for 5A1P,
+    6BD5). Schrodinger's StructureReader reads both formats, keyed on the file extension,
+    so callers must use the RETURNED path rather than assuming .pdb.
+    """
+    base = os.path.splitext(out_path)[0]
+    for ext in (".pdb", ".cif"):
+        candidate = base + ext
+        if os.path.exists(candidate) and os.path.getsize(candidate) > 0:
+            return candidate
+
+    last = None
+    for ext in (".pdb", ".cif"):
+        candidate = base + ext
+        for attempt in range(retries):
+            try:
+                r = requests.get(f"https://files.rcsb.org/download/{pdb_id}{ext}",
+                                 timeout=120, verify=True)
+                if r.status_code == 404:
+                    last = f"404 for {pdb_id}{ext}"
+                    break                      # no point retrying a genuine 404
+                r.raise_for_status()
+                with open(candidate, "w") as f:
+                    f.write(r.text)
+                return candidate
+            except requests.RequestException as e:
+                last = str(e)
+                if attempt < retries - 1:
+                    time.sleep(2 ** attempt)   # transient 5xx / network blip
+    raise RuntimeError(f"could not download {pdb_id} as .pdb or .cif: {last}")
 
 
 def clean_structure(pdb_path, chain, comp_id):
@@ -208,9 +236,7 @@ def main():
         print(f"\n== {pdb} ({comp}, chain {chain})")
         out = {"pdb_id": pdb, "comp_id": comp}
         try:
-            pdb_path = os.path.join(wdir, f"{pdb}.pdb")
-            download_pdb(pdb, pdb_path)
-
+            pdb_path = download_pdb(pdb, os.path.join(wdir, f"{pdb}.pdb"))
             clean, info = clean_structure(pdb_path, chain, comp)
             clean_mae = os.path.join(wdir, f"{pdb}_clean.mae")
             clean.write(clean_mae)

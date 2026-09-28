@@ -67,10 +67,13 @@ def main():
         os.makedirs(wdir, exist_ok=True)
         rec = {"pdb_id": pdb, "comp_id": comp}
         try:
-            raw = os.path.join(src, f"{pdb}.pdb")
+            # analysis 05 writes .pdb, or .cif where RCSB has no legacy PDB file
+            raw = next((q for q in (os.path.join(src, f"{pdb}.pdb"),
+                                    os.path.join(src, f"{pdb}.cif"))
+                        if os.path.exists(q)), None)
             ligprep = os.path.join(src, f"{pdb}_ligprep.maegz")
-            if not os.path.exists(raw):
-                raise RuntimeError("raw PDB missing - run analysis 05 first")
+            if raw is None:
+                raise RuntimeError("raw structure missing - run analysis 05 first")
             if not os.path.exists(ligprep):
                 raise RuntimeError("LigPrep output missing - analysis 05 not done here yet")
 

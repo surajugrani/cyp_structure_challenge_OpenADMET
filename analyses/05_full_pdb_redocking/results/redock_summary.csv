@@ -7,3 +7,58 @@ pdb_id,comp_id,has_affinity,resolution,n_crystal_lig_atoms,n_ligprep_states,n_po
 6DAB,G0V,True,2.3500,74,1,10,6.5795,4.1714,6,-6.3690,ok
 4K9W,7AW,True,2.3990,93,1,10,9.4747,2.2992,6,-9.2400,ok
 6DAJ,FZV,True,2.4500,74,1,10,6.9762,4.3257,5,-8.0160,ok
+4K9T,1RD,True,2.5000,71,1,10,1.6915,1.4556,4,-8.5440,ok
+4K9V,6AW,True,2.6000,78,1,10,5.8886,2.0936,10,-8.5220,ok
+6UNJ,QDY,True,2.6000,80,1,10,6.6001,6.4373,9,-9.2670,ok
+6UNI,QDV,True,2.6020,78,1,10,7.9054,3.0362,6,-8.1580,ok
+4I4G,Z8Z,True,2.7180,97,1,9,3.8825,2.9683,2,-8.0110,ok
+6UNH,QEA,True,2.7200,78,1,10,5.2726,5.0898,10,-10.3300,ok
+6UNK,QE4,True,2.7500,80,1,10,3.5564,3.5564,1,-7.9050,ok
+7LXL,YNV,True,2.7500,106,1,10,6.0712,2.2452,8,-6.4350,ok
+4D7D,PKT,True,2.7600,65,1,10,6.6364,5.4122,6,-6.7460,ok
+4K9X,8AW,True,2.7600,70,1,10,7.3300,1.7086,5,-7.5930,ok
+2V0M,KLN,True,2.8000,64,2,19,0.8183,0.5763,2,-10.7400,ok
+4D78,J9K,True,2.8000,61,1,10,5.8916,2.0619,9,-6.5680,ok
+6DAG,G0Y,True,2.8000,74,1,10,7.4475,3.4360,3,-6.9860,ok
+8SPD,CL6,True,2.9000,42,1,10,5.3329,3.3371,8,-5.3790,ok
+6MA8,PMF,False,1.8300,18,1,9,2.0548,0.8266,7,-5.2270,ok
+3NXU,RIT,False,2.0000,98,1,5,9.1266,2.3022,5,-9.8730,ok
+8SO1,CFF,False,2.0500,24,1,9,7.7053,0.2010,3,-4.9150,ok
+6DAA,G0M,False,2.1500,71,1,10,1.8767,1.6273,6,-7.2690,ok
+8SO2,CFF,False,2.1500,24,1,9,2.5587,2.1493,2,-5.8390,ok
+5VCG,08Y,False,2.2000,83,2,12,0.4980,0.4980,1,-10.6700,ok
+5VCE,RIT,False,2.2000,98,1,6,9.6242,5.9803,2,-10.3000,ok
+6OOB,MWS,False,2.2020,51,1,9,0.9767,0.9767,1,-8.5970,ok
+6BCZ,D7Y,False,2.2300,60,2,19,1.9599,1.9599,1,-7.8060,ok
+3TJS,D0R,False,2.2500,86,2,19,7.1564,6.1709,15,-7.2550,ok
+4D75,PK9,False,2.2500,50,1,9,4.7690,4.3723,6,-5.1890,ok
+6BDH,DEV,False,2.2500,73,1,10,7.1670,5.0926,10,-9.2750,ok
+6DA5,G1J,False,2.2500,71,1,10,4.9810,4.5248,5,-6.9870,ok
+7UFB,NJ0,False,2.2500,70,1,10,2.7277,2.7277,1,-9.4470,ok
+9PLK,A1CIW,False,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9PLK.pdb
+6UNG,QEP,False,2.3000,79,1,10,8.8287,6.1764,7,-10.9700,ok
+9COW,A1A4V,False,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9COW.pdb
+7UFC,NJO,False,2.3500,76,1,10,9.8548,4.7052,8,-9.9660,ok
+6DA3,G0D,False,2.3700,71,1,10,5.6406,5.4393,5,-6.9730,ok
+6BD8,D81,False,2.3800,78,2,20,4.8836,3.9718,17,-6.9510,ok
+7UFE,NXR,False,2.4000,73,2,20,4.8053,2.3045,2,-9.6580,ok
+8DYC,UC7,False,2.4000,48,1,9,0.4194,0.4194,1,-9.4880,ok
+6BD7,D7J,False,2.4200,73,2,20,6.0670,3.6387,7,-8.1730,ok
+5A1R,STR,False,error: no poses produced
+7UF9,NH0,False,2.4500,74,2,19,4.2810,4.2810,1,-6.6270,ok
+5A1P,STR,False,error: 500 Server Error: Internal Server Error for url: https://files.rcsb.org/download/5A1P.pdb
+6BD5,D7M,False,error: 500 Server Error: Internal Server Error for url: https://files.rcsb.org/download/6BD5.pdb
+6BD6,80K,False,2.5000,60,1,9,2.4730,2.4730,1,-7.6180,ok
+7KS8,X8S,False,error: LigPrep produced no output
+7UFA,NI6,False,2.5000,77,2,20,2.6236,2.3983,7,-9.7940,ok
+9BBB,A1APA,False,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9BBB.pdb
+7KVS,X74,False,2.5000,83,2,20,2.4651,2.4651,1,-8.8240,ok
+7KSA,X8P,False,error: LigPrep produced no output
+6OOA,MWY,False,2.5200,71,3,30,3.4579,1.3235,10,-6.5910,ok
+6UNE,QES,False,2.5500,77,1,10,8.6196,6.3106,8,-11.1200,ok
+7KVK,X7J,False,2.5500,77,2,20,2.6825,2.1037,7,-8.6430,ok
+9COR,A1A07,False,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9COR.pdb
+7KVI,X7P,False,2.5500,77,2,20,5.2262,3.7746,2,-7.0510,ok
+6UNL,QDJ,False,2.5500,83,1,10,6.0105,3.2003,2,-10.9600,ok
+6DAC,FZV,False,2.5500,74,1,10,4.9254,4.9254,1,-8.3920,ok
+6BDI,DEJ,False,2.5700,76,2,20,7.0344,2.2819,5,-8.1380,ok

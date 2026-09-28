@@ -7,3 +7,58 @@ pdb_id,comp_id,has_affinity,resolution,smiles,chain,score_resnum,score_min_dist_
 6DAB,G0V,True,2.3500,CC(C)(C)OC(=O)N[C@H](Cc1ccccc1)CS[C@H](Cc2ccccc2)C(=O)NCCc3cccnc3,A,603,2.2100,3577,with -fillsidechains,0,0,74,0,-2,CYS:S;G0V:N;HEM:N;HEM:N;HEM:N;HEM:N,74,1,ok
 4K9W,7AW,True,2.3990,CCC[C@@H](CC[C@H](Cc1ccccc1)NC(=O)[C@H](C(C)C)NC(=O)N(C)Cc2csc(n2)C(C)C)NC(=O)OCc3cncs3,A,602,2.2400,3775,with -fillsidechains,0,0,93,0,-2,7AW:N;CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,93,1,ok
 6DAJ,FZV,True,2.4500,CC(C)(C)OC(=O)N[C@@H](Cc1ccccc1)CS[C@H](Cc2ccccc2)C(=O)NCCc3cccnc3,A,602,2.3100,3703,with -fillsidechains,0,0,74,0,-2,CYS:S;FZV:N;HEM:N;HEM:N;HEM:N;HEM:N,74,1,ok
+4K9T,1RD,True,2.5000,CC(C)c1nc(cs1)CN(C)C(=O)N[C@@H](C(C)C)C(=O)NCCCCNC(=O)OCc2cncs2,A,602,2.1700,3773,with -fillsidechains,0,0,71,0,-2,1RD:N;CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,71,1,ok
+4K9V,6AW,True,2.6000,CC[C@@H](CC[C@H](CC)NC(=O)OCc1cncs1)NC(=O)[C@H](CO)NC(=O)N(C)Cc2csc(n2)C(C)C,A,602,2.1000,3750,with -fillsidechains,0,0,78,0,-2,6AW:N;CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,78,1,ok
+6UNJ,QDY,True,2.6000,CC(C)(C)OC(=O)N[C@H](Cc1cccc2c1cccc2)CS[C@@H](Cc3ccccc3)C(=O)NCCc4cccnc4,A,602,2.8200,3642,with -fillsidechains,0,0,80,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,80,1,ok
+6UNI,QDV,True,2.6020,CC(C)(C)OC(=O)N[C@@H](Cc1c[nH]c2c1cccc2)CS[C@H](Cc3ccccc3)C(=O)NCCc4cccnc4,A,602,2.4000,3572,with -fillsidechains,0,0,78,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;QDV:N,78,1,ok
+4I4G,Z8Z,True,2.7180,CC(C)c1nc(cs1)CN(C)C(=O)N[C@@H](C(C)C)C(=O)N[C@H](CC[C@H](Cc2ccccc2)NC(=O)OCc3cnco3)Cc4ccccc4,A,602,2.1000,3787,with -fillsidechains,0,0,97,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;Z8Z:N,97,1,ok
+6UNH,QEA,True,2.7200,CC(C)(C)OC(=O)N[C@H](Cc1c[nH]c2c1cccc2)CS[C@@H](Cc3ccccc3)C(=O)NCCc4cccnc4,A,602,2.3200,3727,with -fillsidechains,0,0,78,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;QEA:N,78,1,ok
+6UNK,QE4,True,2.7500,CC(C)(C)OC(=O)N[C@@H](Cc1cccc2c1cccc2)CS[C@H](Cc3ccccc3)C(=O)NCCc4cccnc4,A,602,2.3700,3692,with -fillsidechains,0,0,80,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;QE4:N,80,1,ok
+7LXL,YNV,True,2.7500,C[C@]12CC[C@H]3[C@H]([C@@H]1CC[C@@H]2O)[C@@H](CC4=CC(=O)CC[C@]34C)C/C=C\C[C@@H]5CC6=CC(=O)CC[C@@]6([C@@H]7[C@@H]5[C@@H]8CC[C@@H]([C@]8(CC7)C)O)C,A,602,3.7300,3732,with -fillsidechains,0,0,106,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,106,1,ok
+4D7D,PKT,True,2.7600,CC(C)(C)OC(=O)N[C@@H](Cc1c[nH]c2c1cccc2)CSCCC(=O)NCc3cccnc3,A,1600,2.0100,3765,with -fillsidechains,0,0,65,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;PKT:N,65,1,ok
+4K9X,8AW,True,2.7600,CC[C@H](C)C(=O)N[C@H](CC[C@H](Cc1ccccc1)NC(=O)OCc2cncs2)Cc3ccccc3,A,602,1.9700,3683,with -fillsidechains,0,0,70,0,-2,8AW:N;CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,70,1,ok
+2V0M,KLN,True,2.8000,CC(=O)N1CCN(CC1)c2ccc(cc2)OC[C@@H]3CO[C@@](O3)(Cn4ccnc4)c5ccc(cc5Cl)Cl,A,1500,2.1000,3766,with -fillsidechains,0,0,64,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;KLN:N,64,2,ok
+4D78,J9K,True,2.8000,CC(C)(C)OC(=O)N[C@@H](Cc1ccccc1)CSCCC(=O)NCc2cccnc2,A,1600,2.1200,3771,with -fillsidechains,0,0,61,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;J9K:N,61,1,ok
+6DAG,G0Y,True,2.8000,CC(C)(C)OC(=O)N[C@H](Cc1ccccc1)CS[C@@H](Cc2ccccc2)C(=O)NCCc3cccnc3,A,602,2.2500,3700,with -fillsidechains,0,0,74,0,-2,CYS:S;G0Y:N;HEM:N;HEM:N;HEM:N;HEM:N,74,1,ok
+8SPD,CL6,True,2.9000,c1ccc(cc1)C(c2ccccc2)(c3ccccc3Cl)n4ccnc4,A,602,1.9400,3522,with -fillsidechains,2,1,42,0,-2,CL6:N;CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,42,1,ok
+6MA8,PMF,False,1.8300,c1ccc(cc1)CS(=O)(=O)F,A,604,4.8400,3779,with -fillsidechains,0,0,18,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,18,1,ok
+3NXU,RIT,False,2.0000,CC(C)c1nc(cs1)CN(C)C(=O)N[C@@H](C(C)C)C(=O)N[C@@H](Cc2ccccc2)C[C@@H]([C@H](Cc3ccccc3)NC(=O)OCc4cncs4)O,A,600,2.2200,3771,with -fillsidechains,0,0,98,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;RIT:N,98,1,ok
+8SO1,CFF,False,2.0500,Cn1cnc2c1C(=O)N(C(=O)N2C)C,A,602,3.6800,3843,with -fillsidechains,0,0,24,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,24,1,ok
+6DAA,G0M,False,2.1500,CC(C)(C)OC(=O)N[C@@H](Cc1ccccc1)CS[C@H](Cc2ccccc2)C(=O)NCc3cccnc3,A,602,2.2500,3699,with -fillsidechains,0,0,71,0,-2,CYS:S;G0M:N;HEM:N;HEM:N;HEM:N;HEM:N,71,1,ok
+8SO2,CFF,False,2.1500,Cn1cnc2c1C(=O)N(C(=O)N2C)C,A,602,3.4000,3893,with -fillsidechains,0,0,24,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,24,1,ok
+5VCG,08Y,False,2.2000,CC(C)C[C@H]1C(=O)N2CCC[C@H]2[C@]3(N1C(=O)[C@](O3)(C(C)C)NC(=O)[C@H]4CN([C@@H]5Cc6c7c(cccc7[nH]c6Br)C5=C4)C)O,A,602,3.4600,3800,with -fillsidechains,0,0,83,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,83,2,ok
+5VCE,RIT,False,2.2000,CC(C)c1nc(cs1)CN(C)C(=O)N[C@@H](C(C)C)C(=O)N[C@@H](Cc2ccccc2)C[C@@H]([C@H](Cc3ccccc3)NC(=O)OCc4cncs4)O,A,602,1.9600,3769,with -fillsidechains,0,0,98,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;RIT:N,98,1,ok
+6OOB,MWS,False,2.2020,C/C(=C/COc1c2ccoc2cc3c1C=CC(=O)O3)/CC[C@@H](C(C)(C)O)O,A,602,5.1700,3740,with -fillsidechains,0,0,51,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,51,1,ok
+6BCZ,D7Y,False,2.2300,CC(C)N[C@@H](CSCCNC(=O)OC(C)(C)C)C(=O)NCc1cccnc1,A,602,2.2800,3778,with -fillsidechains,0,0,60,1,-2,CYS:S;D7Y:N;HEM:N;HEM:N;HEM:N;HEM:N,60,2,ok
+3TJS,D0R,False,2.2500,CC(C)c1nc(cs1)CN(C)C(=O)N[C@@H](C(C)C)C(=O)N[C@@H](Cc2ccccc2)C[C@@H]([C@H](Cc3ccccc3)N)O,A,600,2.1100,3693,with -fillsidechains,0,0,86,0,-2,CYS:S;D0R:N;HEM:N;HEM:N;HEM:N;HEM:N,86,2,ok
+4D75,PK9,False,2.2500,CC(C)(C)OC(=O)NCCCCCC(=O)NCc1cccnc1,A,600,2.3800,3774,with -fillsidechains,0,0,50,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;PK9:N,50,1,ok
+6BDH,DEV,False,2.2500,CC(C)(C)OC(=O)N[C@@H](Cc1ccccc1)CSC[C@H](C(=O)NCc2cccnc2)Nc3ccccc3,A,602,2.3700,3596,with -fillsidechains,0,0,73,0,-2,CYS:S;DEV:N;HEM:N;HEM:N;HEM:N;HEM:N,73,1,ok
+6DA5,G1J,False,2.2500,CC(C)(C)OC(=O)N[C@H](Cc1ccccc1)CS[C@@H](Cc2ccccc2)C(=O)NCc3cccnc3,A,602,2.2200,3699,with -fillsidechains,0,0,71,0,-2,CYS:S;G1J:N;HEM:N;HEM:N;HEM:N;HEM:N,71,1,ok
+7UFB,NJ0,False,2.2500,c1ccc(cc1)C[C@@H](CS[C@H](Cc2ccccc2)C(=O)NCc3cccnc3)NC(=O)Cc4cccnc4,A,602,2.2900,3797,with -fillsidechains,0,0,70,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;NJ0:N,70,1,ok
+9PLK,A1CIW,False,2.2500,c1ccc(cc1)C(c2ccccc2)([C@@H]3CCN(C3)CCc4ccc5c(c4)CCO5)C(=O)N,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9PLK.pdb
+6UNG,QEP,False,2.3000,CC(C)(C)OC(=O)N[C@@H](Cc1cccc2c1cccc2)CSC[C@@H](C(=O)NCc3cccnc3)Nc4ccccc4,A,602,2.2000,3731,with -fillsidechains,0,0,79,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;QEP:N,79,1,ok
+9COW,A1A4V,False,2.3000,c1ccc(cc1)C[C@H](C(=O)NCCCc2cccnc2)SC[C@H](Cc3cccc4c3cccc4)NC(=O)c5cccnc5,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9COW.pdb
+7UFC,NJO,False,2.3500,c1ccc(cc1)C[C@@H](CS[C@H](Cc2ccccc2)C(=O)NCCc3cccnc3)NC(=O)CCc4cccnc4,A,602,2.1000,3791,with -fillsidechains,0,0,76,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;NJO:N,76,1,ok
+6DA3,G0D,False,2.3700,CC(C)(C)OC(=O)N[C@H](Cc1ccccc1)CS[C@H](Cc2ccccc2)C(=O)NCc3cccnc3,A,602,2.2600,3691,with -fillsidechains,0,0,71,0,-2,CYS:S;G0D:N;HEM:N;HEM:N;HEM:N;HEM:N,71,1,ok
+6BD8,D81,False,2.3800,CC(C)(C)OC(=C)N[C@@H](Cc1ccccc1)CSC[C@@H](C(=O)NCc2cccnc2)NC3CCCC3,A,602,2.1300,3754,with -fillsidechains,0,0,78,0,-2,CYS:S;D81:N;HEM:N;HEM:N;HEM:N;HEM:N,78,2,ok
+7UFE,NXR,False,2.4000,c1ccc(cc1)C[C@@H](CS[C@H](Cc2ccccc2)C(=O)NCCCc3cccnc3)NC(=O)c4cccnc4,A,604,2.1600,3774,with -fillsidechains,0,0,73,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;NXR:N,73,2,ok
+8DYC,UC7,False,2.4000,CCCCNc1ccc2c3c1cccc3C(=O)N(C2=O)CCCC,A,602,12.3000,3798,with -fillsidechains,0,0,48,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,48,1,ok
+6BD7,D7J,False,2.4200,CC(C)N[C@@H](CSC[C@H](Cc1ccccc1)NC(=O)OC(C)(C)C)C(=O)NCc2cccnc2,A,602,2.2100,3797,with -fillsidechains,0,0,73,1,-2,CYS:S;D7J:N;HEM:N;HEM:N;HEM:N;HEM:N,73,2,ok
+5A1R,STR,False,2.4500,CC(=O)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CCC4=CC(=O)CC[C@]34C)C,A,600,17.1900,3783,with -fillsidechains,0,0,53,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,53,1,error: no poses produced
+7UF9,NH0,False,2.4500,CC(C)(C)OC(=O)N[C@@H](Cc1ccccc1)CS[C@H](Cc2ccccc2)C(=O)NCCc3ccncc3,A,602,2.0600,3628,with -fillsidechains,0,0,74,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;NH0:N,74,2,ok
+5A1P,STR,False,2.5000,CC(=O)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CCC4=CC(=O)CC[C@]34C)C,error: 500 Server Error: Internal Server Error for url: https://files.rcsb.org/download/5A1P.pdb
+6BD5,D7M,False,2.5000,CC(C)(C)OC(=O)NCCSC[C@@H](C(=O)NCc1cccnc1)NC2CCCC2,error: 500 Server Error: Internal Server Error for url: https://files.rcsb.org/download/6BD5.pdb
+6BD6,80K,False,2.5000,CC(C)(C)OC(=O)NCCSC[C@H](C(=O)NCc1cccnc1)Nc2ccccc2,A,602,2.2300,3746,with -fillsidechains,0,0,60,0,-2,80K:N;CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,60,1,ok
+7KS8,X8S,False,2.5000,CC1=CC=CC2=[N]1[Ru]34([N]5=CC=CC=C5C6=[N]3C(=CC=C6)C7=CC=CC=[N]47)([N]8=C2C=CC=C8C)[N]9=CC(=CC=C9)CNC(=O)CCSC[C@@H](Cc1ccccc1)NC(=O)OC(C)(C)C,A,603,3.9100,3747,with -fillsidechains,0,0,117,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,117,error: LigPrep produced no output
+7UFA,NI6,False,2.5000,CC(C)(C)OC(=O)N[C@@H](Cc1ccccc1)CS[C@H](Cc2ccccc2)C(=O)NCCCc3ccncc3,A,602,2.0800,3690,with -fillsidechains,0,0,77,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;NI6:N,77,2,ok
+9BBB,A1APA,False,2.5000,CC(C)c1nc(cs1)CN(C)C(=O)N[C@@H](CCN2CCOCC2)C(=O)N[C@H](CC[C@H](Cc3ccccc3)NC(=O)OCc4cncs4)Cc5ccccc5,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9BBB.pdb
+7KVS,X74,False,2.5000,CC(C)(C)OC(=O)N[C@H](Cc1cccc2c1cccc2)CS[C@H](Cc3ccccc3)C(=O)NCCCc4cccnc4,A,605,2.0900,3760,with -fillsidechains,0,0,83,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;X74:N,83,2,ok
+7KSA,X8P,False,2.5000,CC1=CC=CC2=[N]1[Ru]34([N]5=C(C=CC=C5)C6=[N]3C(=CC=C6)C7=CC=CC=[N]47)([N]8=C2C=CC=C8C)[N]9=CC=CC(=C9)CCCNC(=O)[C@@H](Cc1ccccc1)SC[C@H](Cc1ccccc1)NC(=O)OC(C)(C)C,A,602,2.3500,3662,with -fillsidechains,0,0,133,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;X8P:O,133,error: LigPrep produced no output
+6OOA,MWY,False,2.5200,CC[C@@]1(C[C@H]([C@@]2([C@@H](CC[C@@]3([C@H]2C(=O)CC3)[C@H]([C@@H]1O)C)C)C)OC(=O)CSc4nc([nH]n4)N)C,A,603,4.2700,3706,with -fillsidechains,0,0,71,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,71,3,ok
+6UNE,QES,False,2.5500,CC(C)(C)OC(=O)N[C@H](Cc1c[nH]c2c1cccc2)CSC[C@H](C(=O)NCc3cccnc3)Nc4ccccc4,A,602,2.3400,3718,with -fillsidechains,0,0,77,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;QES:N,77,1,ok
+7KVK,X7J,False,2.5500,CC(C)(C)OC(=O)N[C@H](Cc1ccccc1)CS[C@H](Cc2ccccc2)C(=O)NCCCc3cccnc3,A,602,2.1800,3767,with -fillsidechains,0,0,77,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;X7J:N,77,2,ok
+9COR,A1A07,False,2.5500,c1ccc(cc1)C[C@@H](CS[C@H](Cc2ccccc2)C(=O)NCCc3cccnc3)NC(=O)CNC(=O)C(F)(F)F,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9COR.pdb
+7KVI,X7P,False,2.5500,CC(C)(C)OC(=O)N[C@H](Cc1ccccc1)CS[C@@H](Cc2ccccc2)C(=O)NCCCc3cccnc3,A,603,2.2000,3697,with -fillsidechains,0,0,77,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;X7P:N,77,2,ok
+6UNL,QDJ,False,2.5500,CC(C)(C)OC(=O)N[C@H](Cc1cccc2c1cccc2)CS[C@@H](Cc3cccc4c3cccc4)C(=O)NCc5cccnc5,A,602,2.4000,3586,with -fillsidechains,0,0,83,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;QDJ:N,83,1,ok
+6DAC,FZV,False,2.5500,CC(C)(C)OC(=O)N[C@@H](Cc1ccccc1)CS[C@H](Cc2ccccc2)C(=O)NCCc3cccnc3,A,602,2.4500,3742,with -fillsidechains,0,0,74,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,74,1,ok
+6BDI,DEJ,False,2.5700,CC(C)N[C@@H](CSC[C@H](Cc1c[nH]c2c1cccc2)NC(=O)OC(C)(C)C)C(=O)NCc3cccnc3,A,602,2.2700,3801,with -fillsidechains,0,0,76,0,-2,CYS:S;DEJ:N;HEM:N;HEM:N;HEM:N;HEM:N,76,2,ok

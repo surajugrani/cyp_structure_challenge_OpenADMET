@@ -137,8 +137,8 @@ def ligprep_from_smiles(smiles, wdir, pdb, comp):
 
 
 def prepare(pdb, comp, chain, wdir):
-    pdb_path = os.path.join(wdir, f"{pdb}.pdb")
-    download_pdb(pdb, pdb_path)
+    # download_pdb returns the path actually written - .cif when RCSB has no legacy .pdb
+    pdb_path = download_pdb(pdb, os.path.join(wdir, f"{pdb}.pdb"))
     clean, info = clean_structure(pdb_path, chain, comp)
     clean_mae = os.path.join(wdir, f"{pdb}_clean.mae")
     clean.write(clean_mae)
