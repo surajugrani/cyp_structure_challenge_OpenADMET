@@ -168,3 +168,7 @@ pdb_id,comp_id,has_affinity,resolution,smiles,chain,score_resnum,score_min_dist_
 9BV6,A1ASU,False,3.1000,Cc1nc(cs1)c2ccc(cc2)n3c(cnn3)c4ccc(cc4)OC,,,,,,,,,,,,,,"error: ligand A1ASU not found in chain A; ambiguous fallback candidates ['PG0', 'UNL']",
 9BV7,UNL,False,3.2100,c1ccc(c(c1)CCC(=O)NC[C@@H]2Cc3cccc(c3O2)c4cccnc4)Cl,A,602,2.2300,3568,with -fillsidechains,2,1,49,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;UNL:N,49,1,ok,A1AST
 9MS1,UNL,False,3.4000,c1ccc(c(c1)NC(=O)N(Cc2cccc(c2)O)c3cc(ccc3n4ccnc4)C(F)(F)F)Cl,A,602,2.3600,3163,with -fillsidechains,2,1,52,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;UNL:N,52,2,ok,A1BNX
+5A1R,STR,False,2.4500,CC(=O)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CCC4=CC(=O)CC[C@]34C)C,A,600,17.1900,3783,,0,0,53,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,53,1,error: no poses produced,STR
+5A1P,STR,False,2.5000,CC(=O)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CCC4=CC(=O)CC[C@]34C)C,A,1600,17.0700,3804,,0,0,53,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,53,1,error: no poses produced,STR
+1W0F,STR,False,2.6500,CC(=O)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CCC4=CC(=O)CC[C@]34C)C,A,1499,17.0400,3747,,0,0,53,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,53,1,error: no poses produced,STR
+9BV6,UNL,False,3.1000,Cc1nc(cs1)c2ccc(cc2)n3c(cnn3)c4ccc(cc4)OC,A,602,2.2100,3517,with -fillsidechains,2,1,41,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;UNL:N,41,1,ok,A1ASU
