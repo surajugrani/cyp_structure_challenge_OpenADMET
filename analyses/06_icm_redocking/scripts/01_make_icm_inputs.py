@@ -79,9 +79,12 @@ def main():
 
             # Cleaned crystal structure (identical selection logic to analyses 01/05)
             clean, info = clean_structure(raw, chain, comp)
+            # Use info["comp_id"] - the name the FILE uses - not the requested comp_id.
+            # For 5-char CCD codes clean_structure matches a fallback residue (UNL), so
+            # comparing against the requested name here would never match.
             lig_idx = [a.index for a in clean.atom
                        if a.chain == info["chain"] and a.resnum == info["score_resnum"]
-                       and a.pdbres.strip() == comp]
+                       and a.pdbres.strip() == info["comp_id"]]
             if not lig_idx:
                 raise RuntimeError("ligand not located in cleaned structure")
 

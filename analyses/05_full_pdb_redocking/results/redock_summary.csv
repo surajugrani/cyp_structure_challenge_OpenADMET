@@ -77,3 +77,25 @@ pdb_id,comp_id,has_affinity,resolution,n_crystal_lig_atoms,n_ligprep_states,n_po
 7UFD,T0K,False,2.9,76.0,1.0,10.0,10.2931,4.5349,7.0,-9.571,ok
 4NY4,2QH,False,2.95,56.0,3.0,29.0,2.3747,0.49,22.0,-6.725,ok
 6BD5,D7M,False,2.5,63.0,2.0,20.0,7.2341,1.8731,8.0,-5.424,ok
+9PLK,A1CIW,False,2.2500,63,2,18,4.5196,4.3146,8,-7.2300,ok
+9COW,A1A4V,False,2.3000,79,2,20,6.8110,3.4995,5,-9.0500,ok
+5A1R,STR,False,,,,,,,,,error: no poses produced
+5A1P,STR,False,,,,,,,,,error: no poses produced
+9BBB,A1APA,False,2.5000,107,2,19,2.8739,2.8739,1,-8.7180,ok
+9COR,A1A07,False,2.5500,71,2,20,7.6013,2.6680,18,-8.7550,ok
+9COV,A1A4S,False,2.6000,77,2,18,2.1231,1.9946,8,-7.6870,ok
+1W0F,STR,False,,,,,,,,,error: no poses produced
+9COY,A1A4T,False,2.6500,86,2,20,6.6933,3.3937,8,-8.2420,ok
+9BV5,A1ASV,False,2.7100,38,2,18,5.5295,0.6829,2,-5.3870,ok
+9COX,A1A4K,False,2.7200,79,2,20,5.5375,5.1862,19,-7.5900,ok
+9COS,A1A06,False,2.7500,74,3,30,2.3147,2.2260,6,-7.4670,ok
+9BVC,A1ASO,False,2.8000,52,2,18,0.9456,0.9456,1,-7.6780,ok
+9COT,A1A08,False,2.8100,67,2,19,3.7875,1.9090,6,-7.3540,ok
+9COU,A1A4U,False,2.8100,75,2,20,3.8722,3.8705,3,-7.4460,ok
+9BV9,A1ASR,False,2.9500,38,2,20,6.5044,1.1145,2,-6.7970,ok
+9BVB,A1ASP,False,3.0000,39,2,20,1.6825,0.4906,5,-6.4180,ok
+9BV8,A1ASS,False,3.0000,36,2,20,1.1829,0.8762,4,-5.6110,ok
+9BVA,A1ASQ,False,3.0200,44,2,18,6.1227,2.4600,15,-6.6900,ok
+9BV6,A1ASU,False,,,,,,,,,"error: ligand A1ASU not found in chain A; ambiguous fallback candidates ['PG0', 'UNL']"
+9BV7,A1AST,False,3.2100,49,1,10,2.5832,1.5781,7,-7.9550,ok
+9MS1,A1BNX,False,3.4000,52,2,20,6.3695,3.6548,4,-7.5650,ok

@@ -46,6 +46,9 @@ SOLVENT_AND_COFACTOR = {
     "HEM", "HOH", "WAT", "GOL", "EDO", "DMS", "PEG", "PGE", "P6G", "1PE", "2PE",
     "PG4", "TEG", "SO4", "PO4", "ACT", "MPD", "TRS", "EPE", "FMT", "ACY", "NO3",
     "CL", "NA", "MG", "K", "ZN", "CA", "IOD", "BR", "UNX", "UNK",
+    # PEG/glycol fragments - PG0 made the A1ASU fallback ambiguous against UNL
+    "PG0", "PG5", "PG6", "7PE", "12P", "15P", "MRD", "BU3", "IPA", "EOH", "MOH",
+    "CIT", "MES", "BME", "DTT", "SCN", "AZI", "URE", "NH4", "BCT", "OXL", "TAR", "MLI",
 }
 
 PREP_OPTS = ["-NOJOBID", "-rehtreat", "-captermini", "-propka_pH", "7.4",

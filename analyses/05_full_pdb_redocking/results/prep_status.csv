@@ -146,3 +146,25 @@ pdb_id,comp_id,has_affinity,resolution,smiles,chain,score_resnum,score_min_dist_
 9BV6,A1ASU,False,3.1000,Cc1nc(cs1)c2ccc(cc2)n3c(cnn3)c4ccc(cc4)OC,,,,,,,,,,,,,,"error: ligand A1ASU not found in chain A; ambiguous fallback candidates ['PG0', 'UNL']",
 9BV7,UNL,False,3.2100,c1ccc(c(c1)CCC(=O)NC[C@@H]2Cc3cccc(c3O2)c4cccnc4)Cl,A,602,2.2300,3540,with -fillsidechains,2,1,0,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,,,error: crystal ligand copy not found in prepped structure,A1AST
 9MS1,UNL,False,3.4000,c1ccc(c(c1)NC(=O)N(Cc2cccc(c2)O)c3cc(ccc3n4ccnc4)C(F)(F)F)Cl,A,602,2.3600,3129,with -fillsidechains,2,1,0,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,,,error: crystal ligand copy not found in prepped structure,A1BNX
+9PLK,UNL,False,2.2500,c1ccc(cc1)C(c2ccccc2)([C@@H]3CCN(C3)CCc4ccc5c(c4)CCO5)C(=O)N,A,603,4.6700,3709,with -fillsidechains,2,1,63,1,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,63,2,ok,A1CIW
+9COW,UNL,False,2.3000,c1ccc(cc1)C[C@H](C(=O)NCCCc2cccnc2)SC[C@H](Cc3cccc4c3cccc4)NC(=O)c5cccnc5,A,603,2.1900,3527,with -fillsidechains,2,1,79,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;UNL:N,79,2,ok,A1A4V
+5A1R,STR,False,2.4500,CC(=O)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CCC4=CC(=O)CC[C@]34C)C,A,600,17.1900,3783,with -fillsidechains,0,0,53,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,53,1,error: no poses produced,STR
+5A1P,STR,False,2.5000,CC(=O)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CCC4=CC(=O)CC[C@]34C)C,A,1600,17.0700,3804,with -fillsidechains,0,0,53,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,53,1,error: no poses produced,STR
+9BBB,UNL,False,2.5000,CC(C)c1nc(cs1)CN(C)C(=O)N[C@@H](CCN2CCOCC2)C(=O)N[C@H](CC[C@H](Cc3ccccc3)NC(=O)OCc4cncs4)Cc5ccccc5,A,602,2.1400,3615,with -fillsidechains,2,1,107,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;UNL:N,107,2,ok,A1APA
+9COR,UNL,False,2.5500,c1ccc(cc1)C[C@@H](CS[C@H](Cc2ccccc2)C(=O)NCCc3cccnc3)NC(=O)CNC(=O)C(F)(F)F,A,602,2.1300,3598,with -fillsidechains,2,1,71,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;UNL:N,71,2,ok,A1A07
+9COV,UNL,False,2.6000,c1ccc(cc1)C[C@H](C(=O)NCCCc2cccnc2)SC[C@H](Cc3c[nH]c4c3cccc4)NC(=O)c5cccnc5,A,602,2.0600,3539,with -fillsidechains,2,1,77,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;UNL:N,77,2,ok,A1A4S
+1W0F,STR,False,2.6500,CC(=O)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CCC4=CC(=O)CC[C@]34C)C,A,1499,17.0400,3747,with -fillsidechains,0,0,53,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,53,1,error: no poses produced,STR
+9COY,UNL,False,2.6500,CC(C)(C)C(=O)N[C@@H](Cc1ccc(cc1)c2ccccc2)CS[C@H](Cc3ccccc3)C(=O)NCCCc4cccnc4,A,602,2.1500,3667,with -fillsidechains,2,1,86,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;UNL:N,86,2,ok,A1A4T
+9BV5,UNL,False,2.7100,CC(C)(C)C(=O)Nc1cc(ccc1n2ccnc2)C(F)(F)F,A,602,2.2100,3744,with -fillsidechains,2,1,38,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;UNL:N,38,2,ok,A1ASV
+9COX,UNL,False,2.7200,c1ccc(cc1)C[C@@H](C(=O)NCCCc2cccnc2)SC[C@H](Cc3cccc4c3cccc4)NC(=O)c5cccnc5,A,602,2.2200,3532,with -fillsidechains,2,1,79,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;UNL:N,79,2,ok,A1A4K
+9COS,UNL,False,2.7500,c1ccc(cc1)C[C@@H](CS[C@H](Cc2ccccc2)C(=O)NCCCc3cccnc3)NC(=O)CNC(=O)C(F)(F)F,A,602,2.1900,3482,with -fillsidechains,2,1,74,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;UNL:N,74,3,ok,A1A06
+9BVC,UNL,False,2.8000,c1ccc(c(c1)N(Cc2cccc(c2)O)C(=O)Nc3cc(ccc3n4ccnc4)C(F)(F)F)Cl,A,602,2.2300,3475,with -fillsidechains,2,1,52,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;UNL:N,52,2,ok,A1ASO
+9COT,UNL,False,2.8100,c1ccc(cc1)C[C@@H](CS[C@H](Cc2ccccc2)C(=O)NCCCc3cccnc3)NC(=O)C(F)(F)F,A,602,2.1900,3495,with -fillsidechains,2,1,67,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;UNL:N,67,2,ok,A1A08
+9COU,UNL,False,2.8100,c1ccc(cc1)C[C@@H](CS[C@H](Cc2ccccc2)C(=O)NCCCc3cccnc3)NS(=O)(=O)c4ccccc4,A,602,2.2000,3513,with -fillsidechains,2,1,75,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;UNL:N,75,2,ok,A1A4U
+9BV9,UNL,False,2.9500,c1ccc(c(c1)NC(=O)Nc2cc(ccc2n3ccnc3)C(F)(F)F)Cl,A,602,2.2500,3540,with -fillsidechains,2,1,38,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;UNL:N,38,2,ok,A1ASR
+9BVB,UNL,False,3.0000,c1ccc(c(c1)CC(=O)Nc2cc(ccc2n3ccnc3)C(F)(F)F)Cl,A,602,2.2200,3488,with -fillsidechains,2,1,39,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;UNL:N,39,2,ok,A1ASP
+9BV8,UNL,False,3.0000,c1cc(c(cc1C(F)(F)F)NC(=O)C2CCC2)n3ccnc3,A,602,2.2200,3687,with -fillsidechains,2,1,36,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;UNL:N,36,2,ok,A1ASS
+9BVA,UNL,False,3.0200,c1ccc(c(c1)CCCl)NC(=O)Nc2cc(ccc2n3ccnc3)C(F)(F)F,A,602,2.2000,3542,with -fillsidechains,2,1,44,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;UNL:N,44,2,ok,A1ASQ
+9BV6,A1ASU,False,3.1000,Cc1nc(cs1)c2ccc(cc2)n3c(cnn3)c4ccc(cc4)OC,,,,,,,,,,,,,,"error: ligand A1ASU not found in chain A; ambiguous fallback candidates ['PG0', 'UNL']",
+9BV7,UNL,False,3.2100,c1ccc(c(c1)CCC(=O)NC[C@@H]2Cc3cccc(c3O2)c4cccnc4)Cl,A,602,2.2300,3568,with -fillsidechains,2,1,49,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;UNL:N,49,1,ok,A1AST
+9MS1,UNL,False,3.4000,c1ccc(c(c1)NC(=O)N(Cc2cccc(c2)O)c3cc(ccc3n4ccnc4)C(F)(F)F)Cl,A,602,2.3600,3163,with -fillsidechains,2,1,52,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;UNL:N,52,2,ok,A1BNX
