@@ -139,7 +139,7 @@ def clean_structure(pdb_path, chain, comp_id):
             continue
         res = a.pdbres.strip()
         is_protein = a.getResidue().isStandardResidue()
-        if is_protein or res == "HEM" or res == comp_id:
+        if is_protein or res == "HEM" or res == matched_name:
             keep.append(a.index)
     clean = st.extract(keep, copy_props=True)
     clean.title = os.path.basename(pdb_path).split(".")[0]
