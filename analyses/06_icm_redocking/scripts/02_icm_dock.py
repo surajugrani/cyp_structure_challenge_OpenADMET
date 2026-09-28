@@ -70,10 +70,28 @@ def require_compute_node(what):
 
 
 def append_csv(path, rows):
+    """Append rows, aligning to the existing header.
+
+    Rows written for failures carry fewer keys than success rows. Appending them raw put
+    the error text under `resolution` and left `status` empty, so a `status != "ok"`
+    filter silently returned nothing and 22 failures looked like successes. Reindexing to
+    the existing columns (and refusing to silently drop new ones) prevents that.
+    """
     if not rows:
         return
-    pd.DataFrame(rows).to_csv(path, mode="a", header=not os.path.exists(path),
-                              index=False, float_format="%.4f")
+    df = pd.DataFrame(rows)
+    if os.path.exists(path):
+        cols = list(pd.read_csv(path, nrows=0).columns)
+        extra = [c for c in df.columns if c not in cols]
+        if extra:
+            # New fields would be lost by reindexing - rewrite the file with the union.
+            old = pd.read_csv(path)
+            df = pd.concat([old, df], ignore_index=True)
+            df.to_csv(path, index=False, float_format="%.4f")
+            return
+        df = df.reindex(columns=cols)
+    df.to_csv(path, mode="a", header=not os.path.exists(path), index=False,
+              float_format="%.4f")
 
 
 def to_v2000(src, dst, wdir):

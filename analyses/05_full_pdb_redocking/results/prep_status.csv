@@ -62,3 +62,65 @@ pdb_id,comp_id,has_affinity,resolution,smiles,chain,score_resnum,score_min_dist_
 6UNL,QDJ,False,2.5500,CC(C)(C)OC(=O)N[C@H](Cc1cccc2c1cccc2)CS[C@@H](Cc3cccc4c3cccc4)C(=O)NCc5cccnc5,A,602,2.4000,3586,with -fillsidechains,0,0,83,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;QDJ:N,83,1,ok
 6DAC,FZV,False,2.5500,CC(C)(C)OC(=O)N[C@@H](Cc1ccccc1)CS[C@H](Cc2ccccc2)C(=O)NCCc3cccnc3,A,602,2.4500,3742,with -fillsidechains,0,0,74,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,74,1,ok
 6BDI,DEJ,False,2.5700,CC(C)N[C@@H](CSC[C@H](Cc1c[nH]c2c1cccc2)NC(=O)OC(C)(C)C)C(=O)NCc3cccnc3,A,602,2.2700,3801,with -fillsidechains,0,0,76,0,-2,CYS:S;DEJ:N;HEM:N;HEM:N;HEM:N;HEM:N,76,2,ok
+6BDM,Y83,False,2.6000,CC(C)(C)OC(=O)N[C@@H](Cc1c[nH]c2c1cccc2)CSC[C@H](C(=O)NCc3cccnc3)Nc4ccccc4,A,602,2.2100,3745,with -fillsidechains,0,0,77,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;Y83:N,77,1,ok
+9COV,A1A4S,False,2.6000,c1ccc(cc1)C[C@H](C(=O)NCCCc2cccnc2)SC[C@H](Cc3c[nH]c4c3cccc4)NC(=O)c5cccnc5,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9COV.pdb
+1W0F,STR,False,2.6500,CC(=O)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CCC4=CC(=O)CC[C@]34C)C,A,1499,17.0400,3747,with -fillsidechains,0,0,53,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,53,1,error: no poses produced
+6DAL,G1D,False,2.6500,CC(C)(C)OC(=O)N[C@@H](Cc1ccccc1)CN[C@H](Cc2ccccc2)C(=O)NCCc3cccnc3,A,603,2.2500,3723,with -fillsidechains,0,0,75,0,-2,CYS:S;G1D:N;HEM:N;HEM:N;HEM:N;HEM:N,75,2,ok
+7KVO,X6S,False,2.6500,CC(C)(C)OC(=O)N[C@@H](Cc1cccc2c1cccc2)CS[C@H](Cc3ccccc3)C(=O)NCCCc4cccnc4,A,603,2.0700,3766,with -fillsidechains,0,0,83,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;X6S:N,83,2,ok
+9COY,A1A4T,False,2.6500,CC(C)(C)C(=O)N[C@@H](Cc1ccc(cc1)c2ccccc2)CS[C@H](Cc3ccccc3)C(=O)NCCCc4cccnc4,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9COY.pdb
+7KVJ,X7M,False,2.6500,CC(C)(C)OC(=O)N[C@@H](Cc1ccccc1)CS[C@@H](Cc2ccccc2)C(=O)NCCCc3cccnc3,A,602,2.1800,3407,with -fillsidechains,0,0,77,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;X7M:N,77,2,ok
+6DA2,G0D,False,2.6500,CC(C)(C)OC(=O)N[C@H](Cc1ccccc1)CS[C@H](Cc2ccccc2)C(=O)NCc3cccnc3,A,603,2.3800,3726,with -fillsidechains,0,0,71,0,-2,CYS:S;G0D:N;HEM:N;HEM:N;HEM:N;HEM:N,71,1,ok
+6BDK,DJ1,False,2.6700,CC(C)(C)OC(=O)N[C@@H](Cc1c[nH]c2c1cccc2)CSC[C@@H](C(=O)NCc3cccnc3)NC4CCCC4,A,602,2.3700,3792,with -fillsidechains,0,0,80,0,-2,CYS:S;DJ1:N;HEM:N;HEM:N;HEM:N;HEM:N,80,2,ok
+5TE8,08J,False,2.7000,Cc1ncc2n1-c3ccc(cc3C(=NC2)c4ccccc4F)Cl,A,602,3.3900,3854,with -fillsidechains,0,0,36,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,36,2,ok
+7KVN,X6V,False,2.7000,CC(C)(C)OC(=O)N[C@@H](Cc1c[nH]c2c1cccc2)CS[C@H](Cc3ccccc3)C(=O)NCCCc4cccnc4,A,602,2.0800,3724,with -fillsidechains,0,0,81,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;X6V:N,81,2,ok
+7UFF,NYF,False,2.7000,c1ccc(cc1)C[C@@H](CS[C@H](Cc2ccccc2)C(=O)NCCCc3cccnc3)NC(=O)CNC(=O)c4cccnc4,A,603,2.2100,3736,with -fillsidechains,0,0,80,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;NYF:N,80,2,ok
+5VC0,RIT,False,2.7000,CC(C)c1nc(cs1)CN(C)C(=O)N[C@@H](C(C)C)C(=O)N[C@@H](Cc2ccccc2)C[C@@H]([C@H](Cc3ccccc3)NC(=O)OCc4cncs4)O,A,602,2.1600,3824,with -fillsidechains,0,0,98,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;RIT:N,98,1,ok
+9BV5,A1ASV,False,2.7100,CC(C)(C)C(=O)Nc1cc(ccc1n2ccnc2)C(F)(F)F,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9BV5.pdb
+9COX,A1A4K,False,2.7200,c1ccc(cc1)C[C@@H](C(=O)NCCCc2cccnc2)SC[C@H](Cc3cccc4c3cccc4)NC(=O)c5cccnc5,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9COX.pdb
+9PLJ,TCI,False,2.7200,CCCCCc1cc(c2c(c1)OC([C@H]3[C@H]2C=C(CC3)C)(C)C)O,A,602,4.1400,3782,with -fillsidechains,0,0,53,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,53,1,ok
+1W0G,MYT,False,2.7300,CC(C)(c1cccnc1)C(=O)c2cccnc2,A,1499,2.2700,3712,with -fillsidechains,0,0,31,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;MYT:N,31,1,ok
+2J0D,ERY,False,2.7500,CC[C@@H]1[C@@]([C@@H]([C@H](C(=O)[C@@H](C[C@@]([C@@H]([C@H]([C@@H]([C@H](C(=O)O1)C)O[C@H]2C[C@@]([C@H]([C@@H](O2)C)O)(C)OC)C)O[C@H]3[C@@H]([C@H](C[C@H](O3)C)N(C)C)O)(C)O)C)C)O)(C)O,A,1498,4.4900,3672,with -fillsidechains,0,0,119,1,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,119,2,ok
+7KVP,X6J,False,2.7500,CC(C)(C)OC(=O)N[C@H](Cc1cccc2c1cccc2)CS[C@@H](Cc3ccccc3)C(=O)NCCCc4cccnc4,A,602,2.2300,3724,with -fillsidechains,0,0,83,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;X6J:N,83,2,ok
+7KVQ,X7D,False,2.7500,CC(C)(C)OC(=O)N[C@@H](Cc1cccc2c1cccc2)CS[C@@H](Cc3ccccc3)C(=O)NCCCc4cccnc4,A,607,2.0700,3741,with -fillsidechains,0,0,83,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;X7D:N,83,2,ok
+9COS,A1A06,False,2.7500,c1ccc(cc1)C[C@@H](CS[C@H](Cc2ccccc2)C(=O)NCCCc3cccnc3)NC(=O)CNC(=O)C(F)(F)F,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9COS.pdb
+7KVM,X71,False,2.7500,CC(C)(C)OC(=O)N[C@@H](Cc1ccccc1)CSC[C@H](Cc2ccccc2)C(=O)NCCCc3cccnc3,A,602,2.1100,3731,with -fillsidechains,0,0,80,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;X71:N,80,2,ok
+7KVH,X5Y,False,2.7910,CC(C)(C)OC(=O)N[C@@H](Cc1ccccc1)CS[C@H](Cc2ccccc2)C(=O)NCCCc3cccnc3,A,602,2.1100,3735,with -fillsidechains,0,0,77,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;X5Y:N,77,2,ok
+9BVC,A1ASO,False,2.8000,c1ccc(c(c1)N(Cc2cccc(c2)O)C(=O)Nc3cc(ccc3n4ccnc4)C(F)(F)F)Cl,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9BVC.pdb
+6DA8,G0J,False,2.8020,CC(C)(C)OC(=O)N[C@@H](Cc1ccccc1)CN[C@H](Cc2ccccc2)C(=O)NCc3cccnc3,A,602,2.4000,3699,with -fillsidechains,0,0,72,0,-2,CYS:S;G0J:N;HEM:N;HEM:N;HEM:N;HEM:N,72,2,ok
+9COT,A1A08,False,2.8100,c1ccc(cc1)C[C@@H](CS[C@H](Cc2ccccc2)C(=O)NCCCc3cccnc3)NC(=O)C(F)(F)F,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9COT.pdb
+9COU,A1A4U,False,2.8100,c1ccc(cc1)C[C@@H](CS[C@H](Cc2ccccc2)C(=O)NCCCc3cccnc3)NS(=O)(=O)c4ccccc4,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9COU.pdb
+6UNM,QDP,False,2.8300,CC(C)(C)OC(=O)N[C@@H](Cc1cccc2c1cccc2)CS[C@@H](Cc3cccc4c3cccc4)C(=O)/N=C/Cc5cccnc5,A,602,2.3000,3600,with -fillsidechains,0,0,84,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;QDP:N,84,1,ok
+4K9U,5AW,False,2.8500,C[C@@H](CC[C@H](C)NC(=O)OCc1cncs1)NC(=O)[C@@H](C(C)C)NC(=O)N(C)Cc2csc(n2)C(C)C,A,602,2.3500,3730,with -fillsidechains,0,0,77,0,-2,5AW:N;CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,77,1,ok
+4I4H,Z9Z,False,2.9000,CC(C)c1nc(cs1)CN(C)C(=O)N[C@H](C(C)C)C(=O)N[C@@H](CC[C@H](Cc2ccccc2)NC(=O)OCc3cccnc3)Cc4ccccc4,A,602,2.1400,3771,with -fillsidechains,0,0,100,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;Z9Z:N,100,1,ok
+7UFD,T0K,False,2.9000,c1ccc(cc1)C[C@@H](CS[C@@H](Cc2ccccc2)C(=O)NCCc3cccnc3)NC(=O)CCc4cccnc4,A,602,2.0400,3791,with -fillsidechains,0,0,76,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N;T0K:N,76,1,ok
+4NY4,2QH,False,2.9500,Cc1cc(ccc1OC)[C@]2(C3=NCC(CN3C(=N2)N)(F)F)c4ccc(c(c4)c5cccnc5)F,A,602,2.5800,3777,with -fillsidechains,0,0,56,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,56,3,ok
+9BV9,A1ASR,False,2.9500,c1ccc(c(c1)NC(=O)Nc2cc(ccc2n3ccnc3)C(F)(F)F)Cl,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9BV9.pdb
+9BVB,A1ASP,False,3.0000,c1ccc(c(c1)CC(=O)Nc2cc(ccc2n3ccnc3)C(F)(F)F)Cl,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9BVB.pdb
+9BV8,A1ASS,False,3.0000,c1cc(c(cc1C(F)(F)F)NC(=O)C2CCC2)n3ccnc3,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9BV8.pdb
+9BVA,A1ASQ,False,3.0200,c1ccc(c(c1)CCCl)NC(=O)Nc2cc(ccc2n3ccnc3)C(F)(F)F,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9BVA.pdb
+9BV6,A1ASU,False,3.1000,Cc1nc(cs1)c2ccc(cc2)n3c(cnn3)c4ccc(cc4)OC,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9BV6.pdb
+9BV7,A1AST,False,3.2100,c1ccc(c(c1)CCC(=O)NC[C@@H]2Cc3cccc(c3O2)c4cccnc4)Cl,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9BV7.pdb
+9MS1,A1BNX,False,3.4000,c1ccc(c(c1)NC(=O)N(Cc2cccc(c2)O)c3cc(ccc3n4ccnc4)C(F)(F)F)Cl,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9MS1.pdb
+9PLK,A1CIW,False,2.2500,c1ccc(cc1)C(c2ccccc2)([C@@H]3CCN(C3)CCc4ccc5c(c4)CCO5)C(=O)N,error: ligand A1CIW not found in chain A
+9COW,A1A4V,False,2.3000,c1ccc(cc1)C[C@H](C(=O)NCCCc2cccnc2)SC[C@H](Cc3cccc4c3cccc4)NC(=O)c5cccnc5,error: ligand A1A4V not found in chain A
+5A1R,STR,False,2.4500,CC(=O)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CCC4=CC(=O)CC[C@]34C)C,A,600,17.1900,3783,0,0,53,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,53,1,error: no poses produced
+5A1P,STR,False,2.5000,CC(=O)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CCC4=CC(=O)CC[C@]34C)C,A,1600,17.0700,3804,with -fillsidechains,0,0,53,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,53,1,error: no poses produced
+6BD5,D7M,False,2.5000,CC(C)(C)OC(=O)NCCSC[C@@H](C(=O)NCc1cccnc1)NC2CCCC2,A,602,2.2600,3747,with -fillsidechains,0,0,63,0,-2,CYS:S;D7M:N;HEM:N;HEM:N;HEM:N;HEM:N,63,2,ok
+9BBB,A1APA,False,2.5000,CC(C)c1nc(cs1)CN(C)C(=O)N[C@@H](CCN2CCOCC2)C(=O)N[C@H](CC[C@H](Cc3ccccc3)NC(=O)OCc4cncs4)Cc5ccccc5,error: ligand A1APA not found in chain A
+9COR,A1A07,False,2.5500,c1ccc(cc1)C[C@@H](CS[C@H](Cc2ccccc2)C(=O)NCCc3cccnc3)NC(=O)CNC(=O)C(F)(F)F,error: ligand A1A07 not found in chain A
+9COV,A1A4S,False,2.6000,c1ccc(cc1)C[C@H](C(=O)NCCCc2cccnc2)SC[C@H](Cc3c[nH]c4c3cccc4)NC(=O)c5cccnc5,error: ligand A1A4S not found in chain A
+1W0F,STR,False,2.6500,CC(=O)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CCC4=CC(=O)CC[C@]34C)C,A,1499,17.0400,3747,0,0,53,0,-2,CYS:S;HEM:N;HEM:N;HEM:N;HEM:N,53,1,error: no poses produced
+9COY,A1A4T,False,2.6500,CC(C)(C)C(=O)N[C@@H](Cc1ccc(cc1)c2ccccc2)CS[C@H](Cc3ccccc3)C(=O)NCCCc4cccnc4,error: ligand A1A4T not found in chain A
+9BV5,A1ASV,False,2.7100,CC(C)(C)C(=O)Nc1cc(ccc1n2ccnc2)C(F)(F)F,error: ligand A1ASV not found in chain A
+9COX,A1A4K,False,2.7200,c1ccc(cc1)C[C@@H](C(=O)NCCCc2cccnc2)SC[C@H](Cc3cccc4c3cccc4)NC(=O)c5cccnc5,error: ligand A1A4K not found in chain A
+9COS,A1A06,False,2.7500,c1ccc(cc1)C[C@@H](CS[C@H](Cc2ccccc2)C(=O)NCCCc3cccnc3)NC(=O)CNC(=O)C(F)(F)F,error: ligand A1A06 not found in chain A
+9BVC,A1ASO,False,2.8000,c1ccc(c(c1)N(Cc2cccc(c2)O)C(=O)Nc3cc(ccc3n4ccnc4)C(F)(F)F)Cl,error: ligand A1ASO not found in chain A
+9COT,A1A08,False,2.8100,c1ccc(cc1)C[C@@H](CS[C@H](Cc2ccccc2)C(=O)NCCCc3cccnc3)NC(=O)C(F)(F)F,error: ligand A1A08 not found in chain A
+9COU,A1A4U,False,2.8100,c1ccc(cc1)C[C@@H](CS[C@H](Cc2ccccc2)C(=O)NCCCc3cccnc3)NS(=O)(=O)c4ccccc4,error: ligand A1A4U not found in chain A
+9BV9,A1ASR,False,2.9500,c1ccc(c(c1)NC(=O)Nc2cc(ccc2n3ccnc3)C(F)(F)F)Cl,error: ligand A1ASR not found in chain A
+9BVB,A1ASP,False,3.0000,c1ccc(c(c1)CC(=O)Nc2cc(ccc2n3ccnc3)C(F)(F)F)Cl,error: ligand A1ASP not found in chain A
+9BV8,A1ASS,False,3.0000,c1cc(c(cc1C(F)(F)F)NC(=O)C2CCC2)n3ccnc3,error: ligand A1ASS not found in chain A
+9BVA,A1ASQ,False,3.0200,c1ccc(c(c1)CCCl)NC(=O)Nc2cc(ccc2n3ccnc3)C(F)(F)F,error: ligand A1ASQ not found in chain A
+9BV6,A1ASU,False,3.1000,Cc1nc(cs1)c2ccc(cc2)n3c(cnn3)c4ccc(cc4)OC,error: ligand A1ASU not found in chain A
+9BV7,A1AST,False,3.2100,c1ccc(c(c1)CCC(=O)NC[C@@H]2Cc3cccc(c3O2)c4cccnc4)Cl,error: ligand A1AST not found in chain A
+9MS1,A1BNX,False,3.4000,c1ccc(c(c1)NC(=O)N(Cc2cccc(c2)O)c3cc(ccc3n4ccnc4)C(F)(F)F)Cl,error: ligand A1BNX not found in chain A

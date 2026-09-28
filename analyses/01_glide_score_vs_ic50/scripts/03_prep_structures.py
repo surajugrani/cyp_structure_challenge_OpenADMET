@@ -41,6 +41,13 @@ RESULTS_DIR = os.path.join(HERE, "results")
 SCHRODINGER = os.environ["SCHRODINGER"]
 PREPWIZARD = os.path.join(SCHRODINGER, "utilities", "prepwizard")
 # NOTE: in schrodinger/2025-3, -f takes the force field name ("OPLS_2005"), not "2005"
+# Residues that are never the ligand of interest, used by the name-match fallback.
+SOLVENT_AND_COFACTOR = {
+    "HEM", "HOH", "WAT", "GOL", "EDO", "DMS", "PEG", "PGE", "P6G", "1PE", "2PE",
+    "PG4", "TEG", "SO4", "PO4", "ACT", "MPD", "TRS", "EPE", "FMT", "ACY", "NO3",
+    "CL", "NA", "MG", "K", "ZN", "CA", "IOD", "BR", "UNX", "UNK",
+}
+
 PREP_OPTS = ["-NOJOBID", "-rehtreat", "-captermini", "-propka_pH", "7.4",
              "-epik_pH", "7.4", "-f", "OPLS_2005", "-rmsd", "0.3"]
 
@@ -90,13 +97,38 @@ def clean_structure(pdb_path, chain, comp_id):
         raise RuntimeError(f"expected 1 heme Fe in chain {chain}, found {len(fe)}")
     fe_xyz = np.array(fe[0].xyz)
 
-    # Ligand copies in this chain, keyed by residue number
+    # Ligand copies in this chain, keyed by residue number.
     copies = {}
     for a in st.atom:
         if a.chain == chain and a.pdbres.strip() == comp_id:
             copies.setdefault(a.resnum, []).append(a)
+
+    matched_name = comp_id
     if not copies:
-        raise RuntimeError(f"ligand {comp_id} not found in chain {chain}")
+        # Fall back for 5-character CCD codes (e.g. A1CIW in recent depositions):
+        # Schrodinger's pdbres field holds only 4 characters, so the reader reports these
+        # as "UNL" and an exact name match can never succeed. Identify the ligand instead
+        # as the single non-standard, non-cofactor, non-solvent residue in the chain.
+        candidates = {}
+        for a in st.atom:
+            if a.chain != chain or a.getResidue().isStandardResidue():
+                continue
+            res = a.pdbres.strip()
+            if res in SOLVENT_AND_COFACTOR:
+                continue
+            candidates.setdefault((res, a.resnum), []).append(a)
+        if not candidates:
+            raise RuntimeError(f"ligand {comp_id} not found in chain {chain}")
+        names = {res for res, _ in candidates}
+        if len(names) != 1:
+            raise RuntimeError(
+                f"ligand {comp_id} not found in chain {chain}; ambiguous fallback "
+                f"candidates {sorted(names)}")
+        matched_name = names.pop()
+        for (_, resnum), atoms in candidates.items():
+            copies[resnum] = atoms
+        print(f"    note: {comp_id} not matchable by name (5-char CCD?); "
+              f"using non-standard residue '{matched_name}' instead")
     dist_to_fe = {rn: min(np.linalg.norm(np.array(a.xyz) - fe_xyz) for a in atoms)
                   for rn, atoms in copies.items()}
     score_resnum = min(dist_to_fe, key=dist_to_fe.get)
@@ -114,7 +146,8 @@ def clean_structure(pdb_path, chain, comp_id):
 
     info = {
         "chain": chain,
-        "comp_id": comp_id,
+        "comp_id": matched_name,        # what the file actually calls it
+        "requested_comp_id": comp_id,   # what the RCSB report calls it
         "score_resnum": int(score_resnum),
         "score_min_dist_to_fe": round(float(dist_to_fe[score_resnum]), 2),
         "other_copies_kept_in_receptor": [int(r) for r in copies if r != score_resnum],

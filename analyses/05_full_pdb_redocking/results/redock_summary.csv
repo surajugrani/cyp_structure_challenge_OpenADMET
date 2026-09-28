@@ -1,64 +1,101 @@
 pdb_id,comp_id,has_affinity,resolution,n_crystal_lig_atoms,n_ligprep_states,n_poses,rmsd_top1,rmsd_best,rank_of_best,score_top1,status
-4D6Z,PK9,True,1.9300,50,1,10,5.8366,4.9955,4,-4.8580,ok
-6MA7,TPF,True,2.0900,34,1,9,4.6830,3.4026,2,-5.0020,ok
-3UA1,08Y,True,2.1500,83,2,13,0.5636,0.5306,2,-11.0000,ok
-6MA6,MYT,True,2.1820,31,1,10,3.4826,0.2701,2,-6.2790,ok
-6OO9,MWV,True,2.2500,75,3,23,2.9663,2.4437,18,-7.1690,ok
-6DAB,G0V,True,2.3500,74,1,10,6.5795,4.1714,6,-6.3690,ok
-4K9W,7AW,True,2.3990,93,1,10,9.4747,2.2992,6,-9.2400,ok
-6DAJ,FZV,True,2.4500,74,1,10,6.9762,4.3257,5,-8.0160,ok
-4K9T,1RD,True,2.5000,71,1,10,1.6915,1.4556,4,-8.5440,ok
-4K9V,6AW,True,2.6000,78,1,10,5.8886,2.0936,10,-8.5220,ok
-6UNJ,QDY,True,2.6000,80,1,10,6.6001,6.4373,9,-9.2670,ok
-6UNI,QDV,True,2.6020,78,1,10,7.9054,3.0362,6,-8.1580,ok
-4I4G,Z8Z,True,2.7180,97,1,9,3.8825,2.9683,2,-8.0110,ok
-6UNH,QEA,True,2.7200,78,1,10,5.2726,5.0898,10,-10.3300,ok
-6UNK,QE4,True,2.7500,80,1,10,3.5564,3.5564,1,-7.9050,ok
-7LXL,YNV,True,2.7500,106,1,10,6.0712,2.2452,8,-6.4350,ok
-4D7D,PKT,True,2.7600,65,1,10,6.6364,5.4122,6,-6.7460,ok
-4K9X,8AW,True,2.7600,70,1,10,7.3300,1.7086,5,-7.5930,ok
-2V0M,KLN,True,2.8000,64,2,19,0.8183,0.5763,2,-10.7400,ok
-4D78,J9K,True,2.8000,61,1,10,5.8916,2.0619,9,-6.5680,ok
-6DAG,G0Y,True,2.8000,74,1,10,7.4475,3.4360,3,-6.9860,ok
-8SPD,CL6,True,2.9000,42,1,10,5.3329,3.3371,8,-5.3790,ok
-6MA8,PMF,False,1.8300,18,1,9,2.0548,0.8266,7,-5.2270,ok
-3NXU,RIT,False,2.0000,98,1,5,9.1266,2.3022,5,-9.8730,ok
-8SO1,CFF,False,2.0500,24,1,9,7.7053,0.2010,3,-4.9150,ok
-6DAA,G0M,False,2.1500,71,1,10,1.8767,1.6273,6,-7.2690,ok
-8SO2,CFF,False,2.1500,24,1,9,2.5587,2.1493,2,-5.8390,ok
-5VCG,08Y,False,2.2000,83,2,12,0.4980,0.4980,1,-10.6700,ok
-5VCE,RIT,False,2.2000,98,1,6,9.6242,5.9803,2,-10.3000,ok
-6OOB,MWS,False,2.2020,51,1,9,0.9767,0.9767,1,-8.5970,ok
-6BCZ,D7Y,False,2.2300,60,2,19,1.9599,1.9599,1,-7.8060,ok
-3TJS,D0R,False,2.2500,86,2,19,7.1564,6.1709,15,-7.2550,ok
-4D75,PK9,False,2.2500,50,1,9,4.7690,4.3723,6,-5.1890,ok
-6BDH,DEV,False,2.2500,73,1,10,7.1670,5.0926,10,-9.2750,ok
-6DA5,G1J,False,2.2500,71,1,10,4.9810,4.5248,5,-6.9870,ok
-7UFB,NJ0,False,2.2500,70,1,10,2.7277,2.7277,1,-9.4470,ok
-9PLK,A1CIW,False,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9PLK.pdb
-6UNG,QEP,False,2.3000,79,1,10,8.8287,6.1764,7,-10.9700,ok
-9COW,A1A4V,False,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9COW.pdb
-7UFC,NJO,False,2.3500,76,1,10,9.8548,4.7052,8,-9.9660,ok
-6DA3,G0D,False,2.3700,71,1,10,5.6406,5.4393,5,-6.9730,ok
-6BD8,D81,False,2.3800,78,2,20,4.8836,3.9718,17,-6.9510,ok
-7UFE,NXR,False,2.4000,73,2,20,4.8053,2.3045,2,-9.6580,ok
-8DYC,UC7,False,2.4000,48,1,9,0.4194,0.4194,1,-9.4880,ok
-6BD7,D7J,False,2.4200,73,2,20,6.0670,3.6387,7,-8.1730,ok
-5A1R,STR,False,error: no poses produced
-7UF9,NH0,False,2.4500,74,2,19,4.2810,4.2810,1,-6.6270,ok
-5A1P,STR,False,error: 500 Server Error: Internal Server Error for url: https://files.rcsb.org/download/5A1P.pdb
-6BD5,D7M,False,error: 500 Server Error: Internal Server Error for url: https://files.rcsb.org/download/6BD5.pdb
-6BD6,80K,False,2.5000,60,1,9,2.4730,2.4730,1,-7.6180,ok
-7KS8,X8S,False,error: LigPrep produced no output
-7UFA,NI6,False,2.5000,77,2,20,2.6236,2.3983,7,-9.7940,ok
-9BBB,A1APA,False,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9BBB.pdb
-7KVS,X74,False,2.5000,83,2,20,2.4651,2.4651,1,-8.8240,ok
-7KSA,X8P,False,error: LigPrep produced no output
-6OOA,MWY,False,2.5200,71,3,30,3.4579,1.3235,10,-6.5910,ok
-6UNE,QES,False,2.5500,77,1,10,8.6196,6.3106,8,-11.1200,ok
-7KVK,X7J,False,2.5500,77,2,20,2.6825,2.1037,7,-8.6430,ok
-9COR,A1A07,False,error: 404 Client Error: Not Found for url: https://files.rcsb.org/download/9COR.pdb
-7KVI,X7P,False,2.5500,77,2,20,5.2262,3.7746,2,-7.0510,ok
-6UNL,QDJ,False,2.5500,83,1,10,6.0105,3.2003,2,-10.9600,ok
-6DAC,FZV,False,2.5500,74,1,10,4.9254,4.9254,1,-8.3920,ok
-6BDI,DEJ,False,2.5700,76,2,20,7.0344,2.2819,5,-8.1380,ok
+4D6Z,PK9,True,1.9300,50.0,1.0,10.0,5.8366,4.9955,4.0,-4.858,ok
+6MA7,TPF,True,2.0900,34.0,1.0,9.0,4.683,3.4026,2.0,-5.002,ok
+3UA1,08Y,True,2.1500,83.0,2.0,13.0,0.5636,0.5306,2.0,-11.0,ok
+6MA6,MYT,True,2.1820,31.0,1.0,10.0,3.4826,0.2701,2.0,-6.279,ok
+6OO9,MWV,True,2.2500,75.0,3.0,23.0,2.9663,2.4437,18.0,-7.169,ok
+6DAB,G0V,True,2.3500,74.0,1.0,10.0,6.5795,4.1714,6.0,-6.369,ok
+4K9W,7AW,True,2.3990,93.0,1.0,10.0,9.4747,2.2992,6.0,-9.24,ok
+6DAJ,FZV,True,2.4500,74.0,1.0,10.0,6.9762,4.3257,5.0,-8.016,ok
+4K9T,1RD,True,2.5000,71.0,1.0,10.0,1.6915,1.4556,4.0,-8.544,ok
+4K9V,6AW,True,2.6000,78.0,1.0,10.0,5.8886,2.0936,10.0,-8.522,ok
+6UNJ,QDY,True,2.6000,80.0,1.0,10.0,6.6001,6.4373,9.0,-9.267,ok
+6UNI,QDV,True,2.6020,78.0,1.0,10.0,7.9054,3.0362,6.0,-8.158,ok
+4I4G,Z8Z,True,2.7180,97.0,1.0,9.0,3.8825,2.9683,2.0,-8.011,ok
+6UNH,QEA,True,2.7200,78.0,1.0,10.0,5.2726,5.0898,10.0,-10.33,ok
+6UNK,QE4,True,2.7500,80.0,1.0,10.0,3.5564,3.5564,1.0,-7.905,ok
+7LXL,YNV,True,2.7500,106.0,1.0,10.0,6.0712,2.2452,8.0,-6.435,ok
+4D7D,PKT,True,2.7600,65.0,1.0,10.0,6.6364,5.4122,6.0,-6.746,ok
+4K9X,8AW,True,2.7600,70.0,1.0,10.0,7.33,1.7086,5.0,-7.593,ok
+2V0M,KLN,True,2.8000,64.0,2.0,19.0,0.8183,0.5763,2.0,-10.74,ok
+4D78,J9K,True,2.8000,61.0,1.0,10.0,5.8916,2.0619,9.0,-6.568,ok
+6DAG,G0Y,True,2.8000,74.0,1.0,10.0,7.4475,3.436,3.0,-6.986,ok
+8SPD,CL6,True,2.9000,42.0,1.0,10.0,5.3329,3.3371,8.0,-5.379,ok
+6MA8,PMF,False,1.8300,18.0,1.0,9.0,2.0548,0.8266,7.0,-5.227,ok
+3NXU,RIT,False,2.0000,98.0,1.0,5.0,9.1266,2.3022,5.0,-9.873,ok
+8SO1,CFF,False,2.0500,24.0,1.0,9.0,7.7053,0.201,3.0,-4.915,ok
+6DAA,G0M,False,2.1500,71.0,1.0,10.0,1.8767,1.6273,6.0,-7.269,ok
+8SO2,CFF,False,2.1500,24.0,1.0,9.0,2.5587,2.1493,2.0,-5.839,ok
+5VCG,08Y,False,2.2000,83.0,2.0,12.0,0.498,0.498,1.0,-10.67,ok
+5VCE,RIT,False,2.2000,98.0,1.0,6.0,9.6242,5.9803,2.0,-10.3,ok
+6OOB,MWS,False,2.2020,51.0,1.0,9.0,0.9767,0.9767,1.0,-8.597,ok
+6BCZ,D7Y,False,2.2300,60.0,2.0,19.0,1.9599,1.9599,1.0,-7.806,ok
+3TJS,D0R,False,2.2500,86.0,2.0,19.0,7.1564,6.1709,15.0,-7.255,ok
+4D75,PK9,False,2.2500,50.0,1.0,9.0,4.769,4.3723,6.0,-5.189,ok
+6BDH,DEV,False,2.2500,73.0,1.0,10.0,7.167,5.0926,10.0,-9.275,ok
+6DA5,G1J,False,2.2500,71.0,1.0,10.0,4.981,4.5248,5.0,-6.987,ok
+7UFB,NJ0,False,2.2500,70.0,1.0,10.0,2.7277,2.7277,1.0,-9.447,ok
+6UNG,QEP,False,2.3000,79.0,1.0,10.0,8.8287,6.1764,7.0,-10.97,ok
+7UFC,NJO,False,2.3500,76.0,1.0,10.0,9.8548,4.7052,8.0,-9.966,ok
+6DA3,G0D,False,2.3700,71.0,1.0,10.0,5.6406,5.4393,5.0,-6.973,ok
+6BD8,D81,False,2.3800,78.0,2.0,20.0,4.8836,3.9718,17.0,-6.951,ok
+7UFE,NXR,False,2.4000,73.0,2.0,20.0,4.8053,2.3045,2.0,-9.658,ok
+8DYC,UC7,False,2.4000,48.0,1.0,9.0,0.4194,0.4194,1.0,-9.488,ok
+6BD7,D7J,False,2.4200,73.0,2.0,20.0,6.067,3.6387,7.0,-8.173,ok
+7UF9,NH0,False,2.4500,74.0,2.0,19.0,4.281,4.281,1.0,-6.627,ok
+6BD6,80K,False,2.5000,60.0,1.0,9.0,2.473,2.473,1.0,-7.618,ok
+7UFA,NI6,False,2.5000,77.0,2.0,20.0,2.6236,2.3983,7.0,-9.794,ok
+7KVS,X74,False,2.5000,83.0,2.0,20.0,2.4651,2.4651,1.0,-8.824,ok
+6OOA,MWY,False,2.5200,71.0,3.0,30.0,3.4579,1.3235,10.0,-6.591,ok
+6UNE,QES,False,2.5500,77.0,1.0,10.0,8.6196,6.3106,8.0,-11.12,ok
+7KVK,X7J,False,2.5500,77.0,2.0,20.0,2.6825,2.1037,7.0,-8.643,ok
+7KVI,X7P,False,2.5500,77.0,2.0,20.0,5.2262,3.7746,2.0,-7.051,ok
+6UNL,QDJ,False,2.5500,83.0,1.0,10.0,6.0105,3.2003,2.0,-10.96,ok
+6DAC,FZV,False,2.5500,74.0,1.0,10.0,4.9254,4.9254,1.0,-8.392,ok
+6BDI,DEJ,False,2.5700,76.0,2.0,20.0,7.0344,2.2819,5.0,-8.138,ok
+6BDM,Y83,False,2.6000,77.0,1.0,10.0,4.5859,4.5859,1.0,-6.576,ok
+6DAL,G1D,False,2.6500,75.0,2.0,20.0,6.8573,3.4663,12.0,-8.963,ok
+7KVO,X6S,False,2.6500,83.0,2.0,20.0,4.3878,3.9183,5.0,-9.412,ok
+7KVJ,X7M,False,2.6500,77.0,2.0,19.0,7.6714,3.159,8.0,-7.5,ok
+6DA2,G0D,False,2.6500,71.0,1.0,10.0,5.3208,4.6572,10.0,-8.561,ok
+6BDK,DJ1,False,2.6700,80.0,2.0,20.0,8.4446,4.6648,17.0,-8.601,ok
+5TE8,08J,False,2.7000,36.0,2.0,18.0,3.7469,0.3002,11.0,-7.222,ok
+7KVN,X6V,False,2.7000,81.0,2.0,20.0,2.5084,2.5084,1.0,-8.622,ok
+7UFF,NYF,False,2.7000,80.0,2.0,20.0,2.5063,2.5063,1.0,-8.431,ok
+5VC0,RIT,False,2.7000,98.0,1.0,10.0,4.027,4.027,1.0,-9.497,ok
+9PLJ,TCI,False,2.7200,53.0,1.0,9.0,1.4444,0.9623,9.0,-7.074,ok
+1W0G,MYT,False,2.7300,31.0,1.0,10.0,4.7186,0.2734,7.0,-5.624,ok
+2J0D,ERY,False,2.7500,119.0,2.0,6.0,7.4003,5.218,2.0,-4.68,ok
+7KVP,X6J,False,2.7500,83.0,2.0,20.0,5.5337,5.4176,8.0,-8.665,ok
+7KVQ,X7D,False,2.7500,83.0,2.0,20.0,4.5046,3.8772,19.0,-9.632,ok
+7KVM,X71,False,2.7500,80.0,2.0,18.0,6.9269,3.4407,6.0,-8.736,ok
+7KVH,X5Y,False,2.7910,77.0,2.0,18.0,1.978,1.148,4.0,-9.101,ok
+6DA8,G0J,False,2.8020,72.0,2.0,20.0,6.6599,2.6434,12.0,-6.823,ok
+6UNM,QDP,False,2.8300,84.0,1.0,10.0,4.8365,3.3478,3.0,-9.008,ok
+4K9U,5AW,False,2.8500,77.0,1.0,8.0,11.4327,7.5665,3.0,-7.405,ok
+4I4H,Z9Z,False,2.9000,100.0,1.0,10.0,3.5332,3.1789,3.0,-11.62,ok
+7UFD,T0K,False,2.9000,76.0,1.0,10.0,10.2931,4.5349,7.0,-9.571,ok
+4NY4,2QH,False,2.9500,56.0,3.0,29.0,2.3747,0.49,22.0,-6.725,ok
+9PLK,A1CIW,False,,,,,,,,,error: ligand A1CIW not found in chain A
+9COW,A1A4V,False,,,,,,,,,error: ligand A1A4V not found in chain A
+5A1R,STR,False,,,,,,,,,error: no poses produced
+5A1P,STR,False,,,,,,,,,error: no poses produced
+6BD5,D7M,False,2.5000,63,2,20,7.2341,1.8731,8,-5.4240,ok
+9BBB,A1APA,False,,,,,,,,,error: ligand A1APA not found in chain A
+9COR,A1A07,False,,,,,,,,,error: ligand A1A07 not found in chain A
+9COV,A1A4S,False,,,,,,,,,error: ligand A1A4S not found in chain A
+1W0F,STR,False,,,,,,,,,error: no poses produced
+9COY,A1A4T,False,,,,,,,,,error: ligand A1A4T not found in chain A
+9BV5,A1ASV,False,,,,,,,,,error: ligand A1ASV not found in chain A
+9COX,A1A4K,False,,,,,,,,,error: ligand A1A4K not found in chain A
+9COS,A1A06,False,,,,,,,,,error: ligand A1A06 not found in chain A
+9BVC,A1ASO,False,,,,,,,,,error: ligand A1ASO not found in chain A
+9COT,A1A08,False,,,,,,,,,error: ligand A1A08 not found in chain A
+9COU,A1A4U,False,,,,,,,,,error: ligand A1A4U not found in chain A
+9BV9,A1ASR,False,,,,,,,,,error: ligand A1ASR not found in chain A
+9BVB,A1ASP,False,,,,,,,,,error: ligand A1ASP not found in chain A
+9BV8,A1ASS,False,,,,,,,,,error: ligand A1ASS not found in chain A
+9BVA,A1ASQ,False,,,,,,,,,error: ligand A1ASQ not found in chain A
+9BV6,A1ASU,False,,,,,,,,,error: ligand A1ASU not found in chain A
+9BV7,A1AST,False,,,,,,,,,error: ligand A1AST not found in chain A
+9MS1,A1BNX,False,,,,,,,,,error: ligand A1BNX not found in chain A

@@ -35,9 +35,9 @@ pdb_id,comp_id,chain,score_resnum,fe_dist,n_lig_atoms,n_ligprep_states,n_rec_ato
 6BDH,DEV,A,602.0,2.37,37.0,1.0,3559.0,ok
 6DA5,G1J,A,602.0,2.22,36.0,1.0,3663.0,ok
 7UFB,NJ0,A,602.0,2.29,38.0,1.0,3759.0,ok
-9PLK,A1CIW,,,,,,,error: raw PDB missing - run analysis 05 first
+9PLK,A1CIW,,,,,,,error: ligand A1CIW not found in chain A
 6UNG,QEP,A,602.0,2.2,41.0,1.0,3690.0,ok
-9COW,A1A4V,,,,,,,error: raw PDB missing - run analysis 05 first
+9COW,A1A4V,,,,,,,error: ligand A1A4V not found in chain A
 7UFC,NJO,A,602.0,2.1,40.0,1.0,3751.0,ok
 6DA3,G0D,A,602.0,2.26,36.0,1.0,3655.0,ok
 6BD8,D81,A,602.0,2.13,36.0,2.0,3718.0,ok
@@ -46,56 +46,56 @@ pdb_id,comp_id,chain,score_resnum,fe_dist,n_lig_atoms,n_ligprep_states,n_rec_ato
 6BD7,D7J,A,602.0,2.21,34.0,2.0,3763.0,ok
 5A1R,STR,A,600.0,17.19,23.0,1.0,3760.0,ok
 7UF9,NH0,A,602.0,2.06,37.0,2.0,3591.0,ok
-5A1P,STR,,,,,,,error: raw PDB missing - run analysis 05 first
-6BD5,D7M,,,,,,,error: raw PDB missing - run analysis 05 first
+5A1P,STR,A,1600.0,17.07,23.0,1.0,3781.0,ok
+6BD5,D7M,A,602.0,2.26,29.0,2.0,3718.0,ok
 6BD6,80K,A,602.0,2.23,30.0,1.0,3716.0,ok
 7UFA,NI6,A,602.0,2.08,38.0,2.0,3652.0,ok
-9BBB,A1APA,,,,,,,error: raw PDB missing - run analysis 05 first
+9BBB,A1APA,,,,,,,error: ligand A1APA not found in chain A
 7KVS,X74,A,605.0,2.09,42.0,2.0,3718.0,ok
 6OOA,MWY,A,603.0,4.27,33.0,3.0,3673.0,ok
 6UNE,QES,A,602.0,2.34,40.0,1.0,3678.0,ok
 7KVK,X7J,A,602.0,2.18,38.0,2.0,3729.0,ok
-9COR,A1A07,,,,,,,error: raw PDB missing - run analysis 05 first
+9COR,A1A07,,,,,,,error: ligand A1A07 not found in chain A
 7KVI,X7P,A,603.0,2.2,38.0,2.0,3659.0,ok
 6UNL,QDJ,A,602.0,2.4,44.0,1.0,3542.0,ok
 6DAC,FZV,A,602.0,2.45,37.0,1.0,3705.0,ok
 6BDI,DEJ,A,602.0,2.27,37.0,2.0,3764.0,ok
-6BDM,Y83,,,,,,,error: raw PDB missing - run analysis 05 first
-9COV,A1A4S,,,,,,,error: raw PDB missing - run analysis 05 first
-1W0F,STR,,,,,,,error: raw PDB missing - run analysis 05 first
-6DAL,G1D,,,,,,,error: raw PDB missing - run analysis 05 first
-7KVO,X6S,,,,,,,error: raw PDB missing - run analysis 05 first
-9COY,A1A4T,,,,,,,error: raw PDB missing - run analysis 05 first
-7KVJ,X7M,,,,,,,error: raw PDB missing - run analysis 05 first
-6DA2,G0D,,,,,,,error: raw PDB missing - run analysis 05 first
-6BDK,DJ1,,,,,,,error: raw PDB missing - run analysis 05 first
-5TE8,08J,,,,,,,error: raw PDB missing - run analysis 05 first
-7KVN,X6V,,,,,,,error: raw PDB missing - run analysis 05 first
-7UFF,NYF,,,,,,,error: raw PDB missing - run analysis 05 first
-5VC0,RIT,,,,,,,error: raw PDB missing - run analysis 05 first
-9BV5,A1ASV,,,,,,,error: raw PDB missing - run analysis 05 first
-9COX,A1A4K,,,,,,,error: raw PDB missing - run analysis 05 first
-9PLJ,TCI,,,,,,,error: raw PDB missing - run analysis 05 first
-1W0G,MYT,,,,,,,error: raw PDB missing - run analysis 05 first
-2J0D,ERY,,,,,,,error: raw PDB missing - run analysis 05 first
-7KVP,X6J,,,,,,,error: raw PDB missing - run analysis 05 first
-7KVQ,X7D,,,,,,,error: raw PDB missing - run analysis 05 first
-9COS,A1A06,,,,,,,error: raw PDB missing - run analysis 05 first
-7KVM,X71,,,,,,,error: raw PDB missing - run analysis 05 first
-7KVH,X5Y,,,,,,,error: raw PDB missing - run analysis 05 first
-9BVC,A1ASO,,,,,,,error: raw PDB missing - run analysis 05 first
-6DA8,G0J,,,,,,,error: raw PDB missing - run analysis 05 first
-9COT,A1A08,,,,,,,error: raw PDB missing - run analysis 05 first
-9COU,A1A4U,,,,,,,error: raw PDB missing - run analysis 05 first
-6UNM,QDP,,,,,,,error: raw PDB missing - run analysis 05 first
-4K9U,5AW,,,,,,,error: raw PDB missing - run analysis 05 first
-4I4H,Z9Z,,,,,,,error: raw PDB missing - run analysis 05 first
-7UFD,T0K,,,,,,,error: raw PDB missing - run analysis 05 first
-4NY4,2QH,,,,,,,error: raw PDB missing - run analysis 05 first
-9BV9,A1ASR,,,,,,,error: raw PDB missing - run analysis 05 first
-9BVB,A1ASP,,,,,,,error: raw PDB missing - run analysis 05 first
-9BV8,A1ASS,,,,,,,error: raw PDB missing - run analysis 05 first
-9BVA,A1ASQ,,,,,,,error: raw PDB missing - run analysis 05 first
-9BV6,A1ASU,,,,,,,error: raw PDB missing - run analysis 05 first
-9BV7,A1AST,,,,,,,error: raw PDB missing - run analysis 05 first
-9MS1,A1BNX,,,,,,,error: raw PDB missing - run analysis 05 first
+6BDM,Y83,A,602.0,2.21,40.0,1.0,3705.0,ok
+9COV,A1A4S,,,,,,,error: ligand A1A4S not found in chain A
+1W0F,STR,A,1499.0,17.04,23.0,1.0,3724.0,ok
+6DAL,G1D,A,603.0,2.25,37.0,2.0,3686.0,ok
+7KVO,X6S,A,603.0,2.07,42.0,2.0,3724.0,ok
+9COY,A1A4T,,,,,,,error: ligand A1A4T not found in chain A
+7KVJ,X7M,A,602.0,2.18,38.0,2.0,3369.0,ok
+6DA2,G0D,A,603.0,2.38,36.0,1.0,3690.0,ok
+6BDK,DJ1,A,602.0,2.37,39.0,2.0,3753.0,ok
+5TE8,08J,A,602.0,3.39,23.0,2.0,3831.0,ok
+7KVN,X6V,A,602.0,2.08,41.0,2.0,3683.0,ok
+7UFF,NYF,A,603.0,2.21,43.0,2.0,3693.0,ok
+5VC0,RIT,A,602.0,2.16,50.0,1.0,3774.0,ok
+9BV5,A1ASV,,,,,,,error: ligand A1ASV not found in chain A
+9COX,A1A4K,,,,,,,error: ligand A1A4K not found in chain A
+9PLJ,TCI,A,602.0,4.14,23.0,1.0,3759.0,ok
+1W0G,MYT,A,1499.0,2.27,17.0,1.0,3695.0,ok
+2J0D,ERY,A,1498.0,4.49,51.0,2.0,3621.0,ok
+7KVP,X6J,A,602.0,2.23,42.0,2.0,3682.0,ok
+7KVQ,X7D,A,607.0,2.07,42.0,2.0,3699.0,ok
+9COS,A1A06,,,,,,,error: ligand A1A06 not found in chain A
+7KVM,X71,A,602.0,2.11,39.0,2.0,3692.0,ok
+7KVH,X5Y,A,602.0,2.11,38.0,2.0,3697.0,ok
+9BVC,A1ASO,,,,,,,error: ligand A1ASO not found in chain A
+6DA8,G0J,A,602.0,2.4,36.0,2.0,3663.0,ok
+9COT,A1A08,,,,,,,error: ligand A1A08 not found in chain A
+9COU,A1A4U,,,,,,,error: ligand A1A4U not found in chain A
+6UNM,QDP,A,602.0,2.3,45.0,1.0,3555.0,ok
+4K9U,5AW,A,602.0,2.35,37.0,1.0,3693.0,ok
+4I4H,Z9Z,A,602.0,2.14,50.0,1.0,3721.0,ok
+7UFD,T0K,A,602.0,2.04,40.0,1.0,3751.0,ok
+4NY4,2QH,A,602.0,2.58,34.0,3.0,3743.0,ok
+9BV9,A1ASR,,,,,,,error: ligand A1ASR not found in chain A
+9BVB,A1ASP,,,,,,,error: ligand A1ASP not found in chain A
+9BV8,A1ASS,,,,,,,error: ligand A1ASS not found in chain A
+9BVA,A1ASQ,,,,,,,error: ligand A1ASQ not found in chain A
+9BV6,A1ASU,,,,,,,error: ligand A1ASU not found in chain A
+9BV7,A1AST,,,,,,,error: ligand A1AST not found in chain A
+9MS1,A1BNX,,,,,,,error: ligand A1BNX not found in chain A
