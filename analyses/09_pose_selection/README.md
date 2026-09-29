@@ -5,7 +5,7 @@
 affinity; this asks the different and more relevant question — can any of them **pick the
 right pose**?
 
-**Status:** Steps 1-8 complete. No single ICM score, and no pooled linear combination, beats ICM's default. Near-native candidate rows now exist for all 30 structures in both programs; the within-ligand model is the next step.
+**Status:** Steps 1-9 complete. Best model beats ICM's Score by 1 structure (13/30 vs 12/30). No single ICM score, and no pooled linear combination, beats ICM's default. Near-native candidate rows now exist for all 30 structures in both programs; the within-ligand model is the next step.
 
 ## Subset: the 9 most rigid ligands
 
@@ -384,3 +384,42 @@ With n = 30, GradBoost 12, Score 12 and linear 11 are within noise of each other
 should not be ranked. The 14/30 ceiling is for *global* weights; per-ligand adaptive
 weighting could in principle approach the 15/30 single-feature-oracle bound, but on 30
 structures that is overfitting.
+
+
+## Step 9 — adding Hbond: the first model to beat the baseline
+
+| features | target | LOSO top-1 | picks `-n` | docked rows only |
+|---|---|---|---|---|
+| **Score + RTCNN + Hbond** | **z** | **13/30** | 6/30 | **10/30** |
+| RTCNN + Hbond | z | 13/30 | 10/30 | 10/30 |
+| RTCNN + Hbond | raw | 13/30 | 10/30 | 10/30 |
+| Score + RTCNN + Hbond | raw | 11/30 | 5/30 | 8/30 |
+| Score + RTCNN + Hbond + mfScore | z | 12/30 | 7/30 | 8/30 |
+| Score + RTCNN (step 7 best) | z | 11/30 | 8/30 | 7/30 |
+| ICM `Score` baseline | | 12/30 | | 8/30 |
+| oracle | | 30/30 | | 19/30 |
+
+Adding `Hbond` gains 2 structures, 11/30 → 13/30, clearing ICM's Score for the first time.
+
+**The docked-rows-only column is the stronger evidence:** 8/30 → 10/30 against the same
+8/30 Score baseline, on candidates that exclude the `-n` row, so the gain is not route
+detection. It is the same +2.
+
+**`RTCNN + Hbond` alone also reaches 13/30**, and does so identically under both targets,
+while the 3-term model is target-sensitive (13 with z, 11 with raw). Since `Score`'s fitted
+weight has been negative or near-zero throughout, RTCNN + Hbond is the cleaner formulation
+at equal performance.
+
+Adding `mfScore` back costs a structure (13 → 12) — the fourth independent configuration
+in which it does nothing or hurts.
+
+### Caveats, and why this is close to the end of the road for ICM features
+
+13 vs 12 is one structure on n = 30 and is not significant alone; the +2 on docked-only is
+the number to lean on. More importantly the hindsight ceiling for Score+RTCNN+Hbond is
+**14/30** — the same as for Score+RTCNN+mfScore. Adding Hbond raised performance but **not
+the ceiling**, and the model is again within one structure of it.
+
+The ceiling has been 14/30 for every ICM feature set tried. Passing it needs features from
+outside ICM's scoring decomposition: Glide's terms on the same poses (step 5 established
+they are on a clean scale), or an Fe-distance feature.
