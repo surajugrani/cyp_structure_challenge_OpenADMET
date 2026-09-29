@@ -5,7 +5,7 @@
 affinity; this asks the different and more relevant question — can any of them **pick the
 right pose**?
 
-**Status:** Step 1 (baselines) complete. Step 2 (cross-scoring / selector) not started.
+**Status:** Steps 1-2a complete. No single ICM score beats ICM's default. Selector not started.
 
 ## Subset: the 9 most rigid ligands
 
@@ -78,7 +78,50 @@ significant; it sets direction, not proof.
 **Caveat on 4D7D and 4D78:** both RotB = 10 and neither program comes close. They will
 dominate any "failure" count while telling us nothing about scoring.
 
-## Step 2 (pending user go-ahead)
+## Step 2a — can RTCNN rescue ICM's mis-ranked poses?
+
+**No runs were needed.** `_dockScan` had already written `RTCNN` and `mfScore` into every
+pose in analysis 06's `<pdb>_hits.sdf`; analysis 06's parser dropped RTCNN because it
+filtered on a tag called `RTCNNscore` when the real SD tag is `RTCNN`. `scripts/02_rtcnn_rescore.py`
+re-reads those files and re-ranks the existing poses.
+
+Set: all RotB <= 8 structures ICM docked (33), less 3 whose pose SDFs were lost when their
+structure directories were rebuilt (5A1R, 1W0F, 5A1P) -> **n = 30**.
+
+| Ranking score | top-1 < 2 Å | top-1 < 2.5 Å |
+|---|---|---|
+| ICM `Score` (default) | **8/30 (27 %)** | 8/30 (27 %) |
+| `RTCNN` | 6/30 (20 %) | 7/30 (23 %) |
+| `mfScore` | 3/30 (10 %) | 3/30 (10 %) |
+| oracle (best pose available) | 20/30 (67 %) | 21/30 (70 %) |
+
+**RTCNN is not an improvement — it is slightly worse.** Head to head against `Score` at
+2 Å it **saves 1 and breaks 3**:
+
+| | pdb | ligand | RotB | Score top-1 | RTCNN top-1 | oracle |
+|---|---|---|---|---|---|---|
+| saved | 6MA8 | PMF | 2 | 7.22 | **0.53** | 0.53 |
+| broken | 5VCG | 08Y | 5 | **1.02** | 3.44 | 1.02 |
+| broken | 5TE8 | 08J | 1 | **0.53** | 3.65 | 0.52 |
+| broken | 4NY4 | 2QH | 4 | **0.92** | 8.01 | 0.92 |
+
+`mfScore` is clearly worst overall, but it is the only one of the three that gets 7LXL
+(1.19 Å, ranked first) and 9BV6 (1.56 Å) right. So the three scores fail on *different*
+structures — which is the argument for a combination rather than for swapping one in.
+
+The gap that matters is unchanged: **8/30 delivered against a 20/30 ceiling.** ICM samples
+a near-native pose two-thirds of the time and ranks it first a quarter of the time, and
+none of its three built-in scores closes that gap.
+
+### Caveat
+
+`Score`, `RTCNN` and `mfScore` were all compared on the same fixed pose sets, so this is a
+fair ranking comparison. But with n = 30 the difference between 8 and 6 successes is two
+structures and is not significant; the safe reading is "RTCNN is not better", not "RTCNN
+is worse".
+
+## Step 3 (pending user go-ahead)
+
 
 Test whether any individual score term — Glide's or ICM's — ranks ICM's 10 poses better
 than ICM's total score. Must be a **within-ligand** analysis with a structure-level split.
