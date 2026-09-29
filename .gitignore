@@ -44,3 +44,9 @@ analyses/*/structures/
 
 # ── Locally vendored Python deps (see analyses/05_*/README.md for install cmd) ──
 .pylibs/
+
+# Boltz-2 predictions and packaged submissions (large, regenerable)
+submissions/*/results/boltz_results_*/
+submissions/*/submission/
+submissions/*/*.zip
+submissions/*/slurm-*.out
