@@ -176,13 +176,41 @@ ligand-level offset is removed and only pose-to-pose differences remain. Note al
 `RTCNN` has by far the best within-ligand signal (+0.334) despite a worse top-1 than
 `Score`, so it is the term to build on.
 
-## Step 4 (in progress)
+## Step 4 — a near-native candidate for every ligand
 
-Generating a `_dockScan -n` near-native pose for all 30 structures, to give every ligand a
-positive example. **Recorded confound:** `-n` scores the same geometry 0.25–13.4 Score
-units better than `_dockScan` does (3UA1: 9.3 units better at 0.66 Å separation), and the
-offset is not constant, so a model pooling docked and `-n` rows can identify the `-n` row
-from its score alone. See `scripts/04_native_poses.py`.
+In 10 of the 30 structures docking never sampled a pose under 2 Å, so those ligands
+contributed only negative examples. `_dockScan -n` minimises the deposited ligand in place
+and scores it through ICM, giving every ligand an 11th, near-native candidate.
+
+Job 47800305, 30/30, no failures. **All 30 `-n` poses are genuinely near-native:** RMSD to
+the deposited pose 0.26–1.42 Å, median 0.56 Å, 30/30 under 2 Å. The pool is now
+**499 rows over 30 structures** with an oracle of 30/30.
+
+The Glide counterpart is step 5.
+
+### Confound, recorded — do not pool these rows naively
+
+`-n` scores are not on the same scale as `_dockScan` docked-pose scores. On the 7
+structures where both already existed, `-n` scores the SAME geometry **0.25–13.4 Score
+units better** (3UA1: 9.3 units better at only 0.66 Å separation), against a within-ligand
+pose-score spread of only ~10–20 units. The offset is not constant, so it cannot be
+subtracted away.
+
+A model trained on a pooled set of docked + `-n` rows can therefore identify the `-n` row
+from its score alone, score 30/30 in training, and be worthless on a blind set where no
+row carries that signature. Any use of these rows has to control for it — by z-scoring
+within ligand, by holding the `-n` row out of evaluation while keeping it in training, or
+at minimum by checking whether the fitted model simply always picks the `-n` row.
+
+## Step 5 (in progress)
+
+Glide `mininplace` on all 30 crystal poses, the Glide counterpart of step 4. See
+`scripts/05_glide_crystal.py` for why `mininplace` and not `inplace`, why not both, and
+why all 30 are re-run rather than the 23 analysis 01 lacks.
+
+Glide's version of the confound is far milder: `mininplace` reproduces a near-identical
+docked pose's score to within **0.10–0.18** GlideScore units (spread ~0.77), where
+`inplace` is off by 0.29–0.44 and by +4.92 in one case.
 
 
 
