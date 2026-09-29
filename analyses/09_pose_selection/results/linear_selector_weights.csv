@@ -1,0 +1,3 @@
+train_set,n_poses,Score,RTCNN,mfScore,intercept,in_sample_r
+train_all30,469,-0.0562,0.0831,-0.0019,6.9292,0.2999
+train_solvable20,309,-0.0354,0.0710,-0.0010,6.5095,0.2525

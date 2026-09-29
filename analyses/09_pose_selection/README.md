@@ -5,7 +5,7 @@
 affinity; this asks the different and more relevant question — can any of them **pick the
 right pose**?
 
-**Status:** Steps 1-2a complete. No single ICM score beats ICM's default. Selector not started.
+**Status:** Steps 1-3 complete. No single ICM score, and no pooled linear combination, beats ICM's default.
 
 ## Subset: the 9 most rigid ligands
 
@@ -120,7 +120,70 @@ fair ranking comparison. But with n = 30 the difference between 8 and 6 successe
 structures and is not significant; the safe reading is "RTCNN is not better", not "RTCNN
 is worse".
 
-## Step 3 (pending user go-ahead)
+## Step 3 — a pooled linear combination of the three scores
+
+Idea: since the three scores succeed on different structures, fit
+`predicted_RMSD = w1*Score + w2*RTCNN + w3*mfScore + b` over all 469 poses and rank by the
+prediction. Evaluated **leave-one-structure-out** (fit on 29 structures, rank the held-out
+one's poses) because poses of one ligand are highly correlated — effective n is 30
+structures, not 469 poses.
+
+Two training sets were tried, since 10 of the 30 structures have no pose under 2 A and so
+contribute only negative examples. The **test set is always all 30** — on the blind set you
+cannot know which ligands have a good pose available, so restricting evaluation would
+inflate the result (oracle would be 20/20 by construction).
+
+| Ranker | top-1 < 2 Å |
+|---|---|
+| ICM `Score` alone | **8/30 (27 %)** |
+| `RTCNN` alone | 6/30 |
+| `mfScore` alone | 3/30 |
+| linear, Score+RTCNN+mfScore, train all 30 | 6/30 |
+| linear, Score+RTCNN+mfScore, train solvable 20 | 5/30 |
+| linear, Score+RTCNN, train all 30 | 6/30 |
+| linear, Score+RTCNN, train solvable 20 | 6/30 |
+| oracle | 20/30 (67 %) |
+| random pose | 2.0/30 (7 %) |
+
+**Every fitted model is worse than simply using ICM's Score.** Dropping `mfScore` does not
+help: its fitted weight is −0.0019, two orders of magnitude below the others, so the
+pooled fit was already ignoring it.
+
+### Why: Simpson's paradox
+
+The fitted weight on `Score` is **negative** (−0.056) — the model concludes that a *better*
+ICM score means a *worse* pose. Checking the correlations directly explains it:
+
+| feature | pooled ρ vs RMSD | median within-ligand ρ |
+|---|---|---|
+| `Score` | **−0.202** | +0.017 |
+| `RTCNN` | +0.136 | **+0.334** (positive in 20/30) |
+| `mfScore` | +0.023 | −0.065 |
+
+`Score`'s pooled and within-ligand correlations have **opposite signs**. The cause is a
+between-ligand confound: across structures, mean `Score` vs oracle RMSD gives ρ = −0.305,
+i.e. ligands that score *less* favourably actually dock *better* (they are the smaller,
+more rigid ones). That between-ligand trend is an order of magnitude stronger than any
+within-ligand signal, so a pooled regression fits it and inverts the weight.
+
+The model is not picking at random — trained on all 30 it saves 4 structures (1W0G
+8.18→1.29, 6MA8 7.22→0.53, 7LXL 4.37→1.19, 8SO2 3.69→0.54, all landing exactly on the
+oracle pose) — but it breaks 6 that `Score` already had right.
+
+**Conclusion: pooling across ligands cannot work for this task.** The selector must be
+within-ligand (features and target standardised inside each structure), so the
+ligand-level offset is removed and only pose-to-pose differences remain. Note also that
+`RTCNN` has by far the best within-ligand signal (+0.334) despite a worse top-1 than
+`Score`, so it is the term to build on.
+
+## Step 4 (in progress)
+
+Generating a `_dockScan -n` near-native pose for all 30 structures, to give every ligand a
+positive example. **Recorded confound:** `-n` scores the same geometry 0.25–13.4 Score
+units better than `_dockScan` does (3UA1: 9.3 units better at 0.66 Å separation), and the
+offset is not constant, so a model pooling docked and `-n` rows can identify the `-n` row
+from its score alone. See `scripts/04_native_poses.py`.
+
 
 
 Test whether any individual score term — Glide's or ICM's — ranks ICM's 10 poses better
