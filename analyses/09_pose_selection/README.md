@@ -5,7 +5,7 @@
 affinity; this asks the different and more relevant question — can any of them **pick the
 right pose**?
 
-**Status:** Steps 1-5 complete. No single ICM score, and no pooled linear combination, beats ICM's default. Near-native candidate rows now exist for all 30 structures in both programs; the within-ligand model is the next step.
+**Status:** Steps 1-6 complete. No single ICM score, and no pooled linear combination, beats ICM's default. Near-native candidate rows now exist for all 30 structures in both programs; the within-ligand model is the next step.
 
 ## Subset: the 9 most rigid ligands
 
@@ -244,3 +244,40 @@ $SCHRODINGER/run python3 scripts/01_baseline_success.py
 
 Light: pandas only, no licence, no docking. Outputs `results/rigid9_baseline.csv` and
 `results/rigid9_summary.csv`.
+
+
+## Step 6 — fitting the 11-row ICM pool, and measuring the route artefact
+
+Step 4 added a `-n` near-native row per ligand but recorded a risk: because `-n` scores the
+same geometry better than `_dockScan`, a model might just learn "pick the suspiciously
+good row", score well, and be useless blind. This step fits the pooled model on the
+499-row pool and measures that directly.
+
+| | result |
+|---|---|
+| top-1 < 2 Å on the full 11-row pool | **4/30** |
+| picked the `-n` row | **1/30** — artefact meter |
+| top-1 < 2 Å, `-n` row removed at test time | 4/30 |
+| ICM `Score` baseline | 8/30 |
+| oracle, docked only | 20/30 |
+
+**The artefact did not materialise.** The model picks the `-n` row once in 30, so there is
+no inflation to discount. But the pool got *worse*: 4/30, down from 6/30 on 469 rows.
+
+### Why, and a correction to step 4's stated risk
+
+The `-n` rows have better scores (mean −16.40 vs −11.57) *and* lower RMSD (0.61 vs 5.87),
+which should push the `Score` weight positive and undo the inversion. It moves it — −0.0562
+to −0.0371 — but not across zero. The weight stays negative, so the model still believes a
+better score means a worse pose and therefore **actively avoids the near-native rows**.
+30 correcting points cannot outweigh 469 confounded ones.
+
+**Correction:** step 4 described the 0.25–13.4 unit offset as comparable to the whole
+signal, implying the `-n` row would be trivially identifiable. Measured: the `-n` row is
+the best-scoring row in its ligand only **9/30** times, median rank 4. The offset is real
+but usually smaller than the within-ligand pose spread.
+
+**Conclusion: the blocker is the pooling, not the training data.** Adding positive examples
+cannot help a model whose sign is inverted. The within-ligand model is the next step, and
+the `-n` rows should help there, since z-scoring inside each ligand removes exactly the
+between-ligand confound holding the weight negative.
