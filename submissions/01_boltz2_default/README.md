@@ -1,6 +1,6 @@
 # 01 — Boltz-2, default settings
 
-**Status:** running (job 47806615). 2/20 complete and passing all validation checks.
+**Status:** complete. 20/20 predicted (job 47806615, 1:50:42) and passing all validation checks. PoseBusters not yet run.
 
 ## Inputs
 
@@ -44,3 +44,17 @@ chain B, 43 atoms; ligand chain C). The validator demands exactly one and would 
 (.pdb not .cif, 20 files, one LIG, ≤3 chains, unique residue numbers / atom names / atom
 serials, ligand connectivity vs the given SMILES) and refuses to write the zip unless all
 20 pass.
+
+## Result
+
+20/20 structures produced and all pass the replicated validation checks.
+`submission_boltz2_default.zip`, 1.5 MB.
+
+Boltz confidence is uniformly high — ligand_iptm median 0.971 (range 0.931–0.987),
+complex pLDDT 0.920–0.948, no outliers. Treat that cautiously: analysis 07 found these
+ligands share no Murcko scaffold with the CYP3A4 PDB set (max Tanimoto 0.34), so
+self-reported confidence is not independent evidence of accuracy.
+
+**Not yet done: PoseBusters.** It is a hard gate — failing it scores LDDT-PLI 0 — and the
+organizers run it separately (`evaluation/posebusters_utils.py`) from the submission
+validator replicated in `03_package.py`. Run it before uploading.

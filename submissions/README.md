@@ -22,7 +22,7 @@ Predict the CYP3A4 complex for each of the 20 blinded ligands in
 
 | # | Method | Settings | Status |
 |---|---|---|---|
-| 01 | [Boltz-2](01_boltz2_default/) | defaults, no heme, MSA server | in progress |
+| 01 | [Boltz-2](01_boltz2_default/) | defaults + heme, MSA server | complete — 20/20 valid, PoseBusters pending |
 
 ## What analyses/ says that matters here
 
