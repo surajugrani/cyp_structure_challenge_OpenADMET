@@ -5,7 +5,7 @@
 affinity; this asks the different and more relevant question — can any of them **pick the
 right pose**?
 
-**Status:** Steps 1-7 complete. No single ICM score, and no pooled linear combination, beats ICM's default. Near-native candidate rows now exist for all 30 structures in both programs; the within-ligand model is the next step.
+**Status:** Steps 1-8 complete. No single ICM score, and no pooled linear combination, beats ICM's default. Near-native candidate rows now exist for all 30 structures in both programs; the within-ligand model is the next step.
 
 ## Subset: the 9 most rigid ligands
 
@@ -327,3 +327,60 @@ all 5–11 Å dominate the least-squares residuals.
 
 **Nothing tried so far — three features, two targets, two pooling schemes — beats ICM's own
 Score.**
+
+
+## Step 8 — is it the model or the features?
+
+| | top-1 < 2 Å |
+|---|---|
+| **linear ceiling, global weights chosen with hindsight (in-sample)** | **14/30** |
+| linear, LOSO | 11/30 |
+| GradientBoosting, LOSO | 12/30 |
+| RandomForest, LOSO | 9/30 |
+| ICM `Score` baseline | 12/30 |
+| oracle | 30/30 |
+
+**It is a feature limitation.** A global linear combination of the three ICM scores reaches
+only **14/30 even when the weights are fitted on the test data**. The cross-validated model
+already gets 11/30, within 3 structures of that cheating ceiling — the missing 16 are not
+lost to a bad fit, the features do not contain the information. Non-linear models agree:
+GradientBoosting 12/30 (ties the baseline, below the linear ceiling), RandomForest 9/30.
+
+**5/30 are provably unreachable** by any model of these features — in 1W0G, 4D75, 4NY4,
+6OOB and 9BVC the near-native pose ranks 4th–11th on *all three* terms at once.
+
+### Which additional ICM terms are worth adding
+
+All per-pose tags in the hitlist, ranked by within-ligand Spearman vs RMSD:
+
+| term | ρ | positive in | top-1 alone | top-1, docked rows only |
+|---|---|---|---|---|
+| RTCNN | +0.459 | 23/30 | 11/30 | 7/30 |
+| **Hbond** | **+0.345** | 22/29 | 9/30 | 6/30 |
+| Score | +0.127 | 18/30 | 12/30 | 8/30 |
+| SolEl | +0.118 | 18/30 | 5/30 | — |
+| Dsolv | +0.100 | 17/30 | 7/30 | — |
+| mfScore | +0.082 | 16/30 | 7/30 | 5/30 |
+| Eintl | −0.027 | 14/30 | 14/30 ⚠ | 2/30 |
+| VwInt | −0.053 | 14/30 | 9/30 | 7/30 |
+| Hphob | −0.091 | 12/30 | 4/30 | — |
+
+**Add `Hbond`** — second-best signal and mechanistically independent of RTCNN.
+
+**`VwInt` has no within-ligand signal** (ρ = −0.053, positive in 14/30). The same was true
+of Glide's vdW term, so this is consistent across both programs.
+
+**`Eintl` is a route detector, not a pose discriminator.** It looks like the best single
+term at 14/30 but it picks the `-n` row **14 times out of 14**, and scores 2/30 on docked
+rows alone — the worst of any term. `-n` rows have systematically lower internal strain
+(mean 2.80 vs 5.17) because they were minimised from the crystal geometry. This is the
+step-4 artefact finally appearing, concentrated in Eintl rather than in Score.
+
+`Natom` and `Nflex` are constant within a ligand and carry no within-ligand information.
+
+### Caveats
+
+With n = 30, GradBoost 12, Score 12 and linear 11 are within noise of each other and
+should not be ranked. The 14/30 ceiling is for *global* weights; per-ligand adaptive
+weighting could in principle approach the 15/30 single-feature-oracle bound, but on 30
+structures that is overfitting.
