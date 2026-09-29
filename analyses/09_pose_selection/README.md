@@ -478,13 +478,61 @@ column was 7–9/30, at or below the gscore baseline.
 
 **Glide's honest position: docked-row oracle 17/30, gscore 9/30, nothing closes the gap.**
 
-## Step 10b (in progress) — Glide `inplace` on ICM's poses
+## Step 10b — Glide `mininplace` on ICM's poses: the artefact-free test of Emodel
 
-Removes the artefact by construction: all 11 candidates per ligand (ICM's 10 docked poses
-*and* its `-n` pose) go through one identical Glide `inplace` call, so there is no mixed
-provenance for Emodel to detect. `inplace` rather than `mininplace` because minimisation
-would move the poses and invalidate the RMSD labels. Coordinate frames verified to match
-(crystal-ligand centroids agree to 0.3–0.9 Å between pipelines).
+All 11 candidates per ligand (ICM's 10 docked poses *and* its `-n` pose) go through one
+identical Glide call, so there is no mixed provenance for Emodel to detect. Coordinate
+frames verified to match (crystal-ligand centroids agree to 0.3–0.9 Å between pipelines).
 
-Also yields Glide terms on the same poses as the ICM terms, enabling a combined model.
-See `scripts/08_glide_rescore_icm.py`.
+**`inplace` was tried first and abandoned** — under `inplace` Emodel and einternal are
+identically 0.00, because Glide only computes them in the minimisation/post-docking stage
+that `inplace` skips (`POSTDOCK True` does not change this). ICM poses also hard-clashed in
+the PrepWizard receptor, saturating gscore at +10000. `mininplace` fixes both; RMSD labels
+are **recomputed** from the minimised pose rather than carried over, so they describe the
+geometry actually scored. Minimisation shifted labels by a median of only 0.09 Å.
+
+### The artefact is gone
+
+| | native vs docked gap | within-ligand SD |
+|---|---|---|
+| Emodel, step 10 (mixed routes) | **−13.43** | 5.20 |
+| Emodel, step 10b (one route) | **+2.30** | 4.90 |
+
+The gap collapses and even reverses sign — native rows now score slightly *worse*. Emodel
+picks the `-n` row 6/30, down from 25/30.
+
+### How many structures does Emodel recover? Four, and it breaks five.
+
+| ranker | top-1 < 2 Å | docked rows only |
+|---|---|---|
+| Glide emodel on ICM poses | 11/30 | 10/30 |
+| Glide energy | 11/30 | 11/30 |
+| Glide lipo | 11/30 | 7/30 |
+| Glide gscore | 9/30 | 6/30 |
+| ICM `Score` (same poses) | **12/30** | 8/30 |
+| ICM RTCNN | 11/30 | 7/30 |
+| oracle | 28/30 | 19/30 |
+
+Head-to-head against ICM `Score`: **saves 4, breaks 5, net −1.**
+
+| | pdb | ICM Score | Glide emodel | oracle |
+|---|---|---|---|---|
+| save | 1W0G | 8.18 | **1.19** | 0.29 |
+| save | 6OOB | 11.22 | **1.05** | 1.05 |
+| save | 9BV8 | 6.49 | **1.39** | 0.96 |
+| save | 9PLJ | 8.32 | **1.40** | 0.95 |
+| break | 6MA7 | **0.49** | 3.32 | 0.49 |
+| break | 7LXL | **0.87** | 5.07 | 1.03 |
+| break | 8SO1 | **0.57** | 7.47 | 0.15 |
+| break | 8SPD | **0.36** | 3.96 | 0.46 |
+| break | 9BV5 | **0.66** | 7.86 | 1.31 |
+
+**The four saves are the finding.** In each, ICM's own score was catastrophically wrong
+(6.5–11.2 Å) and Glide finds a near-native pose in the *same* candidate set — genuine
+complementarity. The two programs fail on disjoint structures, which is the situation where
+rank fusion helps and single-scorer substitution does not.
+
+**Caveat:** 9 of 329 rows hit Glide's clash sentinel (gscore = 10000) across 2V0M, 4D75,
+6OOA, 7LXL, 9BV6, 9BVC — ICM poses that will not relax in the PrepWizard receptor. They are
+dropped, which is why the oracle here is 28/30 rather than 30/30.
+

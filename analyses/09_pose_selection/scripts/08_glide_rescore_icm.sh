@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=g_on_icm
+#SBATCH --job-name=gmin_icm
 #SBATCH --partition=shared
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=12G

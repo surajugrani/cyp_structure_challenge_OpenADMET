@@ -13,11 +13,23 @@ poses AND the ICM `-n` near-native pose - is scored through the SAME Glide `inpl
 so there is no mixed provenance for Emodel to detect. Any Emodel advantage that survives
 is pose discrimination.
 
-`inplace` not `mininplace`: minimisation would move the poses and invalidate the RMSD
-labels carried over from analyses 06 and 09. Scoring as-is keeps every row's label exact.
-The cost is that ICM poses were optimised in an ICM-prepared receptor and are scored here
-in a PrepWizard-prepared one, so some strain is expected; that penalty applies equally to
-all 11 rows of a ligand, which is what matters for within-ligand ranking.
+`mininplace`, not `inplace`. An earlier version of this script used `inplace` to keep the
+RMSD labels from analyses 06 and 09 exact. That does not work, for two reasons found by
+running it:
+
+  1. **Emodel is identically 0.00 under `inplace`** (as is einternal) - Glide only computes
+     it during the minimisation/post-docking stage, which `inplace` skips. `POSTDOCK True`
+     does not change this. The one term this analysis exists to test was absent.
+  2. ICM poses were optimised in an ICM-prepared receptor and hard-clash in the
+     PrepWizard-prepared one: gscore hit +10000 and evdw +25800 on some rows, Glide's
+     clash sentinel. Those rows are unusable rather than merely penalised.
+
+`mininplace` fixes both - it computes Emodel and relaxes the clashes. The RMSD labels are
+then **recomputed** from the minimised pose written to `<job>_pv.mae`, using the same
+symmetry-corrected spyrmsd measurement used for the `-n` poses, rather than carried over.
+Labels therefore describe the geometry actually scored, which is the correct target.
+The artefact control is unaffected: all 11 rows of a ligand go through one `mininplace`
+call, so there is no provenance difference for Emodel to detect.
 
 Coordinate frames were checked to match (crystal-ligand centroids agree to 0.3-0.9 A
 between the two pipelines, i.e. protomer/H differences, not a transform).
@@ -28,7 +40,7 @@ Usage:
     sbatch analyses/09_pose_selection/scripts/08_glide_rescore_icm.sh
 
 Outputs:
-    results/glide_on_icm_poses.csv   one row per ICM pose with Glide terms + true RMSD
+    results/glide_on_icm_poses.csv   one row per ICM pose with Glide terms + recomputed RMSD
 """
 
 import glob
@@ -39,6 +51,37 @@ import sys
 
 import pandas as pd
 from schrodinger import structure
+
+# .pylibs lives at the repo root: scripts -> 09_pose_selection -> analyses -> root
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))), ".pylibs"))
+from spyrmsd import rmsd as srm, io as sio  # noqa: E402
+
+
+def load_ref(pdb):
+    """Deposited ligand, as the RMSD reference. Same file analysis 05 used."""
+    f = os.path.join(A05, pdb, f"{pdb}_crystal_lig.sdf")
+    return next(iter(structure.StructureReader(f)))
+
+
+def rmsd_to_ref(st, ref):
+    """Symmetry-corrected heavy-atom RMSD, via spyrmsd on Schrodinger structures."""
+    try:
+        import tempfile
+        with tempfile.TemporaryDirectory() as td:
+            a, b = os.path.join(td, "a.sdf"), os.path.join(td, "b.sdf")
+            with structure.StructureWriter(a) as w:
+                w.append(ref)
+            with structure.StructureWriter(b) as w:
+                w.append(st)
+            ra, rb = sio.loadmol(a), sio.loadmol(b)
+            ra.strip()
+            rb.strip()
+            return float(srm.symmrmsd(ra.coordinates, rb.coordinates,
+                                      ra.atomicnums, rb.atomicnums,
+                                      ra.adjacency_matrix, rb.adjacency_matrix))
+    except Exception:
+        return None
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ANALYSES = os.path.dirname(HERE)
@@ -52,7 +95,7 @@ MAX_DOCKED = 10
 
 GLIDE_IN = """GRIDFILE   {grid}
 LIGANDFILE   {lig}
-DOCKING_METHOD   inplace
+DOCKING_METHOD   mininplace
 FORCEFIELD   OPLS_2005
 POSTDOCK   True
 COMPRESS_POSES   FALSE
@@ -97,7 +140,7 @@ def main():
         if pdb in done:
             print(f"[{k}/{len(pdbs)}] {pdb}: already done", flush=True)
             continue
-        print(f"[{k}/{len(pdbs)}] {pdb}: glide inplace on ICM poses", flush=True)
+        print(f"[{k}/{len(pdbs)}] {pdb}: glide mininplace on ICM poses", flush=True)
         try:
             wdir = os.path.join(A05, pdb)
             grid = glob.glob(os.path.join(wdir, f"{pdb}_grid*.zip"))
@@ -147,6 +190,19 @@ def main():
                 raise RuntimeError("no results csv")
             g = pd.read_csv(csvp)
             m = pd.DataFrame(meta)
+
+            # Recompute each label from the MINIMISED pose, not the ICM input pose.
+            pv = os.path.join(wdir, f"{job}_pv.mae")
+            newr = {}
+            if os.path.exists(pv):
+                ref = load_ref(pdb)
+                for st in list(structure.StructureReader(pv))[1:]:  # [0] is the receptor
+                    v = rmsd_to_ref(st, ref)
+                    if v is not None:
+                        newr[st.title] = v
+            m["rmsd_icm_input"] = m.rmsd
+            m["rmsd"] = m.title.map(newr).fillna(m.rmsd)
+            m["rmsd_recomputed"] = m.title.isin(newr)
             tcol = "title" if "title" in g.columns else g.columns[0]
             g = g.rename(columns={tcol: "title"})
             for t in TERMS:
