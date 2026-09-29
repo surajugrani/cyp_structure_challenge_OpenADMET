@@ -5,7 +5,7 @@
 affinity; this asks the different and more relevant question — can any of them **pick the
 right pose**?
 
-**Status:** Steps 1-3 complete. No single ICM score, and no pooled linear combination, beats ICM's default.
+**Status:** Steps 1-5 complete. No single ICM score, and no pooled linear combination, beats ICM's default. Near-native candidate rows now exist for all 30 structures in both programs; the within-ligand model is the next step.
 
 ## Subset: the 9 most rigid ligands
 
@@ -202,15 +202,33 @@ row carries that signature. Any use of these rows has to control for it — by z
 within ligand, by holding the `-n` row out of evaluation while keeping it in training, or
 at minimum by checking whether the fitted model simply always picks the `-n` row.
 
-## Step 5 (in progress)
+## Step 5 — Glide crystal-pose scores, and why Glide has no route artefact
 
-Glide `mininplace` on all 30 crystal poses, the Glide counterpart of step 4. See
-`scripts/05_glide_crystal.py` for why `mininplace` and not `inplace`, why not both, and
-why all 30 are re-run rather than the 23 analysis 01 lacks.
+Glide `mininplace` on all 30 crystal poses (job 47800325, 30/30, all `Done`), the Glide
+counterpart of step 4. See `scripts/05_glide_crystal.py` for why `mininplace` and not
+`inplace`, why not both, and why all 30 were re-run rather than the 23 analysis 01 lacked.
 
-Glide's version of the confound is far milder: `mininplace` reproduces a near-identical
-docked pose's score to within **0.10–0.18** GlideScore units (spread ~0.77), where
-`inplace` is off by 0.29–0.44 and by +4.92 in one case.
+**The confound that threatens the ICM pool does not appear for Glide.** Offset between the
+crystal-pose score and the closest docked pose's score, both on the same grid:
+
+| | median | range |
+|---|---|---|
+| all 30 | −0.00 | −4.25 to +4.28 |
+| where a docked pose is < 1.0 Å away (n = 17) | **−0.06** | −1.51 to +1.04 |
+
+Centred on zero and **not directional** — 9 of 17 negative, 8 positive, 12 of 17 within
+±0.3 against a within-ligand spread of ~0.77. Contrast ICM, where `-n` scored the same
+geometry better in 7 cases out of 7, by up to 13.4 units. Running all 30 on one grid was
+what made this clean; the earlier cross-grid estimate (0.10–0.18, analysis 01 grids vs
+analysis 05 poses) was tighter-looking but confounded.
+
+So Glide's crystal rows can be pooled with its docked rows directly, while ICM's `-n` rows
+cannot be pooled without controlling for the offset.
+
+**Not verified:** `CALC_INPUT_RMS` was requested but Glide did not emit `rmsd_to_input` in
+the results CSV, so unlike the ICM side there is no direct measure of how far `mininplace`
+moved each crystal pose. The near-zero offsets are indirect evidence it stayed close, not
+a measurement of it.
 
 
 
