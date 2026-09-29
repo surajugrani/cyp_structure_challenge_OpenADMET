@@ -7,17 +7,18 @@ ICM's scores - in particular the neural-network RTCNN rescoring - do better on t
 poses.
 
 Method. `_dockScan -n` "generates and scores the near-native conformation as provided in
-input", i.e. it scores the supplied crystal pose through the normal VLS pipeline. That is
-preferred over `scanScoreExternal` for two reasons:
+input", i.e. it scores the supplied pose through the normal VLS pipeline, which keeps the
+values on the same footing as analysis 06's docked poses.
 
-  1. `scanScoreExternal` is broken in icm/3.9-4: its own macro calls
-     `minimize cartesian 1000 "vw,..."`, a syntax this binary rejects (it accepts
-     `minimize cartesian|mmff [type] [charge]`). Fails identically via -s script, via
-     stdin, and with or without convertObject.
-  2. Even when it works, ICM's documentation notes its scores are NOT comparable to VLS
-     docking scores - VLS uses the lowest-energy MC conformer as the ligand free state
-     while the interactive score only minimises locally. Going through `_dockScan` keeps
-     these values on the same footing as analysis 06's docked poses.
+CAVEAT: it minimises first. The scored pose is 0.28-1.42 A from the deposited coordinates
+(n=22, median 0.86 A) - near-native, but NOT the crystal pose. The like-for-like Glide
+comparison is therefore `mininplace`, not `inplace`.
+
+The alternative route, `scanScoreExternal`, also works (see scripts/03_sse_rigid7.sh; an
+earlier version of this file wrongly called it broken - the real problem was passing the
+receptor and ligand as two separate objects instead of merging them and passing molecule
+selections). It minimises too, and ICM's docs note its scores are not on the same scale as
+VLS docking scores, so the two routes are not interchangeable.
 
 Inputs are reused from analysis 06 (ICM-prepared receptor project, crystal ligand SDF),
 so nothing is re-prepared.

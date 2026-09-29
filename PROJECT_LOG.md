@@ -229,3 +229,22 @@ There are no experimental structures for them, so unlike analysis 01 (which scor
 crystal poses in place) that work will require **docking and then scoring** — pose
 generation first, affinity correlation second. Analysis 01 sets the baseline for how far
 a Glide score can be trusted before adding pose-prediction error on top.
+
+### 2026-09-28 — CORRECTION: the two ICM scoring routes do not score the same pose
+
+Earlier I described the `-n` and `scanScoreExternal` RTCNN values (−0.857 vs −0.714) as
+"the same poses scored two ways". Feedback from the side chat: **both routes move the
+ligand.** Verified for `-n` by measuring symmetry-corrected RMSD of the output pose
+against the deposited ligand across all 22 curated structures: **0.28–1.42 Å, median
+0.86 Å** (4D6Z the largest mover at 1.42 Å). `scanScoreExternal` minimises as well but
+writes no pose, so its displacement is unmeasured.
+
+Two consequences:
+- Neither number is "the crystal-pose score". Both are near-native-minimised scores.
+- Analysis 08's README also claimed the `-n` range was 0.28–1.01 Å; the true maximum is
+  1.42 Å. Corrected.
+
+Also corrected in the same pass: the README and `01_score_crystal_poses.py` docstring both
+asserted `scanScoreExternal` was broken in icm/3.9-4. It is not — the working recipe
+(merge ligand into the receptor object, pass molecule selections) is in
+`scripts/03_sse_rigid7.sh`.

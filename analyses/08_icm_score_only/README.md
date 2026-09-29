@@ -12,24 +12,35 @@ better on the same poses?
 the supplied crystal pose through ICM's normal VLS pipeline, returning `Score`, `RTCNN` and
 `mfScore` in the hitlist. Reuses analysis 06's ICM-prepared receptors.
 
-**Verified it scores the given pose rather than re-docking:** each output contains exactly
-one pose, 0.28–1.01 Å from the crystal coordinates (a re-dock gives 3–7 Å).
+**It scores a minimised pose, not the deposited one.** Each output contains exactly one
+pose, but that pose is **0.28–1.42 Å from the crystal coordinates** (n = 22, median
+0.86 Å). It is near-native — a re-dock gives 3–7 Å — but it is not the crystal pose. The
+like-for-like Glide comparison is therefore `mininplace` (which also minimises), **not**
+`inplace`.
 
-**It minimises locally first**, so the like-for-like Glide comparison is `mininplace`
-(which also minimises), **not** `inplace`.
+### `scanScoreExternal` — the second route
 
-### Why not `scanScoreExternal`
+**Earlier versions of this README claimed `scanScoreExternal` was broken in icm/3.9-4.
+That was wrong.** The failures came from passing the receptor and ligand as two separate
+objects. The working pattern (from Molsoft usage) merges the ligand into the receptor
+object and passes *molecule selections*:
 
-Two reasons, both worth recording:
+```
+read pdb "${PDB}_rec.pdb" name=rec
+read mol "${PDB}_crystal_v2000.sdf" name=lig
+move a_2. a_1.          # merge ligand into the receptor object
+convertObject a_1.      # default options
+receptor = a_2. - a_2.m
+scanScoreExternal receptor a_2.m
+```
 
-1. **It is broken in icm/3.9-4.** Its own macro calls `minimize cartesian 1000 "vw,..."`,
-   a syntax this binary rejects (it accepts `minimize cartesian|mmff [type] [charge]`).
-   Fails identically via `-s script`, via stdin, and with or without `convertObject`.
-   (Note: `convertObject a_2.` with *defaults* does fix the separate "not a true ICM-object"
-   error — the all-`no` PXR-style call does not, since it converts nothing.)
-2. Even working, ICM's docs state its scores are not comparable to VLS docking scores —
-   VLS uses the lowest-energy MC conformer as the ligand free state, the interactive score
-   only minimises locally.
+See `scripts/03_sse_rigid7.sh`. It is run non-interactively via a heredoc to `icm64`.
+
+**It also minimises** — its macro runs a Cartesian minimisation before scoring — so it too
+is not scoring the deposited coordinates. It writes no pose, so unlike the `-n` route the
+displacement cannot be measured. ICM's docs additionally note that interactive scores are
+not on the same scale as VLS docking scores: VLS uses the lowest-energy MC conformer as
+the ligand free state, the interactive score only minimises locally.
 
 ## Results
 
@@ -43,6 +54,27 @@ Two reasons, both worth recording:
 
 **Like-for-like** (both minimise the pose): ICM Score −0.093 vs Glide `mininplace` −0.093.
 Identical, and both null.
+
+### `scanScoreExternal` on the same 7 rigid ligands
+
+| comp_id | pdb_id | RotB | Score | RTCNN | pIC50 |
+|---|---|---|---|---|---|
+| KLN | 2V0M | 7 | −7.657 | −44.367 | 7.426 |
+| CL6 | 8SPD | 4 | −1.018 | −16.463 | 7.237 |
+| YNV | 7LXL | 4 | +29.594 | −23.483 | 6.097 |
+| 08Y | 3UA1 | 5 | +11.918 | −47.947 | 5.523 |
+| MYT | 6MA6 | 3 | +8.706 | −14.477 | 5.415 |
+| TPF | 6MA7 | 5 | +42.098 | −2.538 | 4.620 |
+| PK9 | 4D6Z | 8 | +37.830 | −11.656 | 4.125 |
+
+Spearman vs pIC50: **RTCNN −0.714 (p = 0.071)**, **Score −0.821 (p = 0.023)**.
+Plot: `results/sse_rtcnn_rigid7.png`.
+
+Compared with the `-n` route on the same ligands (RTCNN −0.857, Score −0.464), the two
+methods **disagree about which score is the better predictor** — and the sign of that
+disagreement reverses. This is not two routes scoring one pose: each minimises the ligand
+independently, so they are scoring different (though both near-native) geometries. With
+n = 7 the spread across routes is itself evidence that none of these estimates is stable.
 
 ## The RTCNN rigid-subset result is almost certainly spurious
 
