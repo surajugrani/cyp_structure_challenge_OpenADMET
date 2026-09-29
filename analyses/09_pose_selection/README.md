@@ -5,7 +5,7 @@
 affinity; this asks the different and more relevant question — can any of them **pick the
 right pose**?
 
-**Status:** Steps 1-9 complete. Best model beats ICM's Score by 1 structure (13/30 vs 12/30). No single ICM score, and no pooled linear combination, beats ICM's default. Near-native candidate rows now exist for all 30 structures in both programs; the within-ligand model is the next step.
+**Status:** Steps 1-10 in progress. Preferred ICM model is **RTCNN + Hbond** (13/30 vs Score's 12/30). No single ICM score, and no pooled linear combination, beats ICM's default. Near-native candidate rows now exist for all 30 structures in both programs; the within-ligand model is the next step.
 
 ## Subset: the 9 most rigid ligands
 
@@ -423,3 +423,68 @@ the ceiling**, and the model is again within one structure of it.
 The ceiling has been 14/30 for every ICM feature set tried. Passing it needs features from
 outside ICM's scoring decomposition: Glide's terms on the same poses (step 5 established
 they are on a clean scale), or an Fe-distance feature.
+
+
+## Step 10 — Glide terms, and why Emodel's apparent win is not real
+
+Same protocol as the ICM side: 11 rows per ligand (10 best docked by gscore + the
+`mininplace` crystal row), 317 rows over 30 structures. `rmsd_to_input` turned out to be in
+the pose `.mae` after all (the step-5 CSV parser missed it): the `mininplace` poses moved
+**0.17–1.61 Å**, median 0.49, all 30 under 2 Å, so they are valid near-native rows.
+
+| term | within-ligand ρ | positive in | top-1 | top-1 docked only | picks crystal row |
+|---|---|---|---|---|---|
+| emodel | +0.378 | 21/30 | 25/30 ⚠ | 9/30 | **25/30** |
+| **lipo** | **+0.270** | **24/30** | 14/30 | 9/30 | 7/30 |
+| rewards | +0.156 | 14/25 | 11/30 | 8/30 | 4/30 |
+| energy | +0.141 | 19/30 | 10/30 | 10/30 | 2/30 |
+| evdw | +0.136 | 16/30 | 12/30 | 7/30 | 9/30 |
+| einternal | +0.118 | 18/28 | 12/30 | 8/30 | 7/30 |
+| gscore | +0.047 | 21/30 | 11/30 | 9/30 | 3/30 |
+| hbond | −0.060 | 6/20 | 10/30 | 9/30 | 1/30 |
+| ecoul | −0.123 | 11/30 | 10/30 | 9/30 | 3/30 |
+| erotb, esite, metal | — | — | — | — | constant or near-constant within ligand |
+
+### Emodel recovers nothing on its own
+
+| | gscore | emodel | saves | breaks | oracle |
+|---|---|---|---|---|---|
+| full 11-row pool | 11/30 | 25/30 | **14** | 0 | 30/30 |
+| docked rows only | 9/30 | **9/30** | 2 | 2 | 17/30 |
+
+All 14 saves on the full pool are cases where Emodel picked the crystal row — every single
+one. On docked rows alone it is **net zero** against gscore.
+
+**Why:** Emodel is 13.4 units better on crystal rows than docked rows, against a
+within-ligand spread of 5.2 — a 2.6σ offset. No other term is close (gscore's gap is +0.19
+against a spread of 0.41).
+
+| term | crystal rows | docked rows | gap | within-ligand SD |
+|---|---|---|---|---|
+| emodel | −74.68 | −61.25 | **−13.43** | 5.20 |
+| evdw | −41.82 | −40.45 | −1.37 | 2.53 |
+| einternal | 3.26 | 4.86 | −1.60 | 2.23 |
+| gscore | −6.42 | −6.61 | +0.19 | 0.41 |
+
+**Correction to step 5.** Step 5 concluded "Glide has no route artefact". That is true for
+gscore and false in general — the artefact is concentrated in Emodel, the very term
+recommended as the pose-ranking baseline. `mininplace` minimises from the deposited
+geometry into a deeper force-field minimum, and Emodel is essentially raw interaction
+energy, so it reads that directly.
+
+Consequently the Glide within-ligand models (emodel+lipo variants, 24–26/30) are **not
+reported as results** — they picked the crystal row 24–26 times and their docked-only
+column was 7–9/30, at or below the gscore baseline.
+
+**Glide's honest position: docked-row oracle 17/30, gscore 9/30, nothing closes the gap.**
+
+## Step 10b (in progress) — Glide `inplace` on ICM's poses
+
+Removes the artefact by construction: all 11 candidates per ligand (ICM's 10 docked poses
+*and* its `-n` pose) go through one identical Glide `inplace` call, so there is no mixed
+provenance for Emodel to detect. `inplace` rather than `mininplace` because minimisation
+would move the poses and invalidate the RMSD labels. Coordinate frames verified to match
+(crystal-ligand centroids agree to 0.3–0.9 Å between pipelines).
+
+Also yields Glide terms on the same poses as the ICM terms, enabling a combined model.
+See `scripts/08_glide_rescore_icm.py`.
