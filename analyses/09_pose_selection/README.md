@@ -5,7 +5,7 @@
 affinity; this asks the different and more relevant question — can any of them **pick the
 right pose**?
 
-**Status:** Steps 1-6 complete. No single ICM score, and no pooled linear combination, beats ICM's default. Near-native candidate rows now exist for all 30 structures in both programs; the within-ligand model is the next step.
+**Status:** Steps 1-7 complete. No single ICM score, and no pooled linear combination, beats ICM's default. Near-native candidate rows now exist for all 30 structures in both programs; the within-ligand model is the next step.
 
 ## Subset: the 9 most rigid ligands
 
@@ -281,3 +281,49 @@ but usually smaller than the within-ligand pose spread.
 cannot help a model whose sign is inverted. The within-ligand model is the next step, and
 the `-n` rows should help there, since z-scoring inside each ligand removes exactly the
 between-ligand confound holding the weight negative.
+
+
+## Step 7 — the within-ligand model
+
+One model, not 30. The within-ligand step is a **feature transform**: z-score each ligand's
+rows against each other (using only that ligand's own scores, no labels), then fit a single
+global set of weights. The ligand-level offset that inverted the pooled fit is removed;
+the pose-to-pose differences that ranking depends on survive.
+
+Set: 11 rows per ligand — the best 10 docked poses by Score plus the `-n` row (329 rows;
+8SO2 has only 9 docked poses). Capping at 10 docked rows matters: uncapped, ligands with
+20–30 poses dominated and performance halved. The `-n` row is included both in training and
+as a test candidate.
+
+| Model (LOSO) | top-1 < 2 Å | picks `-n` |
+|---|---|---|
+| Score + RTCNN, target = z-RMSD | **11/30** | 8/30 |
+| Score + RTCNN + mfScore, target = raw | 10/30 | 5/30 |
+| Score + RTCNN + mfScore, target = z | 10/30 | 6/30 |
+| Score + RTCNN, target = raw | 6/30 | 1/30 |
+
+**Baselines on the same 11 candidates:** ICM `Score` **12/30**, `RTCNN` 11/30,
+`mfScore` 7/30, oracle 30/30.
+
+### The transform worked; the model still does not beat the baseline
+
+Within-ligand Spearman vs RMSD is now positive for all three terms — RTCNN **+0.459**
+(was +0.334), Score +0.127 (was +0.017), mfScore +0.082 (was −0.065) — and the pooled
+models' inversion is gone. Performance rose from 4/30 (pooled, 499 rows) to 11/30. Step 3's
+diagnosis was correct.
+
+But the fair baseline is **12/30, not the 8/30 quoted earlier in this README**: adding the
+`-n` row as a candidate lifts plain `Score` from 8/30 to 12/30 by itself, because it is the
+best-scoring row in 9/30 ligands and is always near-native. Most of the 8 → 11 improvement
+is the extra candidate, not the model. The best model is still one structure behind Score.
+
+The fitted `Score` weight stays slightly negative (−0.027) even z-scored, while RTCNN
+carries the signal (+0.288) — the model is effectively "RTCNN with a small Score penalty",
+which is why it lands next to RTCNN-alone's 11/30.
+
+**Target choice matters more than feature count.** Score+RTCNN gets 6/30 with raw RMSD and
+11/30 with z-scored RMSD — same features, same rows. Raw RMSD lets ligands whose poses are
+all 5–11 Å dominate the least-squares residuals.
+
+**Nothing tried so far — three features, two targets, two pooling schemes — beats ICM's own
+Score.**

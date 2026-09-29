@@ -1,0 +1,5 @@
+features,target,Score,RTCNN,intercept,mfScore_sdf
+Score+RTCNN,raw,-0.1606,0.6390,5.1960,
+Score+RTCNN,z,-0.0265,0.2875,0.0000,
+Score+RTCNN+mfScore,raw,-0.2100,0.6134,5.1960,0.2931
+Score+RTCNN+mfScore,z,-0.0458,0.2775,0.0000,0.1144
