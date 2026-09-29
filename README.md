@@ -26,6 +26,7 @@ Each analysis is self-contained in `analyses/`, with its own README (question, d
 | 06 | [Redocking with ICM-Pro](analyses/06_icm_redocking/) | Complete — 100/100 docked |
 | 07 | [Blinded ligands vs PDB chemistry](analyses/07_test_vs_pdb_chemistry/) | Complete — sets barely overlap; benchmark likely pessimistic |
 | 08 | [ICM scoring of crystal poses vs IC50](analyses/08_icm_score_only/) | Complete — no correlation; RTCNN subset hit is spurious |
+| 09 | [Which scoring function picks the native pose?](analyses/09_pose_selection/) | Baselines done — Glide 2/9, ICM 3/9 top-1 on 9 rigid ligands |
 
 ## Tools
 
