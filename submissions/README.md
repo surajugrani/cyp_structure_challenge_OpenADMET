@@ -22,7 +22,9 @@ Predict the CYP3A4 complex for each of the 20 blinded ligands in
 
 | # | Method | Settings | Status |
 |---|---|---|---|
-| 01 | [Boltz-2](01_boltz2_default/) | defaults + heme, MSA server | complete — 20/20 valid, PoseBusters pending |
+| 01 | [Boltz-2](01_boltz2_default/) | defaults + heme, MSA server | complete — 20/20 valid, PoseBusters 17/20 |
+| 02 | [Boltz-2 + ICM tethered min](02_boltz2_icm_tethered/) | ICM `minimize cartesian`, self-tether | abandoned — corrupted structures |
+| 03 | [Boltz-2 + PrepWizard](03_boltz2_prepwizard/) | `-rmsd 0.3` restrained minimisation | **complete — 20/20 valid, 20/20 PoseBusters** |
 
 ## What analyses/ says that matters here
 
