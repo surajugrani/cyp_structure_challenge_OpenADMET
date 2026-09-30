@@ -1,6 +1,8 @@
 # 03 — Boltz-2 + PrepWizard restrained minimisation
 
-**Status:** complete. **20/20 structural checks, 20/20 PoseBusters.**
+**Status:** submitted. 20/20 structural checks, 20/20 PoseBusters.
+**Leaderboard: LDDT-PLI 0.3921, BiSyRMSD 4.1179 Å, LDDT-LP 0.7962, Coverage 1 — rank 5/9.**
+See [`../LEADERBOARD.md`](../LEADERBOARD.md).
 
 Fixes the three `minimum_distance_to_protein` failures in
 [submission 01](../01_boltz2_default/) without disturbing the poses.

@@ -18,13 +18,21 @@ Predict the CYP3A4 complex for each of the 20 blinded ligands in
 - **Gating:** PoseBusters physical-plausibility checks. Failing OpenStructure validation
   scores LDDT-PLI 0 and a 20 Å BiSyRMSD penalty; failing PoseBusters also scores 0.
 
+## Results
+
+See [`LEADERBOARD.md`](LEADERBOARD.md) for scores returned by the organizers.
+
+| # | LDDT-PLI | BiSyRMSD | LDDT-LP | Coverage | Rank |
+|---|---|---|---|---|---|
+| 03 | 0.3921 | 4.1179 | 0.7962 | 1 | 5 / 9 |
+
 ## Attempts
 
 | # | Method | Settings | Status |
 |---|---|---|---|
 | 01 | [Boltz-2](01_boltz2_default/) | defaults + heme, MSA server | complete — 20/20 valid, PoseBusters 17/20 |
 | 02 | [Boltz-2 + ICM tethered min](02_boltz2_icm_tethered/) | ICM `minimize cartesian`, self-tether | abandoned — corrupted structures |
-| 03 | [Boltz-2 + PrepWizard](03_boltz2_prepwizard/) | `-rmsd 0.3` restrained minimisation | **complete — 20/20 valid, 20/20 PoseBusters** |
+| 03 | [Boltz-2 + PrepWizard](03_boltz2_prepwizard/) | `-rmsd 0.3` restrained minimisation | **submitted** — 20/20 valid, 20/20 PoseBusters, LDDT-PLI 0.3921, rank 5/9 |
 
 ## What analyses/ says that matters here
 
