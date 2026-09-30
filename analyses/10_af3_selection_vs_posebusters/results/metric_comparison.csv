@@ -1,0 +1,8 @@
+metric,picked_passes,spread
+pl_iptm,13,0.63 vs 0.53
+iptm,12,0.68 vs 0.52
+ptm,13,nan vs 0.57
+ranking_score,13,0.72 vs 0.51
+chain_iptm_lig,14,0.58 vs 0.56
+has_clash,13,0.57 vs nan
+fraction_disordered,13,0.57 vs nan
