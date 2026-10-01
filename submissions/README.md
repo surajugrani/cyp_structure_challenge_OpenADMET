@@ -33,6 +33,8 @@ See [`LEADERBOARD.md`](LEADERBOARD.md) for scores returned by the organizers.
 | 01 | [Boltz-2](01_boltz2_default/) | defaults + heme, MSA server | complete — 20/20 valid, PoseBusters 17/20 |
 | 02 | [Boltz-2 + ICM tethered min](02_boltz2_icm_tethered/) | ICM `minimize cartesian`, self-tether | abandoned — corrupted structures |
 | 03 | [Boltz-2 + PrepWizard](03_boltz2_prepwizard/) | `-rmsd 0.3` restrained minimisation | **submitted** — 20/20 valid, 20/20 PoseBusters, LDDT-PLI 0.3921, rank 5/9 |
+| 04 | [AlphaFold3 default](04_af3_default/) | ColabFold MSA, heme, no templates, 5 samples | superseded by 05 — 13/20 PoseBusters before prep |
+| 05 | [AF3 + PrepWizard](05_af3_prepwizard/) | PB-filtered, best mean(PL, haem-L) iPTM | **ready** — 20/20 valid, 20/20 PoseBusters |
 
 ## What analyses/ says that matters here
 
