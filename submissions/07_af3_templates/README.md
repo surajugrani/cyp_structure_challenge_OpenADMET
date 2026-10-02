@@ -81,13 +81,20 @@ sbatch --dependency=afterok:$PREP scripts/run_pb.sh
 | LDDT-LP | 0.6977 | 0.6762 | −0.0215 |
 
 All three metrics worse, by ~35x the 05-vs-06 selection difference, so this is a real
-effect. It replicates PXR, where template runs also scored below plain AF3 (0.4735 vs
-0.5055) — two targets, two methods, same direction.
+effect.
 
-The mechanism is probably the mismatch already measured before the run: template ligands
-are 479–721 Da against 240–412 Da for the blinded set, with max Tanimoto 0.218 and 0/80
-pairs ≥ 0.4. A template pins the pocket in the conformation *its* ligand induced, and for
-CYP3A4 — whose difficulty is precisely that the F/G loop reshapes per ligand — that is an
-actively misleading prior. What made templates attractive here is what makes them wrong.
+**CORRECTION to an earlier claim in this file:** it previously said PXR's template runs
+also scored below plain AF3. That was a misreading of the PXR README — 0.4735 was its best
+*Boltz2* submission, not a template run. PXR's actual template results mostly BEAT plain
+AF3 (0.5087 template search, 0.5104 +9fzj, 0.5132 +7axe best-iPTM, **0.5285** +9fzj
+best-iPTM, against 0.5055 plain), and its best AF3 submission used a template.
 
-**Do not use templates for this target.**
+**What distinguishes this run is TWO templates, one apo (38FU) and one holo (38FY).**
+Every successful PXR template run used exactly one. Apo and holo pockets differ precisely
+in the F/G loop region, so supplying both may give AF3 contradictory restraints on the one
+feature templates were meant to fix.
+
+A secondary factor may be ligand mismatch: template ligands are 479–721 Da against 240–412
+Da for the blinded set, max Tanimoto 0.218, 0/80 pairs >= 0.4.
+
+**Do not conclude "templates don't work" from this — test a single holo template next.**

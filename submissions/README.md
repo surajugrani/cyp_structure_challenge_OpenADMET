@@ -36,7 +36,7 @@ See [`LEADERBOARD.md`](LEADERBOARD.md) for scores returned by the organizers.
 | 04 | [AlphaFold3 default](04_af3_default/) | ColabFold MSA, heme, no templates, 5 samples | superseded by 05 — 13/20 PoseBusters before prep |
 | 05 | [AF3 + PrepWizard](05_af3_prepwizard/) | PB-filtered, best mean(PL, haem-L) iPTM | **submitted** — LDDT-PLI 0.4279, BiSyRMSD 4.0653 |
 | 06 | [AF3, PL-iPTM only](06_af3_pliptm/) | as 05 but selection on protein-ligand iPTM alone | **best so far** — LDDT-PLI 0.4291, BiSyRMSD 4.0647 |
-| 07 | [AF3 + cryo-EM templates](07_af3_templates/) | 38FY + 38FU templates, otherwise identical to 05 | **worse** — LDDT-PLI 0.3853, BiSyRMSD 4.2613; templates hurt |
+| 07 | [AF3 + cryo-EM templates](07_af3_templates/) | **two** templates (38FY holo + 38FU apo) | worse — LDDT-PLI 0.3853; likely the apo/holo pair conflicting, not templates per se |
 
 ## What analyses/ says that matters here
 

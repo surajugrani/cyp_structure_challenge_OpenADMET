@@ -15,7 +15,7 @@ Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, highe
 **LDDT-LP** scores the protein pocket itself. **Coverage** = fraction of structures that
 scored at all; 1 means nothing was zeroed by OpenStructure or PoseBusters.
 
-## Templates made things worse
+## Two templates (apo + holo) made things worse
 
 | | 05 no templates | 07 with templates | change |
 |---|---|---|---|
@@ -23,22 +23,34 @@ scored at all; 1 means nothing was zeroed by OpenStructure or PoseBusters.
 | BiSyRMSD | 4.0653 | 4.2613 | +0.20 Å |
 | LDDT-LP | 0.6977 | 0.6762 | −0.0215 |
 
-Every metric got worse, and by more than the 05/06 selection difference — this is a real
-effect, not noise. The cryo-EM templates (38FY vardenafil + 38FU apo) **hurt**, despite
-being the highest-quality structures available and resolving the F/G loop the preprint
-names as the key determinant.
+**Every metric got worse**, and by more than the 05/06 selection difference — a real
+effect, not noise.
 
-This matches PXR, where template runs also scored below plain AF3 (0.4735 vs 0.5055).
-Two methods, two targets, same direction.
+### CORRECTION: this is NOT evidence that "templates don't work"
 
-The likely reason is visible in the inputs: the template ligands are 479–721 Da against
-240–412 Da for the blinded set, and share **no** chemistry with it (max Tanimoto 0.218,
-0/80 pairs >= 0.4). A template fixes the pocket in the conformation that *its* ligand
-induced, and for CYP3A4 - whose whole difficulty is that the pocket reshapes per ligand -
-that is an actively misleading prior.
+An earlier version of this file claimed PXR's template runs scored below its plain AF3 run
+(0.4735 vs 0.5055). **That was a misreading** — 0.4735 was PXR's best *Boltz2* submission,
+not a template run. The actual PXR numbers say the opposite:
 
-**Conclusion: drop templates. Plain AF3 + PrepWizard + PB-filtered selection is the best
-configuration found so far.**
+| PXR entry | LDDT-PLI |
+|---|---|
+| 18 Plain AF3, ColabFold MSA | 0.5055 |
+| 23 AF3 template search | 0.5087 |
+| 24 AF3 + 9fzj template | 0.5104 |
+| 36 AF3 + 7axe template, best-iPTM | 0.5132 |
+| **26 AF3 + 9fzj template, best-iPTM** | **0.5285** — best AF3 result on PXR |
+
+Single templates mostly helped there, and PXR's best AF3 submission used one.
+
+**The distinguishing feature of submission 07 is that it used TWO templates, one apo
+(38FU) and one holo (38FY).** Every successful PXR template run used exactly one. Apo and
+holo pockets differ precisely in the F/G loop region, so supplying both plausibly gives
+AF3 contradictory restraints on the one feature templates were meant to fix.
+
+A secondary factor may be ligand mismatch: template ligands are 479–721 Da against 240–412
+Da for the blinded set, max Tanimoto 0.218, 0/80 pairs >= 0.4.
+
+**Next test: a single holo template (38FY), not an apo/holo pair.**
 
 ## 03 vs 05
 
