@@ -34,7 +34,8 @@ See [`LEADERBOARD.md`](LEADERBOARD.md) for scores returned by the organizers.
 | 02 | [Boltz-2 + ICM tethered min](02_boltz2_icm_tethered/) | ICM `minimize cartesian`, self-tether | abandoned — corrupted structures |
 | 03 | [Boltz-2 + PrepWizard](03_boltz2_prepwizard/) | `-rmsd 0.3` restrained minimisation | **submitted** — 20/20 valid, 20/20 PoseBusters, LDDT-PLI 0.3921, rank 5/9 |
 | 04 | [AlphaFold3 default](04_af3_default/) | ColabFold MSA, heme, no templates, 5 samples | superseded by 05 — 13/20 PoseBusters before prep |
-| 05 | [AF3 + PrepWizard](05_af3_prepwizard/) | PB-filtered, best mean(PL, haem-L) iPTM | **ready** — 20/20 valid, 20/20 PoseBusters |
+| 05 | [AF3 + PrepWizard](05_af3_prepwizard/) | PB-filtered, best mean(PL, haem-L) iPTM | **submitted** — LDDT-PLI 0.4279, BiSyRMSD 4.0653 |
+| 06 | [AF3, PL-iPTM only](06_af3_pliptm/) | as 05 but selection on protein-ligand iPTM alone (2 structures differ) | **ready** — 20/20 valid, 20/20 PoseBusters |
 
 ## What analyses/ says that matters here
 

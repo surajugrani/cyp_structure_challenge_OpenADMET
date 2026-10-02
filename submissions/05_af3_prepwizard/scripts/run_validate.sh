@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=s05_val
 #SBATCH -p shared
-#SBATCH --cpus-per-task=4
-#SBATCH --mem=16G
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=4G
 #SBATCH -t 02:00:00
 #SBATCH --output=submissions/05_af3_prepwizard/slurm-val-%j.out
 set -uo pipefail

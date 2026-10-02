@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=pw_validate
 #SBATCH -p shared
-#SBATCH --cpus-per-task=4
-#SBATCH --mem=16G
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=4G
 #SBATCH -t 02:00:00
 #SBATCH --output=submissions/03_boltz2_prepwizard/slurm-validate-%j.out
 set -uo pipefail
