@@ -1,0 +1,88 @@
+{
+ "coordinating": [
+  "8SPD",
+  "4I4G",
+  "6MA7",
+  "6DAJ",
+  "6UNI"
+ ],
+ "non_coordinating": [
+  "6UNJ",
+  "3UA1",
+  "7LXL",
+  "6OO9",
+  "4D6Z"
+ ],
+ "detail": [
+  {
+   "pdb": "6UNJ",
+   "comp": "QDY",
+   "fe": 2.82,
+   "coord": false,
+   "has_glide_grid": true
+  },
+  {
+   "pdb": "3UA1",
+   "comp": "08Y",
+   "fe": 3.65,
+   "coord": false,
+   "has_glide_grid": true
+  },
+  {
+   "pdb": "7LXL",
+   "comp": "YNV",
+   "fe": 3.73,
+   "coord": false,
+   "has_glide_grid": true
+  },
+  {
+   "pdb": "6OO9",
+   "comp": "MWV",
+   "fe": 3.76,
+   "coord": false,
+   "has_glide_grid": true
+  },
+  {
+   "pdb": "4D6Z",
+   "comp": "PK9",
+   "fe": 6.09,
+   "coord": false,
+   "has_glide_grid": true
+  },
+  {
+   "pdb": "8SPD",
+   "comp": "CL6",
+   "fe": 1.94,
+   "coord": true,
+   "has_glide_grid": true
+  },
+  {
+   "pdb": "4I4G",
+   "comp": "Z8Z",
+   "fe": 2.1,
+   "coord": true,
+   "has_glide_grid": true
+  },
+  {
+   "pdb": "6MA7",
+   "comp": "TPF",
+   "fe": 2.2,
+   "coord": true,
+   "has_glide_grid": true
+  },
+  {
+   "pdb": "6DAJ",
+   "comp": "FZV",
+   "fe": 2.31,
+   "coord": true,
+   "has_glide_grid": true
+  },
+  {
+   "pdb": "6UNI",
+   "comp": "QDV",
+   "fe": 2.4,
+   "coord": true,
+   "has_glide_grid": true
+  }
+ ]
+}

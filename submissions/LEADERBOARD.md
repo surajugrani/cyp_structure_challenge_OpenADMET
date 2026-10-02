@@ -7,11 +7,38 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 |---|---|---|---|---|---|---|---|
 | 03 | [Boltz-2 defaults + heme, PrepWizard-minimised](03_boltz2_prepwizard/) | 2026-09-30 | **0.3921** | **4.1179** | 0.7962 | 1 | 5 / 9 |
 | 05 | [AF3 + PrepWizard, PB-filtered, mean(PL,HL) iPTM](05_af3_prepwizard/) | 2026-10-01 | **0.4279** | **4.0653** | 0.6977 | 1 | — |
+| 06 | [AF3 + PrepWizard, PL-iPTM only](06_af3_pliptm/) | 2026-10-01 | **0.4291** | **4.0647** | 0.6985 | 1 | — |
+| 07 | [AF3 + 38FY/38FU cryo-EM templates](07_af3_templates/) | 2026-10-02 | 0.3853 | 4.2613 | 0.6762 | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).
 **LDDT-LP** scores the protein pocket itself. **Coverage** = fraction of structures that
 scored at all; 1 means nothing was zeroed by OpenStructure or PoseBusters.
+
+## Templates made things worse
+
+| | 05 no templates | 07 with templates | change |
+|---|---|---|---|
+| LDDT-PLI | 0.4279 | **0.3853** | **−0.0426** |
+| BiSyRMSD | 4.0653 | 4.2613 | +0.20 Å |
+| LDDT-LP | 0.6977 | 0.6762 | −0.0215 |
+
+Every metric got worse, and by more than the 05/06 selection difference — this is a real
+effect, not noise. The cryo-EM templates (38FY vardenafil + 38FU apo) **hurt**, despite
+being the highest-quality structures available and resolving the F/G loop the preprint
+names as the key determinant.
+
+This matches PXR, where template runs also scored below plain AF3 (0.4735 vs 0.5055).
+Two methods, two targets, same direction.
+
+The likely reason is visible in the inputs: the template ligands are 479–721 Da against
+240–412 Da for the blinded set, and share **no** chemistry with it (max Tanimoto 0.218,
+0/80 pairs >= 0.4). A template fixes the pocket in the conformation that *its* ligand
+induced, and for CYP3A4 - whose whole difficulty is that the pocket reshapes per ligand -
+that is an actively misleading prior.
+
+**Conclusion: drop templates. Plain AF3 + PrepWizard + PB-filtered selection is the best
+configuration found so far.**
 
 ## 03 vs 05
 

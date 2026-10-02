@@ -71,3 +71,23 @@ AF3=$(sbatch --parsable scripts/03_run_af3.sh)
 PREP=$(sbatch --dependency=afterok:$AF3 --parsable scripts/run_prep.sh)
 sbatch --dependency=afterok:$PREP scripts/run_pb.sh
 ```
+
+## Leaderboard result: templates hurt
+
+| | 05 no templates | 07 templates | change |
+|---|---|---|---|
+| LDDT-PLI | 0.4279 | **0.3853** | **−0.0426** |
+| BiSyRMSD | 4.0653 | 4.2613 | +0.20 Å |
+| LDDT-LP | 0.6977 | 0.6762 | −0.0215 |
+
+All three metrics worse, by ~35x the 05-vs-06 selection difference, so this is a real
+effect. It replicates PXR, where template runs also scored below plain AF3 (0.4735 vs
+0.5055) — two targets, two methods, same direction.
+
+The mechanism is probably the mismatch already measured before the run: template ligands
+are 479–721 Da against 240–412 Da for the blinded set, with max Tanimoto 0.218 and 0/80
+pairs ≥ 0.4. A template pins the pocket in the conformation *its* ligand induced, and for
+CYP3A4 — whose difficulty is precisely that the F/G loop reshapes per ligand — that is an
+actively misleading prior. What made templates attractive here is what makes them wrong.
+
+**Do not use templates for this target.**
