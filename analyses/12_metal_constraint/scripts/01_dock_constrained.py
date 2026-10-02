@@ -35,23 +35,35 @@ GLIDE = os.path.join(SCHRODINGER, "glide")
 COORD = ["8SPD", "4I4G", "6MA7", "6DAJ", "6UNI"]
 NONCOORD = ["6UNJ", "3UA1", "7LXL", "6OO9", "4D6Z"]
 
-# Docked through XGlide, not glide directly.
+# Docking-side constraint syntax, from the official Glide keyword reference:
 #
-# A metal constraint needs both a CONSTRAINT_GROUP referencing the grid's constraint
-# label AND a matching FEATURE section defining the ligand feature that may satisfy it
-# (default "Acceptor" for a metal constraint). Passing `USE_CONS fe:1` to glide without
-# that section fails with "feature '1' is not defined", and passing bare `USE_CONS fe`
-# silently returns zero poses. Schrodinger's own docs say the feature file "is not
+#   USE_CONS: "Each constraint is specified in the format title[:n], where title is the
+#   label of the constraint in the .cons file for the grid, and n, if it is supplied,
+#   must match the index of a FEATURE block. If n is not given, THE DEFAULT FEATURES ARE
+#   USED."
+#   [CONSTRAINT_GROUP:m]: "All constraints must be defined as part of a group."
+#
+# So: bare label, inside a group, NO FEATURE block. Each of these fails -
+#   `USE_CONS fe:1` with no FEATURE block  -> "feature '1' is not defined"
+#   bare `USE_CONS fe` outside a group     -> silently zero poses
+#   group + `fe:1` + hand-written FEATURE  -> "list index out of range"
+# The GUI always writes explicit FEATURE blocks because it lets you pick non-default
+# features; that is not required here, and Schrodinger notes the feature file "is not
 # designed to be written from scratch".
 #
-# XGlide's DOCK_USE_CONS fills in the default feature for the constraint type, which is
-# the supported way to do this without hand-writing SMARTS.
-DOCK_IN = """GRID   {grid}
-LIGAND   {lig}
-DOCK_PRECISION   SP
-DOCK_USE_CONS   fe
-DOCK_NREQUIRED_CONS   1
-DOCK_POSES_PER_LIG   10
+# GLIDECONSUSEMET sets the metal-constraint cutoff to r(metal)+r(ligand)+0.4 A instead of
+# a flat 2.4 A - relevant because the crystal Fe distances here span 1.94-2.40 A.
+DOCK_IN = """GRIDFILE   {grid}
+LIGANDFILE   {lig}
+PRECISION   SP
+POSES_PER_LIG   10
+COMPRESS_POSES   FALSE
+POSE_OUTTYPE   poseviewer
+GLIDECONSUSEMET   True
+
+[CONSTRAINT_GROUP:1]
+   USE_CONS   fe
+   NREQUIRED_CONS   1
 """
 
 
@@ -114,15 +126,12 @@ def main():
                 raise RuntimeError("no ligprep input (analysis 05)")
             djob = f"{pdb}_mdock"
             with open(os.path.join(d, f"{djob}.in"), "w") as f:
-                f.write(DOCK_IN.format(grid=os.path.abspath(found[0]),
+                f.write(DOCK_IN.format(grid=os.path.basename(found[0]),
                                        lig=os.path.abspath(ligf)))
-            subprocess.run([os.path.join(SCHRODINGER, "run"), "xglide.py",
-                            "-NOJOBID", "-WAIT", f"{djob}.in"],
+            subprocess.run([GLIDE, "-NOJOBID", "-WAIT", f"{djob}.in"],
                            cwd=d, check=False, capture_output=True,
                            text=True, timeout=7200)
-            pvs = glob.glob(os.path.join(d, "*_pv.mae")) + \
-                  glob.glob(os.path.join(d, djob, "*_pv.mae"))
-            pv = pvs[0] if pvs else os.path.join(d, f"{djob}_pv.mae")
+            pv = os.path.join(d, f"{djob}_pv.mae")
             if not os.path.exists(pv):
                 raise RuntimeError("no poses produced (constraint may be unsatisfiable)")
             rec["n_poses"] = len(list(structure.StructureReader(pv))) - 1

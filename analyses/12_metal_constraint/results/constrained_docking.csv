@@ -1,2 +1,56 @@
-arm,pdb_id,status
-coordinating,8SPD,error: no poses produced (constraint may be unsatisfiable)
+arm,n_poses,pdb_id,status
+coordinating,9,8SPD,ok
+coordinating,9,8SPD,ok
+coordinating,7,4I4G,ok
+coordinating,9,8SPD,ok
+coordinating,7,4I4G,ok
+coordinating,9,6MA7,ok
+coordinating,9,8SPD,ok
+coordinating,7,4I4G,ok
+coordinating,9,6MA7,ok
+coordinating,9,6DAJ,ok
+coordinating,9,8SPD,ok
+coordinating,7,4I4G,ok
+coordinating,9,6MA7,ok
+coordinating,9,6DAJ,ok
+coordinating,9,6UNI,ok
+coordinating,9,8SPD,ok
+coordinating,7,4I4G,ok
+coordinating,9,6MA7,ok
+coordinating,9,6DAJ,ok
+coordinating,9,6UNI,ok
+non_coordinating,10,6UNJ,ok
+coordinating,9,8SPD,ok
+coordinating,7,4I4G,ok
+coordinating,9,6MA7,ok
+coordinating,9,6DAJ,ok
+coordinating,9,6UNI,ok
+non_coordinating,10,6UNJ,ok
+non_coordinating,,3UA1,error: no poses produced (constraint may be unsatisfiable)
+coordinating,9,8SPD,ok
+coordinating,7,4I4G,ok
+coordinating,9,6MA7,ok
+coordinating,9,6DAJ,ok
+coordinating,9,6UNI,ok
+non_coordinating,10,6UNJ,ok
+non_coordinating,,3UA1,error: no poses produced (constraint may be unsatisfiable)
+non_coordinating,7,7LXL,ok
+coordinating,9,8SPD,ok
+coordinating,7,4I4G,ok
+coordinating,9,6MA7,ok
+coordinating,9,6DAJ,ok
+coordinating,9,6UNI,ok
+non_coordinating,10,6UNJ,ok
+non_coordinating,,3UA1,error: no poses produced (constraint may be unsatisfiable)
+non_coordinating,7,7LXL,ok
+non_coordinating,,6OO9,error: no poses produced (constraint may be unsatisfiable)
+coordinating,9,8SPD,ok
+coordinating,7,4I4G,ok
+coordinating,9,6MA7,ok
+coordinating,9,6DAJ,ok
+coordinating,9,6UNI,ok
+non_coordinating,10,6UNJ,ok
+non_coordinating,,3UA1,error: no poses produced (constraint may be unsatisfiable)
+non_coordinating,7,7LXL,ok
+non_coordinating,,6OO9,error: no poses produced (constraint may be unsatisfiable)
+non_coordinating,10,4D6Z,ok

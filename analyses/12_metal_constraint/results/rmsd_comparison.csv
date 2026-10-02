@@ -1,0 +1,11 @@
+arm,cons_best,cons_n,cons_top1,pdb_id,uncons_best,uncons_top1
+coordinating,1.533,9,3.948,8SPD,3.3371,5.3329
+coordinating,3.447,7,5.678,4I4G,2.9683,3.8825
+coordinating,2.853,9,5.116,6MA7,3.4026,4.683
+coordinating,2.128,9,5.431,6DAJ,4.3257,6.9762
+coordinating,4.387,9,4.679,6UNI,3.0362,7.9054
+non_coordinating,6.099,10,6.099,6UNJ,6.4373,6.6001
+non_coordinating,,,,3UA1,0.5306,0.5636
+non_coordinating,4.86,7,4.897,7LXL,2.2452,6.0712
+non_coordinating,,,,6OO9,2.4437,2.9663
+non_coordinating,3.545,10,3.545,4D6Z,4.9955,5.8366

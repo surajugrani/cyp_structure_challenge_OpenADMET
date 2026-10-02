@@ -35,7 +35,30 @@ ESCAPES = ("sbatch", "srun")
 HEAVY_ENVS = ("cyp_posebusters_env", "boltz")
 
 
+def strip_heredocs(cmd):
+    """Remove heredoc bodies before scanning.
+
+    A `cat > f <<EOF ... EOF` body is DATA, not commands. Without this, writing
+    documentation that mentions a tool name at the start of a line -- e.g. a markdown
+    code block showing a generate_glide_grids invocation -- is misread as running it.
+    """
+    out = []
+    lines = cmd.split("\n")
+    i = 0
+    while i < len(lines):
+        out.append(lines[i])
+        m = re.search(r"""<<-?\s*['"]?([A-Za-z_][A-Za-z0-9_]*)['"]?""", lines[i])
+        if m:
+            term = m.group(1)
+            i += 1
+            while i < len(lines) and lines[i].strip() != term:
+                i += 1
+        i += 1
+    return "\n".join(out)
+
+
 def segments(cmd):
+    cmd = strip_heredocs(cmd)
     return [s for s in re.split(r"\|\||&&|[;|&\n]", cmd) if s.strip()]
 
 
