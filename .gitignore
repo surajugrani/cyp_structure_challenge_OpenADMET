@@ -50,3 +50,10 @@ submissions/*/results/boltz_results_*/
 submissions/*/submission/
 submissions/*/*.zip
 submissions/*/slurm-*.out
+
+# ── AF3 raw per-sample model outputs and Schrodinger work dirs ──
+# Regenerable from inputs/ + scripts/, and ~0.5 GB per submission. Submission 07
+# tracked these before the rule existed; see submissions/README.md.
+submissions/*/results/ocnt-*/
+submissions/*/work/
+submissions/*/results/_tmp/
