@@ -11,7 +11,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 07 | [AF3 + 38FY/38FU cryo-EM templates](07_af3_templates/) | 2026-10-02 | 0.3853 | 4.2613 | 0.6762 | — | — |
 | 08 | [AF3 + single 38FW holo template](08_af3_1template/) | 2026-10-02 | 0.4192 | **4.0543** | 0.6894 | — | — |
 | 09 | [as 08 but PL-iPTM selection only](09_af3_1template_pliptm/) | 2026-10-04 | 0.3934 | 4.2269 | 0.6926 | — | — |
-| 10 | [no template, HL-iPTM selection only](10_af3_hliptm/) | 2026-10-05 | pending | pending | pending | — | — |
+| 10 | [no template, HL-iPTM selection only](10_af3_hliptm/) | 2026-10-05 | 0.4221 | 4.0842 | 0.6953 | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).
@@ -211,3 +211,45 @@ Ordered by expected value, not by effort:
 3. **AlphaFold3** as an independent co-folder, for consensus rather than replacement.
 4. **Docking into the Boltz pocket** — but analysis 09 measured only ~27 % top-1 success
    for Glide/ICM on crystal receptors, so this is the weakest of the four.
+
+## The three-way selection A/B is settled: the metric is worth ~0.007
+
+Submissions 05, 06 and 10 are the *same* no-template predictions, differing only in which
+confidence term picks the sample from each ligand's PoseBusters-passing pool.
+
+| # | selection key | LDDT-PLI | BiSyRMSD | LDDT-LP |
+|---|---|---|---|---|
+| 06 | PL-iPTM alone | **0.4291** | **4.0647** | **0.6985** |
+| 05 | mean(PL, HL) | 0.4279 | 4.0653 | 0.6977 |
+| 10 | HL-iPTM alone | 0.4221 | 4.0842 | 0.6953 |
+
+**Total spread across all three rules: 0.0070 LDDT-PLI and 0.02 A BiSyRMSD.**
+
+Set that against submission 09, where a *single* ligand whose pose shifted 3.5 A moved
+LDDT-PLI by 0.0258 - nearly four times the entire range of the metric choice. This is the
+quantitative version of what analysis 13 predicted: **one unlucky pose outweighs the whole
+selection-rule question.**
+
+A weak secondary signal: the ordering is monotone in how much weight PL carries
+(PL > mean > HL), so protein-ligand confidence does appear to hold slightly more
+information than the haem-ligand term. But 0.007 across three rules is not a result to
+build on.
+
+One detail worth noting. HL-only differs from 05 in just 2 ligands, OCNT-2395342 and
+OCNT-2395503 - and analysis 13 measured both as *high-spread* pools (3.53 A and 3.83 A
+mean pairwise), exactly the risky kind. Yet the score moved only 0.0058. Either neither
+fell in the ~10-complex scored subset, or both swaps happened to be benign. Compare
+submission 09, where one such swap cost 0.026. **The variance is in which ligands the
+organizers happen to score, not in the rule.**
+
+### Where this leaves the strategy
+
+Selection-metric variants are exhausted. Three rules, 0.007 apart, all well inside
+single-structure noise. The remaining levers, in order of expected value:
+
+1. **A bigger pool.** 180 PrepWizard-minimised, PoseBusters-passing samples already exist
+   across submissions 04 and 08; every attempt so far has chosen within one run's five.
+2. **A different kind of signal.** Analysis 13 identified ensemble spread - how much AF3
+   agrees with itself - which is orthogonal to iPTM and currently unused.
+3. **Accepting that ~12 of 20 pools are simply undecided** and that no selector will fix
+   those; effort is better spent where the pool is tight.

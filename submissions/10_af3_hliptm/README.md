@@ -1,5 +1,9 @@
 # Submission 10 — AF3 no-template run, selected on haem-ligand iPTM alone
 
+**Result: 0.4221 LDDT-PLI / 4.0842 Å BiSyRMSD / 0.6953 LDDT-LP.** Slightly the weakest of
+the three rules, but the whole three-way spread is 0.0070 LDDT-PLI — see the verdict at
+the bottom.
+
 Third point on the selection-metric A/B over the same no-template predictions
 (submission 04), completing the set:
 
@@ -7,7 +11,7 @@ Third point on the selection-metric A/B over the same no-template predictions
 |---|---|---|
 | 05 | mean(`chain_pair_iptm[0][2]`, `chain_pair_iptm[1][2]`) | 0.4279 |
 | 06 | `chain_pair_iptm[0][2]` — protein-ligand | 0.4291 |
-| **10** | **`chain_pair_iptm[1][2]` — haem-ligand** | pending |
+| **10** | **`chain_pair_iptm[1][2]` — haem-ligand** | **0.4221** |
 
 ## Why HL-iPTM is worth a slot
 
@@ -57,3 +61,29 @@ That is exactly the situation that produced the submission 09 regression, where 
 swap cost 0.026 LDDT-PLI on its own. Expect this comparison to move more than 05 → 06 did
 (+0.0012), in either direction, and **do not read the sign of the change as a verdict on
 HL-iPTM** without checking which ligands fell in the scored subset.
+
+## Result and verdict
+
+| # | selection key | LDDT-PLI | BiSyRMSD | LDDT-LP |
+|---|---|---|---|---|
+| 06 | PL-iPTM alone | **0.4291** | **4.0647** | **0.6985** |
+| 05 | mean(PL, HL) | 0.4279 | 4.0653 | 0.6977 |
+| 10 | HL-iPTM alone | 0.4221 | 4.0842 | 0.6953 |
+
+HL-only comes last on all three metrics, so the wider dynamic range did not translate into
+a better choice. But the **total spread across all three rules is 0.0070 LDDT-PLI** —
+against submission 09, where one ligand's 3.5 Å pose shift moved the score by 0.0258 on
+its own. The metric choice is worth roughly a quarter of one unlucky pose.
+
+The ordering is monotone in PL weight (PL > mean > HL), a weak hint that protein-ligand
+confidence carries more information than the haem-ligand term. Not enough to build on.
+
+Worth noting against the prediction made above: the 2 ligands that differ from 05,
+OCNT-2395342 and OCNT-2395503, are precisely the high-spread pools (3.53 Å and 3.83 Å)
+that analysis 13 flagged as risky — yet the score moved only 0.0058. Either neither fell
+in the ~10-complex scored subset, or both swaps were benign. **The variance lives in which
+ligands get scored, not in the rule.**
+
+**Selection-metric variants are now exhausted.** Three rules over identical predictions,
+0.007 apart, all inside single-structure noise. Further A/Bs of this kind are not worth a
+submission slot.
