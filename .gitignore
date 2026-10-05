@@ -55,5 +55,9 @@ submissions/*/slurm-*.out
 # Regenerable from inputs/ + scripts/, and ~0.5 GB per submission. Submission 07
 # tracked these before the rule existed; see submissions/README.md.
 submissions/*/results/ocnt-*/
-submissions/*/work/
 submissions/*/results/_tmp/
+
+# Any Schrodinger/AF3 work dir at any depth. The earlier rule was
+# submissions/*/work/, which missed submissions/04_af3_default/glide_rescoring/work/
+# - 496 MB of it. Match at any depth instead.
+**/work/
