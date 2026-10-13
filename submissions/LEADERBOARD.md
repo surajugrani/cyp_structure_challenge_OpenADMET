@@ -12,7 +12,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 08 | [AF3 + single 38FW holo template](08_af3_1template/) | 2026-10-02 | 0.4192 | **4.0543** | 0.6894 | — | — |
 | 09 | [as 08 but PL-iPTM selection only](09_af3_1template_pliptm/) | 2026-10-04 | 0.3934 | 4.2269 | 0.6926 | — | — |
 | 10 | [no template, HL-iPTM selection only](10_af3_hliptm/) | 2026-10-05 | 0.4221 | 4.0842 | 0.6953 | — | — |
-| 11 | [06 with 3 structures from Boltz-2](11_af3_boltz_fe_swap/) | 2026-10-12 | pending | pending | pending | — | — |
+| 11 | [06 with 3 structures from Boltz-2](11_af3_boltz_fe_swap/) | 2026-10-12 | 0.4241 | 4.0565 | 0.6972 | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).
@@ -296,3 +296,31 @@ held out of submission 11 to keep that a clean test.
 Glide is the wildest bet and the worst-motivated - analysis 10 found it selects
 PoseBusters-valid poses below random, and analysis 14 found its scores anti-correlate with
 potency. High variance with no evidence of skill.
+
+## Submission 11 result: the Fe-distance heuristic does not work
+
+| | 06 | 11 (3 structures from Boltz) | change |
+|---|---|---|---|
+| LDDT-PLI | **0.4291** | 0.4241 | -0.0050 |
+| BiSyRMSD | 4.0647 | **4.0565** | -0.0082 (better) |
+| LDDT-LP | **0.6985** | 0.6972 | -0.0013 |
+
+**A prediction recorded here was wrong.** Submission 11's README argued that taking 3 of
+20 structures from Boltz should raise LDDT-LP by ~+0.015 "fairly reliably", because
+Boltz's protein scored 0.7962 against 06's 0.6985. It fell 0.0013 instead. The 0.098 gap
+is an average over 20 structures, not a per-structure guarantee - whichever swapped
+structures were scored did not carry it.
+
+**The deltas are non-zero, so at least one swap IS in the ~10-complex scored subset.** So
+this is a real negative result, not the uninformative no-change case that was flagged as
+likely. Scaling by 10: one scored swap lost ~0.05 LDDT-PLI while gaining ~0.08 A
+BiSyRMSD.
+
+That split is the interesting part and it agrees with analysis 16. The Boltz pose sits
+*closer to the truth in position* while making *worse interface contacts*. Both models
+already have the right pocket, so moving a ligand nearer the iron changes its contacts
+without necessarily improving them - "closer to Fe" is not a proxy for "better pose".
+
+Still untested and better justified: OCNT-2535422, held out of 11 deliberately. That swap
+rests on chemistry (no imidazole / pyridine / triazole N, so it should not be a type II
+binder and AF3's 2.28 A coordination looks forced) rather than on this heuristic.

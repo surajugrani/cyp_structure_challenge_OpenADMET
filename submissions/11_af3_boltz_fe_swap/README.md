@@ -1,5 +1,8 @@
 # Submission 11 — submission 06 with 3 structures taken from Boltz-2
 
+**Result: 0.4241 LDDT-PLI / 4.0565 Å BiSyRMSD / 0.6972 LDDT-LP** — worse than 06 on the
+primary metric. The Fe-distance heuristic does not work; see the verdict at the bottom.
+
 Submission 06 (AF3, PL-iPTM selection, our best at 0.4291) with three structures replaced
 by submission 03's Boltz-2 predictions:
 
@@ -46,3 +49,28 @@ the two: if 11 improves, we could not tell which reasoning worked. See analysis 
 | file | contents |
 |---|---|
 | `results/sources.csv` | per structure: which submission it came from, heavy-atom count |
+
+## Result
+
+| | 06 | 11 | change |
+|---|---|---|---|
+| LDDT-PLI | **0.4291** | 0.4241 | −0.0050 |
+| BiSyRMSD | 4.0647 | **4.0565** | −0.0082 (better) |
+| LDDT-LP | **0.6985** | 0.6972 | −0.0013 |
+
+**The LDDT-LP prediction above was wrong.** This README argued for ~+0.015 "fairly
+reliably" from Boltz's better backbone. It fell 0.0013. The 0.098 LDDT-LP gap between
+submissions 03 and 06 is an average across 20 structures and did not hold for whichever
+swapped structures were scored.
+
+**Not the uninformative case.** The deltas are non-zero, so at least one swap landed in
+the ~10-complex scored subset. Scaling by 10, one scored swap cost ~0.05 LDDT-PLI while
+gaining ~0.08 Å BiSyRMSD.
+
+That split is the finding: the Boltz pose is **closer in position but worse in contacts**.
+It fits analysis 16 — both models already have the right pocket, so pulling a ligand
+nearer the iron rearranges its contacts without improving them. **"Closer to Fe" is not a
+proxy for "better pose."**
+
+OCNT-2535422, deliberately held out, remains the better-justified swap: it rests on
+chemistry rather than on this heuristic.
