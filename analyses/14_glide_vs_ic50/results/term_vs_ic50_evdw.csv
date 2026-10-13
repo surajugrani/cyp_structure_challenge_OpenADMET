@@ -1,0 +1,16 @@
+ligand,pIC50,n_samples,n_pb_passing,rule1_best_gscore_sample,rule1_best_gscore,rule1_pb_sample,rule1_pb_gscore,rule2_best_pliptm_sample,rule2_pl_iptm,rule2_gscore
+OCNT-2312554,6.936491525,5,5,seed-1_sample-0,-37.77,seed-1_sample-0,-37.77,seed-1_sample-0,0.88,-37.77
+OCNT-2313300,6.296327448,4,3,seed-1_sample-2,-36.01,seed-1_sample-2,-36.01,seed-1_sample-2,0.89,-36.01
+OCNT-2313429,6.120009353,5,5,seed-1_sample-4,-40.94,seed-1_sample-4,-40.94,seed-1_sample-3,0.81,-40.4
+OCNT-2315379,5.21404602,5,5,seed-1_sample-1,-45.28,seed-1_sample-1,-45.28,seed-1_sample-2,0.91,-44.68
+OCNT-2395328,5.526844937,5,4,seed-1_sample-0,-46.56,seed-1_sample-0,-46.56,seed-1_sample-4,0.87,-44.85
+OCNT-2395342,5.341886632,5,5,seed-1_sample-0,-43.52,seed-1_sample-0,-43.52,seed-1_sample-4,0.85,-38.6
+OCNT-2395415,4.963924383,5,5,seed-1_sample-1,-32.16,seed-1_sample-1,-32.16,seed-1_sample-4,0.89,-29.54
+OCNT-2395436,5.963552567,5,5,seed-1_sample-2,-38.4,seed-1_sample-2,-38.4,seed-1_sample-1,0.93,-36.58
+OCNT-2395457,5.856038895,5,5,seed-1_sample-0,-34.76,seed-1_sample-0,-34.76,seed-1_sample-0,0.88,-34.76
+OCNT-2395460,5.29994507,5,5,seed-1_sample-4,-43.4,seed-1_sample-4,-43.4,seed-1_sample-3,0.86,-43.27
+OCNT-2395464,5.450628942,5,5,seed-1_sample-4,-30.96,seed-1_sample-4,-30.96,seed-1_sample-2,0.95,-30.47
+OCNT-2395503,5.184632385,5,5,seed-1_sample-1,-30.62,seed-1_sample-1,-30.62,seed-1_sample-1,0.92,-30.62
+OCNT-2395645,5.912842905,4,4,seed-1_sample-4,-33.2,seed-1_sample-4,-33.2,seed-1_sample-0,0.86,-33.02
+OCNT-2395712,5.291723665,5,5,seed-1_sample-2,-42.56,seed-1_sample-2,-42.56,seed-1_sample-2,0.86,-42.56
+OCNT-2395789,5.536836112,2,2,seed-1_sample-0,-33.66,seed-1_sample-0,-33.66,seed-1_sample-3,0.9,-31.05

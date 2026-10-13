@@ -12,6 +12,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 08 | [AF3 + single 38FW holo template](08_af3_1template/) | 2026-10-02 | 0.4192 | **4.0543** | 0.6894 | — | — |
 | 09 | [as 08 but PL-iPTM selection only](09_af3_1template_pliptm/) | 2026-10-04 | 0.3934 | 4.2269 | 0.6926 | — | — |
 | 10 | [no template, HL-iPTM selection only](10_af3_hliptm/) | 2026-10-05 | 0.4221 | 4.0842 | 0.6953 | — | — |
+| 11 | [06 with 3 structures from Boltz-2](11_af3_boltz_fe_swap/) | 2026-10-12 | pending | pending | pending | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).
@@ -253,3 +254,45 @@ single-structure noise. The remaining levers, in order of expected value:
    agrees with itself - which is orthogonal to iPTM and currently unused.
 3. **Accepting that ~12 of 20 pools are simply undecided** and that no selector will fix
    those; effort is better spent where the pool is tight.
+
+## Where the error actually is (analyses 14 and 16)
+
+Two negative results that each close off a direction.
+
+**Glide scores say nothing about potency.** Analysis 14 tested gscore and evdw against the
+15 blinded ligands that carry a CYP3A4 pIC50, under two pose-selection rules, plus fitted
+linear and quadratic models on (evdw, ecoul). Every leave-one-out Q² is negative - the
+models predict a held-out ligand worse than guessing the mean. The quadratic reaches
+R² = 0.551 in-sample and Q² = -0.100 cross-validated, which is 6 parameters memorising 15
+points. Combined with analyses 01 and 08, ~30 correlations have now been tested against
+these same pIC50 values over ~2 log units with no survivor. Closed.
+
+**Neither model misplaces the pocket.** Analysis 16 measured the haem Fe to ligand distance
+in submissions 06 and 03. Nothing in either lies beyond 4.7 A of the iron; the distribution
+is two clean clusters, 12 type II binders coordinating at 2.05-2.31 A and 8 type I binders
+at 3.59-4.66 A. AF3 coordinates MORE ligands than Boltz (12 vs 11), not fewer.
+
+That second result is the more useful one, because it **localises the remaining error**:
+both models place the ligand correctly relative to the haem, so the ~4 A BiSyRMSD is
+orientation and conformation *within* the right pocket, not gross mislocation. Effort aimed
+at pocket identification is wasted. It also removes the stated motivation for a
+Boltz-protein / AF3-ligand graft, since the LDDT-LP gap is backbone quality, a separate
+thing from where the ligand sits.
+
+One genuine chemical disagreement survives: **OCNT-2535422**, where AF3 coordinates Fe at
+2.28 A but the ligand has no imidazole, pyridine or triazole nitrogen - only a sulfonamide
+NH and an indoline NH, both poor donors. It should not be type II, so Boltz's
+non-coordinating 3.80 A is likely right. Best-justified single swap available; deliberately
+held out of submission 11 to keep that a clean test.
+
+### Candidate rules not submitted (analysis 15)
+
+| rule | differs from 06 | median shift | >2 A |
+|---|---|---|---|
+| best Glide gscore | 16/20 | 2.23 A | 8 |
+| consensus centroid, 04 pool | 14/20 | 1.17 A | 4 |
+| consensus centroid, 04+08 pooled | 15/20 | 1.68 A | 5 |
+
+Glide is the wildest bet and the worst-motivated - analysis 10 found it selects
+PoseBusters-valid poses below random, and analysis 14 found its scores anti-correlate with
+potency. High variance with no evidence of skill.
