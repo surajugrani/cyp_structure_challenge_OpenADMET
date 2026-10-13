@@ -13,6 +13,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 09 | [as 08 but PL-iPTM selection only](09_af3_1template_pliptm/) | 2026-10-04 | 0.3934 | 4.2269 | 0.6926 | — | — |
 | 10 | [no template, HL-iPTM selection only](10_af3_hliptm/) | 2026-10-05 | 0.4221 | 4.0842 | 0.6953 | — | — |
 | 11 | [06 with 3 structures from Boltz-2](11_af3_boltz_fe_swap/) | 2026-10-12 | 0.4241 | 4.0565 | 0.6972 | — | — |
+| 12 | [ICM redocked poses in AF3's receptor](12_icm_redock_af3/) | 2026-10-13 | pending | pending | pending | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).
@@ -324,3 +325,33 @@ without necessarily improving them - "closer to Fe" is not a proxy for "better p
 Still untested and better justified: OCNT-2535422, held out of 11 deliberately. That swap
 rests on chemistry (no imidazole / pyridine / triazole N, so it should not be a type II
 binder and AF3's 2.28 A coordination looks forced) rather than on this heuristic.
+
+## Docking into a predicted receptor (analysis 17, submission 12)
+
+All 20 ligands redocked with ICM into both predicted receptors, ligands built from SMILES
+so no pose information leaks in. Settings match analysis 06: confs=10, effort=3., seed=42.
+
+| | Boltz (03) receptor | AF3 (06) receptor |
+|---|---|---|
+| top-1 RMSD to co-folded, median | 6.38 A | **5.04 A** |
+| best-of-10 RMSD, median | 2.36 A | **1.69 A** |
+| top-1 within 2 A of co-folded | 0/20 | **2/20** |
+| best-of-10 within 2 A | 6/20 | **12/20** |
+| top-1 coordinating Fe | 0/20 | **4/20** |
+
+**Backbone accuracy and dockability come apart.** Boltz's pocket scores 0.098 higher on
+LDDT-LP, yet AF3's receptor docks better on every measure. A prediction made before this
+ran - that Boltz's receptor would be the better target *because* of its LDDT-LP - was
+wrong. LDDT-LP scores the pocket backbone; it says nothing about whether the side chains
+leave a dockable cavity.
+
+**Docking loses the Fe coordination that co-folding gets for free.** 12/20 co-folded poses
+coordinate the iron; ICM keeps 4/20, or 0/20 in the Boltz receptor. Analysis 12 already
+showed Glide metal constraints cannot restore it either.
+
+**Sampling is fine, ranking is not.** Best-of-10 median 1.69 A with 12/20 pools holding a
+near-co-folded pose, against a top-1 median of 5.04 A. Same split as analysis 09 on
+crystal receptors, and the same wall as analyses 10 and 13.
+
+Submission 12 ships the AF3-receptor top-1 poses as a deliberate floor measurement
+(20/20 PoseBusters). Expected well below 06.

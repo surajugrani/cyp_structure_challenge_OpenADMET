@@ -61,3 +61,6 @@ submissions/*/results/_tmp/
 # submissions/*/work/, which missed submissions/04_af3_default/glide_rescoring/work/
 # - 496 MB of it. Match at any depth instead.
 **/work/
+
+# Combined multi-MODEL PDBs for PyMOL (regenerable: tools/make_combined_pdb.py)
+submissions/*/visualize/
