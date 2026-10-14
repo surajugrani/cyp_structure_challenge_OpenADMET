@@ -1,0 +1,21 @@
+ligand,can_coordinate,af3_06_fe,icm_12_fe,note
+OCNT-2312554,True,2.05,3.34,ICM lost coordination
+OCNT-2312966,False,3.59,3.22,
+OCNT-2313038,True,2.23,3.49,ICM lost coordination
+OCNT-2313300,True,2.13,4.11,ICM lost coordination
+OCNT-2313397,True,2.31,3.25,ICM lost coordination
+OCNT-2313429,False,4.33,10.23,ICM far from haem
+OCNT-2315379,False,4.05,8.62,ICM far from haem
+OCNT-2395328,False,4.35,4.62,
+OCNT-2395342,False,4.5,3.29,
+OCNT-2395415,True,2.23,3.35,ICM lost coordination
+OCNT-2395436,True,2.2,2.41,
+OCNT-2395457,True,2.11,2.48,
+OCNT-2395460,False,4.43,3.49,
+OCNT-2395464,True,2.21,2.32,
+OCNT-2395503,True,2.16,3.75,ICM lost coordination
+OCNT-2395645,False,4.66,3.86,
+OCNT-2395712,True,3.72,3.26,
+OCNT-2395789,True,2.18,2.21,
+OCNT-2535422,False,2.28,3.81,
+OCNT-2535519,True,2.1,2.97,ICM lost coordination

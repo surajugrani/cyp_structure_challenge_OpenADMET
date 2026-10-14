@@ -13,6 +13,9 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 09 | [as 08 but PL-iPTM selection only](09_af3_1template_pliptm/) | 2026-10-04 | 0.3934 | 4.2269 | 0.6926 | — | — |
 | 10 | [no template, HL-iPTM selection only](10_af3_hliptm/) | 2026-10-05 | 0.4221 | 4.0842 | 0.6953 | — | — |
 | 11 | [06 with 3 structures from Boltz-2](11_af3_boltz_fe_swap/) | 2026-10-12 | 0.4241 | 4.0565 | 0.6972 | — | — |
+| 12 | [ICM redocked poses in AF3's receptor](12_icm_redock_af3/) | 2026-10-13 | not submitted | — | — | — | — |
+| 13 | [AF3 samples picked by Glide gscore](13_af3_glide_select/) | 2026-10-13 | 0.3730 | 4.5822 | 0.6968 | — | — |
+| 14 | [AF3 samples picked by ICM RTCNN](14_af3_icm_rtcnn/) | 2026-10-14 | 0.3949 | 4.4057 | 0.7004 | — | — |
 | 12 | [ICM redocked poses in AF3's receptor](12_icm_redock_af3/) | 2026-10-13 | pending | pending | pending | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
@@ -355,3 +358,42 @@ crystal receptors, and the same wall as analyses 10 and 13.
 
 Submission 12 ships the AF3-receptor top-1 poses as a deliberate floor measurement
 (20/20 PoseBusters). Expected well below 06.
+
+## Settled: AF3's own confidence beats every external scoring function
+
+Five submissions now select from the SAME 100 PrepWizard-minimised AF3 samples, differing
+only in the ranking rule.
+
+| selector | LDDT-PLI | BiSyRMSD | submission |
+|---|---|---|---|
+| PL-iPTM | **0.4291** | **4.0647** | 06 |
+| mean(PL, HL) | 0.4279 | 4.0653 | 05 |
+| HL-iPTM | 0.4221 | 4.0842 | 10 |
+| ICM RTCNN | 0.3949 | 4.4057 | 14 |
+| Glide gscore | 0.3730 | 4.5822 | 13 |
+
+**The three confidence rules cluster within 0.0070; both external scores sit 0.03-0.06
+below all of them.** A physics or ML score computed on the finished pose carries less
+information about which sample is right than the model's own confidence did while
+generating it. That is the single clearest result of the project.
+
+**The analysis 09 ranking transferred.** That analysis measured within-ligand Spearman
+against RMSD on crystal receptors - RTCNN +0.334, Glide lipo +0.115, gscore +0.086 - and
+predicted RTCNN would be the better of the two selectors. It is, by 0.022. The relative
+order held moving from crystal to co-folded receptors; the absolute level was simply far
+too low to beat AF3.
+
+**The swaps are lateral.** Both external rules change 16 of 20 structures while leaving
+the Fe chemistry essentially untouched: of the 15 ligands with a nitrogen donor, 06
+coordinates 12, RTCNN 11, Glide 11, with median Fe distances 2.25 / 2.34 / 2.32 A. So a
+rule can reshuffle most of the set, keep every binding mode intact, and still lose
+0.03-0.06 LDDT-PLI - the damage is in orientation within the pocket, invisible to any
+coordination check.
+
+### Docking into a predicted receptor is worse still
+
+Analysis 17 (ICM) and 18 (Glide) redocked all 20 into the predicted receptors. Of the 15
+Fe-capable ligands, ICM's top-1 keeps 4 coordinations and Glide's keeps **0**, against
+AF3's 12. Submission 12 (ICM redock) was built and validated but not submitted once
+submission 13 showed selection alone already costs 0.056; the Glide redock was not
+packaged at all.
