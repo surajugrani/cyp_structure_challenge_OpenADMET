@@ -397,3 +397,30 @@ Fe-capable ligands, ICM's top-1 keeps 4 coordinations and Glide's keeps **0**, a
 AF3's 12. Submission 12 (ICM redock) was built and validated but not submitted once
 submission 13 showed selection alone already costs 0.056; the Glide redock was not
 packaged at all.
+
+## Why Boltz beats AF3 on LDDT-LP (analysis 21)
+
+Scored every predicted pocket against 38 ligand-bound CYP3A4 crystals at <=2.5 A, on a
+fixed 10 A haem shell, with OpenStructure's lDDT.
+
+| | max lDDT | median vs ensemble |
+|---|---|---|
+| Boltz-2 (03) | **0.9726** | **0.9513** |
+| AF3 (06) | 0.9650 | 0.8955 |
+
+Boltz wins on 19 of 20 ligands, and **the gap is in the median (0.056), not the max
+(0.008)**. Both models match some crystal closely; only Boltz resembles the whole
+ensemble.
+
+The best-match counts make the mechanism explicit: **AF3 lands on 6DAA for 15 of 20
+ligands** - the same pocket conformation almost regardless of ligand - while Boltz
+spreads across 7UFB, 4D75, 6BCZ, 6DAJ and 6OOB. AF3 produces a near ligand-independent
+pocket; Boltz adapts.
+
+CYP3A4's site is highly plastic and the blinded references will span several states, so a
+model locked to one state scores well on the few that match and poorly on the rest. That
+is a plausible mechanism for the 0.098 gap.
+
+It also resolves what looked like a contradiction: analysis 17 found AF3's receptor is the
+BETTER docking target despite the worse LDDT-LP. A single well-formed induced-fit pocket
+can be easy to dock into and still be the wrong conformation for most references.
