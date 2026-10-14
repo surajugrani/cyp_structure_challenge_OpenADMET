@@ -64,3 +64,4 @@ submissions/*/results/_tmp/
 
 # Combined multi-MODEL PDBs for PyMOL (regenerable: tools/make_combined_pdb.py)
 submissions/*/visualize/
+tools/slurm-*.out
