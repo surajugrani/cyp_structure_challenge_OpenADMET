@@ -16,6 +16,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 12 | [ICM redocked poses in AF3's receptor](12_icm_redock_af3/) | 2026-10-13 | not submitted | — | — | — | — |
 | 13 | [AF3 samples picked by Glide gscore](13_af3_glide_select/) | 2026-10-13 | 0.3730 | 4.5822 | 0.6968 | — | — |
 | 14 | [AF3 samples picked by ICM RTCNN](14_af3_icm_rtcnn/) | 2026-10-14 | 0.3949 | 4.4057 | 0.7004 | — | — |
+| 15 | [Boltz-2 tuned sampling, PrepWizard](15_boltz2_tuned/) | 2026-10-15 | 0.4063 | **4.0017** | **0.7983** | — | — |
 | 12 | [ICM redocked poses in AF3's receptor](12_icm_redock_af3/) | 2026-10-13 | pending | pending | pending | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
@@ -424,3 +425,33 @@ is a plausible mechanism for the 0.098 gap.
 It also resolves what looked like a contradiction: analysis 17 found AF3's receptor is the
 BETTER docking target despite the worse LDDT-LP. A single well-formed induced-fit pocket
 can be easy to dock into and still be the wrong conformation for most references.
+
+## Tuning Boltz's sampling is the first change in a long while that moved anything
+
+Submission 15 is submission 03 with three flags changed - `--recycling_steps 5`
+(default 3), `--sampling_steps 300` (default 200), `--diffusion_samples 5` (default 1) -
+and nothing else.
+
+| | 03 default | 15 tuned | change |
+|---|---|---|---|
+| LDDT-PLI | 0.3921 | 0.4063 | **+0.0142** |
+| BiSyRMSD | 4.1179 | **4.0017** | **-0.116 A** |
+| LDDT-LP | 0.7962 | **0.7983** | +0.0021 |
+
+**Best of any submission on BiSyRMSD and LDDT-LP.** Submission 06 still leads LDDT-PLI
+at 0.4291.
+
+**The PXR transfer held.** On PXR the same change gave +0.0182 (run 8 -> run 9); here it
+gives +0.0142. PXR also showed 6/400 gives back a third of the gain, so 5/300 is the
+setting to keep, not a direction to push further.
+
+Worth the perspective: +0.0142 is **double the 0.0070** that separated every
+selection-metric variant we tried (05, 06, 10), and it came from generation settings
+rather than post-hoc selection. After analyses 09/10/20 and submissions 13/14 all failed
+to improve selection, this says the remaining headroom is in how the poses are GENERATED.
+
+`diffusion_samples 5` gave an ensemble we cannot yet exploit: Boltz's own
+`confidence_score` varies by only 0.001-0.007 across the five, as flat as AF3's iPTM was.
+The four unused samples per ligand are kept on disk. The untried alternative is Boltz's
+`pair_chains_iptm[0][2]` - its protein-ligand iPTM, the analogue of the metric that won
+for AF3 - which reads ~0.70 where confidence_score reads ~0.95, so it has far more range.
