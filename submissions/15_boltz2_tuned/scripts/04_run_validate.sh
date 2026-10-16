@@ -10,3 +10,6 @@ cd "$SLURM_SUBMIT_DIR"
 ~/micromamba/envs/cyp_posebusters_env/bin/python \
   submissions/15_boltz2_tuned/scripts/03_graft_validate_pb.py
 echo "EXIT=$?"
+
+# Always build the PyMOL session alongside the zip (no-op if no zip was written).
+bash tools/make_pse.sh submissions/15_boltz2_tuned

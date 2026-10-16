@@ -16,7 +16,8 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 12 | [ICM redocked poses in AF3's receptor](12_icm_redock_af3/) | 2026-10-13 | not submitted | — | — | — | — |
 | 13 | [AF3 samples picked by Glide gscore](13_af3_glide_select/) | 2026-10-13 | 0.3730 | 4.5822 | 0.6968 | — | — |
 | 14 | [AF3 samples picked by ICM RTCNN](14_af3_icm_rtcnn/) | 2026-10-14 | 0.3949 | 4.4057 | 0.7004 | — | — |
-| 15 | [Boltz-2 tuned sampling, PrepWizard](15_boltz2_tuned/) | 2026-10-15 | 0.4063 | **4.0017** | **0.7983** | — | — |
+| 15 | [Boltz-2 tuned sampling, PrepWizard](15_boltz2_tuned/) | 2026-10-15 | 0.4063 | 4.0017 | 0.7983 | — | — |
+| 16 | [Boltz-2 tuned, PL-iPTM selection](16_boltz2_pliptm/) | 2026-10-16 | 0.4229 | **3.9283** | **0.8060** | — | — |
 | 12 | [ICM redocked poses in AF3's receptor](12_icm_redock_af3/) | 2026-10-13 | pending | pending | pending | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
@@ -455,3 +456,42 @@ to improve selection, this says the remaining headroom is in how the poses are G
 The four unused samples per ligand are kept on disk. The untried alternative is Boltz's
 `pair_chains_iptm[0][2]` - its protein-ligand iPTM, the analogue of the metric that won
 for AF3 - which reads ~0.70 where confidence_score reads ~0.95, so it has far more range.
+
+## Submission 16: the first selection rule that worked, and why
+
+Same 5-sample Boltz ensemble as submission 15, different sample chosen.
+
+| | 15 Boltz's own pick | 16 PL-iPTM | change |
+|---|---|---|---|
+| LDDT-PLI | 0.4063 | **0.4229** | **+0.0166** |
+| BiSyRMSD | 4.0017 | **3.9283** | -0.073 A |
+| LDDT-LP | 0.7983 | **0.8060** | +0.0077 |
+
+**First submission under 4 A BiSyRMSD and the best LDDT-LP of any attempt** (0.806 against
+AF3's 0.699). Submission 06 still leads LDDT-PLI by 0.0062.
+
+Every earlier selection attempt failed: the three AF3 confidence rules spanned 0.0070
+(noise), Glide gscore lost 0.056, ICM RTCNN lost 0.034. **The difference here is dynamic
+range.** Median spread across a ligand's 5 samples: Boltz `confidence_score` 0.0038,
+Boltz `pair_chains_iptm[0][2]` **0.079** - 20x more. A selector can only help if it
+varies across the candidates it is ranking.
+
+Note the asymmetry of `pair_chains_iptm`: `[0][2]` = 0.698 while `[2][0]` = 0.956 for the
+same interface, because ipTM's distance cutoff is set by the size of the set being scored
+- ~27 ligand atoms (strict, discriminating) versus ~500 protein residues (loose, pinned
+near the ceiling). `[0][2]` is the usable direction and the analogue of AF3's
+`chain_pair_iptm[0][2]`.
+
+### Cumulative, from default Boltz
+
+| step | LDDT-PLI | gain |
+|---|---|---|
+| 03 defaults | 0.3921 | - |
+| 15 tuned sampling | 0.4063 | +0.0142 |
+| 16 + PL-iPTM selection | **0.4229** | +0.0166 |
+| | | **+0.0308** |
+
+**Generation and selection are complementary.** More diverse candidates are only useful
+with a selector that can tell them apart, and a selector is only useful when the
+candidates differ. That reframes the earlier null results: AF3's selection experiments
+failed partly because AF3's five samples were too similar in confidence to choose between.
