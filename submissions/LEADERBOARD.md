@@ -20,6 +20,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 16 | [Boltz-2 tuned, PL-iPTM selection](16_boltz2_pliptm/) | 2026-10-16 | **0.4229** | 3.9283 | **0.8060** | — | — |
 | 17 | [Boltz-2 tuned, complex_iPDE selection](17_boltz2_ipde/) | 2026-10-16 | 0.4157 | 3.8021 | 0.7976 | — | — |
 | 18 | [Boltz-2 tuned, Glide gscore selection](18_boltz2_glide/) | 2026-10-18 | 0.4174 | **3.7523** | 0.8047 | — | — |
+| 19 | [AF3/Boltz hybrid, better Glide score](19_hybrid_glide/) | 2026-10-18 | pending | pending | pending | — | — |
 | 12 | [ICM redocked poses in AF3's receptor](12_icm_redock_af3/) | 2026-10-13 | pending | pending | pending | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
@@ -552,3 +553,22 @@ non-coordinating type I ligands that Glide pulls closer to the haem (e.g. OCNT-2
 This qualifies submission 11, where moving three ligands closer to the iron by hand HURT.
 A physical interaction model that happens to prefer closer type I poses helps; a bare
 distance heuristic does not.
+
+## Submission 19: can Glide choose between two whole models?
+
+Per ligand, whichever of submission 06 (AF3 + PL-iPTM) or 18 (Boltz + Glide) Glide scores
+better. 14 from 18, 6 from 06. 20/20 structural and PoseBusters.
+
+**The parents agree on almost nothing**: median ligand RMSD 4.15 A, max 7.71 A, 17 of 20
+beyond 2 A - yet both score ~0.42 LDDT-PLI. Two coordinating ligands show the pattern
+sharply: OCNT-2313300 is 6.21 A apart with both at 2.13 A from the iron, OCNT-2535519 is
+4.90 A apart with both at ~2.10 A. Same metal contact, molecule pivoted around the
+coordinating nitrogen.
+
+Since they cannot both be right, roughly half of each submission's apparent accuracy comes
+from different structures. If Glide can identify which half, the hybrid beats both parents;
+if it lands between them, it cannot.
+
+Caveats recorded in the submission README: the two gscores are computed on DIFFERENT
+receptors (AF3's protein vs Boltz's, each with its own grid), and the pose disagreement is
+uncorrelated with the score difference (Pearson +0.110, Spearman +0.018, n=19).
