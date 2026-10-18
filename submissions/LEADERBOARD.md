@@ -495,3 +495,27 @@ near the ceiling). `[0][2]` is the usable direction and the analogue of AF3's
 with a selector that can tell them apart, and a selector is only useful when the
 candidates differ. That reframes the earlier null results: AF3's selection experiments
 failed partly because AF3's five samples were too similar in confidence to choose between.
+
+## Analysis 23: Glide cannot select Boltz samples either
+
+All 100 Boltz samples scored with Glide `mininplace` (PrepWizard -> own-conformation grid
+-> score), 0 failures. Agreement with the PL-iPTM pick that produced submission 16:
+
+| | agrees with PL-iPTM |
+|---|---|
+| Glide `gscore` | 4/20 |
+| Glide `emodel` | 5/20 |
+| chance | ~4/20 |
+
+Glide is not flat - median within-ligand spread 1.83 kcal/mol against PL-iPTM's 0.079 -
+so it discriminates confidently on something uncorrelated with pose quality.
+
+Three independent lines now agree: analysis 09 measured within-ligand rho = +0.086 on
+crystal receptors, submission 13 lost 0.056 selecting the AF3 ensemble with it, and here
+it agrees with the working rule at chance. The failure belongs to the scoring function,
+not to the candidate pool, which is why changing the ensemble changed nothing.
+
+**No further submission slots on Glide or ICM selection.** What distinguishes PL-iPTM is
+not dynamic range - Glide has more - but that it is the model's own estimate of how well
+it placed the ligand, formed with access to generation, rather than a physics score
+re-judging a finished pose.

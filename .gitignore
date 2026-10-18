@@ -69,3 +69,7 @@ tools/slurm-*.out
 # Boltz raw per-sample predictions (regenerable, ~GB)
 submissions/*/results/boltz_results_*/
 submissions/*/raw_model0/
+
+# Glide per-sample work dirs (regenerable)
+analyses/*/work/
+analyses/*/samples/

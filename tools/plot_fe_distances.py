@@ -12,7 +12,7 @@ Adding a plot: append a PLOTS entry naming the series and where each one's dista
 from. Everything is read from committed CSVs, so the figures regenerate from scratch
 after any analysis is rerun.
 """
-import argparse, csv, os, sys
+import argparse, csv, glob, os, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FIG = os.path.join(ROOT, "figures")
@@ -51,6 +51,60 @@ def src_icm_sub12():
             for r in rows(os.path.join(S12, "selection.csv")) if r["fe_dist"]}
 
 
+def src_submission_fe(subdir):
+    """Min Fe-ligand heavy-atom distance straight from a submission's shipped PDBs."""
+    import math
+    d = os.path.join(ROOT, "submissions", subdir, "submission")
+    out = {}
+    for f in sorted(os.listdir(d)):
+        if not f.endswith(".pdb"):
+            continue
+        fe, lig = None, []
+        for l in open(os.path.join(d, f)):
+            if not l.startswith(("ATOM", "HETATM")):
+                continue
+            el = (l[76:78].strip() or l[12:16].strip()[0]).upper()
+            if el == "H":
+                continue
+            xyz = (float(l[30:38]), float(l[38:46]), float(l[46:54]))
+            if el == "FE":
+                fe = xyz
+            elif l[17:20].strip() == "LIG":
+                lig.append(xyz)
+        if fe and lig:
+            out[f[:-4]] = round(min(math.dist(fe, x) for x in lig), 2)
+    return out
+
+
+def src_raw_sel(subdir):
+    """Fe distance from a submission's SELECTED but not-yet-PrepWizard-ed structures.
+
+    Only for a submission still in the queue - PrepWizard moves heavy atoms ~0.15 A
+    median, so these are representative but not final.
+    """
+    import math
+    d = os.path.join(ROOT, "submissions", subdir, "raw_sel")
+    out = {}
+    for f in sorted(os.listdir(d)):
+        if not f.endswith(".pdb"):
+            continue
+        fe, lig = None, []
+        for l in open(os.path.join(d, f)):
+            if not l.startswith(("ATOM", "HETATM")):
+                continue
+            el = (l[76:78].strip() or l[12:16].strip()[0]).upper()
+            if el == "H":
+                continue
+            xyz = (float(l[30:38]), float(l[38:46]), float(l[46:54]))
+            if el == "FE":
+                fe = xyz
+            elif l[17:20].strip() == "LIG":
+                lig.append(xyz)
+        if fe and lig:
+            out[f[:-4]] = round(min(math.dist(fe, x) for x in lig), 2)
+    return out
+
+
 def src_glide_redock():
     """Top-1 per ligand; poseviewer order is best-first, so take the first row seen."""
     out = {}
@@ -61,7 +115,33 @@ def src_glide_redock():
     return out
 
 
+def _sub17():
+    """Final PDBs once submission 17 is packaged; selected raw structures until then."""
+    if os.path.isdir(os.path.join(ROOT, "submissions", "17_boltz2_ipde", "submission")) \
+            and glob.glob(os.path.join(ROOT, "submissions", "17_boltz2_ipde",
+                                       "submission", "*.pdb")):
+        return src_submission_fe("17_boltz2_ipde")
+    return src_raw_sel("17_boltz2_ipde")
+
+
 PLOTS = [
+    {"name": "fe_boltz_all_four",
+     "title": "Boltz-2: defaults (03), tuned (15), PL-iPTM (16), iPDE (17)",
+     "series": [("03 defaults \u2014 0.3921", "blue",
+                 lambda: src_submission_fe("03_boltz2_prepwizard")),
+                ("15 tuned, Boltz's own pick \u2014 0.4063", "orange",
+                 lambda: src_submission_fe("15_boltz2_tuned")),
+                ("16 tuned + PL-iPTM \u2014 0.4229", "teal",
+                 lambda: src_submission_fe("16_boltz2_pliptm")),
+                ("17 tuned + complex_iPDE \u2014 pending", "yellow", _sub17)]},
+    {"name": "fe_boltz_progression",
+     "title": "Boltz-2: defaults (03) vs tuned (15) vs tuned+PL-iPTM (16)",
+     "series": [("03 Boltz defaults \u2014 0.3921", "blue",
+                 lambda: src_submission_fe("03_boltz2_prepwizard")),
+                ("15 tuned sampling \u2014 0.4063", "orange",
+                 lambda: src_submission_fe("15_boltz2_tuned")),
+                ("16 tuned + PL-iPTM \u2014 0.4229", "teal",
+                 lambda: src_submission_fe("16_boltz2_pliptm"))]},
     {"name": "fe_af3_vs_boltz",
      "title": "AF3 (sub 06) vs Boltz-2 (sub 03)",
      "series": [("06 AF3, best PL-iPTM", "blue", lambda: src_fe_distance("af3_06_fe")),
