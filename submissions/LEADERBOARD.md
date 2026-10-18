@@ -17,7 +17,9 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 13 | [AF3 samples picked by Glide gscore](13_af3_glide_select/) | 2026-10-13 | 0.3730 | 4.5822 | 0.6968 | — | — |
 | 14 | [AF3 samples picked by ICM RTCNN](14_af3_icm_rtcnn/) | 2026-10-14 | 0.3949 | 4.4057 | 0.7004 | — | — |
 | 15 | [Boltz-2 tuned sampling, PrepWizard](15_boltz2_tuned/) | 2026-10-15 | 0.4063 | 4.0017 | 0.7983 | — | — |
-| 16 | [Boltz-2 tuned, PL-iPTM selection](16_boltz2_pliptm/) | 2026-10-16 | 0.4229 | **3.9283** | **0.8060** | — | — |
+| 16 | [Boltz-2 tuned, PL-iPTM selection](16_boltz2_pliptm/) | 2026-10-16 | **0.4229** | 3.9283 | **0.8060** | — | — |
+| 17 | [Boltz-2 tuned, complex_iPDE selection](17_boltz2_ipde/) | 2026-10-16 | 0.4157 | 3.8021 | 0.7976 | — | — |
+| 18 | [Boltz-2 tuned, Glide gscore selection](18_boltz2_glide/) | 2026-10-18 | 0.4174 | **3.7523** | 0.8047 | — | — |
 | 12 | [ICM redocked poses in AF3's receptor](12_icm_redock_af3/) | 2026-10-13 | pending | pending | pending | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
@@ -519,3 +521,34 @@ not to the candidate pool, which is why changing the ensemble changed nothing.
 not dynamic range - Glide has more - but that it is the model's own estimate of how well
 it placed the ligand, formed with access to generation, rather than a physics score
 re-judging a finished pose.
+
+## Submission 18 overturns the recommendation against Glide selection
+
+Analysis 23 found Glide's picks agree with PL-iPTM at chance, and submission 13 had lost
+0.056 using Glide on the AF3 ensemble. On that basis the advice was to skip it. **The
+advice was wrong.**
+
+| Boltz selection rule | LDDT-PLI | BiSyRMSD | LDDT-LP |
+|---|---|---|---|
+| 15 Boltz `confidence_score` | 0.4063 | 4.0017 | 0.7983 |
+| 16 PL-iPTM | **0.4229** | 3.9283 | **0.8060** |
+| 17 complex_iPDE | 0.4157 | 3.8021 | 0.7976 |
+| 18 Glide gscore | 0.4174 | **3.7523** | 0.8047 |
+
+Two reasoning errors worth keeping:
+
+1. **A score's failure on one ensemble does not transfer to another.** Glide cost 0.056 on
+   AF3's samples and 0.0055 on Boltz's, while winning BiSyRMSD outright.
+2. **Agreement with a working rule is not a proxy for performance.** Two selectors can
+   disagree on which sample to take and both land on good poses. Only the leaderboard
+   settles it.
+
+**BiSyRMSD improves monotonically across the four rules while LDDT-PLI peaks at 16**, so
+the two metrics reward different things. The Fe analysis shows why: Glide's picks differ
+from iPDE's on 16 of 20 samples but move the ligand >0.05 A for only 6, all of them
+non-coordinating type I ligands that Glide pulls closer to the haem (e.g. OCNT-2395328
+4.31 -> 3.01 A). Coordination is identical at 11/15, median 2.29 A.
+
+This qualifies submission 11, where moving three ligands closer to the iron by hand HURT.
+A physical interaction model that happens to prefer closer type I poses helps; a bare
+distance heuristic does not.

@@ -124,7 +124,20 @@ def _sub17():
     return src_raw_sel("17_boltz2_ipde")
 
 
+def _sub18():
+    """Final PDBs once packaged; the selected raw structures until then."""
+    d = os.path.join(ROOT, "submissions", "18_boltz2_glide", "submission")
+    if os.path.isdir(d) and glob.glob(os.path.join(d, "*.pdb")):
+        return src_submission_fe("18_boltz2_glide")
+    return src_raw_sel("18_boltz2_glide")
+
+
 PLOTS = [
+    {"name": "fe_ipde_vs_glide",
+     "title": "Boltz ensemble: complex_iPDE (17) vs Glide gscore (18)",
+     "series": [("17 complex_iPDE \u2014 0.4157 / 3.8021", "teal",
+                 lambda: src_submission_fe("17_boltz2_ipde")),
+                ("18 Glide gscore \u2014 pending", "orange", _sub18)]},
     {"name": "fe_boltz_all_four",
      "title": "Boltz-2: defaults (03), tuned (15), PL-iPTM (16), iPDE (17)",
      "series": [("03 defaults \u2014 0.3921", "blue",

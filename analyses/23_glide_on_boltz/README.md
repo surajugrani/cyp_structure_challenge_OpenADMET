@@ -41,8 +41,20 @@ candidates — which is why changing the ensemble changed nothing. Submission 14
 same for ICM RTCNN (0.3949, −0.034), despite its much stronger within-ligand signal of
 +0.334.
 
-**Recommendation: do not spend a submission slot on Glide or ICM selection.** The scores
-are confident and wrong, which is the worst combination for a selector.
+## CORRECTION — this recommendation was wrong
+
+The original text here read "do not spend a submission slot on Glide or ICM selection".
+Submission 18 did exactly that and scored **0.4174 LDDT-PLI / 3.7523 Å BiSyRMSD /
+0.8047 LDDT-LP — the best BiSyRMSD of the project**, and only 0.0055 LDDT-PLI below the
+best rule rather than the 0.056 Glide cost on AF3.
+
+The inferential mistake: **agreement with a working rule is not a proxy for performance.**
+Two selectors can disagree on which sample to take and both land on good poses, because
+a 5-sample ensemble can contain several acceptable candidates. Chance-level agreement
+measures independence, not quality. Only the leaderboard settles it.
+
+The related mistake: **a score's failure on one ensemble does not transfer to another.**
+Glide's -0.056 on AF3's samples did not predict its behaviour on Boltz's.
 
 ## Why PL-iPTM works where these do not
 
