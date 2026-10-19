@@ -20,7 +20,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 16 | [Boltz-2 tuned, PL-iPTM selection](16_boltz2_pliptm/) | 2026-10-16 | **0.4229** | 3.9283 | **0.8060** | — | — |
 | 17 | [Boltz-2 tuned, complex_iPDE selection](17_boltz2_ipde/) | 2026-10-16 | 0.4157 | 3.8021 | 0.7976 | — | — |
 | 18 | [Boltz-2 tuned, Glide gscore selection](18_boltz2_glide/) | 2026-10-18 | 0.4174 | **3.7523** | 0.8047 | — | — |
-| 19 | [AF3/Boltz hybrid, better Glide score](19_hybrid_glide/) | 2026-10-18 | pending | pending | pending | — | — |
+| 19 | [AF3/Boltz hybrid, better Glide score](19_hybrid_glide/) | 2026-10-18 | **0.4331** | **3.6754** | 0.7823 | — | — |
 | 12 | [ICM redocked poses in AF3's receptor](12_icm_redock_af3/) | 2026-10-13 | pending | pending | pending | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
@@ -572,3 +572,29 @@ if it lands between them, it cannot.
 Caveats recorded in the submission README: the two gscores are computed on DIFFERENT
 receptors (AF3's protein vs Boltz's, each with its own grid), and the pose disagreement is
 uncorrelated with the score difference (Pearson +0.110, Spearman +0.018, n=19).
+
+## Submission 19 result: Glide CAN choose between models
+
+**0.4331 LDDT-PLI / 3.6754 A BiSyRMSD / 0.7823 LDDT-LP - best of the project on the
+primary metric and on BiSyRMSD**, beating both parents (06: 0.4291, 18: 0.4174).
+
+| submission | LDDT-PLI | BiSyRMSD | LDDT-LP |
+|---|---|---|---|
+| 06 AF3 + PL-iPTM | 0.4291 | 4.0647 | 0.6985 |
+| 16 Boltz + PL-iPTM | 0.4229 | 3.9283 | **0.8060** |
+| 17 Boltz + iPDE | 0.4157 | 3.8021 | 0.7976 |
+| 18 Boltz + Glide | 0.4174 | 3.7523 | 0.8047 |
+| **19 hybrid** | **0.4331** | **3.6754** | 0.7823 |
+
+**The resolution to the Glide puzzle is scale.** Within one model's five samples the
+candidates differ by ~1-2 A, Glide's score differences are noise, and it picks at chance
+(analysis 23) or loses outright (submission 13, -0.056). Between AF3 and Boltz the poses
+differ by a median 4.15 A - a gap large enough for a physics score to resolve - and it
+beats both parents. Selection ability is not a fixed property of a score; it depends on
+how far apart the candidates are.
+
+**The LDDT-LP drop is the pocket, not the ligands.** LDDT-LP scores the protein binding
+site. Mixing 14 Boltz structures (0.8047) with 6 AF3 ones (0.6985) predicts
+(14*0.8047 + 6*0.6985)/20 = 0.773 against the observed 0.7823 - the whole deficit is the
+price of importing AF3's weaker pocket for its ligand poses, and says nothing about
+ligand placement.
