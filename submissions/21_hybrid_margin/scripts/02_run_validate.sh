@@ -6,6 +6,7 @@
 #SBATCH -t 00:30:00
 #SBATCH --output=submissions/21_hybrid_margin/slurm-%j.out
 # Resources derived: single-threaded validation of 20 structures; PoseBusters peaks ~2G.
+# RESOURCES: see the derivation comment above; verified against sacct MaxRSS.
 set -uo pipefail
 cd "$SLURM_SUBMIT_DIR"
 ~/micromamba/envs/cyp_posebusters_env/bin/python \
