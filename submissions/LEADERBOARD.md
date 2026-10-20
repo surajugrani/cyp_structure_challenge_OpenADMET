@@ -21,7 +21,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 17 | [Boltz-2 tuned, complex_iPDE selection](17_boltz2_ipde/) | 2026-10-16 | 0.4157 | 3.8021 | 0.7976 | — | — |
 | 18 | [Boltz-2 tuned, Glide gscore selection](18_boltz2_glide/) | 2026-10-18 | 0.4174 | **3.7523** | 0.8047 | — | — |
 | 19 | [AF3/Boltz hybrid, better Glide score](19_hybrid_glide/) | 2026-10-18 | **0.4331** | **3.6754** | 0.7823 | — | — |
-| 20 | [best Glide over all AF3+Boltz samples](20_union_glide/) | 2026-10-19 | pending | pending | pending | — | — |
+| 20 | [best Glide over all AF3+Boltz samples](20_union_glide/) | 2026-10-19 | 0.3854 | 4.2275 | 0.7449 | — | — |
 | 12 | [ICM redocked poses in AF3's receptor](12_icm_redock_af3/) | 2026-10-13 | pending | pending | pending | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
@@ -617,3 +617,28 @@ It is a clean test of the scale explanation for Glide's behaviour:
 The risk is concrete: submission 13 applied this exact rule within AF3 alone and scored
 0.3730, the worst AF3-based attempt, and 12 of these 20 picks are AF3 samples chosen on
 gscore.
+
+## Submission 20 result: Glide's skill is cross-model only
+
+0.3854 / 4.2275 / 0.7449 - a 0.048 LDDT-PLI loss against submission 19, finishing just
+above submission 13 (0.3730), the within-AF3 Glide rule.
+
+| | LDDT-PLI | BiSyRMSD | LDDT-LP |
+|---|---|---|---|
+| 19 pairwise, cross-model | **0.4331** | **3.6754** | 0.7823 |
+| 20 union, global | 0.3854 | 4.2275 | 0.7449 |
+| 13 Glide within AF3 alone | 0.3730 | 4.5822 | 0.6968 |
+
+**The scale explanation is confirmed.** Between AF3 and Boltz, candidates differ by a
+median 4.15 A and Glide resolves them - submission 19 beat both its parents. Within one
+model's ensemble they differ by 1-2 A, and Glide picks at chance (analysis 23) or loses
+(13, 20). A global rule destroys the advantage, because 12 of 20 picks became AF3 samples
+ranked on gscore - submission 13's rule exactly.
+
+**Practical rule: give Glide a choice between models, never between samples.**
+
+### LDDT-LP for a hybrid is predictable in advance
+
+(12 x 0.6985 + 8 x 0.8047) / 20 = 0.741 against 0.7449 observed. Submission 19 predicted
+0.773 against 0.7823. Twice accurate to ~0.004, so LDDT-LP is essentially a weighted
+average of the parent pockets and can be computed before submitting.

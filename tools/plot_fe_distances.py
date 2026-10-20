@@ -133,6 +133,12 @@ def _sub18():
 
 
 PLOTS = [
+    {"name": "fe_hybrid_19_vs_20",
+     "title": "Hybrids: pairwise Glide (19) vs union Glide (20)",
+     "series": [("19 better-of-two \u2014 0.4331 / 3.6754", "blue",
+                 lambda: src_submission_fe("19_hybrid_glide")),
+                ("20 best of all \u2014 pending", "orange",
+                 lambda: src_submission_fe("20_union_glide"))]},
     {"name": "fe_ipde_vs_glide",
      "title": "Boltz ensemble: complex_iPDE (17) vs Glide gscore (18)",
      "series": [("17 complex_iPDE \u2014 0.4157 / 3.8021", "teal",
