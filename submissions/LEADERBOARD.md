@@ -22,6 +22,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 18 | [Boltz-2 tuned, Glide gscore selection](18_boltz2_glide/) | 2026-10-18 | 0.4174 | **3.7523** | 0.8047 | — | — |
 | 19 | [AF3/Boltz hybrid, better Glide score](19_hybrid_glide/) | 2026-10-18 | **0.4331** | **3.6754** | 0.7823 | — | — |
 | 20 | [best Glide over all AF3+Boltz samples](20_union_glide/) | 2026-10-19 | 0.3854 | 4.2275 | 0.7449 | — | — |
+| 21 | [hybrid 19 with a 0.5 kcal/mol Glide margin](21_hybrid_margin/) | 2026-10-19 | pending | pending | pending | — | — |
 | 12 | [ICM redocked poses in AF3's receptor](12_icm_redock_af3/) | 2026-10-13 | pending | pending | pending | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
@@ -642,3 +643,22 @@ ranked on gscore - submission 13's rule exactly.
 (12 x 0.6985 + 8 x 0.8047) / 20 = 0.741 against 0.7449 observed. Submission 19 predicted
 0.773 against 0.7823. Twice accurate to ~0.004, so LDDT-LP is essentially a weighted
 average of the parent pockets and can be computed before submitting.
+
+## Submission 21: is a 0.07 kcal/mol Glide margin worth an AF3 pocket?
+
+Submission 19 with AF3 kept only where it wins Glide by more than 0.5 kcal/mol:
+17 Boltz / 3 AF3, changing 3 structures (OCNT-2395457, -2395503, -2395712, whose margins
+were 0.31, 0.08 and 0.07).
+
+**Prediction on record.** The mixing model has been accurate to ~0.004 twice, both times
+running ~0.009 above the raw weighted average:
+
+| submission | mix | predicted | observed |
+|---|---|---|---|
+| 19 | 14 Boltz / 6 AF3 | 0.773 | 0.7823 |
+| 20 | 8 Boltz / 12 AF3 | 0.741 | 0.7449 |
+| 21 | 17 Boltz / 3 AF3 | **0.789** | expect ~0.798 |
+
+If LDDT-PLI holds near 19's 0.4331 this is a strict improvement of ~+0.016 LDDT-LP. If it
+falls toward submission 18's 0.4174, the three reverted AF3 poses were earning their keep
+and the margin threshold is the wrong idea.
