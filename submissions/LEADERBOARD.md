@@ -21,6 +21,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 17 | [Boltz-2 tuned, complex_iPDE selection](17_boltz2_ipde/) | 2026-10-16 | 0.4157 | 3.8021 | 0.7976 | — | — |
 | 18 | [Boltz-2 tuned, Glide gscore selection](18_boltz2_glide/) | 2026-10-18 | 0.4174 | **3.7523** | 0.8047 | — | — |
 | 19 | [AF3/Boltz hybrid, better Glide score](19_hybrid_glide/) | 2026-10-18 | **0.4331** | **3.6754** | 0.7823 | — | — |
+| 20 | [best Glide over all AF3+Boltz samples](20_union_glide/) | 2026-10-19 | pending | pending | pending | — | — |
 | 12 | [ICM redocked poses in AF3's receptor](12_icm_redock_af3/) | 2026-10-13 | pending | pending | pending | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
@@ -598,3 +599,21 @@ site. Mixing 14 Boltz structures (0.8047) with 6 AF3 ones (0.6985) predicts
 (14*0.8047 + 6*0.6985)/20 = 0.773 against the observed 0.7823 - the whole deficit is the
 price of importing AF3's weaker pocket for its ligand poses, and says nothing about
 ligand placement.
+
+## Submission 20: one Glide rule over the whole pool
+
+Best gscore across all 94 scored AF3 samples and all 100 Boltz samples. **12 AF3 /
+8 Boltz**, changing 10 of 20 structures from submission 19 and flipping the balance from
+19's 6/14 - the union sees AF3 samples submission 06 never shipped.
+
+It is a clean test of the scale explanation for Glide's behaviour:
+
+* **If 20 beats 19**, the scale story is wrong and Glide is simply a good selector given
+  enough candidates.
+* **If 20 lands below 19**, the scale story holds: Glide's skill is specifically in
+  comparing whole models (~4 A apart), not in ranking within an ensemble (1-2 A apart),
+  and a global rule reverts to the losing within-ensemble behaviour.
+
+The risk is concrete: submission 13 applied this exact rule within AF3 alone and scored
+0.3730, the worst AF3-based attempt, and 12 of these 20 picks are AF3 samples chosen on
+gscore.
