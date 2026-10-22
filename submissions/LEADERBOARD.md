@@ -20,11 +20,11 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 16 | [Boltz-2 tuned, PL-iPTM selection](16_boltz2_pliptm/) | 2026-10-16 | **0.4229** | 3.9283 | **0.8060** | — | — |
 | 17 | [Boltz-2 tuned, complex_iPDE selection](17_boltz2_ipde/) | 2026-10-16 | 0.4157 | 3.8021 | 0.7976 | — | — |
 | 18 | [Boltz-2 tuned, Glide gscore selection](18_boltz2_glide/) | 2026-10-18 | 0.4174 | **3.7523** | 0.8047 | — | — |
-| 19 | [AF3/Boltz hybrid, better Glide score](19_hybrid_glide/) | 2026-10-18 | **0.4331** | **3.6754** | 0.7823 | — | — |
+| 19 | [AF3/Boltz hybrid, better Glide score](19_hybrid_glide/) | 2026-10-18 | 0.4331 | **3.6754** | 0.7823 | — | — |
 | 20 | [best Glide over all AF3+Boltz samples](20_union_glide/) | 2026-10-19 | 0.3854 | 4.2275 | 0.7449 | — | — |
 | 21 | [hybrid 19 with a 0.5 kcal/mol Glide margin](21_hybrid_margin/) | 2026-10-19 | 0.4174 | 3.7523 | 0.8047 | — | — |
 | 22 | [19 with 5 Glide-ranked ICM poses](22_icm_fe_swap/) | 2026-10-21 | pending | pending | pending | — | — |
-| 23 | [ESMFold2 + ColabFold MSA](23_esmfold2_default/) | 2026-10-22 | pending | pending | pending | — | — |
+| 23 | [ESMFold2 + ColabFold MSA](23_esmfold2_default/) | 2026-10-22 | **0.4527** | 3.8551 | 0.7985 | — | — |
 | 12 | [ICM redocked poses in AF3's receptor](12_icm_redock_af3/) | 2026-10-13 | pending | pending | pending | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).

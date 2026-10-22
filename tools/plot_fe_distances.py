@@ -9,10 +9,25 @@ coordination cutoff; a degree sign marks ligands with no nitrogen donor, which s
 coordinate (analysis 19: 0 of 7 such crystal ligands do).
 
 Adding a plot: append a PLOTS entry naming the series and where each one's distances come
-from. Everything is read from committed CSVs, so the figures regenerate from scratch
-after any analysis is rerun.
+from. Everything is read from committed CSVs and structure files, so the figures
+regenerate from scratch after any analysis is rerun, and row order is deterministic.
+
+For a ONE-OFF comparison, do not add a PLOTS entry and do not write a throwaway script -
+point --series at the directories:
+
+    python3 tools/plot_fe_distances.py \
+        --series "23 ESMFold2 - 0.4527=submissions/23_esmfold2_default/submission" \
+        --series "max accuracy=submissions/23_esmfold2_default/max_accuracy/raw" \
+        --out fe_maxacc_vs_sub23 --title "max-accuracy against submission 23"
+
+Each directory may hold .pdb or .cif; only ligands present in every series are drawn.
+Distances come from tools/fe_distances.py, which caches on file mtime - a full
+regeneration of all figures costs ~0.2 s once warm, against ~8 s cold.
 """
 import argparse, csv, glob, os, sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import fe_distances as fd                                               # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FIG = os.path.join(ROOT, "figures")
@@ -52,89 +67,22 @@ def src_icm_sub12():
 
 
 def src_submission_fe(subdir):
-    """Min Fe-ligand heavy-atom distance straight from a submission's shipped PDBs."""
-    import math
-    d = os.path.join(ROOT, "submissions", subdir, "submission")
-    out = {}
-    for f in sorted(os.listdir(d)):
-        if not f.endswith(".pdb"):
-            continue
-        fe, lig = None, []
-        for l in open(os.path.join(d, f)):
-            if not l.startswith(("ATOM", "HETATM")):
-                continue
-            el = (l[76:78].strip() or l[12:16].strip()[0]).upper()
-            if el == "H":
-                continue
-            xyz = (float(l[30:38]), float(l[38:46]), float(l[46:54]))
-            if el == "FE":
-                fe = xyz
-            elif l[17:20].strip() == "LIG":
-                lig.append(xyz)
-        if fe and lig:
-            out[f[:-4]] = round(min(math.dist(fe, x) for x in lig), 2)
-    return out
+    """Shipped submission PDBs."""
+    return fd.series(os.path.join(ROOT, "submissions", subdir, "submission"))
 
 
 def src_raw_sel(subdir):
-    """Fe distance from a submission's SELECTED but not-yet-PrepWizard-ed structures.
+    """A submission's SELECTED but not-yet-PrepWizard-ed structures.
 
     Only for a submission still in the queue - PrepWizard moves heavy atoms ~0.15 A
     median, so these are representative but not final.
     """
-    import math
-    d = os.path.join(ROOT, "submissions", subdir, "raw_sel")
-    out = {}
-    for f in sorted(os.listdir(d)):
-        if not f.endswith(".pdb"):
-            continue
-        fe, lig = None, []
-        for l in open(os.path.join(d, f)):
-            if not l.startswith(("ATOM", "HETATM")):
-                continue
-            el = (l[76:78].strip() or l[12:16].strip()[0]).upper()
-            if el == "H":
-                continue
-            xyz = (float(l[30:38]), float(l[38:46]), float(l[46:54]))
-            if el == "FE":
-                fe = xyz
-            elif l[17:20].strip() == "LIG":
-                lig.append(xyz)
-        if fe and lig:
-            out[f[:-4]] = round(min(math.dist(fe, x) for x in lig), 2)
-    return out
+    return fd.series(os.path.join(ROOT, "submissions", subdir, "raw_sel"))
 
 
-def src_esmfold2():
-    """Fe distance from the ESMFold2 mmCIF output (submission 23, remote Biohub API)."""
-    import math
-    d = os.path.join(ROOT, "submissions", "23_esmfold2_default", "raw")
-    out = {}
-    for f in sorted(os.listdir(d)):
-        if not f.endswith(".cif"):
-            continue
-        lines = open(os.path.join(d, f)).read().splitlines()
-        cols = [l.strip().split(".")[1] for l in lines if l.startswith("_atom_site.")]
-        idx = {c: i for i, c in enumerate(cols)}
-        fe, lig = None, []
-        for l in lines:
-            if not l.startswith(("ATOM", "HETATM")):
-                continue
-            r = l.split()
-            if len(r) <= max(idx.values()):
-                continue
-            el = r[idx["type_symbol"]].upper()
-            if el == "H":
-                continue
-            xyz = (float(r[idx["Cartn_x"]]), float(r[idx["Cartn_y"]]),
-                   float(r[idx["Cartn_z"]]))
-            if el == "FE":
-                fe = xyz
-            elif r[idx["label_comp_id"]] == "LIG":
-                lig.append(xyz)
-        if fe and lig:
-            out[f[:-4]] = round(min(math.dist(fe, x) for x in lig), 2)
-    return out
+def src_esmfold2(sub="23_esmfold2_default", sub_dir="raw"):
+    """ESMFold2 mmCIF output (remote Biohub API)."""
+    return fd.series(os.path.join(ROOT, "submissions", sub, sub_dir))
 
 
 def src_icm_glide_picked():
@@ -265,8 +213,9 @@ PLOTS = [
 
 def draw(cfg, can):
     series = [(lab, COL[c], fn()) for lab, c, fn in cfg["series"]]
+    # Ligand name breaks ties, so a rerun cannot reorder rows that share a distance.
     ligs = sorted(set.intersection(*[set(s[2]) for s in series]),
-                  key=lambda l: -series[0][2][l])
+                  key=lambda l: (-series[0][2][l], l))
     if not ligs:
         return None
     vals = [v for _, _, m in series for l, v in m.items() if l in ligs]
@@ -325,7 +274,28 @@ def draw(cfg, can):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--list", action="store_true")
+    ap.add_argument("--series", action="append", metavar="LABEL=DIR",
+                    help="ad-hoc comparison: a directory of .pdb or .cif complexes, "
+                         "repeatable, up to 4. Skips PLOTS entirely.")
+    ap.add_argument("--out", metavar="NAME",
+                    help="figure basename for --series (default: fe_adhoc)")
+    ap.add_argument("--title", default="Ad-hoc Fe-distance comparison")
     a = ap.parse_args()
+    if a.series:
+        cols = ["blue", "orange", "teal", "yellow"]
+        cfg = {"name": a.out or "fe_adhoc", "title": a.title, "series": []}
+        for k, spec in enumerate(a.series):
+            lab, _, d = spec.partition("=")
+            if not d:
+                raise SystemExit(f"--series needs LABEL=DIR, got {spec!r}")
+            cfg["series"].append((lab, cols[k], lambda d=d: fd.series(d)))
+        svg = draw(cfg, donors())
+        if svg is None:
+            raise SystemExit("no ligands common to every series")
+        path = os.path.join(FIG, cfg["name"] + ".svg")
+        open(path, "w").write(svg)
+        print(f"{cfg['name']:28} -> {os.path.relpath(path, ROOT)}")
+        return 0
     if a.list:
         for c in PLOTS:
             print(f"{c['name']:28} {c['title']}")

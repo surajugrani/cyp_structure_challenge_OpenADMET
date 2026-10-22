@@ -77,3 +77,4 @@ analyses/*/samples/
 # API tokens must never enter the repo (stored at ~/.cyp_biohub_token, mode 600)
 *token*
 *.key
+figures/.fe_cache.json
