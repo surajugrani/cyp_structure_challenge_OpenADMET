@@ -42,13 +42,19 @@ def main():
     if not re.search(r"\bsbatch\b", cmd) or "ALLOW_PADDED=1" in cmd:
         sys.exit(0)
 
-    # find the script path: last token that looks like a file and exists
+    # Only inspect the script the scheduler is actually given. An earlier version
+    # scanned the whole command for *.sh and picked up unrelated paths - e.g. a printf
+    # writing another script's name into a file - and blocked on the wrong script.
     script = None
-    for tok in re.findall(r"[\w./@-]+\.(?:sh|sbatch)", cmd):
-        p = tok if os.path.isabs(tok) else os.path.join(
-            os.environ.get("CLAUDE_PROJECT_DIR", "."), tok)
-        if os.path.exists(p):
-            script = p
+    for seg in re.split(r"(?:\|\||&&|\||;|\n)", cmd):
+        m = re.search(r"\bsbatch\b(.*)", seg)
+        if not m:
+            continue
+        for tok in re.findall(r"[\w./@-]+\.(?:sh|sbatch)", m.group(1)):
+            p = tok if os.path.isabs(tok) else os.path.join(
+                os.environ.get("CLAUDE_PROJECT_DIR", "."), tok)
+            if os.path.exists(p):
+                script = p
     if script is None:
         sys.exit(0)        # inline/heredoc submission - nothing to inspect
 

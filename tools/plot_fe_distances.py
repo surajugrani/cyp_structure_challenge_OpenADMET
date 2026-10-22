@@ -105,6 +105,57 @@ def src_raw_sel(subdir):
     return out
 
 
+def src_esmfold2():
+    """Fe distance from the ESMFold2 mmCIF output (submission 23, remote Biohub API)."""
+    import math
+    d = os.path.join(ROOT, "submissions", "23_esmfold2_default", "raw")
+    out = {}
+    for f in sorted(os.listdir(d)):
+        if not f.endswith(".cif"):
+            continue
+        lines = open(os.path.join(d, f)).read().splitlines()
+        cols = [l.strip().split(".")[1] for l in lines if l.startswith("_atom_site.")]
+        idx = {c: i for i, c in enumerate(cols)}
+        fe, lig = None, []
+        for l in lines:
+            if not l.startswith(("ATOM", "HETATM")):
+                continue
+            r = l.split()
+            if len(r) <= max(idx.values()):
+                continue
+            el = r[idx["type_symbol"]].upper()
+            if el == "H":
+                continue
+            xyz = (float(r[idx["Cartn_x"]]), float(r[idx["Cartn_y"]]),
+                   float(r[idx["Cartn_z"]]))
+            if el == "FE":
+                fe = xyz
+            elif r[idx["label_comp_id"]] == "LIG":
+                lig.append(xyz)
+        if fe and lig:
+            out[f[:-4]] = round(min(math.dist(fe, x) for x in lig), 2)
+    return out
+
+
+def src_icm_glide_picked():
+    """Fe distance of the ICM redocked pose that GLIDE ranks best (analysis 25).
+
+    ICM's own Score ships a badly drifted pose for two ligands; this asks what the pool
+    looks like when Glide does the ranking instead.
+    """
+    import csv as _csv
+    f = os.path.join(ROOT, "analyses", "25_glide_on_icm_poses", "results",
+                     "pick_comparison.csv")
+    return {r["ligand"]: float(r["glide_fe"]) for r in _csv.DictReader(open(f))}
+
+
+def src_icm_own_picked():
+    import csv as _csv
+    f = os.path.join(ROOT, "analyses", "25_glide_on_icm_poses", "results",
+                     "pick_comparison.csv")
+    return {r["ligand"]: float(r["icm_fe"]) for r in _csv.DictReader(open(f))}
+
+
 def src_glide_redock():
     """Top-1 per ligand; poseviewer order is best-first, so take the first row seen."""
     out = {}
@@ -133,6 +184,32 @@ def _sub18():
 
 
 PLOTS = [
+    {"name": "fe_esmfold2_vs_best",
+     "title": "ESMFold2 against the leading submissions",
+     "series": [("06 AF3, PL-iPTM \u2014 0.4291", "blue",
+                 lambda: src_submission_fe("06_af3_pliptm")),
+                ("19 hybrid \u2014 0.4331  BEST", "teal",
+                 lambda: src_submission_fe("19_hybrid_glide")),
+                ("16 Boltz, PL-iPTM \u2014 0.4229", "yellow",
+                 lambda: src_submission_fe("16_boltz2_pliptm")),
+                ("ESMFold2 + ColabFold MSA \u2014 not submitted", "orange",
+                 src_esmfold2)]},
+    {"name": "fe_icm_glidepicked_vs_subs",
+     "title": "ICM poses ranked by Glide, against submissions 06 and 19",
+     "series": [("06 AF3, PL-iPTM \u2014 0.4291", "blue",
+                 lambda: src_submission_fe("06_af3_pliptm")),
+                ("19 hybrid \u2014 0.4331  BEST", "teal",
+                 lambda: src_submission_fe("19_hybrid_glide")),
+                ("ICM poses, Glide-ranked (analysis 25)", "orange",
+                 src_icm_glide_picked)]},
+    {"name": "fe_af3_icm_best",
+     "title": "AF3 (06) vs ICM redock of it (12) vs best submission (19)",
+     "series": [("06 AF3, PL-iPTM \u2014 0.4291 / 4.0647", "blue",
+                 lambda: src_submission_fe("06_af3_pliptm")),
+                ("12 ICM redocked into 06 \u2014 not submitted", "orange",
+                 lambda: src_submission_fe("12_icm_redock_af3")),
+                ("19 hybrid \u2014 0.4331 / 3.6754  BEST", "teal",
+                 lambda: src_submission_fe("19_hybrid_glide"))]},
     {"name": "fe_hybrid_19_vs_20",
      "title": "Hybrids: pairwise Glide (19) vs union Glide (20)",
      "series": [("19 better-of-two \u2014 0.4331 / 3.6754", "blue",

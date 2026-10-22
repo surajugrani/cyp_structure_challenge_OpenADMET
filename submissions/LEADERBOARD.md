@@ -22,7 +22,9 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 18 | [Boltz-2 tuned, Glide gscore selection](18_boltz2_glide/) | 2026-10-18 | 0.4174 | **3.7523** | 0.8047 | — | — |
 | 19 | [AF3/Boltz hybrid, better Glide score](19_hybrid_glide/) | 2026-10-18 | **0.4331** | **3.6754** | 0.7823 | — | — |
 | 20 | [best Glide over all AF3+Boltz samples](20_union_glide/) | 2026-10-19 | 0.3854 | 4.2275 | 0.7449 | — | — |
-| 21 | [hybrid 19 with a 0.5 kcal/mol Glide margin](21_hybrid_margin/) | 2026-10-19 | pending | pending | pending | — | — |
+| 21 | [hybrid 19 with a 0.5 kcal/mol Glide margin](21_hybrid_margin/) | 2026-10-19 | 0.4174 | 3.7523 | 0.8047 | — | — |
+| 22 | [19 with 5 Glide-ranked ICM poses](22_icm_fe_swap/) | 2026-10-21 | pending | pending | pending | — | — |
+| 23 | [ESMFold2 + ColabFold MSA](23_esmfold2_default/) | 2026-10-22 | pending | pending | pending | — | — |
 | 12 | [ICM redocked poses in AF3's receptor](12_icm_redock_af3/) | 2026-10-13 | pending | pending | pending | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
@@ -662,3 +664,37 @@ running ~0.009 above the raw weighted average:
 If LDDT-PLI holds near 19's 0.4331 this is a strict improvement of ~+0.016 LDDT-LP. If it
 falls toward submission 18's 0.4174, the three reverted AF3 poses were earning their keep
 and the margin threshold is the wrong idea.
+
+## Submission 21 scored identically to 18 - and that is informative
+
+21 (17 Boltz / 3 AF3) returned 0.4174 / 3.7523 / 0.8047, **exactly** submission 18's
+numbers. A file-by-file diff shows 17 of 20 structures are byte-identical and the three
+that differ are OCNT-2312966, OCNT-2315379 and OCNT-2535519 - precisely the AF3
+structures 21 kept.
+
+**So none of those three ligands is in the ~10-complex scored subset.** Any future variant
+differing only on them will return an identical score and waste a slot.
+
+It also corrects the mixing model: the LDDT-LP prediction of ~0.798 failed because the
+model assumed all 20 structures contribute, when only the scored subset does. Submissions
+19 and 20 happened to have enough AF3 structures in that subset for the average to look
+right.
+
+## Submission 23: ESMFold2 as a third co-folding method
+
+| | coordinating (of 15) | median Fe |
+|---|---|---|
+| 06 AF3 | 12 | 2.25 A |
+| 19 hybrid (best) | 11 | 2.29 A |
+| 16 Boltz | 11 | 2.29 A |
+| **23 ESMFold2** | **12** | **2.16 A** |
+
+Competitive Fe geometry, and operationally very different: the compute is **remote**
+(Biohub API, no SLURM job), ~28 s per ligand against ~3 h for the tuned Boltz run, and
+the chain layout needs no fixing (A protein / B HEM at 43 atoms / C LIG).
+
+**But it is deterministic** - two identical calls gave byte-identical mmCIF - so there is
+no ensemble to select from, and `pair_chains_iptm` returns `None`, so the PL-iPTM rule
+that produced submission 16 is unavailable. Its value here is as a third candidate for
+cross-model hybrids, which is the regime where Glide selection demonstrably works
+(submission 19 beat both parents).
