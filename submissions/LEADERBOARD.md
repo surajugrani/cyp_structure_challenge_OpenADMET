@@ -25,7 +25,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 21 | [hybrid 19 with a 0.5 kcal/mol Glide margin](21_hybrid_margin/) | 2026-10-19 | 0.4174 | 3.7523 | 0.8047 | — | — |
 | 22 | [19 with 5 Glide-ranked ICM poses](22_icm_fe_swap/) | 2026-10-21 | pending | pending | pending | — | — |
 | 23 | [ESMFold2 + ColabFold MSA](23_esmfold2_default/) | 2026-10-22 | **0.4527** | 3.8551 | 0.7985 | — | — |
-| 24 | [best Glide over AF3 + Boltz + ESMFold2](24_hybrid_three_way/) | 2026-10-22 | pending | pending | pending | — | — |
+| 24 | [best Glide over AF3 + Boltz + ESMFold2](24_hybrid_three_way/) | 2026-10-22 | 0.4348 | 3.7261 | 0.7798 | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).
@@ -698,3 +698,34 @@ no ensemble to select from, and `pair_chains_iptm` returns `None`, so the PL-iPT
 that produced submission 16 is unavailable. Its value here is as a third candidate for
 cross-model hybrids, which is the regime where Glide selection demonstrably works
 (submission 19 beat both parents).
+
+
+## Submission 24: cross-model Glide selection is not a real capability
+
+| | 19 AF3+Boltz | 24 +ESMFold2 | 23 pure ESMFold2 |
+|---|---|---|---|
+| LDDT-PLI | 0.4331 | 0.4348 | **0.4527** |
+| BiSyRMSD | **3.6754** | 3.7261 | 3.8551 |
+| LDDT-LP | 0.7823 | 0.7798 | **0.7985** |
+
+Adding a third co-folding model and letting Glide choose moved LDDT-PLI by **+0.0017**
+over submission 19 - noise - while costing **0.0179** against simply shipping ESMFold2
+unaltered. BiSyRMSD and LDDT-LP both got slightly worse.
+
+This was the test submission 24 was built for, and it fails cleanly. The argument stated
+when it was built was that a genuinely capable cross-model ranker should have preferred
+ESMFold2 far more often than 5 of 20, given ESMFold2 outscores both other models on its
+own. It preferred it 5 times, and the result is a hybrid that is 0.018 worse than its
+best parent.
+
+The measurement is real rather than invisible: 24 differs from 19 on exactly five
+ligands, and the score did move, so at least one of the five is inside the ~10-structure
+scored subset. The five were not marginal either - pocket-superposed RMSD between 19 and
+24 is 3.6-4.2 A for four of them (analysis 22), squarely in the range where submission
+19 appeared to show Glide discriminating.
+
+**Conclusion.** Submission 19 beating both its parents by 0.004-0.016 is best read as
+noise on a ~10-structure subset, not as evidence of a selection rule. No scoring
+function in this project - Glide gscore, ICM RTCNN, or a co-folding model's confidence -
+has been shown to choose structures across co-folding programs. What has repeatedly
+worked is trying a better model: AF3 to Boltz-2 to ESMFold2.

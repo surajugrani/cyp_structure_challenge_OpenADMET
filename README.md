@@ -34,7 +34,7 @@ the attempts omitted here, is in
 | 20 | [Best Glide over all samples](submissions/20_union_glide/) | 0.3854 | 4.2275 | 0.7449 | Collapsing 19's choice to a free-for-all destroys the gain — it is a scale effect |
 | 21 | [19 with a Glide margin](submissions/21_hybrid_margin/) | 0.4174 | 3.7523 | 0.8047 | Scored byte-identically to 18 despite differing structures, exposing the unscored subset |
 | 23 | [ESMFold2 + ColabFold MSA](submissions/23_esmfold2_default/) | **0.4527** | 3.8551 | 0.7985 | **Best result.** A third co-folding model beat both others with no selection step at all |
-| 24 | [Glide over three models](submissions/24_hybrid_three_way/) | pending | pending | pending | Tests whether 19's cross-model rule survives a third candidate |
+| 24 | [Glide over three models](submissions/24_hybrid_three_way/) | 0.4348 | 3.7261 | 0.7798 | **Kills the cross-model rule.** +0.0017 over 19, but 0.0179 below just using ESMFold2 |
 
 ## What the project has learned
 
@@ -44,17 +44,20 @@ the attempts omitted here, is in
    ligands away from the haem. Analyses
    [17](analyses/17_icm_redock_predicted/), [18](analyses/18_glide_redock_predicted/).
 
-2. **Selection within one model's ensemble does not work; selection between models
-   does.** A physics score cannot rank five samples of the same ligand (submissions 13,
-   14, 18, 20), but it can choose between structures from different co-folding models
-   (submission 19, which beat both of its parents). The explanation is scale: samples
-   within an ensemble sit 1–2 Å apart, where Glide's correlation with pose accuracy is
-   near zero, while different models differ by ~4 Å, where it is not.
+2. **No scoring function has been shown to select structures, within a model or across
+   models.** A physics score cannot rank five samples of the same ligand (submissions
+   13, 14, 18, 20). Submission 19 appeared to be the exception — picking per ligand
+   between AF3 and Boltz-2 by Glide score beat both parents — but submission 24 tested
+   that rule with a third model and it failed: Glide preferred ESMFold2 for only 5 of
+   20 ligands even though ESMFold2 alone scores 0.0196 above the hybrid, and the
+   three-way result landed 0.0179 *below* simply shipping ESMFold2 unaltered. Submission
+   19's margin is best read as noise on a ~10-structure scored subset.
 
 3. **The model matters more than anything done afterwards.** The single largest gain in
    the project came from trying a third co-folding method, not from any selection,
    docking or refinement step: ESMFold2 scored 0.4527 against 0.4331 for the best hybrid
-   and 0.4291 for the best AF3 variant.
+   and 0.4291 for the best AF3 variant. Every attempt to improve on a good model by
+   post-processing it has so far lost ground.
 
 4. **"Closer to the haem" is not a proxy for "more correct."** Both AF3 and Boltz
    already place ligands in the right pocket ([analysis 16](analyses/16_fe_distance_swap/));
