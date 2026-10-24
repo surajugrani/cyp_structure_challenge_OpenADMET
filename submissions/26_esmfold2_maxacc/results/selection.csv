@@ -1,0 +1,21 @@
+ligand,source,reason
+OCNT-2312554,esmfold2_max_accuracy,
+OCNT-2312966,esmfold2_max_accuracy,
+OCNT-2313038,sub_23_esmfold2_default,max-accuracy failed non-aromatic_ring_non-flatness
+OCNT-2313300,esmfold2_max_accuracy,
+OCNT-2313397,esmfold2_max_accuracy,
+OCNT-2313429,esmfold2_max_accuracy,
+OCNT-2315379,esmfold2_max_accuracy,
+OCNT-2395328,esmfold2_max_accuracy,
+OCNT-2395342,esmfold2_max_accuracy,
+OCNT-2395415,esmfold2_max_accuracy,
+OCNT-2395436,sub_23_esmfold2_default,max-accuracy failed bond_angles
+OCNT-2395457,esmfold2_max_accuracy,
+OCNT-2395460,esmfold2_max_accuracy,
+OCNT-2395464,sub_23_esmfold2_default,max-accuracy failed bond_angles
+OCNT-2395503,esmfold2_max_accuracy,
+OCNT-2395645,esmfold2_max_accuracy,
+OCNT-2395712,esmfold2_max_accuracy,
+OCNT-2395789,sub_23_esmfold2_default,max-accuracy failed bond_angles
+OCNT-2535422,esmfold2_max_accuracy,
+OCNT-2535519,esmfold2_max_accuracy,

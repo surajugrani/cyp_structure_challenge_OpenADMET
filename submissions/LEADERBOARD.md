@@ -27,6 +27,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 23 | [ESMFold2 + ColabFold MSA](23_esmfold2_default/) | 2026-10-22 | **0.4527** | 3.8551 | 0.7985 | — | — |
 | 24 | [best Glide over AF3 + Boltz + ESMFold2](24_hybrid_three_way/) | 2026-10-22 | 0.4348 | 3.7261 | 0.7798 | — | — |
 | 25 | [23 with 3 structures taken from 19](25_esm_outlier_fix/) | 2026-10-22 | pending | pending | pending | — | — |
+| 26 | [ESMFold2 fold_max_accuracy endpoint](26_esmfold2_maxacc/) | 2026-10-24 | pending | pending | pending | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).
