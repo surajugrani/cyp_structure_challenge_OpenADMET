@@ -23,10 +23,10 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 19 | [AF3/Boltz hybrid, better Glide score](19_hybrid_glide/) | 2026-10-18 | 0.4331 | **3.6754** | 0.7823 | — | — |
 | 20 | [best Glide over all AF3+Boltz samples](20_union_glide/) | 2026-10-19 | 0.3854 | 4.2275 | 0.7449 | — | — |
 | 21 | [hybrid 19 with a 0.5 kcal/mol Glide margin](21_hybrid_margin/) | 2026-10-19 | 0.4174 | 3.7523 | 0.8047 | — | — |
-| 22 | [19 with 5 Glide-ranked ICM poses](22_icm_fe_swap/) | 2026-10-21 | pending | pending | pending | — | — |
+| 22 | [19 with 5 Glide-ranked ICM poses](22_icm_fe_swap/) | 2026-10-21 | 0.4160 | 3.7855 | 0.7823 | — | — |
 | 23 | [ESMFold2 + ColabFold MSA](23_esmfold2_default/) | 2026-10-22 | **0.4527** | 3.8551 | 0.7985 | — | — |
 | 24 | [best Glide over AF3 + Boltz + ESMFold2](24_hybrid_three_way/) | 2026-10-22 | 0.4348 | 3.7261 | 0.7798 | — | — |
-| 25 | [23 with 3 structures taken from 19](25_esm_outlier_fix/) | 2026-10-22 | pending | pending | pending | — | — |
+| 25 | [23 with 3 structures taken from 19](25_esm_outlier_fix/) | 2026-10-22 | 0.4465 | 3.9500 | 0.7969 | — | — |
 | 26 | [ESMFold2 fold_max_accuracy endpoint](26_esmfold2_maxacc/) | 2026-10-24 | pending | pending | pending | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
@@ -731,3 +731,32 @@ noise on a ~10-structure subset, not as evidence of a selection rule. No scoring
 function in this project - Glide gscore, ICM RTCNN, or a co-folding model's confidence -
 has been shown to choose structures across co-folding programs. What has repeatedly
 worked is trying a better model: AF3 to Boltz-2 to ESMFold2.
+
+
+## Submissions 22 and 25: post-processing a good submission has never worked
+
+| | parent | result | delta |
+|---|---|---|---|
+| 22 = 19 + 5 Glide-ranked ICM poses | 0.4331 | 0.4160 | **-0.0171** |
+| 25 = 23 + 3 structures from 19 | 0.4527 | 0.4465 | **-0.0062** |
+
+Submission 22 is the Fe-distance heuristic's third defeat, after submissions 11 (-0.005)
+and 20. It also imported docked poses, and analysis 17 had already measured ICM redocking
+at 4 of 15 ligands coordinating against co-folding's 11-12, so the structures were worse
+on the one chemical criterion available before they were ever shipped.
+
+Submission 25 is the more informative loss. Two of its three swaps corrected values that
+are not physically possible - OCNT-2315379 at 6.89 A with a nitrogen donor, OCNT-2395460
+at 1.79 A with none - and the third, OCNT-2395328, was included on a 2.7 kcal/mol Glide
+gap over the objection that it repeats the Fe heuristic. The submission as a whole lost
+0.0062, and which of the three is responsible cannot be read off this number.
+
+Submission 26 bears on it independently: ESMFold2's max-accuracy endpoint, folding from
+its own MSA with no knowledge of any of this, corrected BOTH of the impossible distances
+(6.89 -> 4.02 A, 1.79 -> 3.82 A) and moved OCNT-2395328 the other way, 4.03 -> 4.48 A.
+That is the pattern expected if the two corrections were right and the third was wrong.
+
+**Running count of attempts to improve a good submission by rearranging or replacing its
+structures: 11, 20, 21, 22, 24, 25 - six attempts, six losses.** The only thing that has
+ever gained is running a better model. Submission 23 at 0.4527, pure ESMFold2 with no
+selection step of any kind, remains the best result of the project.
