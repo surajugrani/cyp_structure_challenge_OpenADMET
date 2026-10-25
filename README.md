@@ -37,6 +37,7 @@ the attempts omitted here, is in
 | 23 | [ESMFold2 + ColabFold MSA](submissions/23_esmfold2_default/) | **0.4527** | 3.8551 | 0.7985 | **Best result.** A third co-folding model beat both others with no selection step at all |
 | 24 | [Glide over three models](submissions/24_hybrid_three_way/) | 0.4348 | 3.7261 | 0.7798 | **Kills the cross-model rule.** +0.0017 over 19, but 0.0179 below just using ESMFold2 |
 | 25 | [23 with 3 structures from 19](submissions/25_esm_outlier_fix/) | 0.4465 | 3.9500 | 0.7969 | Even correcting physically impossible Fe distances lost 0.0062 |
+| 26 | [ESMFold2 max-accuracy endpoint](submissions/26_esmfold2_maxacc/) | 0.4365 | 3.9024 | **0.8063** | Best pocket of the project, worse interface — the two metrics come apart |
 
 ## What the project has learned
 
@@ -62,7 +63,8 @@ the attempts omitted here, is in
    Against that, six separate attempts to improve a good submission by rearranging or
    replacing its structures — submissions 11, 20, 21, 22, 24 and 25 — have all lost
    ground, including one (25) that only corrected Fe distances which are not physically
-   possible.
+   possible. Submission 26 then re-folded those same structures with a higher-accuracy
+   endpoint and lost 0.0162, so two unrelated routes to the same correction both failed.
 
 4. **"Closer to the haem" is not a proxy for "more correct."** Both AF3 and Boltz
    already place ligands in the right pocket ([analysis 16](analyses/16_fe_distance_swap/));

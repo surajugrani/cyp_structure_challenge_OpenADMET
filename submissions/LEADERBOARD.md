@@ -27,7 +27,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 23 | [ESMFold2 + ColabFold MSA](23_esmfold2_default/) | 2026-10-22 | **0.4527** | 3.8551 | 0.7985 | — | — |
 | 24 | [best Glide over AF3 + Boltz + ESMFold2](24_hybrid_three_way/) | 2026-10-22 | 0.4348 | 3.7261 | 0.7798 | — | — |
 | 25 | [23 with 3 structures taken from 19](25_esm_outlier_fix/) | 2026-10-22 | 0.4465 | 3.9500 | 0.7969 | — | — |
-| 26 | [ESMFold2 fold_max_accuracy endpoint](26_esmfold2_maxacc/) | 2026-10-24 | pending | pending | pending | — | — |
+| 26 | [ESMFold2 fold_max_accuracy endpoint](26_esmfold2_maxacc/) | 2026-10-24 | 0.4365 | 3.9024 | **0.8063** | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).
@@ -751,12 +751,37 @@ at 1.79 A with none - and the third, OCNT-2395328, was included on a 2.7 kcal/mo
 gap over the objection that it repeats the Fe heuristic. The submission as a whole lost
 0.0062, and which of the three is responsible cannot be read off this number.
 
-Submission 26 bears on it independently: ESMFold2's max-accuracy endpoint, folding from
-its own MSA with no knowledge of any of this, corrected BOTH of the impossible distances
-(6.89 -> 4.02 A, 1.79 -> 3.82 A) and moved OCNT-2395328 the other way, 4.03 -> 4.48 A.
-That is the pattern expected if the two corrections were right and the third was wrong.
+Submission 26's score has since undercut the reading given here. Its max-accuracy
+structures corrected BOTH impossible distances independently (6.89 -> 4.02 A,
+1.79 -> 3.82 A) and moved OCNT-2395328 the other way, which looked like confirmation
+that the first two swaps were right. But 26 scored 0.4365, losing 0.0162 to submission
+23. Two unrelated routes to fixing those two distances - swapping structures in, and
+re-folding them - both lost. What 26 corroborated was that two methods AGREE those
+values are unusual, not that correcting them helps the score.
 
 **Running count of attempts to improve a good submission by rearranging or replacing its
 structures: 11, 20, 21, 22, 24, 25 - six attempts, six losses.** The only thing that has
 ever gained is running a better model. Submission 23 at 0.4527, pure ESMFold2 with no
 selection step of any kind, remains the best result of the project.
+
+
+## Submission 26: the best pocket of the project, and a worse interface
+
+| | 23 default endpoint | 26 max-accuracy | delta |
+|---|---|---|---|
+| LDDT-PLI | **0.4527** | 0.4365 | **-0.0162** |
+| BiSyRMSD | **3.8551** | 3.9024 | +0.0473 |
+| LDDT-LP | 0.7985 | **0.8063** | **+0.0078** |
+
+0.8063 is the best LDDT-LP of the project, just past submission 16's 0.8060. LDDT-LP
+scores the protein pocket itself and is largely independent of where the ligand sits, so
+max-accuracy builds the better pocket and then places the ligand in it worse. That is a
+coherent result for an endpoint that generates its own MSA and tunes for structural
+accuracy, and it is the clearest separation of the two metrics we have seen.
+
+It also partly answers whether our ColabFold MSA was earning its keep. Submission 23 used
+it and beat 26, which built its own, by 0.0162 on the primary metric - though the two
+differ in endpoint and model weights as well, so the MSA is not isolated.
+
+Seven attempts now, seven losses, and this one changed the structures themselves rather
+than rearranging them. Submission 23 stands at 0.4527.
