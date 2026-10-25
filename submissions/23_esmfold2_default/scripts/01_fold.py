@@ -43,8 +43,13 @@ def main():
     ap.add_argument("--model", default="esmfold2-2026-05")
     ap.add_argument("--no-msa", action="store_true",
                     help="fold from sequence alone (the 21 s trial used this)")
+    ap.add_argument("--out", help="write .cif and metrics here instead of this "
+                                  "submission's raw/ and results/, so a variant run "
+                                  "does not collide with the folded set")
     a = ap.parse_args()
-    os.makedirs(RAW, exist_ok=True); os.makedirs(RES, exist_ok=True)
+    raw, res = (os.path.join(a.out, "raw"), os.path.join(a.out, "results")) \
+        if a.out else (RAW, RES)
+    os.makedirs(raw, exist_ok=True); os.makedirs(res, exist_ok=True)
 
     tok = os.environ.get("BIOHUB_TOKEN")
     if not tok:
@@ -83,7 +88,7 @@ def main():
 
     rows = []
     for i, n in enumerate(names, 1):
-        out = os.path.join(RAW, f"{n}.cif")
+        out = os.path.join(raw, f"{n}.cif")
         if os.path.exists(out):
             print(f"[{i}/{len(names)}] {n}: already folded")
             continue
@@ -118,7 +123,7 @@ def main():
         print(f"    {rec}", flush=True)
 
     if rows:
-        p = os.path.join(RES, "fold_metrics.csv")
+        p = os.path.join(res, "fold_metrics.csv")
         new = not os.path.exists(p)
         with open(p, "a", newline="") as fh:
             w = csv.DictWriter(fh, fieldnames=list(rows[0]), extrasaction="ignore")
