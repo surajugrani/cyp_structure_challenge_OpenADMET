@@ -9,17 +9,23 @@ Analysis 29 scored all 60 ESMFold2 structures so it could be used across runs in
     26  max_accuracy endpoint, its own MSA       0.4365
     27  default endpoint, no MSA                 0.4384
 
-THE SELECTION LOOKS LIKE CHANCE. RTCNN picks 23 six times, 26 six times and 27 eight
-times, against 6.67 expected from a coin. Submission 23 outscores the other two by about
-0.015 LDDT-PLI, so a selector with any cross-run skill should prefer it well above
-chance. It does not. This is the same diagnostic that condemned submission 24, where
-Glide preferred ESMFold2 for 5 of 20 despite ESMFold2 beating both alternatives
-outright, and that submission duly landed below its best parent.
+RTCNN picks 23 six times, 26 six times and 27 eight times. An earlier version of this
+docstring read that distribution as chance-level evidence of no skill, on the grounds
+that 6.67 is expected from a coin and submission 23 is the better set by ~0.015
+LDDT-PLI. THAT INFERENCE WAS WRONG and is withdrawn. The 0.015 gap is a mean over the
+~10 scored structures; it does not make 23 better for most individual ligands. Analysis
+27 measured a median pocket-superposed ligand RMSD of 1.53 A between sets 23 and 27, so
+these runs give genuinely different poses per ligand and plausibly trade off one ligand
+to the next. Under that, a perfect oracle also picks about a third from each set, so the
+distribution cannot separate an oracle from a coin.
 
-The structures are also close together - analysis 27 measured a median pocket-superposed
-ligand RMSD of 1.53 A between sets 23 and 27, the within-ensemble regime where every
-selector tried here has failed. Built because it was asked for and the scoring was
-already done; the expectation is a result near the mean of the three parents.
+THIS IS A GENUINE OPEN QUESTION. RTCNN is the strongest selector signal measured
+anywhere in this project: analysis 09, scored against known RMSD on crystals, put its
+within-ligand Spearman at +0.334, positive in 20 of 30 cases, against +0.086 for Glide
+gscore - roughly four times the signal. Submission 14 tested it WITHIN AF3's ensemble,
+where the candidates sit 1-2 A apart and the baseline was AF3's own confidence, a strong
+one, and it lost 0.034. It has never been tested across independent runs. That is what
+this submission does.
 
 TWO LIGANDS WHERE THE PICK CANNOT BE HONOURED. RTCNN scored each set's own PrepWizard
 output, but two of the winning sets do not SHIP their own structure for that ligand,
