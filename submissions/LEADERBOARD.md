@@ -30,6 +30,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 26 | [ESMFold2 fold_max_accuracy endpoint](26_esmfold2_maxacc/) | 2026-10-24 | 0.4365 | 3.9024 | **0.8063** | — | — |
 | 27 | [ESMFold2 default endpoint, NO MSA](27_esmfold2_nomsa/) | 2026-10-24 | 0.4384 | **3.8017** | 0.7908 | — | — |
 | 28 | [best ICM RTCNN over the 3 ESMFold2 runs](28_rtcnn_best_of_three/) | 2026-10-25 | 0.4411 | 3.7722 | 0.7965 | — | — |
+| 29 | [best Glide `inplace` over the 3 ESMFold2 runs](29_glide_inplace_best_of_three/) | 2026-10-26 | pending | pending | pending | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).
