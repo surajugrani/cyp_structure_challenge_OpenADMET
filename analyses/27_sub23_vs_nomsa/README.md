@@ -43,5 +43,12 @@ sbatch analyses/27_sub23_vs_nomsa/run.sh
 Uses `tools/ligand_rmsd.py`, which generalises the comparison previously copied three
 times into analysis 22. Results in `results/sub23_vs_27.csv`.
 
-**Still open:** whether these pose differences matter to the score. Submission 27 is
-built and awaiting a leaderboard result against submission 23's 0.4527.
+## Resolved: the pose differences cost 0.0143
+
+Submission 27 scored **0.4384 / 3.8017 / 0.7908** against submission 23's
+0.4527 / 3.8551 / 0.7985. The ColabFold MSA is therefore worth **+0.0143 LDDT-PLI** and
++0.0077 LDDT-LP, while *costing* 0.053 on BiSyRMSD.
+
+The median 1.53 Å of pose movement measured here is real and it matters, which the Fe
+distances flatly denied. Had we judged on Fe distance alone we would have dropped the
+MSA and lost 0.0143 on the primary metric.

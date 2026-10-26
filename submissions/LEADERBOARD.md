@@ -28,7 +28,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 24 | [best Glide over AF3 + Boltz + ESMFold2](24_hybrid_three_way/) | 2026-10-22 | 0.4348 | 3.7261 | 0.7798 | — | — |
 | 25 | [23 with 3 structures taken from 19](25_esm_outlier_fix/) | 2026-10-22 | 0.4465 | 3.9500 | 0.7969 | — | — |
 | 26 | [ESMFold2 fold_max_accuracy endpoint](26_esmfold2_maxacc/) | 2026-10-24 | 0.4365 | 3.9024 | **0.8063** | — | — |
-| 27 | [ESMFold2 default endpoint, NO MSA](27_esmfold2_nomsa/) | 2026-10-24 | pending | pending | pending | — | — |
+| 27 | [ESMFold2 default endpoint, NO MSA](27_esmfold2_nomsa/) | 2026-10-24 | 0.4384 | **3.8017** | 0.7908 | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).
@@ -786,3 +786,37 @@ differ in endpoint and model weights as well, so the MSA is not isolated.
 
 Seven attempts now, seven losses, and this one changed the structures themselves rather
 than rearranging them. Submission 23 stands at 0.4527.
+
+
+## Submission 27: what the MSA is worth, measured cleanly
+
+This is the only properly controlled comparison in the project. Submission 27 differs
+from submission 23 in exactly one input - `msa=None` - with the same `fold_all_atom`
+endpoint, the same esmfold2-2026-05 weights, the same sequence and chain layout, and the
+same single non-ESMFold2 structure at OCNT-2313038.
+
+| | 23, ColabFold MSA | 27, no MSA | MSA is worth |
+|---|---|---|---|
+| LDDT-PLI | **0.4527** | 0.4384 | **+0.0143** |
+| BiSyRMSD | 3.8551 | **3.8017** | **-0.0534** (the MSA makes this WORSE) |
+| LDDT-LP | **0.7985** | 0.7908 | +0.0077 |
+
+So the 14,301-sequence ColabFold MSA earns its keep on the primary metric and on the
+pocket, and costs a little on pose RMSD. Worth keeping, but it is a 0.014 effect, not a
+0.05 one.
+
+Two corrections to things recorded earlier fall out of this.
+
+First, the claim after submission 27 was folded that the MSA "does essentially nothing"
+rested on Fe distances, which are nearly identical between the two sets. Analysis 27
+measured pocket-superposed ligand RMSD at a median of 1.53 A, and the score now confirms
+those pose differences are real and cost 0.0143.
+
+Second, submission 26's 0.0162 deficit against 23 was attributed to an unresolved mix of
+endpoint, weights and self-built MSA. Most of it is the MSA: no-MSA default scores 0.4384
+and max-accuracy scores 0.4365, so the endpoint and weight change is worth only about
+0.002 beyond losing our MSA.
+
+All three ESMFold2 runs land between 0.4365 and 0.4527, a span of 0.016, while the choice
+between AF3, Boltz-2 and ESMFold2 spans 0.4174 to 0.4527. Which model is used still
+dominates how it is configured.

@@ -38,6 +38,7 @@ the attempts omitted here, is in
 | 24 | [Glide over three models](submissions/24_hybrid_three_way/) | 0.4348 | 3.7261 | 0.7798 | **Kills the cross-model rule.** +0.0017 over 19, but 0.0179 below just using ESMFold2 |
 | 25 | [23 with 3 structures from 19](submissions/25_esm_outlier_fix/) | 0.4465 | 3.9500 | 0.7969 | Even correcting physically impossible Fe distances lost 0.0062 |
 | 26 | [ESMFold2 max-accuracy endpoint](submissions/26_esmfold2_maxacc/) | 0.4365 | 3.9024 | **0.8063** | Best pocket of the project, worse interface — the two metrics come apart |
+| 27 | [ESMFold2, no MSA](submissions/27_esmfold2_nomsa/) | 0.4384 | **3.8017** | 0.7908 | One-variable MSA control: the ColabFold MSA is worth +0.0143 LDDT-PLI |
 
 ## What the project has learned
 
@@ -78,7 +79,21 @@ the attempts omitted here, is in
    places those three outside the ~10-structure scored subset. Any measured difference
    that rests only on them is invisible.
 
-6. **Templates hurt.** Both holo cryo-EM templates (submission 07) and a single holo
+6. **The MSA is worth +0.0143 LDDT-PLI, measured cleanly.** Submission 27 repeats
+   submission 23 with `msa=None` and nothing else changed — same endpoint, weights,
+   sequence and chain layout — scoring 0.4384 against 0.4527. It is the project's only
+   one-variable comparison. The MSA also gains +0.0077 LDDT-LP but *costs* 0.053 on
+   BiSyRMSD, so it is worth keeping without being decisive.
+
+7. **Fe distance hides orientation changes; use ligand RMSD instead.** Submissions 23
+   and 27 agree within 0.3 Å on Fe–ligand distance for 18 of 20 ligands, yet their
+   pocket-superposed ligand RMSD has a median of 1.53 Å and a maximum of 3.23 Å
+   ([analysis 27](analyses/27_sub23_vs_nomsa/)). Fe distance is one scalar per complex
+   and is blind to rotation about the coordinating atom — the very error mode finding 4
+   describes. Keep it for spotting impossible values, not for asking whether two
+   predictions differ.
+
+8. **Templates hurt.** Both holo cryo-EM templates (submission 07) and a single holo
    template (08, 09) scored below the template-free prediction, apparently by biasing
    the pocket toward the template's own ligand.
 
