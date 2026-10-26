@@ -864,3 +864,30 @@ family the model is fixed and only the poses are reshuffled or re-folded, leavin
 genuine geometric tension - a pose can sit nearer the true position overall while making
 slightly worse interface contacts. At n=5, +0.100 is weak evidence and should not carry
 much weight.
+
+
+## Public standing, 2026-10-26
+
+| rank | user | LDDT-PLI | BiSyRMSD | LDDT-LP |
+|---|---|---|---|---|
+| 1 | nova | 0.4906 | 3.6471 | 0.7679 |
+| 2 | z | 0.4770 | 3.3255 | 0.8051 |
+| 3 | CYP-Random | 0.4750 | 3.2924 | 0.8085 |
+| 4 | TCB | 0.4578 | 3.7838 | 0.8111 |
+| 5 | Fe-Nomenal | 0.4512 | 3.4394 | 0.8169 |
+| **9** | **TangerineTrees (us)** | **0.4411** | 3.7722 | 0.7965 |
+
+**THE TABLE RANKS THE LATEST SUBMISSION, NOT THE BEST.** The 0.4411 shown is submission
+28, the most recent upload. When submission 23 was the latest the rank was 5th at 0.4527,
+and 0.4527 would still place 5th today, ahead of Fe-Nomenal.
+
+So every experiment run from here lowers the public standing while it is the newest
+entry. That is acceptable during development, but **the best set must be resubmitted
+last, before the deadline** - currently submission 23 at
+`submissions/23_esmfold2_default/submission_esmfold2_default.zip`.
+
+The field has also moved: the leader has gone 0.4812 -> 0.4906 since 2026-10-22, and
+three entrants now sit above 0.47. Our best is 0.038 off the lead. Note that the three
+strongest BiSyRMSD scores in the field (3.29, 3.34, 3.33) are far below anything we have
+produced - our best is submission 19 at 3.6754 - which suggests the leaders are doing
+something we are not on pose geometry specifically.
