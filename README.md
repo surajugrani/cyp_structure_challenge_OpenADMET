@@ -38,7 +38,8 @@ the attempts omitted here, is in
 | 24 | [Glide over three models](submissions/24_hybrid_three_way/) | 0.4348 | 3.7261 | 0.7798 | **Kills the cross-model rule.** +0.0017 over 19, but 0.0179 below just using ESMFold2 |
 | 25 | [23 with 3 structures from 19](submissions/25_esm_outlier_fix/) | 0.4465 | 3.9500 | 0.7969 | Even correcting physically impossible Fe distances lost 0.0062 |
 | 26 | [ESMFold2 max-accuracy endpoint](submissions/26_esmfold2_maxacc/) | 0.4365 | 3.9024 | **0.8063** | Best pocket of the project, worse interface — the two metrics come apart |
-| 27 | [ESMFold2, no MSA](submissions/27_esmfold2_nomsa/) | 0.4384 | **3.8017** | 0.7908 | One-variable MSA control: the ColabFold MSA is worth +0.0143 LDDT-PLI |
+| 27 | [ESMFold2, no MSA](submissions/27_esmfold2_nomsa/) | 0.4384 | 3.8017 | 0.7908 | One-variable MSA control: the ColabFold MSA is worth +0.0143 LDDT-PLI |
+| 28 | [best RTCNN over 3 ESMFold2 runs](submissions/28_rtcnn_best_of_three/) | 0.4411 | **3.7722** | 0.7965 | Best BiSyRMSD of the ESM family; beats 2 of 3 parents on LDDT-PLI |
 
 ## What the project has learned
 

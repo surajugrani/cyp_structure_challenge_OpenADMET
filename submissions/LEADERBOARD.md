@@ -29,7 +29,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 25 | [23 with 3 structures taken from 19](25_esm_outlier_fix/) | 2026-10-22 | 0.4465 | 3.9500 | 0.7969 | — | — |
 | 26 | [ESMFold2 fold_max_accuracy endpoint](26_esmfold2_maxacc/) | 2026-10-24 | 0.4365 | 3.9024 | **0.8063** | — | — |
 | 27 | [ESMFold2 default endpoint, NO MSA](27_esmfold2_nomsa/) | 2026-10-24 | 0.4384 | **3.8017** | 0.7908 | — | — |
-| 28 | [best ICM RTCNN over the 3 ESMFold2 runs](28_rtcnn_best_of_three/) | 2026-10-25 | pending | pending | pending | — | — |
+| 28 | [best ICM RTCNN over the 3 ESMFold2 runs](28_rtcnn_best_of_three/) | 2026-10-25 | 0.4411 | 3.7722 | 0.7965 | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).
@@ -821,3 +821,45 @@ and max-accuracy scores 0.4365, so the endpoint and weight change is worth only 
 All three ESMFold2 runs land between 0.4365 and 0.4527, a span of 0.016, while the choice
 between AF3, Boltz-2 and ESMFold2 spans 0.4174 to 0.4527. Which model is used still
 dominates how it is configured.
+
+
+## Submission 28: RTCNN across runs, and do PLI and RMSD trade off?
+
+0.4411 / 3.7722 / 0.7965. Against its three parents:
+
+| | 23 | 26 | 27 | **28 RTCNN pick** |
+|---|---|---|---|---|
+| LDDT-PLI | **0.4527** | 0.4365 | 0.4384 | 0.4411 |
+| BiSyRMSD | 3.8551 | 3.9024 | 3.8017 | **3.7722** |
+| LDDT-LP | 0.7985 | **0.8063** | 0.7908 | 0.7965 |
+
+RTCNN beats two of three parents on the primary metric and all three on BiSyRMSD - the
+best pose RMSD of any ESMFold2 submission, and second best in the project behind
+submission 19's 3.6754. It does not beat submission 23, so cross-run RTCNN selection is
+not a win, but neither is it the flat failure that within-ensemble selection was
+(submission 14 lost 0.034 against its baseline; this loses 0.012 and gains on RMSD).
+
+### Do LDDT-PLI and BiSyRMSD trade off?
+
+Asked because the ESMFold2 submissions look like they do. Spearman between the two,
+over every scored submission and within slices:
+
+| scope | n | Spearman PLI vs BiSyRMSD |
+|---|---|---|
+| all scored submissions | 23 | **-0.596** - they agree |
+| PLI >= 0.42 | 12 | -0.545 - agree |
+| PLI < 0.42 | 12 | -0.811 - agree strongly |
+| ESMFold2 family only | 5 | **+0.100** - mild tradeoff |
+
+(Negative means they agree: higher LDDT-PLI with lower RMSD.)
+
+So globally there is no tradeoff - the metrics track each other. The tradeoff is real but
+confined to the ESMFold2 family, where the ranking inverts: 23 has the best PLI with
+mediocre RMSD, 28 the best RMSD with middling PLI.
+
+A plausible reading: across the project, variation is dominated by WHICH MODEL produced
+the structures, and a better model lifts both metrics together. Within the ESMFold2
+family the model is fixed and only the poses are reshuffled or re-folded, leaving the
+genuine geometric tension - a pose can sit nearer the true position overall while making
+slightly worse interface contacts. At n=5, +0.100 is weak evidence and should not carry
+much weight.
