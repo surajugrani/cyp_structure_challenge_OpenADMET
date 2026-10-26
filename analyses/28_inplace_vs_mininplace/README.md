@@ -87,3 +87,32 @@ sbatch analyses/28_inplace_vs_mininplace/scripts/run.sh   # resumable
 
 Ran in 4 h + 2 h 47 m serially on 1 CPU, peak 2.1 GB. Results in
 `results/scores_both_modes.csv`.
+
+## Figures
+
+![Glide gscore, inplace against mininplace](../../figures/glide_inplace_vs_mininplace.svg)
+
+All 60 structures, both modes, dashed line = equal. **38 of 60 sit above the diagonal**:
+`mininplace` gives the *worse* (less negative) score more often than not, median +0.177.
+Counterintuitive, since minimising in the site before scoring should improve it. The
+likely cause is that the restrained minimisation moves the pose off the co-folded
+geometry and `POSTDOCK` rescores from there, so the displacement can cost more than the
+relaxation gains. Ringed points are the 7 ligands whose selection flips between modes;
+they are mid-range rather than extreme, where the three sets sit close together and a
+small mode-dependent shift is enough to reorder them.
+
+![Glide inplace gscore against ICM RTCNN](../../figures/glide_vs_rtcnn_esm.svg)
+
+The same 60 structures under two different scoring functions: Pearson **+0.373**,
+Spearman +0.354. Both are "more negative is better", so the positive sign means they
+agree in direction, weakly. They pick the same set for **10 of 20** ligands - exact
+coin-flip agreement between two independent physics-based selectors.
+
+That bounds what either can be doing: two scorers that both tracked true pose quality
+well would have to agree far more often than half the time. One is mostly wrong, or both
+are partly wrong in uncorrelated ways. It does not say which. RTCNN's +0.334 against
+known RMSD on crystals (analysis 09) remains the better-validated signal, and submission
+28's result - best BiSyRMSD of the ESMFold2 family - is mildly in its favour.
+
+In neither plot do the three sets separate by colour, which is the same observation made
+above: neither score systematically distinguishes the runs.
