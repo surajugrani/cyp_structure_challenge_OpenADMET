@@ -31,11 +31,42 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 27 | [ESMFold2 default endpoint, NO MSA](27_esmfold2_nomsa/) | 2026-10-24 | 0.4384 | **3.8017** | 0.7908 | — | — |
 | 28 | [best ICM RTCNN over the 3 ESMFold2 runs](28_rtcnn_best_of_three/) | 2026-10-25 | 0.4411 | 3.7722 | 0.7965 | — | — |
 | 29 | [best Glide `inplace` over the 3 ESMFold2 runs](29_glide_inplace_best_of_three/) | 2026-10-26 | **0.4638** | 3.7277 | 0.8001 | — | — |
+| 30 | [best Glide `inplace` over AF3 + Boltz-2 + ESMFold2](30_inplace_three_way/) | 2026-10-27 | pending | pending | pending | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).
 **LDDT-LP** scores the protein pocket itself. **Coverage** = fraction of structures that
 scored at all; 1 means nothing was zeroed by OpenStructure or PoseBusters.
+
+## Submission 30 — the cross-model rule, with the `mininplace` confound removed
+
+Submission 24 applied the best-gscore rule across AF3, Boltz-2 and ESMFold2 and
+scored 0.4348, which read as evidence that cross-model selection does not work.
+Analysis 28 then found that every losing Glide selection in the project used
+`mininplace`, which minimises the pose before rescoring and gives the worse
+gscore on 38 of 60 structures. The only `inplace` selection, submission 29, is
+the project's best at 0.4638.
+
+Submission 30 is submission 24's exact rule rescored `inplace`. Analysis 30
+supplied the 40 AF3/Boltz-2 scores; ESMFold2's already existed from analysis 28.
+All 20 ligands have all three sets scored.
+
+Picks: AF3 3, Boltz-2 8, ESMFold2 9. Switching mode moved Boltz-2 from 5 wins to
+8 and AF3 from 5 to 3, and changed **5 of the 20 picks**. The set differs from
+shipping ESMFold2 alone on **11 of 20**, so it is a real alternative rather than
+a near-copy of submission 23.
+
+OCNT-2395789 could not be selected at all under `mininplace` — neither AF3 nor
+Boltz-2 returned a usable number. Under `inplace` all three score and ESMFold2
+takes it at −7.903 against −4.645 and −5.879.
+
+This is the harder version of the question submission 29 answered. Within one
+model's three runs the candidates sit close together and the parents are equally
+good. Across models they are far apart and 11 of the 20 come from parents that
+ship at roughly 0.42–0.43, below ESMFold2's 0.4527 — so the rule has to beat a
+real quality handicap. Above 0.4527 means the mode was the whole story behind
+submission 24's loss; below it means Glide genuinely cannot compare poses built
+on different receptor conformations, however they are scored.
 
 ## Two templates (apo + holo) made things worse
 

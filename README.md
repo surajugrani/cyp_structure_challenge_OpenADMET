@@ -41,6 +41,7 @@ the attempts omitted here, is in
 | 27 | [ESMFold2, no MSA](submissions/27_esmfold2_nomsa/) | 0.4384 | 3.8017 | 0.7908 | One-variable MSA control: the ColabFold MSA is worth +0.0143 LDDT-PLI |
 | 28 | [best RTCNN over 3 ESMFold2 runs](submissions/28_rtcnn_best_of_three/) | 0.4411 | 3.7722 | 0.7965 | Best BiSyRMSD of the ESM family; beats 2 of 3 parents on LDDT-PLI |
 | 29 | [best Glide `inplace` over 3 ESMFold2 runs](submissions/29_glide_inplace_best_of_three/) | **0.4638** | 3.7277 | 0.8001 | **Best result.** Selection works — with `inplace`, not `mininplace` |
+| 30 | [Glide `inplace` over three models](submissions/30_inplace_three_way/) | pending | pending | pending | Submission 24's cross-model rule with the `mininplace` confound removed; 5/20 picks change |
 
 ## What the project has learned
 
@@ -151,6 +152,10 @@ python3 tools/plot_fe_distances.py --list   # what is configured
 | 24 | [Preprint pocket residues](analyses/24_preprint_residues/) | Reference residue set for pocket comparisons |
 | 25 | [Glide rescoring of ICM poses](analyses/25_glide_on_icm_poses/) | Recovers 4→7 of 15 coordinating, still below co-folding |
 | 26 | [Glide scoring of the ESMFold2 structures](analyses/26_glide_on_esm/) | Feeds the three-way hybrid, submission 24 |
+| 27 | [ESMFold2 with and without the MSA](analyses/27_sub23_vs_nomsa/) | Median 1.53 Å ligand RMSD apart — the MSA changes poses, not just Fe distances |
+| 28 | [`inplace` vs `mininplace` on 60 ESMFold2 structures](analyses/28_inplace_vs_mininplace/) | r=0.791, `mininplace` worse on 38/60, 7/20 picks change — the mode was the confound |
+| 29 | [ICM RTCNN on the ESMFold2 structures](analyses/29_icm_on_esm/) | 60/60 scored; Glide and RTCNN agree on only 10/20 winners |
+| 30 | [`inplace` scores for the AF3 and Boltz-2 sets](analyses/30_inplace_three_model/) | 40 structures, feeds the rebuilt cross-model hybrid, submission 30 |
 
 ## Methods
 
