@@ -30,7 +30,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 26 | [ESMFold2 fold_max_accuracy endpoint](26_esmfold2_maxacc/) | 2026-10-24 | 0.4365 | 3.9024 | **0.8063** | — | — |
 | 27 | [ESMFold2 default endpoint, NO MSA](27_esmfold2_nomsa/) | 2026-10-24 | 0.4384 | **3.8017** | 0.7908 | — | — |
 | 28 | [best ICM RTCNN over the 3 ESMFold2 runs](28_rtcnn_best_of_three/) | 2026-10-25 | 0.4411 | 3.7722 | 0.7965 | — | — |
-| 29 | [best Glide `inplace` over the 3 ESMFold2 runs](29_glide_inplace_best_of_three/) | 2026-10-26 | pending | pending | pending | — | — |
+| 29 | [best Glide `inplace` over the 3 ESMFold2 runs](29_glide_inplace_best_of_three/) | 2026-10-26 | **0.4638** | 3.7277 | 0.8001 | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).
@@ -891,3 +891,54 @@ three entrants now sit above 0.47. Our best is 0.038 off the lead. Note that the
 strongest BiSyRMSD scores in the field (3.29, 3.34, 3.33) are far below anything we have
 produced - our best is submission 19 at 3.6754 - which suggests the leaders are doing
 something we are not on pose geometry specifically.
+
+
+## Submission 29: selection DOES work - and the mode was the confound
+
+**0.4638 / 3.7277 / 0.8001. New best LDDT-PLI of the project, and the first submission
+ever to beat its best parent on all three metrics simultaneously.**
+
+| | 23 best parent | 26 | 27 | **29 Glide inplace** | 28 RTCNN |
+|---|---|---|---|---|---|
+| LDDT-PLI | 0.4527 | 0.4365 | 0.4384 | **0.4638** | 0.4411 |
+| BiSyRMSD | 3.8551 | 3.9024 | 3.8017 | **3.7277** | 3.7722 |
+| LDDT-LP | 0.7985 | **0.8063** | 0.7908 | 0.8001 | 0.7965 |
+
+Against its best parent: **+0.0111 LDDT-PLI, -0.1274 BiSyRMSD, +0.0016 LDDT-LP.**
+Against submission 28, the same three sets selected by RTCNN instead: **+0.0227**, from
+only 10 differing structures.
+
+### This overturns the project's main negative conclusion
+
+Every Glide selection that failed here - submissions 13 (-0.056), 18, 20, 24 (-0.018
+against its best parent) - used `DOCKING_METHOD mininplace`. Every one. The single time
+`inplace` has been used to select, it won, and by a clear margin.
+
+That is a confound we introduced ourselves, on one argument: `inplace` returns emodel and
+einternal as 0.00, and emodel is Glide's pose-ranking term. The argument was never
+tested, and it only matters if emodel is used - the selections all ranked on gscore
+alone, so nothing was being lost by using `inplace`.
+
+Analysis 28 had already shown the two modes are not equivalent (r=0.791, 7 of 20 picks
+change) and that `mininplace` gives the WORSE score for 38 of 60 structures, median
++0.177. The likely mechanism: restrained minimisation moves the pose off the co-folded
+geometry and POSTDOCK rescores from there, so on co-folded input the displacement costs
+more than the relaxation gains. Scoring the pose as it stands is the right thing to do
+for structures we did not dock.
+
+**So "no scoring function can select structures here" is not supported.** What is
+supported is that `mininplace` gscore cannot. `inplace` gscore has one prospective test
+and it won. One result is not a rule, but it is the opposite of what was recorded.
+
+### What should be retested
+
+Submissions 13, 18, 20 and 24 are all natural candidates to repeat under `inplace`:
+13 and 18 within an ensemble, 24 across three models. Analysis 23's finding that Glide
+agrees with PL-iPTM at chance on the Boltz ensemble was also measured with `mininplace`
+and should be remeasured.
+
+### Standing
+
+0.4638 would place **4th** on the 2026-10-26 table, ahead of TCB at 0.4578, behind
+CYP-Random at 0.4750. Remember the table shows the LATEST submission: 29 is now the one
+displayed, which for once is also our best.

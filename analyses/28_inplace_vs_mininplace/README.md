@@ -53,14 +53,21 @@ be read off it either way.
 What the table does show is unremarkable: the three selectors disagree with each other,
 which is already clear from the 7-of-20 mode difference above.
 
-## Conclusion
+## Conclusion — superseded by submission 29, use `inplace`
 
-Keep `mininplace`. The emodel argument is the only discriminating reason either way, and
-it survives: `inplace` zeroes emodel on all 60 structures.
+This originally concluded "keep `mininplace`", on the grounds that the emodel argument
+was the only discriminating reason either way. **That recommendation is withdrawn.**
 
-The modes are not equivalent — 7 of 20 picks change — so a head-to-head between them
-would measure something real. Whether that is worth two submission attempts is a separate
-judgement, and this analysis does not settle it.
+Submission 29 selected among the three sets by `inplace` gscore and scored
+0.4638 / 3.7277 / 0.8001, beating its best parent on all three metrics and setting the
+project's best LDDT-PLI. Every Glide selection that previously failed — submissions 13,
+18, 20, 24 — used `mininplace`.
+
+The emodel argument never applied to these selections anyway: they rank on gscore alone,
+so zeroed emodel costs nothing. And the finding above points the same way — `mininplace`
+gives the worse score for 38 of 60 structures, consistent with its restrained
+minimisation moving the pose off the co-folded geometry before `POSTDOCK` rescores it.
+For structures we did not dock, score the pose as it stands.
 
 ## What the real evidence against physics-score selection is
 

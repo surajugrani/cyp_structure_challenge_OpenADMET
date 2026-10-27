@@ -39,7 +39,8 @@ the attempts omitted here, is in
 | 25 | [23 with 3 structures from 19](submissions/25_esm_outlier_fix/) | 0.4465 | 3.9500 | 0.7969 | Even correcting physically impossible Fe distances lost 0.0062 |
 | 26 | [ESMFold2 max-accuracy endpoint](submissions/26_esmfold2_maxacc/) | 0.4365 | 3.9024 | **0.8063** | Best pocket of the project, worse interface — the two metrics come apart |
 | 27 | [ESMFold2, no MSA](submissions/27_esmfold2_nomsa/) | 0.4384 | 3.8017 | 0.7908 | One-variable MSA control: the ColabFold MSA is worth +0.0143 LDDT-PLI |
-| 28 | [best RTCNN over 3 ESMFold2 runs](submissions/28_rtcnn_best_of_three/) | 0.4411 | **3.7722** | 0.7965 | Best BiSyRMSD of the ESM family; beats 2 of 3 parents on LDDT-PLI |
+| 28 | [best RTCNN over 3 ESMFold2 runs](submissions/28_rtcnn_best_of_three/) | 0.4411 | 3.7722 | 0.7965 | Best BiSyRMSD of the ESM family; beats 2 of 3 parents on LDDT-PLI |
+| 29 | [best Glide `inplace` over 3 ESMFold2 runs](submissions/29_glide_inplace_best_of_three/) | **0.4638** | 3.7277 | 0.8001 | **Best result.** Selection works — with `inplace`, not `mininplace` |
 
 ## What the project has learned
 
@@ -49,24 +50,24 @@ the attempts omitted here, is in
    ligands away from the haem. Analyses
    [17](analyses/17_icm_redock_predicted/), [18](analyses/18_glide_redock_predicted/).
 
-2. **No scoring function has been shown to select structures, within a model or across
-   models.** A physics score cannot rank five samples of the same ligand (submissions
-   13, 14, 18, 20). Submission 19 appeared to be the exception — picking per ligand
-   between AF3 and Boltz-2 by Glide score beat both parents — but submission 24 tested
-   that rule with a third model and it failed: Glide preferred ESMFold2 for only 5 of
-   20 ligands even though ESMFold2 alone scores 0.0196 above the hybrid, and the
-   three-way result landed 0.0179 *below* simply shipping ESMFold2 unaltered. Submission
-   19's margin is best read as noise on a ~10-structure scored subset.
+2. **Glide selection works — but only with `DOCKING_METHOD inplace`, and we spent most
+   of the project using `mininplace`.** Submission 29 picked per ligand among three
+   ESMFold2 runs by `inplace` gscore and beat its best parent on all three metrics
+   (0.4638 vs 0.4527), the first submission ever to do so. Every Glide selection that
+   *failed* — 13, 18, 20, 24 — used `mininplace`. That mode gives the worse score for 38
+   of 60 structures and changes 7 of 20 picks
+   ([analysis 28](analyses/28_inplace_vs_mininplace/)), apparently because its restrained
+   minimisation moves the pose off the co-folded geometry before `POSTDOCK` rescores it.
+   The only argument for `mininplace` was that `inplace` zeroes emodel — irrelevant when
+   selecting on gscore alone. Submissions 13, 18, 20 and 24 are all worth repeating.
 
-3. **The model matters more than anything done afterwards, and post-processing has never
-   once helped.** The single largest gain in the project came from trying a third
+3. **The model matters more than almost anything done afterwards.** The single largest gain in the project came from trying a third
    co-folding method, not from any selection, docking or refinement step: ESMFold2
    scored 0.4527 against 0.4331 for the best hybrid and 0.4291 for the best AF3 variant.
-   Against that, six separate attempts to improve a good submission by rearranging or
-   replacing its structures — submissions 11, 20, 21, 22, 24 and 25 — have all lost
-   ground, including one (25) that only corrected Fe distances which are not physically
-   possible. Submission 26 then re-folded those same structures with a higher-accuracy
-   endpoint and lost 0.0162, so two unrelated routes to the same correction both failed.
+   Against that, seven attempts to improve a good submission by rearranging or replacing
+   its structures — submissions 11, 20, 21, 22, 24, 25 and 26 — all lost ground,
+   including one (25) that only corrected Fe distances which are not physically possible.
+   Submission 29 is the single exception, and finding 2 explains why it differs.
 
 4. **"Closer to the haem" is not a proxy for "more correct."** Both AF3 and Boltz
    already place ligands in the right pocket ([analysis 16](analyses/16_fe_distance_swap/));
