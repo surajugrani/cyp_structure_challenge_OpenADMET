@@ -42,6 +42,7 @@ the attempts omitted here, is in
 | 28 | [best RTCNN over 3 ESMFold2 runs](submissions/28_rtcnn_best_of_three/) | 0.4411 | 3.7722 | 0.7965 | Best BiSyRMSD of the ESM family; beats 2 of 3 parents on LDDT-PLI |
 | 29 | [best Glide `inplace` over 3 ESMFold2 runs](submissions/29_glide_inplace_best_of_three/) | **0.4638** | 3.7277 | 0.8001 | **Best result.** Selection works — with `inplace`, not `mininplace` |
 | 30 | [Glide `inplace` over three models](submissions/30_inplace_three_way/) | 0.4414 | 3.7178 | 0.7808 | **Selection works within a model, not across one.** `inplace` is worth +0.0066, still 0.0113 under ESMFold2 alone |
+| 31 | [ESMFold2, MSA depth 1024→2048](submissions/31_esmfold2_depth2048/) | pending | pending | pending | One-variable depth test; poses move 1.47 Å against a measured 0.31 Å reproducibility floor |
 
 ## What the project has learned
 
@@ -156,6 +157,7 @@ python3 tools/plot_fe_distances.py --list   # what is configured
 | 28 | [`inplace` vs `mininplace` on 60 ESMFold2 structures](analyses/28_inplace_vs_mininplace/) | r=0.791, `mininplace` worse on 38/60, 7/20 picks change — the mode was the confound |
 | 29 | [ICM RTCNN on the ESMFold2 structures](analyses/29_icm_on_esm/) | 60/60 scored; Glide and RTCNN agree on only 10/20 winners |
 | 30 | [`inplace` scores for the AF3 and Boltz-2 sets](analyses/30_inplace_three_model/) | 40 structures, feeds the rebuilt cross-model hybrid, submission 30 |
+| 31 | [What the ESMFold2 config knobs do](analyses/31_msa_depth/) | Compute knobs already maxed; ESMFold2 reproduces to 0.31 Å; MSA depth moves poses 1.47 Å |
 
 ## Methods
 

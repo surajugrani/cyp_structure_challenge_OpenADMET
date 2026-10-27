@@ -43,6 +43,22 @@ def main():
     ap.add_argument("--model", default="esmfold2-2026-05")
     ap.add_argument("--no-msa", action="store_true",
                     help="fold from sequence alone (the 21 s trial used this)")
+    ap.add_argument("--sampling-steps", type=int, default=None,
+                    help="FoldingConfig.num_sampling_steps, the diffusion ODE solver "
+                         "steps. The API default is 100; higher is slower and meant "
+                         "to be more accurate. Left unset, the API default stands.")
+    ap.add_argument("--lm-dropout", type=float, default=None,
+                    help="FoldingConfig.lm_dropout, dropout on the LM pair embeddings. "
+                         "The API default is 0.3, i.e. dropout is ON at inference and "
+                         "repeated runs differ. 0.0 turns it off.")
+    ap.add_argument("--msa-depth", type=int, default=None,
+                    help="FoldingConfig.msa_max_depth, the number of MSA rows randomly "
+                         "subsampled each loop. The API default is 1024 out of our "
+                         "14301. Raising it narrows the spread between runs, lowering "
+                         "it widens them. Keeps subsampling ON, unlike --full-msa.")
+    ap.add_argument("--full-msa", action="store_true",
+                    help="set msa_max_depth=None, so the whole 14301-sequence MSA is "
+                         "used every loop instead of a fresh random 1024-row subsample.")
     ap.add_argument("--out", help="write .cif and metrics here instead of this "
                                   "submission's raw/ and results/, so a variant run "
                                   "does not collide with the folded set")
@@ -60,7 +76,22 @@ def main():
     from esm.utils.structure import input_builder as ib
 
     client = esmfold2_client(model=a.model, url="https://biohub.ai", token=tok)
-    cfg = FoldingConfig(include_pae=True, include_pair_chains_iptm=True)
+    kw = {}
+    if a.lm_dropout is not None:
+        kw["lm_dropout"] = a.lm_dropout
+        print(f"lm_dropout = {a.lm_dropout} (API default is 0.3)", flush=True)
+    if a.msa_depth is not None:
+        kw["msa_max_depth"] = a.msa_depth
+        print(f"msa_max_depth = {a.msa_depth} (API default is 1024)", flush=True)
+    if a.full_msa:
+        kw["msa_max_depth"] = None
+        print("msa_max_depth = None, full MSA every loop (API default subsamples 1024)",
+              flush=True)
+    if a.sampling_steps is not None:
+        kw["num_sampling_steps"] = a.sampling_steps
+        print(f"num_sampling_steps = {a.sampling_steps} (API default is 100)",
+              flush=True)
+    cfg = FoldingConfig(include_pae=True, include_pair_chains_iptm=True, **kw)
 
     # ColabFold MSA (api.colabfold.com / MMseqs2), 14301 sequences, shared by all 20
     # ligands since the protein is identical. MMseqs2 writes trailing NUL bytes that
