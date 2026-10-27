@@ -66,3 +66,24 @@ an identical file cannot score differently.
 * `results/selection.csv` — per-ligand gscores from all three sets, the pick, and
   whether it changed from submission 24
 * `visualize/30_inplace_three_way.pse` — PyMOL session, 20 objects
+
+## Result — 0.4414 / 3.7178 / 0.7808
+
+Scored 2026-10-27. The second of the two outcomes above.
+
+`inplace` is worth **+0.0066** over submission 24's `mininplace` version of the
+same rule, so analysis 28's finding transfers. But the set still lands 0.0113
+below shipping ESMFold2 alone and 0.0224 below submission 29, which applied the
+same rule inside ESMFold2's three runs. The mode was a confound; it was not the
+only one.
+
+LDDT-LP is the diagnostic: 0.7808 here against 0.7985–0.8063 for every ESM-only
+submission. That metric scores the protein pocket, which belongs to the model
+that built it, not to the pose. Eleven of these 20 structures come from AF3 and
+Boltz-2, and Glide's gscore cannot see that their pockets are worse — it reports
+how well a ligand fits the receptor handed to it, so the best fit inside a worse
+pocket still wins the comparison and still loses on the metric.
+
+Conclusion for the rest of the challenge: **select within the best model, not
+across models.** Within one model the candidates share a pocket quality and
+gscore compares like with like, which is why submission 29 worked.

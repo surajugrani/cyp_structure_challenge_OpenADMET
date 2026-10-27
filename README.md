@@ -41,7 +41,7 @@ the attempts omitted here, is in
 | 27 | [ESMFold2, no MSA](submissions/27_esmfold2_nomsa/) | 0.4384 | 3.8017 | 0.7908 | One-variable MSA control: the ColabFold MSA is worth +0.0143 LDDT-PLI |
 | 28 | [best RTCNN over 3 ESMFold2 runs](submissions/28_rtcnn_best_of_three/) | 0.4411 | 3.7722 | 0.7965 | Best BiSyRMSD of the ESM family; beats 2 of 3 parents on LDDT-PLI |
 | 29 | [best Glide `inplace` over 3 ESMFold2 runs](submissions/29_glide_inplace_best_of_three/) | **0.4638** | 3.7277 | 0.8001 | **Best result.** Selection works — with `inplace`, not `mininplace` |
-| 30 | [Glide `inplace` over three models](submissions/30_inplace_three_way/) | pending | pending | pending | Submission 24's cross-model rule with the `mininplace` confound removed; 5/20 picks change |
+| 30 | [Glide `inplace` over three models](submissions/30_inplace_three_way/) | 0.4414 | 3.7178 | 0.7808 | **Selection works within a model, not across one.** `inplace` is worth +0.0066, still 0.0113 under ESMFold2 alone |
 
 ## What the project has learned
 

@@ -31,7 +31,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 27 | [ESMFold2 default endpoint, NO MSA](27_esmfold2_nomsa/) | 2026-10-24 | 0.4384 | **3.8017** | 0.7908 | — | — |
 | 28 | [best ICM RTCNN over the 3 ESMFold2 runs](28_rtcnn_best_of_three/) | 2026-10-25 | 0.4411 | 3.7722 | 0.7965 | — | — |
 | 29 | [best Glide `inplace` over the 3 ESMFold2 runs](29_glide_inplace_best_of_three/) | 2026-10-26 | **0.4638** | 3.7277 | 0.8001 | — | — |
-| 30 | [best Glide `inplace` over AF3 + Boltz-2 + ESMFold2](30_inplace_three_way/) | 2026-10-27 | pending | pending | pending | — | — |
+| 30 | [best Glide `inplace` over AF3 + Boltz-2 + ESMFold2](30_inplace_three_way/) | 2026-10-27 | 0.4414 | 3.7178 | 0.7808 | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).
@@ -67,6 +67,41 @@ ship at roughly 0.42–0.43, below ESMFold2's 0.4527 — so the rule has to beat
 real quality handicap. Above 0.4527 means the mode was the whole story behind
 submission 24's loss; below it means Glide genuinely cannot compare poses built
 on different receptor conformations, however they are scored.
+
+### Result: 0.4414 / 3.7178 / 0.7808 — the mode was not the whole story
+
+| | 24 `mininplace` | **30 `inplace`** | 23 ESMFold2 alone | 29 within-ESM |
+|---|---|---|---|---|
+| LDDT-PLI | 0.4348 | **0.4414** | 0.4527 | **0.4638** |
+| BiSyRMSD | 3.7261 | **3.7178** | 3.8551 | 3.7277 |
+| LDDT-LP | 0.7798 | **0.7808** | 0.7985 | 0.8001 |
+
+Switching to `inplace` is worth **+0.0066** on the cross-model rule. That is a
+real effect in the direction analysis 28 predicted, and it is the second-best
+BiSyRMSD the project has posted (only submission 19's 3.6754 is lower). But it
+closes barely a third of the gap: the set still lands **0.0113 below** simply
+shipping ESMFold2 and **0.0224 below** selecting within ESMFold2's own three
+runs.
+
+So the two questions separate cleanly:
+
+* **Within one model** (submission 29) `inplace` selection works, +0.0111 over
+  the best parent.
+* **Across models** it does not, even with the confound removed.
+
+The LDDT-LP column says why. At 0.7808 submission 30 sits next to submission
+24's 0.7798 and far below every ESM-only submission (0.7985–0.8063). LDDT-LP
+scores the protein pocket, which is a property of the model that built it, not
+of the pose Glide scored. Eleven of these 20 structures come from AF3 and
+Boltz-2, whose pockets are worse, and the gscore has no way to see that — it
+reads how well the ligand fits the receptor it is given, not how good that
+receptor is. Picking the best-fitting ligand inside a worse pocket is still a
+worse structure.
+
+This also explains why within-model selection is the easier problem: the three
+ESMFold2 runs share a pocket quality, so gscore is comparing like with like and
+is free to be right about the pose. The practical rule for the rest of the
+challenge: **select within the best model, never across models.**
 
 ## Two templates (apo + holo) made things worse
 
