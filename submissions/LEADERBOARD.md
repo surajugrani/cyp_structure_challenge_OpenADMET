@@ -33,7 +33,8 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 29 | [best Glide `inplace` over the 3 ESMFold2 runs](29_glide_inplace_best_of_three/) | 2026-10-26 | **0.4638** | 3.7277 | 0.8001 | — | — |
 | 30 | [best Glide `inplace` over AF3 + Boltz-2 + ESMFold2](30_inplace_three_way/) | 2026-10-27 | 0.4414 | 3.7178 | 0.7808 | — | — |
 | 31 | [ESMFold2 with `msa_max_depth` 2048](31_esmfold2_depth2048/) | 2026-10-27 | 0.4116 | 4.1680 | 0.7894 | — | — |
-| 32 | [z-score consensus of Glide `inplace` + ICM RTCNN](32_zscore_consensus/) | 2026-10-28 | pending | pending | pending | — | — |
+| 32 | [z-score consensus of Glide `inplace` + ICM RTCNN](32_zscore_consensus/) | 2026-10-28 | 0.4438 | 3.7662 | 0.8014 | — | — |
+| 33 | [best Glide `inplace` over 2 ESMFold2 runs, 23+27](33_glide_best_of_two/) | 2026-10-28 | pending | pending | pending | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).
@@ -140,6 +141,23 @@ a 0.4116 set offers the selector mostly traps.
 Which leaves submission 29's pool - the three real ESMFold2 configurations - as
 the only diverse, comparable-quality candidate set this project has, and it
 already produced the best result at 0.4638.
+
+## Submission 32 — consensus averaged its inputs
+
+0.4438 / 3.7662 / 0.8014. The z-score consensus of Glide `inplace` and ICM
+RTCNN landed between its two inputs (0.4411 and 0.4638) and slightly below
+their mean, dragged toward the weaker one.
+
+So the near-decorrelation between the scorers - they agree on only 10 of 20
+winners, Pearson +0.373 - bought nothing. Decorrelated errors are the textbook
+precondition for consensus to beat both inputs, and the precondition held here;
+the conclusion did not. Even the three ligands where consensus chose a set
+neither scorer picked alone (OCNT-2315379, OCNT-2395457, OCNT-2535422) did not
+pull it above the mean.
+
+The reading: combining a good ranker with a worse one on the same pool
+interpolates between them. It does not synthesise a better one. Glide alone
+remains the rule to beat.
 
 ## Two templates (apo + holo) made things worse
 
