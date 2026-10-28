@@ -43,6 +43,7 @@ the attempts omitted here, is in
 | 29 | [best Glide `inplace` over 3 ESMFold2 runs](submissions/29_glide_inplace_best_of_three/) | **0.4638** | 3.7277 | 0.8001 | **Best result.** Selection works — with `inplace`, not `mininplace` |
 | 30 | [Glide `inplace` over three models](submissions/30_inplace_three_way/) | 0.4414 | 3.7178 | 0.7808 | **Selection works within a model, not across one.** `inplace` is worth +0.0066, still 0.0113 under ESMFold2 alone |
 | 31 | [ESMFold2, MSA depth 1024→2048](submissions/31_esmfold2_depth2048/) | 0.4116 | 4.1680 | 0.7894 | **Biggest single-knob loss, −0.0411.** Pocket intact, ligands worse: the dial moves poses the wrong way |
+| 32 | [z-score consensus of Glide + RTCNN](submissions/32_zscore_consensus/) | pending | pending | pending | Two near-decorrelated scorers combined; changes 7/20 against submission 29 |
 
 ## What the project has learned
 

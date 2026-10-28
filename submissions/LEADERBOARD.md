@@ -33,6 +33,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 29 | [best Glide `inplace` over the 3 ESMFold2 runs](29_glide_inplace_best_of_three/) | 2026-10-26 | **0.4638** | 3.7277 | 0.8001 | — | — |
 | 30 | [best Glide `inplace` over AF3 + Boltz-2 + ESMFold2](30_inplace_three_way/) | 2026-10-27 | 0.4414 | 3.7178 | 0.7808 | — | — |
 | 31 | [ESMFold2 with `msa_max_depth` 2048](31_esmfold2_depth2048/) | 2026-10-27 | 0.4116 | 4.1680 | 0.7894 | — | — |
+| 32 | [z-score consensus of Glide `inplace` + ICM RTCNN](32_zscore_consensus/) | 2026-10-28 | pending | pending | pending | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).
