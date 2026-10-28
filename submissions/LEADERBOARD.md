@@ -32,7 +32,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 28 | [best ICM RTCNN over the 3 ESMFold2 runs](28_rtcnn_best_of_three/) | 2026-10-25 | 0.4411 | 3.7722 | 0.7965 | — | — |
 | 29 | [best Glide `inplace` over the 3 ESMFold2 runs](29_glide_inplace_best_of_three/) | 2026-10-26 | **0.4638** | 3.7277 | 0.8001 | — | — |
 | 30 | [best Glide `inplace` over AF3 + Boltz-2 + ESMFold2](30_inplace_three_way/) | 2026-10-27 | 0.4414 | 3.7178 | 0.7808 | — | — |
-| 31 | [ESMFold2 with `msa_max_depth` 2048](31_esmfold2_depth2048/) | 2026-10-27 | pending | pending | pending | — | — |
+| 31 | [ESMFold2 with `msa_max_depth` 2048](31_esmfold2_depth2048/) | 2026-10-27 | 0.4116 | 4.1680 | 0.7894 | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).
@@ -103,6 +103,42 @@ This also explains why within-model selection is the easier problem: the three
 ESMFold2 runs share a pocket quality, so gscore is comparing like with like and
 is free to be right about the pose. The practical rule for the rest of the
 challenge: **select within the best model, never across models.**
+
+## Submission 31 — MSA depth is a real dial that turns the wrong way
+
+0.4414 was submission 30; this is worse. Doubling `msa_max_depth` from 1024 to
+2048, a single changed field against submission 23, cost **0.0411 LDDT-PLI** —
+the largest single-knob loss the project has recorded.
+
+| | 23 (depth 1024) | 31 (depth 2048) | delta |
+|---|---|---|---|
+| LDDT-PLI | 0.4527 | 0.4116 | **-0.0411** |
+| BiSyRMSD | 3.8551 | 4.1680 | +0.3129 |
+| LDDT-LP | 0.7985 | 0.7894 | -0.0091 |
+
+The metric split is the finding. LDDT-LP moves 0.009, so the protein pocket is
+essentially unchanged; the loss is entirely in where the ligand sits. Analysis
+31 measured the displacement in advance at a median 1.47 A against a 0.31 A
+reproducibility floor, so we knew the poses had moved. We now know they moved
+the wrong way, almost all of it error.
+
+Two conclusions.
+
+**1024 is the model's tuned optimum, not an arbitrary default.** Departing from
+it degrades ligand placement while leaving the fold intact. The depths below
+1024 are not worth folding on this evidence.
+
+**The depth dial cannot generate a selection pool.** Submission 30 established
+that selection needs candidates of comparable quality: picking across sets that
+differ systematically in quality means the selector must first beat "always use
+the best set", and it loses. Depth variants are exactly that case - 1024 is
+systematically better by 0.041, four times the spread across the three existing
+ESMFold2 configurations (0.4527 / 0.4384 / 0.4365, range 0.016). A pool holding
+a 0.4116 set offers the selector mostly traps.
+
+Which leaves submission 29's pool - the three real ESMFold2 configurations - as
+the only diverse, comparable-quality candidate set this project has, and it
+already produced the best result at 0.4638.
 
 ## Two templates (apo + holo) made things worse
 

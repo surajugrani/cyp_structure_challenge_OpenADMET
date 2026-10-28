@@ -62,3 +62,29 @@ OCNT-2315379 at 7.16 Å (6.89 in sub 23) and OCNT-2395460 at 1.78 Å (1.79).
   for selection: free diversity at no cost in accuracy.
 * **Below 0.4527** — 1024 is already the model's optimum and the dial only
   degrades it; drop the depth series.
+
+## Result — 0.4116 / 4.1680 / 0.7894
+
+Scored 2026-10-27. The third of the three outcomes above: the dial degrades the
+model. −0.0411 LDDT-PLI against submission 23, the largest single-knob loss in
+the project.
+
+| | 23 (depth 1024) | 31 (depth 2048) | delta |
+|---|---|---|---|
+| LDDT-PLI | 0.4527 | 0.4116 | **−0.0411** |
+| BiSyRMSD | 3.8551 | 4.1680 | +0.3129 |
+| LDDT-LP | 0.7985 | 0.7894 | −0.0091 |
+
+LDDT-LP moved 0.009, so the protein pocket is essentially unchanged and the
+whole loss is in ligand placement. Analysis 31 had already measured the
+displacement at a median 1.47 Å against a 0.31 Å reproducibility floor — the
+poses moved, and this says they moved the wrong way.
+
+**1024 is the tuned optimum, not an arbitrary default.** The depths below 1024
+are not worth folding on this evidence.
+
+**And the dial cannot generate a selection pool.** Submission 30 showed
+selection fails when candidates differ systematically in quality, because the
+selector must first beat "always use the best set". Depth variants are that
+case: 1024 wins by 0.041, four times the 0.016 spread across the three real
+ESMFold2 configurations. A pool containing a 0.4116 set is mostly traps.
