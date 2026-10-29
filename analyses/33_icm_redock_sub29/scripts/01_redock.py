@@ -20,19 +20,26 @@ binding site for the ICM project.
 Settings match analyses 06 and 17 so the numbers stay comparable: confs=10, effort=3.,
 seed=42.
 
-Recorded per pose, since the blinded set has no ground truth:
-  * RMSD to the co-folded pose - how far ICM moved from what submission 29 ships
-  * Fe-ligand distance - analysis 16's type I / type II diagnostic
-  * ICM Score and RTCNN
+Recorded per pose: RMSD to the co-folded pose, Fe-ligand distance, ICM Score, RTCNN.
 
-What to expect, written down first. Analysis 17 measured ICM redocking into predicted
-receptors at 4 of 15 ligands coordinating the iron against co-folding's 11-12, and
-analysis 25 found the oracle pose - the one of ten closest to the co-folded reference -
-sat a median 1.69 A away, with neither ICM Score nor Glide gscore able to find it
-(2 of 20 within 2 A each). The useful question for these receptors is whether that
-oracle gap narrows. If the best available pose is still 1.7 A from the co-folded one,
-no selector can rescue this route; if it closes to well under 1 A, selection becomes
-worth attempting.
+READ THESE AS DESCRIPTION, NOT AS QUALITY. The blinded set has no ground truth, and
+the only measurement of "good" this project has ever had is the leaderboard. RMSD to
+the co-folded pose says how far ICM moved from what submission 29 ships - it says
+nothing about which of the two is closer to the crystal, because the co-folded pose is
+not the crystal. Its use is deciding whether a route would even produce a submission
+distinguishable from one already made.
+
+The Fe-ligand distance has been tested against the leaderboard and failed: submissions
+11, 20 and 22 all lost using it to choose, and submission 25 lost while correcting two
+distances that are not physically possible. It is logged here because it is free, not
+because a value in it is evidence of anything.
+
+For context on what ICM redocking has produced before, with the same caveat attached:
+analysis 17 found 4 of 15 ligands coordinating the iron against co-folding's 11-12, and
+analysis 25 found the closest of ten poses sat a median 1.69 A from the co-folded
+reference, with neither ICM Score nor Glide gscore able to find it. Neither number
+establishes that those poses were worse - only that they were different, and that the
+two scoring functions disagreed with the reference about which was which.
 
 ONE COMPLEX AT A TIME, serial, in a single job - ICM licence limit.
 Resumable: anything already in the CSV is skipped on resubmission.
