@@ -15,6 +15,7 @@ set -uo pipefail
 module load schrodinger/2025-3
 module load icm/3.9.4
 export PYTHONUNBUFFERED=1
+export PYTHONPATH="$SLURM_SUBMIT_DIR/.pylibs:${PYTHONPATH:-}"
 cd "$SLURM_SUBMIT_DIR"
 $SCHRODINGER/run python3 analyses/33_icm_redock_sub29/scripts/01_redock.py "$@"
 echo "EXIT=$?"
