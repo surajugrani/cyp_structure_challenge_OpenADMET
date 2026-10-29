@@ -35,6 +35,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 31 | [ESMFold2 with `msa_max_depth` 2048](31_esmfold2_depth2048/) | 2026-10-27 | 0.4116 | 4.1680 | 0.7894 | — | — |
 | 32 | [z-score consensus of Glide `inplace` + ICM RTCNN](32_zscore_consensus/) | 2026-10-28 | 0.4438 | 3.7662 | 0.8014 | — | — |
 | 33 | [best Glide `inplace` over 2 ESMFold2 runs, 23+27](33_glide_best_of_two/) | 2026-10-28 | 0.4464 | 3.7705 | 0.7952 | — | — |
+| 34 | [submission 29 with Glide-minimised ligand poses](34_glide_minimised/) | 2026-10-29 | pending | pending | pending | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).

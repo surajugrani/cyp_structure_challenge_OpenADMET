@@ -45,6 +45,7 @@ the attempts omitted here, is in
 | 31 | [ESMFold2, MSA depth 1024→2048](submissions/31_esmfold2_depth2048/) | 0.4116 | 4.1680 | 0.7894 | **Biggest single-knob loss, −0.0411.** Pocket intact, ligands worse: the dial moves poses the wrong way |
 | 32 | [z-score consensus of Glide + RTCNN](submissions/32_zscore_consensus/) | 0.4438 | 3.7662 | 0.8014 | Landed between its two inputs — consensus averaged them, the decorrelation bought nothing |
 | 33 | [best Glide `inplace` over 2 ESMFold2 runs](submissions/33_glide_best_of_two/) | 0.4464 | 3.7705 | 0.7952 | Dropping set 26 cost 0.0174 — the pool mattered more than the suspected bias |
+| 34 | [submission 29 with Glide-minimised ligand poses](submissions/34_glide_minimised/) | pending | pending | pending | First submission to change coordinates rather than rearrange structures; ligands moved a median 0.497 Å |
 
 ## What the project has learned
 
