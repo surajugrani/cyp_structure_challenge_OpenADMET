@@ -78,3 +78,4 @@ analyses/*/samples/
 *token*
 *.key
 figures/.fe_cache.json
+analyses/32_inplace_depth2048/work/
