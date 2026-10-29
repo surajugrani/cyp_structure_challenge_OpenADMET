@@ -44,7 +44,7 @@ the attempts omitted here, is in
 | 30 | [Glide `inplace` over three models](submissions/30_inplace_three_way/) | 0.4414 | 3.7178 | 0.7808 | **Selection works within a model, not across one.** `inplace` is worth +0.0066, still 0.0113 under ESMFold2 alone |
 | 31 | [ESMFold2, MSA depth 1024→2048](submissions/31_esmfold2_depth2048/) | 0.4116 | 4.1680 | 0.7894 | **Biggest single-knob loss, −0.0411.** Pocket intact, ligands worse: the dial moves poses the wrong way |
 | 32 | [z-score consensus of Glide + RTCNN](submissions/32_zscore_consensus/) | 0.4438 | 3.7662 | 0.8014 | Landed between its two inputs — consensus averaged them, the decorrelation bought nothing |
-| 33 | [best Glide `inplace` over 2 ESMFold2 runs](submissions/33_glide_best_of_two/) | pending | pending | pending | Drops set 26, which supplied 9/20 of sub 29's picks despite the worst interface and best pocket |
+| 33 | [best Glide `inplace` over 2 ESMFold2 runs](submissions/33_glide_best_of_two/) | 0.4464 | 3.7705 | 0.7952 | Dropping set 26 cost 0.0174 — the pool mattered more than the suspected bias |
 
 ## What the project has learned
 

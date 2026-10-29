@@ -34,7 +34,7 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 30 | [best Glide `inplace` over AF3 + Boltz-2 + ESMFold2](30_inplace_three_way/) | 2026-10-27 | 0.4414 | 3.7178 | 0.7808 | — | — |
 | 31 | [ESMFold2 with `msa_max_depth` 2048](31_esmfold2_depth2048/) | 2026-10-27 | 0.4116 | 4.1680 | 0.7894 | — | — |
 | 32 | [z-score consensus of Glide `inplace` + ICM RTCNN](32_zscore_consensus/) | 2026-10-28 | 0.4438 | 3.7662 | 0.8014 | — | — |
-| 33 | [best Glide `inplace` over 2 ESMFold2 runs, 23+27](33_glide_best_of_two/) | 2026-10-28 | pending | pending | pending | — | — |
+| 33 | [best Glide `inplace` over 2 ESMFold2 runs, 23+27](33_glide_best_of_two/) | 2026-10-28 | 0.4464 | 3.7705 | 0.7952 | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).
@@ -1064,3 +1064,38 @@ and should be remeasured.
 0.4638 would place **4th** on the 2026-10-26 table, ahead of TCB at 0.4578, behind
 CYP-Random at 0.4750. Remember the table shows the LATEST submission: 29 is now the one
 displayed, which for once is also our best.
+
+
+## Submission 33: the third candidate was not the problem
+
+**0.4464 / 3.7705 / 0.7952.** Best Glide `inplace` gscore over sets 23 and 27 only,
+with set 26 (max-accuracy) dropped from the pool.
+
+| | 23 alone | 29 best-of-3 | **33 best-of-2** |
+|---|---|---|---|
+| LDDT-PLI | 0.4527 | **0.4638** | 0.4464 |
+| BiSyRMSD | 3.8551 | **3.7277** | 3.7705 |
+| LDDT-LP | 0.7985 | **0.8001** | 0.7952 |
+
+Dropping set 26 cost **0.0174** against submission 29 and left the result **0.0063**
+below plain ESMFold2. The hypothesis was that set 26 was over-picked (9 of 20 against
+6.7 expected) because gscore rewards its pocket quality, which gscore cannot judge. The
+test says otherwise: those 9 picks were carrying real value, and removing the candidate
+cost more than any bias it introduced.
+
+So the two findings stand together. Selection across *different models* fails
+(submission 30, -0.0113) because the receptors are not comparable. Selection across
+*runs of one model* works, and works better with more candidates in the pool, even when
+one of those runs scores worst on its own. The pool size is the lever, not the pruning.
+
+### Where that leaves the project
+
+| rank | submission | LDDT-PLI |
+|---|---|---|
+| 1 | 29 best Glide `inplace` over 3 ESMFold2 runs | **0.4638** |
+| 2 | 23 plain ESMFold2, default + MSA | 0.4527 |
+| 3 | 25 | 0.4465 |
+| 4 | **33 best-of-2** | 0.4464 |
+| 5 | 32 z-score consensus | 0.4438 |
+
+Submission 29 remains the only rule that has beaten plain ESMFold2.
