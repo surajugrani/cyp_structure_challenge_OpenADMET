@@ -46,6 +46,7 @@ the attempts omitted here, is in
 | 32 | [z-score consensus of Glide + RTCNN](submissions/32_zscore_consensus/) | 0.4438 | 3.7662 | 0.8014 | Landed between its two inputs — consensus averaged them, the decorrelation bought nothing |
 | 33 | [best Glide `inplace` over 2 ESMFold2 runs](submissions/33_glide_best_of_two/) | 0.4464 | 3.7705 | 0.7952 | Dropping set 26 cost 0.0174 — the pool mattered more than the suspected bias |
 | 34 | [submission 29 with Glide-minimised ligand poses](submissions/34_glide_minimised/) | pending | pending | pending | First submission to change coordinates rather than rearrange structures; ligands moved a median 0.497 Å |
+| 35 | [best Glide `inplace` over 4 ESMFold2 runs](submissions/35_glide_best_of_four/) | pending | pending | pending | Adds the worst run (set 31) as a fourth candidate; it wins 7/20, testing whether pool size beats candidate quality |
 
 ## What the project has learned
 
@@ -161,6 +162,10 @@ python3 tools/plot_fe_distances.py --list   # what is configured
 | 29 | [ICM RTCNN on the ESMFold2 structures](analyses/29_icm_on_esm/) | 60/60 scored; Glide and RTCNN agree on only 10/20 winners |
 | 30 | [`inplace` scores for the AF3 and Boltz-2 sets](analyses/30_inplace_three_model/) | 40 structures, feeds the rebuilt cross-model hybrid, submission 30 |
 | 31 | [What the ESMFold2 config knobs do](analyses/31_msa_depth/) | Compute knobs already maxed; ESMFold2 reproduces to 0.31 Å; MSA depth moves poses 1.47 Å |
+| 32 | [Glide `inplace` on the depth-2048 set](analyses/32_inplace_depth2048/) | Fourth candidate for the pool; it wins 7/20 despite being the worst run |
+| 33 | [ICM redock into submission 29's receptors](analyses/33_icm_redock_sub29/) | 200 poses, 10 per ligand, into the best receptors we have |
+| 34 | [Glide `inplace` on the ICM poses](analyses/34_inplace_on_icm_poses/) | 177/200 rejected — overlapping hydrogens, not pose quality |
+| 35 | [Does ICM change the receptor?](analyses/35_icm_receptor_check/) | Yes, and it is not the cause: the clash is H···H at 0.73 Å |
 
 ## Methods
 

@@ -1,0 +1,8 @@
+# Write each ICM project's converted receptor back out as PDB.
+# proj_rec.ob is the object _dockBatch built from the submission PDB: ICM's
+# convertObject adds hydrogens, assigns its own typing and can move side chains,
+# so it is not necessarily the same receptor the pose must fit when shipped.
+call _startup
+read object s_in
+write pdb a_*.//* s_out
+quit
