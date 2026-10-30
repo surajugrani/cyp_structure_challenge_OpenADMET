@@ -47,6 +47,7 @@ the attempts omitted here, is in
 | 33 | [best Glide `inplace` over 2 ESMFold2 runs](submissions/33_glide_best_of_two/) | 0.4464 | 3.7705 | 0.7952 | Dropping set 26 cost 0.0174 — the pool mattered more than the suspected bias |
 | 34 | [submission 29 with Glide-minimised ligand poses](submissions/34_glide_minimised/) | 0.4637 | 3.7483 | 0.8001 | **A 0.497 Å median ligand move cost 0.0001.** LDDT-PLI is blind at this scale |
 | 35 | [best Glide `inplace` over 4 ESMFold2 runs](submissions/35_glide_best_of_four/) | 0.4512 | 3.8222 | 0.7975 | Adding a weak candidate cost 0.0126 — with 33, the three-run pool is a local optimum |
+| 36 | [best Glide `emodel` over 3 ESMFold2 runs](submissions/36_emodel_best_of_three/) | pending | pending | pending | Same pool as 29, ranked by Glide's pose term instead of its affinity term; 8/20 change |
 
 ## What the project has learned
 
