@@ -35,8 +35,8 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 31 | [ESMFold2 with `msa_max_depth` 2048](31_esmfold2_depth2048/) | 2026-10-27 | 0.4116 | 4.1680 | 0.7894 | — | — |
 | 32 | [z-score consensus of Glide `inplace` + ICM RTCNN](32_zscore_consensus/) | 2026-10-28 | 0.4438 | 3.7662 | 0.8014 | — | — |
 | 33 | [best Glide `inplace` over 2 ESMFold2 runs, 23+27](33_glide_best_of_two/) | 2026-10-28 | 0.4464 | 3.7705 | 0.7952 | — | — |
-| 34 | [submission 29 with Glide-minimised ligand poses](34_glide_minimised/) | 2026-10-29 | pending | pending | pending | — | — |
-| 35 | [best Glide `inplace` over 4 ESMFold2 runs, +set 31](35_glide_best_of_four/) | 2026-10-29 | pending | pending | pending | — | — |
+| 34 | [submission 29 with Glide-minimised ligand poses](34_glide_minimised/) | 2026-10-29 | 0.4637 | 3.7483 | 0.8001 | — | — |
+| 35 | [best Glide `inplace` over 4 ESMFold2 runs, +set 31](35_glide_best_of_four/) | 2026-10-29 | 0.4512 | 3.8222 | 0.7975 | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).
@@ -1101,3 +1101,77 @@ one of those runs scores worst on its own. The pool size is the lever, not the p
 | 5 | 32 z-score consensus | 0.4438 |
 
 Submission 29 remains the only rule that has beaten plain ESMFold2.
+
+
+## Submissions 34 and 35: the pool is a local optimum, and the metric is coarse
+
+| | LDDT-PLI | BiSyRMSD | LDDT-LP | vs submission 29 |
+|---|---|---|---|---|
+| 29 best of 3 runs | **0.4638** | **3.7277** | 0.8001 | — |
+| 34 same picks, minimised ligands | 0.4637 | 3.7483 | 0.8001 | **-0.0001** |
+| 35 best of 4 runs | 0.4512 | 3.8222 | 0.7975 | **-0.0126** |
+
+### Submission 34: a 0.497 A ligand move is worth 0.0001
+
+Every ligand was replaced by its Glide-minimised pose, a median 0.497 A displacement
+and up to 2.503 A, inside receptors that were not touched. LDDT-LP came back identical
+to four decimals, which confirms the receptors really were untouched and makes this a
+clean single-variable measurement of what ligand placement is worth.
+
+**The answer is: at this scale, nothing.** LDDT-PLI moved by 0.0001 and BiSyRMSD by
+0.0206. Moving every ligand half an angstrom is invisible to the primary metric.
+
+That is the most useful calibration this project has produced, and it reframes a lot of
+earlier reasoning. Analysis 31 treated a 1.47 A pose shift as a large effect and it cost
+0.0411; analysis 27 measured 1.53 A between sets 23 and 27, which differ by 0.0143.
+Against those, 0.5 A costing nothing says the metric responds to which contacts exist,
+not to their precise lengths. Sub-angstrom refinement cannot win here. Neither can any
+rescoring scheme whose effect is to nudge poses.
+
+It also ends a different question. Post-processing a good submission was 0 for 6; this
+is the seventh attempt and the first that did not lose. It did not win either - it
+reproduced its parent. Changing coordinates without changing which structure is shipped
+is, on this evidence, a no-op.
+
+### Submission 35: adding a bad candidate costs, and so does removing a good one
+
+Set 31 (msa_max_depth 2048, 0.4116 alone, the worst run of the project) won 7 of 20
+picks against the 5 chance would give it. Those 7 cost 0.0126.
+
+Put beside submission 33, which removed set 26 from the same pool and cost 0.0174, the
+pair rules out the simple reading of either result:
+
+| | change to the pool | result |
+|---|---|---|
+| 33 | remove set 26 (3 -> 2 runs) | -0.0174 |
+| 29 | the pool as built (3 runs) | **0.4638** |
+| 35 | add set 31 (3 -> 4 runs) | -0.0126 |
+
+**Pool size is not the lever. Submission 29's three-run pool is a local optimum, and
+moving in either direction costs about the same.**
+
+The mechanism both results support: Glide gscore carries weak signal for structure
+quality. Among candidates of comparable quality, picking the best-scoring one is close
+to harmless and slightly helpful - submission 29 beat all three of its parents. Offer
+the same selector a systematically worse run and it cannot tell: it took set 31's
+structures at 1.4x the chance rate and imported their deficits. Remove a comparable
+candidate and it simply has fewer good structures to find.
+
+So the rule is narrower than "select within one model". It is **select among runs of
+comparable quality within one model**. Set 31 was 0.0411 below the best of the pool and
+that was far enough outside to break it; sets 23, 26 and 27 span 0.0163 and work.
+
+### Where this leaves the project
+
+| rank | submission | LDDT-PLI |
+|---|---|---|
+| 1 | 29 best Glide `inplace` over 3 ESMFold2 runs | **0.4638** |
+| 2 | 34 same, with minimised ligands | 0.4637 |
+| 3 | 23 plain ESMFold2, default + MSA | 0.4527 |
+| 4 | 35 best of 4 runs | 0.4512 |
+| 5 | 33 best of 2 runs | 0.4464 |
+
+Submission 29 still stands, and submission 34 ties it from a different direction. Three
+separate attempts to improve on it - prune the pool, extend the pool, refine the poses -
+have now each failed, and failed in ways that point at the same thing: the selector has
+little signal to give, and the metric is too coarse for pose-level work to matter.
