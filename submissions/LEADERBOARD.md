@@ -37,7 +37,8 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 33 | [best Glide `inplace` over 2 ESMFold2 runs, 23+27](33_glide_best_of_two/) | 2026-10-28 | 0.4464 | 3.7705 | 0.7952 | — | — |
 | 34 | [submission 29 with Glide-minimised ligand poses](34_glide_minimised/) | 2026-10-29 | 0.4637 | 3.7483 | 0.8001 | — | — |
 | 35 | [best Glide `inplace` over 4 ESMFold2 runs, +set 31](35_glide_best_of_four/) | 2026-10-29 | 0.4512 | 3.8222 | 0.7975 | — | — |
-| 36 | [best Glide `emodel` over 3 ESMFold2 runs](36_emodel_best_of_three/) | 2026-10-30 | pending | pending | pending | — | — |
+| 36 | [best Glide `emodel` over 3 ESMFold2 runs](36_emodel_best_of_three/) | 2026-10-30 | 0.4493 | 3.7605 | 0.7935 | — | — |
+| 37 | [ICM redock of sub 29, Glide-picked pose, relaxed receptor](37_icm_redock_glide_select/) | 2026-10-31 | 0.3293 | 5.0863 | 0.7959 | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).
