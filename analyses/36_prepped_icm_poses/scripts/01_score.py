@@ -137,21 +137,25 @@ def one_pose(lig, pset, rank, pose_st, structure, pd):
     if not os.path.exists(cmae):
         st.write(cmae)
 
-    grid = os.path.join(d, "grid.zip")
-    if not os.path.exists(grid):
+    # Schrodinger 2025-3 names the grid after the job stage, grid-gridgen.zip, not
+    # grid.zip. Glob for it the way analysis 28 does rather than assuming the name.
+    g_zip = glob.glob(os.path.join(d, "grid*.zip"))
+    if not g_zip:
         subprocess.run([GEN_GRIDS, "-NOJOBID", "-WAIT", "-rec_file", "complex.mae",
                         "-lig_asl", "res. LIG", "-j", "grid"],
                        cwd=d, check=False, capture_output=True, text=True, timeout=5400)
-    if not os.path.exists(grid):
+        g_zip = glob.glob(os.path.join(d, "grid*.zip"))
+    if not g_zip:
         row["status"] = "error: no grid produced"
         return row
+    grid = os.path.join("..", os.path.basename(g_zip[0]))
 
     sub = os.path.join(d, "score")
     os.makedirs(sub, exist_ok=True)
     csvp = os.path.join(sub, "score.csv")
     if not os.path.exists(csvp):
         with open(os.path.join(sub, "score.in"), "w") as f:
-            f.write(SCORE_IN.replace("../grid.zip", "../grid.zip")
+            f.write(SCORE_IN.replace("../grid.zip", grid)
                             .replace("../lig.mae", "../lig_single.mae"))
         subprocess.run([GLIDE, "-NOJOBID", "-WAIT", "score.in"], cwd=sub, check=False,
                        capture_output=True, text=True, timeout=5400)
