@@ -11,8 +11,10 @@ itself and is largely independent of where the ligand sits. While the challenge 
 the organizers score a subset of roughly 10 of the 20 structures, so small differences
 are noisy and three of our ligands appear never to be scored at all (see finding 5).
 
-**Where things stand:** best submission is 23 at **0.4527 LDDT-PLI**, 5th on the public
-leaderboard as of 2026-10-22, 0.024 behind the leader.
+**Where things stand:** best submission is 29, the per-ligand best Glide `inplace`
+gscore over three ESMFold2 runs, at **0.4638 LDDT-PLI** / 3.7277 BiSyRMSD / 0.8001
+LDDT-LP. Nothing has beaten it in twelve subsequent attempts; submission 34, the same
+structures with Glide-minimised ligands, matched it to 0.0001.
 
 ## Results
 
@@ -47,7 +49,12 @@ the attempts omitted here, is in
 | 33 | [best Glide `inplace` over 2 ESMFold2 runs](submissions/33_glide_best_of_two/) | 0.4464 | 3.7705 | 0.7952 | Dropping set 26 cost 0.0174 — the pool mattered more than the suspected bias |
 | 34 | [submission 29 with Glide-minimised ligand poses](submissions/34_glide_minimised/) | 0.4637 | 3.7483 | 0.8001 | **A 0.497 Å median ligand move cost 0.0001.** LDDT-PLI is blind at this scale |
 | 35 | [best Glide `inplace` over 4 ESMFold2 runs](submissions/35_glide_best_of_four/) | 0.4512 | 3.8222 | 0.7975 | Adding a weak candidate cost 0.0126 — with 33, the three-run pool is a local optimum |
-| 36 | [best Glide `emodel` over 3 ESMFold2 runs](submissions/36_emodel_best_of_three/) | pending | pending | pending | Same pool as 29, ranked by Glide's pose term instead of its affinity term; 8/20 change |
+| 36 | [best Glide `emodel` over 3 ESMFold2 runs](submissions/36_emodel_best_of_three/) | 0.4493 | 3.7605 | 0.7935 | Ranking the same pool by Glide's pose term instead of its affinity term cost 0.0145 — `gscore` is the right term |
+| 37 | [ICM redock of 29's receptors, Glide-picked](submissions/37_icm_redock_glide_select/) | 0.3293 | 5.0863 | 0.7959 | **Worst result of the project.** LDDT-LP barely moved, so it was the ligand placements, not the relaxed receptor |
+| 38 | [the same ICM poses picked by ICM `Score`](submissions/38_icm_redock_icm_select/) | pending | pending | pending | Second selector on the same redocked pool; closes the redocking route either way |
+| 39 | [29 with OCNT-2315379 taken from set 26](submissions/39_sub29_fe_swap_2315379/) | pending | pending | pending | One Fe-distance swap, 6.84 Å → 4.00 Å. That ligand is in the unscored three (finding 5) |
+| 40 | [best Glide `mininplace` over 3 ESMFold2 runs, minimised poses](submissions/40_mininplace_best_of_three/) | pending | pending | pending | The `mininplace` arm of finding 2, shipping the minimised poses the scores were computed on; 7/20 differ from 29 |
+| 41 | [29 with three Fe-distance swaps](submissions/41_sub29_fe_swap_three/) | pending | pending | pending | OCNT-2315379, -2395328, -2312966 moved toward the haem. Only -2395328 lies in the scored subset |
 
 ## What the project has learned
 
@@ -86,7 +93,8 @@ the attempts omitted here, is in
 5. **Three ligands are never scored.** Submissions 18 and 21 returned byte-identical
    scores while differing on exactly OCNT-2312966, OCNT-2315379 and OCNT-2535519, which
    places those three outside the ~10-structure scored subset. Any measured difference
-   that rests only on them is invisible.
+   that rests only on them is invisible — submission 39, which changes submission 29 on
+   OCNT-2315379 alone, cannot return a different score however much the structure moves.
 
 6. **The MSA is worth +0.0143 LDDT-PLI, measured cleanly.** Submission 27 repeats
    submission 23 with `msa=None` and nothing else changed — same endpoint, weights,
@@ -105,6 +113,21 @@ the attempts omitted here, is in
 8. **Templates hurt.** Both holo cryo-EM templates (submission 07) and a single holo
    template (08, 09) scored below the template-free prediction, apparently by biasing
    the pocket toward the template's own ligand.
+
+9. **Redocking into our own best receptors is the worst thing we have tried.**
+   Submission 37 took submission 29's receptors, redocked all 20 ligands with ICM,
+   re-protonated with PrepWizard and picked each ligand's pose by Glide `inplace`
+   gscore. It returned 0.3293 — 0.134 below the structures it started from, and below
+   every AF3 and Boltz-2 baseline. LDDT-LP moved only 0.8001 → 0.7959, so the relaxed
+   receptor was not the cost; the poses were. With findings 1 and 3 this closes the
+   docking route: no docking program we have improves on where the co-folding model put
+   the ligand.
+
+10. **Nothing is left to swap on strain grounds.** Re-running PoseBusters with numeric
+    output over all 60 ESMFold2 structures ([analysis 37](analyses/37_ligand_strain/))
+    found no energy-ratio failures, and for all 20 ligands the Glide-picked structure is
+    within ±0.3 of the least-strained alternative. The three runs produce near-identical
+    ligand conformers, so there is no low-strain substitute to trade a gscore for.
 
 ## Layout
 
@@ -167,6 +190,8 @@ python3 tools/plot_fe_distances.py --list   # what is configured
 | 33 | [ICM redock into submission 29's receptors](analyses/33_icm_redock_sub29/) | 200 poses, 10 per ligand, into the best receptors we have |
 | 34 | [Glide `inplace` on the ICM poses](analyses/34_inplace_on_icm_poses/) | 177/200 rejected — overlapping hydrogens, not pose quality |
 | 35 | [Does ICM change the receptor?](analyses/35_icm_receptor_check/) | Yes, and it is not the cause: the clash is H···H at 0.73 Å |
+| 36 | [Glide `inplace` on re-protonated ICM poses](analyses/36_prepped_icm_poses/) | 167/200 usable once PrepWizard re-adds the hydrogens — the rejection was protonation, not geometry |
+| 37 | [Ligand internal strain across the 3 ESMFold2 runs](analyses/37_ligand_strain/) | All 60 pass the energy-ratio check; no strained ligand is hiding behind a good gscore |
 
 ## Methods
 
