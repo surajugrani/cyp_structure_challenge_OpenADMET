@@ -43,6 +43,8 @@ Scores returned by the organizers for each submitted attempt. Evaluated on a sub
 | 39 | [sub 29 with OCNT-2315379 taken from set 26](39_sub29_fe_swap_2315379/) | 2026-10-31 | pending | pending | pending | — | — |
 | 40 | [best Glide `mininplace` over 3 ESMFold2 runs, minimised poses](40_mininplace_best_of_three/) | 2026-11-01 | pending | pending | pending | — | — |
 | 41 | [sub 29 with three Fe-distance swaps](41_sub29_fe_swap_three/) | 2026-11-02 | pending | pending | pending | — | — |
+| 42 | [best Glide `inplace` over 5 sources: 3 ESM + AF3 06 + Boltz 18](42_glide_best_of_five/) | 2026-11-02 | 0.4367 | 3.8924 | 0.7781 | — | — |
+| 43 | [**final**: sub 29 with OCNT-2315379 from AF3 06](43_final_sub29_af3_2315379/) | 2026-11-03 | pending | pending | pending | — | — |
 
 Metric notes: **LDDT-PLI** is the primary score (protein-ligand interface, higher better).
 **BiSyRMSD** is binding-site-superposed symmetry-corrected pose RMSD (lower better).

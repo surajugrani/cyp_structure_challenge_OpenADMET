@@ -55,6 +55,34 @@ the attempts omitted here, is in
 | 39 | [29 with OCNT-2315379 taken from set 26](submissions/39_sub29_fe_swap_2315379/) | pending | pending | pending | One Fe-distance swap, 6.84 Å → 4.00 Å. That ligand is in the unscored three (finding 5) |
 | 40 | [best Glide `mininplace` over 3 ESMFold2 runs, minimised poses](submissions/40_mininplace_best_of_three/) | pending | pending | pending | The `mininplace` arm of finding 2, shipping the minimised poses the scores were computed on; 7/20 differ from 29 |
 | 41 | [29 with three Fe-distance swaps](submissions/41_sub29_fe_swap_three/) | pending | pending | pending | OCNT-2315379, -2395328, -2312966 moved toward the haem. Only -2395328 lies in the scored subset |
+| 42 | [best Glide `inplace` over 5 sources](submissions/42_glide_best_of_five/) | 0.4367 | 3.8924 | 0.7781 | Widening the pool to AF3 and Boltz-2 cost 0.0271 — the cross-model bias of finding 3, confirmed with `inplace` |
+| 43 | [**final entry**: 29 with OCNT-2315379 from AF3](submissions/43_final_sub29_af3_2315379/) | pending | pending | pending | The submitted entry. That ligand is unscored publicly, so only the full-set evaluation separates it from 29 |
+
+## The final submission
+
+[`43_final_sub29_af3_2315379`](submissions/43_final_sub29_af3_2315379/). Built in three
+steps:
+
+1. **Fold.** ESMFold2 via the remote Biohub API, three runs over the same sequence and
+   the same 20 ligands: the default endpoint with a ColabFold MSA (0.4527), the
+   `max_accuracy` endpoint with its own MSA (0.4365), and the default endpoint with no
+   MSA (0.4384). No run was tuned further; analysis 31 found the compute knobs already
+   at their ceiling.
+2. **Select.** Per ligand, keep whichever of the three structures scores best on Glide
+   `gscore` in `DOCKING_METHOD inplace`, which rescores the co-folded pose without
+   moving it. That is submission 29, 0.4638 LDDT-PLI — the first and only selection
+   rule in this project to beat its own best parent on all three metrics. The `inplace`
+   mode is the whole trick: the same rule with `mininplace` loses (finding 2).
+3. **One substitution.** OCNT-2315379's winning pose sits 6.84 Å from the haem iron,
+   out of contact with the metal despite the ligand carrying a nitrogen donor. It is
+   replaced by the AF3 structure (submission 06, PL-iPTM-selected), which is the
+   best-scoring pose of the five candidates that actually reaches the metal: 4.05 Å at
+   −7.469 gscore, against −7.805 for the pose it replaces.
+
+Steps 1 and 2 are what the evidence supports. Step 3 is a deliberate exception to
+finding 4, taken because 6.84 Å is implausible rather than because a short Fe distance
+is known to be better; it changes one structure of twenty, and that structure is outside
+the publicly scored subset.
 
 ## What the project has learned
 
