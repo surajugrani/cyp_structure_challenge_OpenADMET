@@ -51,10 +51,6 @@ the attempts omitted here, is in
 | 35 | [best Glide `inplace` over 4 ESMFold2 runs](submissions/35_glide_best_of_four/) | 0.4512 | 3.8222 | 0.7975 | Adding a weak candidate cost 0.0126 — with 33, the three-run pool is a local optimum |
 | 36 | [best Glide `emodel` over 3 ESMFold2 runs](submissions/36_emodel_best_of_three/) | 0.4493 | 3.7605 | 0.7935 | Ranking the same pool by Glide's pose term instead of its affinity term cost 0.0145 — `gscore` is the right term |
 | 37 | [ICM redock of 29's receptors, Glide-picked](submissions/37_icm_redock_glide_select/) | 0.3293 | 5.0863 | 0.7959 | **Worst result of the project.** LDDT-LP barely moved, so it was the ligand placements, not the relaxed receptor |
-| 38 | [the same ICM poses picked by ICM `Score`](submissions/38_icm_redock_icm_select/) | pending | pending | pending | Second selector on the same redocked pool; closes the redocking route either way |
-| 39 | [29 with OCNT-2315379 taken from set 26](submissions/39_sub29_fe_swap_2315379/) | pending | pending | pending | One Fe-distance swap, 6.84 Å → 4.00 Å. That ligand is in the unscored three (finding 5) |
-| 40 | [best Glide `mininplace` over 3 ESMFold2 runs, minimised poses](submissions/40_mininplace_best_of_three/) | pending | pending | pending | The `mininplace` arm of finding 2, shipping the minimised poses the scores were computed on; 7/20 differ from 29 |
-| 41 | [29 with three Fe-distance swaps](submissions/41_sub29_fe_swap_three/) | pending | pending | pending | OCNT-2315379, -2395328, -2312966 moved toward the haem. Only -2395328 lies in the scored subset |
 | 42 | [best Glide `inplace` over 5 sources](submissions/42_glide_best_of_five/) | 0.4367 | 3.8924 | 0.7781 | Widening the pool to AF3 and Boltz-2 cost 0.0271 — the cross-model bias of finding 3, confirmed with `inplace` |
 | 43 | [**final entry**: 29 with OCNT-2315379 from AF3](submissions/43_final_sub29_af3_2315379/) | pending | pending | pending | The submitted entry. That ligand is unscored publicly, so only the full-set evaluation separates it from 29 |
 
